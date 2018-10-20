@@ -7,12 +7,19 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 #include "player.h"
 #include "card.h"
 
 
 class Game {
 
+private:
+    int nRound;
+    vector<Player> players;
+    vector<Card> cards;
+
+public:
     int getRound();
 
     void addPlayer(const Player &);

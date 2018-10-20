@@ -10,7 +10,6 @@
 #include <vector>
 #include "reward.h"
 
-
 using namespace std;
 
 class Player {

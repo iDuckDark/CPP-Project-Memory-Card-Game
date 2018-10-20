@@ -16,17 +16,18 @@ class Reward {
 private:
     int nRubies;
 
-    Reward() = default;
 
-    Reward(int nRubies);
 
     //Disables the copy contructor
     //Alternative Implementation is     Reward(const Reward &reward)=delete;
-    Reward(const Reward &reward);
+    //Reward(const Reward &reward);
 
     int getNRubies() const;
 
 public:
+    Reward() = default;
+
+    Reward(int nRubies);
 
     friend ostream &operator<<(ostream &os, const Reward &player);
 };

@@ -18,9 +18,9 @@ Card::Card(FaceAnimal faceAnimal, FaceBackground faceBackground) : faceAnimal(fa
 
 }
 
-string Card::card(int row) {
-    return to_string(row);
-}
+//string Card::Card(int row) {
+//    return to_string(row);
+//}
 
 int Card::getNRows() const {
     return nRows;

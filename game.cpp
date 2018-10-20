@@ -9,9 +9,8 @@
 #include "card.h"
 
 //returns a number between 0 and 6 corresponding to the current round of the game
-
-int getRound() {
-    return 0;
+int Game::getRound() {
+    return nRound;
 }
 
 //which adds a Player to this game.
@@ -20,17 +19,18 @@ void Game::addPlayer(const Player &) {
 }
 
 Player &Game::getPlayer() {
-
+    return players[players.size() - 1];
 }
 
 const Card *Game::getPreviousCard() {
-    return new Card;
+    return &cards[cards.size() - 2];
 }
 
 const Card *Game::getCurrentCard() {
-    return new Card;
+    return &cards[cards.size() - 1];
 }
 
-void Game::setCurrentCard(const Card *) {
-
+void Game::setCurrentCard(const Card *card) {
+    Card c = *card;
+    return cards.push_back(c);
 }
