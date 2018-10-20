@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Cpp_Project_Memory_Game.dir/main.cpp.o"
+  "CMakeFiles/Cpp_Project_Memory_Game.dir/player.cpp.o"
   "Cpp_Project_Memory_Game.pdb"
   "Cpp_Project_Memory_Game"
 )
