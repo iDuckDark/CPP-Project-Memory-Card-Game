@@ -10,8 +10,10 @@
 //always return the same CardDeck during the execution of the program.
 //An object of type CardDeck can not be copied or assigned, and it has no public constructor
 
-class CardDeck {
+#include "deck.h"
 
+//class CardDeck: public Deck {
+class CardDeck{
 };
 
 

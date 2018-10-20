@@ -6,8 +6,24 @@
 #define CPP_PROJECT_MEMORY_GAME_DECK_H
 
 
-class Deck {
+#include "card.h"
+#include "reward.h"
 
+template<class C>
+class Deck {
+public:
+    Deck() = default;
+
+    virtual void suffle() = 0;
+
+    virtual C getNext();
+
+    virtual bool isEmpty();
+
+
+protected:
+    Card *card;
+    Reward *rewards;
 };
 
 
