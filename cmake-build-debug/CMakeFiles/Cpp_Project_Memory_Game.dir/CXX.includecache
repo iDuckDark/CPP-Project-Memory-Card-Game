@@ -8,14 +8,6 @@
 
 /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/card.h
 
-/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/game.cpp
-game.h
-/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/game.h
-player.h
-/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/player.h
-card.h
-/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/card.h
-
 /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/game.h
 player.h
 /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/player.h
@@ -29,4 +21,12 @@ reward.h
 /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/reward.h
 
 /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/reward.h
+
+/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/rules.cpp
+rules.h
+/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/rules.h
+
+/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/rules.h
+game.h
+/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/game.h
 

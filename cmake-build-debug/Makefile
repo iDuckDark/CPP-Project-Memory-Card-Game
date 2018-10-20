@@ -312,6 +312,33 @@ reward.cpp.s:
 	$(MAKE) -f CMakeFiles/Cpp_Project_Memory_Game.dir/build.make CMakeFiles/Cpp_Project_Memory_Game.dir/reward.cpp.s
 .PHONY : reward.cpp.s
 
+rules.o: rules.cpp.o
+
+.PHONY : rules.o
+
+# target to build an object file
+rules.cpp.o:
+	$(MAKE) -f CMakeFiles/Cpp_Project_Memory_Game.dir/build.make CMakeFiles/Cpp_Project_Memory_Game.dir/rules.cpp.o
+.PHONY : rules.cpp.o
+
+rules.i: rules.cpp.i
+
+.PHONY : rules.i
+
+# target to preprocess a source file
+rules.cpp.i:
+	$(MAKE) -f CMakeFiles/Cpp_Project_Memory_Game.dir/build.make CMakeFiles/Cpp_Project_Memory_Game.dir/rules.cpp.i
+.PHONY : rules.cpp.i
+
+rules.s: rules.cpp.s
+
+.PHONY : rules.s
+
+# target to generate assembly for a file
+rules.cpp.s:
+	$(MAKE) -f CMakeFiles/Cpp_Project_Memory_Game.dir/build.make CMakeFiles/Cpp_Project_Memory_Game.dir/rules.cpp.s
+.PHONY : rules.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -342,6 +369,9 @@ help:
 	@echo "... reward.o"
 	@echo "... reward.i"
 	@echo "... reward.s"
+	@echo "... rules.o"
+	@echo "... rules.i"
+	@echo "... rules.s"
 .PHONY : help
 
 
