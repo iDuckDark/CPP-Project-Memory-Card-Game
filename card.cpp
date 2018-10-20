@@ -1,30 +1,64 @@
-//
-// Created by iDarkDuck on 2018-10-19.
-//
-
-
+#include <iostream>
+using namespace std;
 #include "card.h"
+#include <math.h>
 
 
-//Card c(Penguin,Red); // This constructor will be private
-//for (int row = 0; row <c.getNRows(); ++row ) {
-//std::string rowString = c(row);
-//std::cout << rowString << std::endl;
-//}
-//Note that Penguin and Red are enumeration values of type FaceAnimal and FaceBackground.
-
-Card::Card(FaceAnimal faceAnimal, FaceBackground faceBackground) : faceAnimal(faceAnimal),
-                                                                   faceBackground(faceBackground) {
-
+Card::Card(FaceAnimal faceAnimal, FaceBackground faceBackground) {
+    _faceAnimal=faceAnimal;
+    _faceBackground = faceBackground;
+    _color = getColor();
+    _animal = getAnimal();
 }
 
+int Card::getNRows() const {return _nRows;}
+
+string Card::getRow(int row) {
+    string blanks(" ",3);
+    //has 3 columns so a string of size 3
+    return blanks;
+}
+
+
+char Card::getAnimal() const {
+    char animal='?';
+    if(_faceAnimal==Crab){
+        animal='C';
+    }else if(_faceAnimal==Penguin){
+        animal='P';
+    }else if(_faceAnimal==Octopus){
+        animal='O';
+    }else if(_faceAnimal==Turtle){
+        animal='T';
+    }else if(_faceAnimal==Walrus){
+        animal='W';
+    }else{
+        animal='?';
+    }
+    return  animal;
+}
+
+char Card::getColor() const {
+    char color = '?';
+    if (_faceBackground == Red) {
+        color = 'r';
+    } else if (_faceBackground == Green) {
+        color = 'g';
+    } else if (_faceBackground == Purple) {
+        color = 'p';
+    } else if (_faceBackground == Blue) {
+        color = 'b';
+    } else if (_faceBackground == Yellow) {
+        color = 'y';
+    } else {
+        color = '?';
+    }
+    return color;
+}
 //string Card::Card(int row) {
 //    return to_string(row);
 //}
 
-int Card::getNRows() const {
-    return nRows;
-}
 
 
 ostream &operator<<(ostream &os, const Card &card) {
@@ -36,3 +70,4 @@ ostream &operator<<(ostream &os, const Card &card) {
     //os << player.getName() << " Remember Doe: left" << "(" << player.active << ")" << endl;
     return os;
 }
+
