@@ -119,6 +119,12 @@
 		<Unit filename="/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/reward.h">
 			<Option target="Cpp_Project_Memory_Game"/>
 		</Unit>
+		<Unit filename="/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/rewarddeck.cpp">
+			<Option target="Cpp_Project_Memory_Game"/>
+		</Unit>
+		<Unit filename="/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/rewarddeck.h">
+			<Option target="Cpp_Project_Memory_Game"/>
+		</Unit>
 		<Unit filename="/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/rules.cpp">
 			<Option target="Cpp_Project_Memory_Game"/>
 		</Unit>

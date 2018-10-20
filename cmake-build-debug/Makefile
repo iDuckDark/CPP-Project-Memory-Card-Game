@@ -312,6 +312,33 @@ reward.cpp.s:
 	$(MAKE) -f CMakeFiles/Cpp_Project_Memory_Game.dir/build.make CMakeFiles/Cpp_Project_Memory_Game.dir/reward.cpp.s
 .PHONY : reward.cpp.s
 
+rewarddeck.o: rewarddeck.cpp.o
+
+.PHONY : rewarddeck.o
+
+# target to build an object file
+rewarddeck.cpp.o:
+	$(MAKE) -f CMakeFiles/Cpp_Project_Memory_Game.dir/build.make CMakeFiles/Cpp_Project_Memory_Game.dir/rewarddeck.cpp.o
+.PHONY : rewarddeck.cpp.o
+
+rewarddeck.i: rewarddeck.cpp.i
+
+.PHONY : rewarddeck.i
+
+# target to preprocess a source file
+rewarddeck.cpp.i:
+	$(MAKE) -f CMakeFiles/Cpp_Project_Memory_Game.dir/build.make CMakeFiles/Cpp_Project_Memory_Game.dir/rewarddeck.cpp.i
+.PHONY : rewarddeck.cpp.i
+
+rewarddeck.s: rewarddeck.cpp.s
+
+.PHONY : rewarddeck.s
+
+# target to generate assembly for a file
+rewarddeck.cpp.s:
+	$(MAKE) -f CMakeFiles/Cpp_Project_Memory_Game.dir/build.make CMakeFiles/Cpp_Project_Memory_Game.dir/rewarddeck.cpp.s
+.PHONY : rewarddeck.cpp.s
+
 rules.o: rules.cpp.o
 
 .PHONY : rules.o
@@ -369,6 +396,9 @@ help:
 	@echo "... reward.o"
 	@echo "... reward.i"
 	@echo "... reward.s"
+	@echo "... rewarddeck.o"
+	@echo "... rewarddeck.i"
+	@echo "... rewarddeck.s"
 	@echo "... rules.o"
 	@echo "... rules.i"
 	@echo "... rules.s"

@@ -7,6 +7,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Cpp_Project_Memory_Game.dir/carddeck.cpp.o"
   "CMakeFiles/Cpp_Project_Memory_Game.dir/game.cpp.o"
   "CMakeFiles/Cpp_Project_Memory_Game.dir/rules.cpp.o"
+  "CMakeFiles/Cpp_Project_Memory_Game.dir/rewarddeck.cpp.o"
   "Cpp_Project_Memory_Game.pdb"
   "Cpp_Project_Memory_Game"
 )
