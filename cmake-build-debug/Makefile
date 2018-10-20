@@ -177,6 +177,60 @@ card.cpp.s:
 	$(MAKE) -f CMakeFiles/Cpp_Project_Memory_Game.dir/build.make CMakeFiles/Cpp_Project_Memory_Game.dir/card.cpp.s
 .PHONY : card.cpp.s
 
+carddeck.o: carddeck.cpp.o
+
+.PHONY : carddeck.o
+
+# target to build an object file
+carddeck.cpp.o:
+	$(MAKE) -f CMakeFiles/Cpp_Project_Memory_Game.dir/build.make CMakeFiles/Cpp_Project_Memory_Game.dir/carddeck.cpp.o
+.PHONY : carddeck.cpp.o
+
+carddeck.i: carddeck.cpp.i
+
+.PHONY : carddeck.i
+
+# target to preprocess a source file
+carddeck.cpp.i:
+	$(MAKE) -f CMakeFiles/Cpp_Project_Memory_Game.dir/build.make CMakeFiles/Cpp_Project_Memory_Game.dir/carddeck.cpp.i
+.PHONY : carddeck.cpp.i
+
+carddeck.s: carddeck.cpp.s
+
+.PHONY : carddeck.s
+
+# target to generate assembly for a file
+carddeck.cpp.s:
+	$(MAKE) -f CMakeFiles/Cpp_Project_Memory_Game.dir/build.make CMakeFiles/Cpp_Project_Memory_Game.dir/carddeck.cpp.s
+.PHONY : carddeck.cpp.s
+
+game.o: game.cpp.o
+
+.PHONY : game.o
+
+# target to build an object file
+game.cpp.o:
+	$(MAKE) -f CMakeFiles/Cpp_Project_Memory_Game.dir/build.make CMakeFiles/Cpp_Project_Memory_Game.dir/game.cpp.o
+.PHONY : game.cpp.o
+
+game.i: game.cpp.i
+
+.PHONY : game.i
+
+# target to preprocess a source file
+game.cpp.i:
+	$(MAKE) -f CMakeFiles/Cpp_Project_Memory_Game.dir/build.make CMakeFiles/Cpp_Project_Memory_Game.dir/game.cpp.i
+.PHONY : game.cpp.i
+
+game.s: game.cpp.s
+
+.PHONY : game.s
+
+# target to generate assembly for a file
+game.cpp.s:
+	$(MAKE) -f CMakeFiles/Cpp_Project_Memory_Game.dir/build.make CMakeFiles/Cpp_Project_Memory_Game.dir/game.cpp.s
+.PHONY : game.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -273,6 +327,12 @@ help:
 	@echo "... card.o"
 	@echo "... card.i"
 	@echo "... card.s"
+	@echo "... carddeck.o"
+	@echo "... carddeck.i"
+	@echo "... carddeck.s"
+	@echo "... game.o"
+	@echo "... game.i"
+	@echo "... game.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

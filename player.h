@@ -27,10 +27,12 @@ class Player {
     int getNRubies() const;
 
     //add a reward with a given number of rubies.
-    void addReward( const Reward& );
+    void addReward(const Reward &);
 
     //add a reward with a given number of rubies.
-    void setDisplayMode( bool endOfGame );
+    void setDisplayMode(bool endOfGame);
+
+    void print();
 };
 
 

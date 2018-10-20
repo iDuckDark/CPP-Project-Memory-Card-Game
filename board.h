@@ -10,6 +10,12 @@ class Board {
     bool isFaceUp(const char &Letter, const int &Number) const;
 
     bool turnFaceUp(const char &Letter, const int &Number);
+
+    bool turnFaceDown( const char &Letter, const int &Number );
+
+    void reset();
+
+    void print();
 };
 
 #endif //CPP_PROJECT_MEMORY_GAME_BOARD_H
