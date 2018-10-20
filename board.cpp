@@ -34,6 +34,6 @@ void Board::reset() {
 }
 
 //A board must be printable with the insertion operator cout << board
-void Board::print() {
-
+ostream &operator<<(ostream &os, const Board &player) {
+    
 }

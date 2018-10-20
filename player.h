@@ -25,7 +25,6 @@ private:
 
 public:
 
-
     Player() = default;
 
     Player(string name, string sideOfTheBoard, int nRubies);
@@ -44,7 +43,6 @@ public:
 
     friend ostream &operator<<(ostream &os, const Player &player);
 
-    //Added Own Functions
     bool getEndOfGame() const;
 
     string getSideOfTheBoard() const;
