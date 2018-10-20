@@ -16,20 +16,21 @@ class Card {
 
 public:
     friend ostream &operator<<(ostream &os, const Card &card);
-
 private:
-    Card() = default;
 
+    Card() = default;
     Card(FaceAnimal faceAnimal, FaceBackground faceBackground);
+
     FaceAnimal _faceAnimal;
     FaceBackground _faceBackground;
     int _nRows = 3;
     char _color;
     char _animal;
-    string operator()(int);
-    int getNRows() const;
+
     char getColor() const ;
     char getAnimal() const;
+    string operator()(int) const ;
+    int getNRows() const;
 
 };
 
