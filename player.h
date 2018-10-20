@@ -13,23 +13,26 @@
 using namespace std;
 
 class Player {
-    Player() = default;
 
-    Player(string name, string sideOfTheBoard, int nRubies);
 
 private:
     string name;
     bool active;
     vector<Reward> rewards;
     bool endOfGame;
-    string sideOfTheBoard; //Not sure why is this needed but leave it for now
+    string sideOfTheBoard;
     int nRubies;
 
 public:
 
+
+    Player() = default;
+
+    Player(string name, string sideOfTheBoard, int nRubies);
+
     string getName() const;
 
-    void setActive(bool);
+    void setActive(bool active);
 
     bool isActive();
 
@@ -43,6 +46,8 @@ public:
 
     //Added Own Functions
     bool getEndOfGame() const;
+
+    string getSideOfTheBoard() const;
 };
 
 

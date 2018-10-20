@@ -1,4 +1,5 @@
 #include <iostream>
+#include "player.h"
 
 using namespace std;
 
@@ -25,6 +26,11 @@ int main() {
 //    print players with their number of rubies sorted from least to most
 //    rubies
 //    print overall winner
+
+    Player *p = new Player{"Peter", "top", 2};
+    cout << *p << endl;
+    p->setDisplayMode(false);
+    cout << *p << endl;
     cout << "No Errors" << endl;
     return 0;
 }

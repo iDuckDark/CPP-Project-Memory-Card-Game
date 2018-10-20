@@ -7,6 +7,7 @@
 Player::Player(string name, string sideOfTheBoard, int nRubies) : name(name), sideOfTheBoard(sideOfTheBoard),
                                                                   nRubies(nRubies) {
     //Initialize Reward Vector?;
+    this->active = true;
     this->endOfGame = false;
 }
 
@@ -41,6 +42,7 @@ void Player::setDisplayMode(bool endOfGame) {
     this->endOfGame = true;
 }
 
+
 //A player must be printable with the insertion operator cout << player. An example print out with
 //endOfGame false could look as follows:
 //Joe Remember Doe: left (active)
@@ -48,9 +50,12 @@ void Player::setDisplayMode(bool endOfGame) {
 //Joe Remember Doe: 3 rubies
 ostream &operator<<(ostream &os, const Player &player) {
     if (player.getEndOfGame()) {
-        os << player.getName() << " Remember Doe: left" << "(" << player.active << ")" << endl;
+        string status = player.active? "active" : "inactive";
+        os << player.getName() << " Remember Doe: " << player.getSideOfTheBoard() << "(" << status << ")"
+           << endl;
     } else {
-        os << player.getName() << " Remember Doe: left" << player.getNRubies() << "rubies" << endl;
+        os << player.getName() << " Remember Doe: " << player.getSideOfTheBoard() << " " << player.getNRubies()
+           << " rubies" << endl;
     }
     return os;
 }
@@ -58,4 +63,8 @@ ostream &operator<<(ostream &os, const Player &player) {
 //Added Own Functions
 bool Player::getEndOfGame() const {
     return this->endOfGame;
+}
+
+string Player::getSideOfTheBoard() const {
+    return this->sideOfTheBoard;
 }
