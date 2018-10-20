@@ -13,9 +13,25 @@
 //}
 //Note that Penguin and Red are enumeration values of type FaceAnimal and FaceBackground.
 
-Card::Card (string Penguin, string Red) {
-    for (int row = 0; row < c.getNRows(); ++row) {
-        string rowString = c(row);
-        cout << rowString << std::endl;
-    }
+Card::Card(FaceAnimal faceAnimal, FaceBackground faceBackground) : faceAnimal(faceAnimal), faceBackground(faceBackground){
+
+}
+
+string Card::card(int row){
+    return to_string(row);
+}
+
+int Card::getNRows() const{
+    return nRows;
+}
+
+
+ostream &operator<<(ostream &os, const Card &card) {
+
+//    for (int row = 0; row < card.getNRows(); ++row) {
+//        string rowString = card(row);
+//        cout << rowString << std::endl;
+//    }
+    //os << player.getName() << " Remember Doe: left" << "(" << player.active << ")" << endl;
+    return os;
 }

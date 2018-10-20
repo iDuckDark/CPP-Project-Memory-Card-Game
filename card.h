@@ -14,16 +14,28 @@ using namespace std;
 
 class Card {
 
+    //Note that Penguin and Red are enumeration values of type FaceAnimal and FaceBackground.
+
     enum FaceAnimal {
-        Crab, Penguin, Octopus, Turtle, Walrus,
+        Crab, Penguin, Octopus, Turtle, Walrus
+    };
+
+    enum FaceBackground {
+        red, green, purple, blue, yellow
     };
 
 
 private:
+    FaceAnimal  faceAnimal;
+    FaceBackground faceBackground;
+    int nRows;
     Card() = default;
+    Card(int nRows);
+    Card(FaceAnimal faceAnimal, FaceBackground faceBackground);
+    int getNRows() const;
+public:
 
-    //Note that Penguin and Red are enumeration values of type FaceAnimal and FaceBackground.
-    Card(string Penguin, string Red);
+    friend ostream &operator<<(ostream &os, const Card &card);
 };
 
 
