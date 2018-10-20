@@ -15,6 +15,7 @@ using namespace std;
 
 class Player {
     Player() = default;
+
     Player(string name, string sideOfTheBoard, int nRubies);
 
 private:
@@ -39,7 +40,7 @@ public:
 
     void setDisplayMode(bool endOfGame);
 
-    friend ostream& operator<< (ostream& os, const Player& player);
+    friend ostream &operator<<(ostream &os, const Player &player);
 
     //Added Own Functions
     bool getEndOfGame() const;

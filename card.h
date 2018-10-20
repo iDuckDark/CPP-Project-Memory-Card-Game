@@ -26,13 +26,18 @@ class Card {
 
 
 private:
-    FaceAnimal  faceAnimal;
+    FaceAnimal faceAnimal;
     FaceBackground faceBackground;
     int nRows;
+
     Card() = default;
+
     Card(int nRows);
+
     Card(FaceAnimal faceAnimal, FaceBackground faceBackground);
+
     int getNRows() const;
+
 public:
 
     friend ostream &operator<<(ostream &os, const Card &card);

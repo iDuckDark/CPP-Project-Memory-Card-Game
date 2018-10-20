@@ -14,11 +14,16 @@
 class Game {
 
     int getRound();
-    void addPlayer( const Player& );
-    Player& getPlayer();
-    const Card* getPreviousCard();
-    const Card* getCurrentCard();
-    void setCurrentCard( const Card*);
+
+    void addPlayer(const Player &);
+
+    Player &getPlayer();
+
+    const Card *getPreviousCard();
+
+    const Card *getCurrentCard();
+
+    void setCurrentCard(const Card *);
 
 };
 

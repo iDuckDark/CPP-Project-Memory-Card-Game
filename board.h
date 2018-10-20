@@ -13,7 +13,7 @@ class Board {
 
     bool turnFaceUp(const char &Letter, const int &Number);
 
-    bool turnFaceDown( const char &Letter, const int &Number );
+    bool turnFaceDown(const char &Letter, const int &Number);
 
     void reset();
 

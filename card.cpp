@@ -13,15 +13,16 @@
 //}
 //Note that Penguin and Red are enumeration values of type FaceAnimal and FaceBackground.
 
-Card::Card(FaceAnimal faceAnimal, FaceBackground faceBackground) : faceAnimal(faceAnimal), faceBackground(faceBackground){
+Card::Card(FaceAnimal faceAnimal, FaceBackground faceBackground) : faceAnimal(faceAnimal),
+                                                                   faceBackground(faceBackground) {
 
 }
 
-string Card::card(int row){
+string Card::card(int row) {
     return to_string(row);
 }
 
-int Card::getNRows() const{
+int Card::getNRows() const {
     return nRows;
 }
 
