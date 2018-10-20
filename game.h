@@ -5,9 +5,11 @@
 #ifndef CPP_PROJECT_MEMORY_GAME_GAME_H
 #define CPP_PROJECT_MEMORY_GAME_GAME_H
 
-
+#include <iostream>
+#include <string>
 #include "player.h"
 #include "card.h"
+
 
 class Game {
 

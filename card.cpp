@@ -2,6 +2,7 @@
 // Created by iDarkDuck on 2018-10-19.
 //
 
+
 #include "card.h"
 
 
@@ -10,4 +11,11 @@
 //std::string rowString = c(row);
 //std::cout << rowString << std::endl;
 //}
+//Note that Penguin and Red are enumeration values of type FaceAnimal and FaceBackground.
 
+Card::Card (string Penguin, string Red) {
+    for (int row = 0; row < c.getNRows(); ++row) {
+        string rowString = c(row);
+        cout << rowString << std::endl;
+    }
+}

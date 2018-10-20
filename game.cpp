@@ -2,6 +2,8 @@
 // Created by iDarkDuck on 2018-10-19.
 //
 
+#include <iostream>
+#include <string>
 #include "game.h"
 #include "player.h"
 #include "card.h"

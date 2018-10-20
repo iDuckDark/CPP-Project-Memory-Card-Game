@@ -5,7 +5,7 @@
 #ifndef CPP_PROJECT_MEMORY_GAME_REWARDDECK_H
 #define CPP_PROJECT_MEMORY_GAME_REWARDDECK_H
 
-//Design a class RewardDeck derived from Deck<Reward> with the corresponding properties to CardDeck. 
+//Design a class RewardDeck derived from Deck<Reward> with the corresponding properties to CardDeck.
 class RewardDeck {
 
 };

@@ -5,34 +5,44 @@
 #ifndef CPP_PROJECT_MEMORY_GAME_PLAYER_H
 #define CPP_PROJECT_MEMORY_GAME_PLAYER_H
 
-
+#include <iostream>
 #include <string>
+#include <vector>
 #include "reward.h"
 
 
 using namespace std;
 
 class Player {
+    Player() = default;
+    Player(string name, string sideOfTheBoard, int nRubies);
 
-    //return the name of the player.
+private:
+    string name;
+    bool active;
+    vector<Reward> rewards;
+    bool endOfGame;
+    string sideOfTheBoard; //Not sure why is this needed but leave it for now
+    int nRubies;
+
+public:
+
     string getName() const;
 
-    //set the status of the player as active or inactive.
     void setActive(bool);
 
-    //returns true if the player is active.
     bool isActive();
 
-    //return the number of rubies won by this player.
     int getNRubies() const;
 
-    //add a reward with a given number of rubies.
     void addReward(const Reward &);
 
-    //add a reward with a given number of rubies.
     void setDisplayMode(bool endOfGame);
 
-    void print();
+    friend ostream& operator<< (ostream& os, const Player& player);
+
+    //Added Own Functions
+    bool getEndOfGame() const;
 };
 
 

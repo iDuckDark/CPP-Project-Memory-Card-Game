@@ -5,6 +5,8 @@
 #ifndef CPP_PROJECT_MEMORY_GAME_BOARD_H
 #define CPP_PROJECT_MEMORY_GAME_BOARD_H
 
+#include <iostream>
+
 //Design a class Board which holds an array of strings corresponding to the screen display of the game.
 class Board {
     bool isFaceUp(const char &Letter, const int &Number) const;
