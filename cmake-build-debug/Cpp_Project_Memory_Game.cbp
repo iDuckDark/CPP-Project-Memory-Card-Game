@@ -80,6 +80,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/card.cpp">
+			<Option target="Cpp_Project_Memory_Game"/>
+		</Unit>
+		<Unit filename="/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/card.h">
+			<Option target="Cpp_Project_Memory_Game"/>
+		</Unit>
 		<Unit filename="/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/main.cpp">
 			<Option target="Cpp_Project_Memory_Game"/>
 		</Unit>
@@ -87,6 +93,12 @@
 			<Option target="Cpp_Project_Memory_Game"/>
 		</Unit>
 		<Unit filename="/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/player.h">
+			<Option target="Cpp_Project_Memory_Game"/>
+		</Unit>
+		<Unit filename="/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/reward.cpp">
+			<Option target="Cpp_Project_Memory_Game"/>
+		</Unit>
+		<Unit filename="/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/reward.h">
 			<Option target="Cpp_Project_Memory_Game"/>
 		</Unit>
 		<Unit filename="/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/CMakeLists.txt">

@@ -7,6 +7,8 @@
 
 
 #include <string>
+#include "reward.h"
+
 
 using namespace std;
 
@@ -19,7 +21,7 @@ class Player {
     void setActive(bool);
 
     //returns true if the player is active.
-    bool isActive()
+    bool isActive();
 
     //return the number of rubies won by this player.
     int getNRubies() const;

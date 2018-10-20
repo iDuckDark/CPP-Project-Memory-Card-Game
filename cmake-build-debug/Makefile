@@ -123,6 +123,33 @@ Cpp_Project_Memory_Game/fast:
 	$(MAKE) -f CMakeFiles/Cpp_Project_Memory_Game.dir/build.make CMakeFiles/Cpp_Project_Memory_Game.dir/build
 .PHONY : Cpp_Project_Memory_Game/fast
 
+card.o: card.cpp.o
+
+.PHONY : card.o
+
+# target to build an object file
+card.cpp.o:
+	$(MAKE) -f CMakeFiles/Cpp_Project_Memory_Game.dir/build.make CMakeFiles/Cpp_Project_Memory_Game.dir/card.cpp.o
+.PHONY : card.cpp.o
+
+card.i: card.cpp.i
+
+.PHONY : card.i
+
+# target to preprocess a source file
+card.cpp.i:
+	$(MAKE) -f CMakeFiles/Cpp_Project_Memory_Game.dir/build.make CMakeFiles/Cpp_Project_Memory_Game.dir/card.cpp.i
+.PHONY : card.cpp.i
+
+card.s: card.cpp.s
+
+.PHONY : card.s
+
+# target to generate assembly for a file
+card.cpp.s:
+	$(MAKE) -f CMakeFiles/Cpp_Project_Memory_Game.dir/build.make CMakeFiles/Cpp_Project_Memory_Game.dir/card.cpp.s
+.PHONY : card.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -177,6 +204,33 @@ player.cpp.s:
 	$(MAKE) -f CMakeFiles/Cpp_Project_Memory_Game.dir/build.make CMakeFiles/Cpp_Project_Memory_Game.dir/player.cpp.s
 .PHONY : player.cpp.s
 
+reward.o: reward.cpp.o
+
+.PHONY : reward.o
+
+# target to build an object file
+reward.cpp.o:
+	$(MAKE) -f CMakeFiles/Cpp_Project_Memory_Game.dir/build.make CMakeFiles/Cpp_Project_Memory_Game.dir/reward.cpp.o
+.PHONY : reward.cpp.o
+
+reward.i: reward.cpp.i
+
+.PHONY : reward.i
+
+# target to preprocess a source file
+reward.cpp.i:
+	$(MAKE) -f CMakeFiles/Cpp_Project_Memory_Game.dir/build.make CMakeFiles/Cpp_Project_Memory_Game.dir/reward.cpp.i
+.PHONY : reward.cpp.i
+
+reward.s: reward.cpp.s
+
+.PHONY : reward.s
+
+# target to generate assembly for a file
+reward.cpp.s:
+	$(MAKE) -f CMakeFiles/Cpp_Project_Memory_Game.dir/build.make CMakeFiles/Cpp_Project_Memory_Game.dir/reward.cpp.s
+.PHONY : reward.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -186,12 +240,18 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... Cpp_Project_Memory_Game"
+	@echo "... card.o"
+	@echo "... card.i"
+	@echo "... card.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
 	@echo "... player.o"
 	@echo "... player.i"
 	@echo "... player.s"
+	@echo "... reward.o"
+	@echo "... reward.i"
+	@echo "... reward.s"
 .PHONY : help
 
 
