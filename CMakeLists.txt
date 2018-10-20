@@ -3,4 +3,4 @@ project(Cpp_Project_Memory_Game)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(Cpp_Project_Memory_Game main.cpp player.cpp player.h reward.cpp reward.h card.cpp card.h)
+add_executable(Cpp_Project_Memory_Game main.cpp player.cpp player.h reward.cpp reward.h card.cpp card.h board.cpp board.h)

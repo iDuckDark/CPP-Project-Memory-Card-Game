@@ -123,6 +123,33 @@ Cpp_Project_Memory_Game/fast:
 	$(MAKE) -f CMakeFiles/Cpp_Project_Memory_Game.dir/build.make CMakeFiles/Cpp_Project_Memory_Game.dir/build
 .PHONY : Cpp_Project_Memory_Game/fast
 
+board.o: board.cpp.o
+
+.PHONY : board.o
+
+# target to build an object file
+board.cpp.o:
+	$(MAKE) -f CMakeFiles/Cpp_Project_Memory_Game.dir/build.make CMakeFiles/Cpp_Project_Memory_Game.dir/board.cpp.o
+.PHONY : board.cpp.o
+
+board.i: board.cpp.i
+
+.PHONY : board.i
+
+# target to preprocess a source file
+board.cpp.i:
+	$(MAKE) -f CMakeFiles/Cpp_Project_Memory_Game.dir/build.make CMakeFiles/Cpp_Project_Memory_Game.dir/board.cpp.i
+.PHONY : board.cpp.i
+
+board.s: board.cpp.s
+
+.PHONY : board.s
+
+# target to generate assembly for a file
+board.cpp.s:
+	$(MAKE) -f CMakeFiles/Cpp_Project_Memory_Game.dir/build.make CMakeFiles/Cpp_Project_Memory_Game.dir/board.cpp.s
+.PHONY : board.cpp.s
+
 card.o: card.cpp.o
 
 .PHONY : card.o
@@ -240,6 +267,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... Cpp_Project_Memory_Game"
+	@echo "... board.o"
+	@echo "... board.i"
+	@echo "... board.s"
 	@echo "... card.o"
 	@echo "... card.i"
 	@echo "... card.s"

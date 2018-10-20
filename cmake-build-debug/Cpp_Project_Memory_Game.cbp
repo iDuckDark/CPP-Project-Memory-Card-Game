@@ -80,6 +80,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/board.cpp">
+			<Option target="Cpp_Project_Memory_Game"/>
+		</Unit>
+		<Unit filename="/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/board.h">
+			<Option target="Cpp_Project_Memory_Game"/>
+		</Unit>
 		<Unit filename="/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/card.cpp">
 			<Option target="Cpp_Project_Memory_Game"/>
 		</Unit>

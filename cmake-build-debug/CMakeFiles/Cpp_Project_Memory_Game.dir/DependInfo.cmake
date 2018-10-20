@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/board.cpp" "/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/cmake-build-debug/CMakeFiles/Cpp_Project_Memory_Game.dir/board.cpp.o"
   "/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/card.cpp" "/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/cmake-build-debug/CMakeFiles/Cpp_Project_Memory_Game.dir/card.cpp.o"
   "/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/main.cpp" "/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/cmake-build-debug/CMakeFiles/Cpp_Project_Memory_Game.dir/main.cpp.o"
   "/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/player.cpp" "/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/cmake-build-debug/CMakeFiles/Cpp_Project_Memory_Game.dir/player.cpp.o"
