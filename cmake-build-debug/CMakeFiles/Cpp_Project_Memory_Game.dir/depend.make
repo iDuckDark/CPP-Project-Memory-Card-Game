@@ -25,3 +25,10 @@ CMakeFiles\Cpp_Project_Memory_Game.dir\player.cpp.obj: ..\reward.h
 CMakeFiles\Cpp_Project_Memory_Game.dir\reward.cpp.obj: ..\reward.cpp
 CMakeFiles\Cpp_Project_Memory_Game.dir\reward.cpp.obj: ..\reward.h
 
+CMakeFiles/Cpp_Project_Memory_Game.dir/rules.cpp.o: ../card.h
+CMakeFiles/Cpp_Project_Memory_Game.dir/rules.cpp.o: ../game.h
+CMakeFiles/Cpp_Project_Memory_Game.dir/rules.cpp.o: ../player.h
+CMakeFiles/Cpp_Project_Memory_Game.dir/rules.cpp.o: ../reward.h
+CMakeFiles/Cpp_Project_Memory_Game.dir/rules.cpp.o: ../rules.cpp
+CMakeFiles/Cpp_Project_Memory_Game.dir/rules.cpp.o: ../rules.h
+

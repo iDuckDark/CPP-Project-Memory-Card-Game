@@ -4,15 +4,16 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/board.cpp" "C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/cmake-build-debug/CMakeFiles/Cpp_Project_Memory_Game.dir/board.cpp.obj"
-  "C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/card.cpp" "C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/cmake-build-debug/CMakeFiles/Cpp_Project_Memory_Game.dir/card.cpp.obj"
-  "C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/carddeck.cpp" "C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/cmake-build-debug/CMakeFiles/Cpp_Project_Memory_Game.dir/carddeck.cpp.obj"
-  "C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/game.cpp" "C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/cmake-build-debug/CMakeFiles/Cpp_Project_Memory_Game.dir/game.cpp.obj"
-  "C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/main.cpp" "C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/cmake-build-debug/CMakeFiles/Cpp_Project_Memory_Game.dir/main.cpp.obj"
-  "C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/player.cpp" "C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/cmake-build-debug/CMakeFiles/Cpp_Project_Memory_Game.dir/player.cpp.obj"
-  "C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/reward.cpp" "C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/cmake-build-debug/CMakeFiles/Cpp_Project_Memory_Game.dir/reward.cpp.obj"
+  "/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/board.cpp" "/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/cmake-build-debug/CMakeFiles/Cpp_Project_Memory_Game.dir/board.cpp.o"
+  "/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/card.cpp" "/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/cmake-build-debug/CMakeFiles/Cpp_Project_Memory_Game.dir/card.cpp.o"
+  "/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/carddeck.cpp" "/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/cmake-build-debug/CMakeFiles/Cpp_Project_Memory_Game.dir/carddeck.cpp.o"
+  "/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/game.cpp" "/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/cmake-build-debug/CMakeFiles/Cpp_Project_Memory_Game.dir/game.cpp.o"
+  "/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/main.cpp" "/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/cmake-build-debug/CMakeFiles/Cpp_Project_Memory_Game.dir/main.cpp.o"
+  "/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/player.cpp" "/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/cmake-build-debug/CMakeFiles/Cpp_Project_Memory_Game.dir/player.cpp.o"
+  "/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/reward.cpp" "/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/cmake-build-debug/CMakeFiles/Cpp_Project_Memory_Game.dir/reward.cpp.o"
+  "/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/rules.cpp" "/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/cmake-build-debug/CMakeFiles/Cpp_Project_Memory_Game.dir/rules.cpp.o"
   )
-set(CMAKE_CXX_COMPILER_ID "MSVC")
+set(CMAKE_CXX_COMPILER_ID "AppleClang")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
