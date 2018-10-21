@@ -5,20 +5,22 @@
 #include <string>
 
 using namespace std;
+//TODO Need to give friend access to RewardDeck, make constructor private
 
 class Reward {
-    friend class RewardDeck;
+
 
 public:
     int getNRubies() const;
 
     friend ostream &operator<<(ostream &os, const Reward &reward);
-
-private:
-    Reward(int);
-    Reward() = default;
     //Reward(const Reward&);
     int _nRubies;
+
+
+    explicit Reward(int);
+    Reward() = default;
+private:
 
 
 };

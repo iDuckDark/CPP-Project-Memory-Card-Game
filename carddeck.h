@@ -1,26 +1,23 @@
-//
-// Created by iDarkDuck on 2018-10-19.
-//
-
 #ifndef CPP_PROJECT_MEMORY_GAME_CARDDECK_H
 #define CPP_PROJECT_MEMORY_GAME_CARDDECK_H
 
-//Design a class CardDeck derived from Deck<Card>.
-//• static CardDeck& make_CardDeck() is the only public method for CardDeck. The method has to
-//always return the same CardDeck during the execution of the program.
-//An object of type CardDeck can not be copied or assigned, and it has no public constructor
 
+#include <vector>
 #include "deck.h"
 
-//class CardDeck: public Deck {
-class CardDeck: public Deck<Card>{
-    CardDeck() = default;
+class CardDeck : public Deck<Card> {
+public:
+    CardDeck()= default;
+    explicit CardDeck(int);
 
-    void shuffle() = 0;
+    void shuffle() override;
 
-    Card getNext();
+    Card getNext() override;
 
-    bool isEmpty();
+    bool isEmpty() override;
+
+private:
+    vector<Card> deck;
 };
 
 

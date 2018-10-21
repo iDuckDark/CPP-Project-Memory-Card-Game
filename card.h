@@ -12,15 +12,17 @@ enum FaceAnimal {
 enum FaceBackground {
     Red, Green, Purple, Blue, Yellow
 };
+//TODO Need to give friend access to CardDeck,make constructor private
 class Card {
-    friend class CardDeck;
 public:
     friend ostream &operator<<(ostream &os, const Card &card);
     string operator()(int) const ;
-private:
+
     Card(FaceAnimal faceAnimal, FaceBackground faceBackground);
     Card() = default;
+private:
     Card(const Card&);//making copy constructor private
+    friend  class CardDeck;
 
 
     FaceAnimal _faceAnimal;

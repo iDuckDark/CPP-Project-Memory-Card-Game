@@ -5,18 +5,27 @@
 #ifndef CPP_PROJECT_MEMORY_GAME_REWARDDECK_H
 #define CPP_PROJECT_MEMORY_GAME_REWARDDECK_H
 
+#include <vector>
 #include "reward.h"
 #include "deck.h"
 
 //Design a class RewardDeck derived from Deck<Reward> with the corresponding properties to CardDeck.
-class RewardDeck:public Deck<Reward>  {
+class RewardDeck : public Deck<Reward> {
+    friend class Reward;
+
+public:
     RewardDeck() = default;
 
-    void shuffle() = 0;
+    explicit RewardDeck(int);
 
-    Reward getNext();
+    void shuffle() override;
 
-    bool isEmpty();
+    Reward getNext() override;
+
+    bool isEmpty() override;
+
+private:
+    vector<Reward> deck;
 };
 
 
