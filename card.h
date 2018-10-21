@@ -13,10 +13,10 @@ enum FaceBackground {
     Red, Green, Purple, Blue, Yellow
 };
 class Card {
-
+    friend class CardDeck;
 public:
     friend ostream &operator<<(ostream &os, const Card &card);
-
+    string operator()(int) const ;
 private:
     Card(FaceAnimal faceAnimal, FaceBackground faceBackground);
     Card() = default;
@@ -31,7 +31,7 @@ private:
 
     char getColor() const ;
     char getAnimal() const;
-    string operator()(int) const ;
+
     int getNRows() const;
 
 };

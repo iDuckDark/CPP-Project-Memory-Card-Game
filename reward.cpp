@@ -1,9 +1,4 @@
-//
-// Created by iDarkDuck on 2018-10-19.
-//
-
 #include "reward.h"
-
 
 Reward::Reward(int nRubies) {
     if (nRubies >= 1 && nRubies <= 4) {
