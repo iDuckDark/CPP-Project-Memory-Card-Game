@@ -9,12 +9,15 @@
 #include "card.h"
 #include "reward.h"
 
+
 template<class C>
 class Deck {
+
+
 public:
     Deck() = default;
 
-    virtual void suffle() = 0;
+    virtual void shuffle() = 0;
 
     virtual C getNext();
 
@@ -22,8 +25,7 @@ public:
 
 
 protected:
-    Card *card;
-    Reward *rewards;
+    C* card;
 };
 
 
