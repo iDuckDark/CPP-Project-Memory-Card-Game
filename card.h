@@ -16,11 +16,11 @@ class Card {
 
 public:
     friend ostream &operator<<(ostream &os, const Card &card);
-private:
 
+private:
+    Card(FaceAnimal faceAnimal, FaceBackground faceBackground);
     Card() = default;
-    Card(FaceAnimal faceAnimal, FaceBackground faceBackground);//Constructor
-    //Card(const Card&);//making copy constructor private
+    Card(const Card&);//making copy constructor private
 
 
     FaceAnimal _faceAnimal;
