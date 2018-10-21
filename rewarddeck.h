@@ -20,7 +20,7 @@ public:
 
     void shuffle() override;
 
-    Reward getNext() override;
+    Reward* getNext() override;
 
     bool isEmpty() override;
 

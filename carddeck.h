@@ -7,12 +7,11 @@
 
 class CardDeck : public Deck<Card> {
 public:
-    CardDeck()= default;
-    explicit CardDeck(int);
+    CardDeck(int);
 
     void shuffle() override;
 
-    Card getNext() override;
+    Card* getNext() override;
 
     bool isEmpty() override;
 

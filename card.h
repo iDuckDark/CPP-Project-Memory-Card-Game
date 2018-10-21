@@ -6,11 +6,11 @@
 
 using namespace std;
 enum FaceAnimal {
-    Crab, Penguin, Octopus, Turtle, Walrus
+    Crab, Penguin, Octopus, Turtle, Walrus,Animals
 };
 
 enum FaceBackground {
-    Red, Green, Purple, Blue, Yellow
+    Red, Green, Purple, Blue, Yellow, Colors
 };
 //TODO Need to give friend access to CardDeck,make constructor private
 class Card {
@@ -20,8 +20,8 @@ public:
 
     Card(FaceAnimal faceAnimal, FaceBackground faceBackground);
     Card() = default;
+    //Card(const Card&);//making copy constructor private
 private:
-    Card(const Card&);//making copy constructor private
     friend  class CardDeck;
 
 

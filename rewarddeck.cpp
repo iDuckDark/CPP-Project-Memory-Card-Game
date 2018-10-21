@@ -9,8 +9,8 @@ void RewardDeck::shuffle() {
 
 }
 
-Reward RewardDeck::getNext() {
-    return Reward{3};
+Reward* RewardDeck::getNext() {
+    return &Reward{3};
 }
 
 bool RewardDeck::isEmpty() {
