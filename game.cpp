@@ -5,32 +5,32 @@
 #include <iostream>
 #include <string>
 #include "game.h"
-#include "player.h"
-#include "card.h"
 
-//returns a number between 0 and 6 corresponding to the current round of the game
-int Game::getRound() {
+
+int Game::getRound() const {
     return nRound;
 }
 
-//which adds a Player to this game.
-void Game::addPlayer(const Player &) {
-
+void Game::addPlayer(const Player &player) {
+    players.push_back(player);
 }
 
 Player &Game::getPlayer() {
     return players[players.size() - 1];
 }
 
-const Card *Game::getPreviousCard() {
+vector<Player> Game::getPlayers() const {
+    return players;
+}
+
+const Card *Game::getPreviousCard() const {
     return &cards[cards.size() - 2];
 }
 
-const Card *Game::getCurrentCard() {
+const Card *Game::getCurrentCard() const {
     return &cards[cards.size() - 1];
 }
 
 void Game::setCurrentCard(const Card *card) {
-    Card c = *card;
-    return cards.push_back(c);
+    return cards.push_back(*card);
 }

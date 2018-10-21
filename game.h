@@ -20,15 +20,17 @@ private:
     vector<Card> cards;
 
 public:
-    int getRound();
+    int getRound() const;
 
     void addPlayer(const Player &);
 
-    Player &getPlayer();
+    Player &getPlayer(); //Not used???????
 
-    const Card *getPreviousCard();
+    vector<Player> getPlayers() const; //Added own function
 
-    const Card *getCurrentCard();
+    const Card *getPreviousCard() const;
+
+    const Card *getCurrentCard() const;
 
     void setCurrentCard(const Card *);
 
