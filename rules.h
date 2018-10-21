@@ -10,11 +10,14 @@
 #include "game.h"
 
 class Rules {
-    bool isValid(const Game &);
 
-    bool gameOver(const Game &);
+    Rules()= default;
 
-    bool roundOver(const Game &);
+    bool isValid(const Game &game);
+
+    bool gameOver(const Game &game);
+
+    bool roundOver(const Game &game);
 };
 
 

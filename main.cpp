@@ -1,5 +1,6 @@
 #include <iostream>
 #include "player.h"
+#include "card.h"
 
 using namespace std;
 
@@ -27,10 +28,14 @@ int main() {
 //    rubies
 //    print overall winner
 
-    Player *p = new Player{"Peter", "top", 2};
-    cout << *p << endl;
-    p->setDisplayMode(false);
-    cout << *p << endl;
+//    Player *p = new Player{"Peter", "top", 2};
+//    cout << *p << endl;
+//    p->setDisplayMode(true);
+//    cout << *p << endl;
+
+
+
     cout << "No Errors" << endl;
+
     return 0;
 }

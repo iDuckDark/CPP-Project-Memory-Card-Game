@@ -24,6 +24,7 @@ CMakeFiles/Cpp_Project_Memory_Game.dir/game.cpp.o: ../game.h
 CMakeFiles/Cpp_Project_Memory_Game.dir/game.cpp.o: ../player.h
 CMakeFiles/Cpp_Project_Memory_Game.dir/game.cpp.o: ../reward.h
 
+CMakeFiles/Cpp_Project_Memory_Game.dir/main.cpp.o: ../card.h
 CMakeFiles/Cpp_Project_Memory_Game.dir/main.cpp.o: ../main.cpp
 CMakeFiles/Cpp_Project_Memory_Game.dir/main.cpp.o: ../player.h
 CMakeFiles/Cpp_Project_Memory_Game.dir/main.cpp.o: ../reward.h

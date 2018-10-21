@@ -6,33 +6,34 @@
 #define CPP_PROJECT_MEMORY_GAME_BOARD_H
 
 #include <iostream>
+#include <stdexcept>
 #include <string>
+#include <vector>
 
 using namespace std;
 
 enum Letter {
-    crab = 'C', penguin = 'P', octopus = 'O', turtle = 'T', walrus = 'W'
+    Crab = 'C', Penguin = 'P', Octopus = 'O', Turtle = 'T', Walrus = 'W', FaceDown = 'Z'
 };
 
 enum Number {
-    one = 1, two = 2, three = 3, four = 4, five = 5
+    One = 1, Two = 2, Three = 3, Four = 4, Five = 5
 };
 
 //Design a class Board which holds an array of strings corresponding to the screen display of the game.
 class Board {
 
 private:
-    string screen[];
+    string screen[19][19];
 
 public:
     Board() = default;
 
-    Board
-    bool isFaceUp(const char &Letter, const int &Number) const;
+    bool isFaceUp(const Letter &, const Number &) const;
 
-    bool turnFaceUp(const char &Letter, const int &Number);
+    bool turnFaceUp(const Letter &, const Number &);
 
-    bool turnFaceDown(const char &Letter, const int &Number);
+    bool turnFaceDown(const Letter &, const Number &);
 
     void reset();
 

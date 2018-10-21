@@ -4,17 +4,15 @@
 
 #include "rules.h"
 
-//returns true is previous and current card match; false otherwise.
-bool Rules::isValid(const Game &) {
-    return 0;
+
+bool Rules::isValid(const Game &game) {
+    return game.getPreviousCard() == game.getCurrentCard();
 }
 
-//returns true if the number of rounds has reached 7.
-bool Rules::gameOver(const Game &) {
-    return 0;
+bool Rules::gameOver(const Game &game) {
+    return game.getRound() == 7;
 }
 
-//returns true if there is only one active Player left.
-bool Rules::roundOver(const Game &) {
-    return 0;
+bool Rules::roundOver(const Game &game) {
+    return game.getPlayers().size() == 1;
 }
