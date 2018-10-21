@@ -16,7 +16,6 @@ class Card {
 
 public:
     friend ostream &operator<<(ostream &os, const Card &card);
-    friend Card Card(FaceAnimal faceAnimal, FaceBackground faceBackground);//Constructor
 
 private:
     Card(FaceAnimal faceAnimal, FaceBackground faceBackground);
