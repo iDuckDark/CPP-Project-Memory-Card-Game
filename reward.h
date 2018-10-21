@@ -14,7 +14,8 @@ using namespace std;
 //be printable with the insertion operator cout << reward.
 class Reward {
 private:
-    int nRubies;
+    int _nRubies;
+    friend Reward Reward(int nRubies);
 
 
 
@@ -22,14 +23,14 @@ private:
     //Alternative Implementation is     Reward(const Reward &reward)=delete;
     //Reward(const Reward &reward);
 
-    int getNRubies() const;
+
 
 public:
     Reward() = default;
-
+    Reward(const Reward&);//copy constructor
     Reward(int nRubies);
-
-    friend ostream &operator<<(ostream &os, const Reward &player);
+    int getNRubies() const;
+    friend ostream &operator<<(ostream &os, const Reward &reward);
 };
 
 

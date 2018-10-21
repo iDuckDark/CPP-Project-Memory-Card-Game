@@ -7,7 +7,7 @@
 
 Reward::Reward(int nRubies) {
     if (nRubies >= 1 && nRubies <= 4) {
-        this->nRubies = nRubies;
+        _nRubies = nRubies;
     } else {
         cout << "Error Initializing Reward: Rubies must be only 1 to 4! " << endl;
     }
@@ -22,5 +22,5 @@ ostream &operator<<(ostream &os, const Reward &reward) {
 
 //Added Functions
 int Reward::getNRubies() const {
-    return nRubies;
+    return _nRubies;
 }
