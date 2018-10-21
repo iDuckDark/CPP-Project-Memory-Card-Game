@@ -3,6 +3,7 @@
 
 CMakeFiles/Cpp_Project_Memory_Game.dir/board.cpp.o: ../board.cpp
 CMakeFiles/Cpp_Project_Memory_Game.dir/board.cpp.o: ../board.h
+CMakeFiles/Cpp_Project_Memory_Game.dir/board.cpp.o: ../card.h
 
 CMakeFiles/Cpp_Project_Memory_Game.dir/card.cpp.o: ../card.cpp
 CMakeFiles/Cpp_Project_Memory_Game.dir/card.cpp.o: ../card.h
