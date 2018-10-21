@@ -60,8 +60,8 @@ ostream &operator<<(ostream &os, const Card &card) {
     return os;
 }
 
-string Card::operator()(int row) const{
-    string rowString{_color,_color,_color};
+string Card::operator()(int row) const {
+    string rowString{_color, _color, _color};
     if (row == ceil(getNRows() / 2)) {
         rowString[1] = _animal;
     }

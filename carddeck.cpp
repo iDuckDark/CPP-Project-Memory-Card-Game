@@ -7,15 +7,16 @@
 #include <algorithm>
 #include <iterator>
 #include <iostream>
+
 using namespace std;
 
 CardDeck::CardDeck() {
     deck = vector<Card>();
-    for(int i = 0;i!=Colors;++i){
-        auto color = (FaceBackground)i;
-        for(int j = 0;j!=Animals;++j){
-            auto animal = (FaceAnimal)j;
-            deck.emplace_back(Card{animal,color});
+    for (int i = 0; i != Colors; ++i) {
+        auto color = (FaceBackground) i;
+        for (int j = 0; j != Animals; ++j) {
+            auto animal = (FaceAnimal) j;
+            deck.emplace_back(Card{animal, color});
         }
     }
 }
@@ -23,12 +24,12 @@ CardDeck::CardDeck() {
 void CardDeck::shuffle() {
     std::random_device rd;
     std::mt19937 g(rd());
-    std::shuffle(deck.begin(), deck.end(),g);
+    std::shuffle(deck.begin(), deck.end(), g);
 }
 
-Card* CardDeck::getNext() {
-    if(!deck.empty()){
-        Card* last = &deck.back();
+Card *CardDeck::getNext() {
+    if (!deck.empty()) {
+        Card *last = &deck.back();
         deck.pop_back();
         return last;
     }
@@ -40,8 +41,8 @@ bool CardDeck::isEmpty() {
     return deck.empty();
 }
 
-CardDeck& CardDeck::make_CardDeck() {
-    CardDeck cards ;
+CardDeck &CardDeck::make_CardDeck() {
+    CardDeck cards;
     cards.shuffle();
-    return  cards;
+    return cards;
 }

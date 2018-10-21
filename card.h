@@ -6,24 +6,29 @@
 
 using namespace std;
 enum FaceAnimal {
-    Crab, Penguin, Octopus, Turtle, Walrus,Animals
+    Crab, Penguin, Octopus, Turtle, Walrus, Animals
 };
 
 enum FaceBackground {
     Red, Green, Purple, Blue, Yellow, Colors
 };
+
 //TODO Need to give friend access to CardDeck,make constructor private
 class Card {
 public:
-    friend ostream &operator<<(ostream &os, const Card &card);
-    string operator()(int) const ;
+
+    Card() = default;
 
     Card(FaceAnimal faceAnimal, FaceBackground faceBackground);
-    Card() = default;
-    //Card(const Card&);//making copy constructor private
-private:
-    friend  class CardDeck;
 
+    //Card(const Card&);//making copy constructor private
+
+    friend ostream &operator<<(ostream &os, const Card &card);
+
+    string operator()(int) const;
+
+private:
+    friend class CardDeck;
 
     FaceAnimal _faceAnimal;
     FaceBackground _faceBackground;
@@ -31,7 +36,8 @@ private:
     char _color;
     char _animal;
 
-    char getColor() const ;
+    char getColor() const;
+
     char getAnimal() const;
 
     int getNRows() const;

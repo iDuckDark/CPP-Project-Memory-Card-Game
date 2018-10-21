@@ -10,6 +10,8 @@
 #include <string>
 #include <vector>
 
+#include "carddeck.h"
+
 using namespace std;
 
 enum Letter {
@@ -24,10 +26,17 @@ enum Number {
 class Board {
 
 private:
-    string screen[19][19];
+    string* screen;
 
 public:
-    Board() = default;
+    Board();
+
+    ~Board();
+
+    string * getScreen() const;
+    //Board() = default;
+
+    void setScreen();
 
     bool isFaceUp(const Letter &, const Number &) const;
 
@@ -37,7 +46,7 @@ public:
 
     void reset();
 
-    friend ostream &operator<<(ostream &os, const Board &player);
+    friend ostream &operator<<(ostream &os, const Board &board);
 };
 
 #endif //CPP_PROJECT_MEMORY_GAME_BOARD_H

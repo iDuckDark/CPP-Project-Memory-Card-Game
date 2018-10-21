@@ -1,10 +1,25 @@
 #include <iostream>
 #include "player.h"
 #include "card.h"
+#include "board.h"
 
 using namespace std;
 
 int main() {
+
+//    Player *p = new Player{"Peter", "top", 2};
+//    cout << *p << endl;
+//    p->setDisplayMode(true);
+//    cout << *p << endl;
+
+    Board board;
+    board.setScreen();
+
+    cout << board << endl;
+    cout << "No Errors" << endl;
+
+    return 0;
+}
 
 //    Ask player to choose game version, number of players and names of
 //    players.
@@ -27,15 +42,3 @@ int main() {
 //    print players with their number of rubies sorted from least to most
 //    rubies
 //    print overall winner
-
-//    Player *p = new Player{"Peter", "top", 2};
-//    cout << *p << endl;
-//    p->setDisplayMode(true);
-//    cout << *p << endl;
-
-
-
-    cout << "No Errors" << endl;
-
-    return 0;
-}

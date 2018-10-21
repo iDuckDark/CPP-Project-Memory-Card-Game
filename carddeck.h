@@ -8,15 +8,17 @@
 class CardDeck : public Deck<Card> {
 public:
     CardDeck();
-    Card* getNext() override;
+
+    Card *getNext() override;
 
     vector<Card> deck;
 
-    static CardDeck& make_CardDeck();
+    static CardDeck &make_CardDeck();
 
     void shuffle() override;
 
     bool isEmpty() override;
+
 private:
 };
 
