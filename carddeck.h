@@ -13,7 +13,14 @@
 #include "deck.h"
 
 //class CardDeck: public Deck {
-class CardDeck{
+class CardDeck: public Deck<Card>{
+    CardDeck() = default;
+
+    void shuffle() = 0;
+
+    Card getNext();
+
+    bool isEmpty();
 };
 
 
