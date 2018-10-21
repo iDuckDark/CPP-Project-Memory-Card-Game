@@ -7,16 +7,17 @@
 
 class CardDeck : public Deck<Card> {
 public:
-    CardDeck(int);
+    CardDeck();
+    Card* getNext() override;
+
+    vector<Card> deck;
+
+    static CardDeck& make_CardDeck();
 
     void shuffle() override;
 
-    Card* getNext() override;
-
     bool isEmpty() override;
-
 private:
-    vector<Card> deck;
 };
 
 

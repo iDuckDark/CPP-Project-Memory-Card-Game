@@ -14,15 +14,15 @@ class RewardDeck : public Deck<Reward> {
     friend class Reward;
 
 public:
+    Reward* getNext() override;
+
+    bool isEmpty() override;
+
     RewardDeck() = default;
 
     explicit RewardDeck(int);
 
     void shuffle() override;
-
-    Reward* getNext() override;
-
-    bool isEmpty() override;
 
 private:
     vector<Reward> deck;

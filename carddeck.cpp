@@ -9,7 +9,7 @@
 #include <iostream>
 using namespace std;
 
-CardDeck::CardDeck(int) {
+CardDeck::CardDeck() {
     deck = vector<Card>();
     for(int i = 0;i!=Colors;++i){
         auto color = (FaceBackground)i;
@@ -38,4 +38,10 @@ Card* CardDeck::getNext() {
 
 bool CardDeck::isEmpty() {
     return deck.empty();
+}
+
+CardDeck& CardDeck::make_CardDeck() {
+    CardDeck cards ;
+    cards.shuffle();
+    return  cards;
 }
