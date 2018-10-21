@@ -17,7 +17,7 @@ class Game {
 private:
     int nRound;
     vector<Player> players;
-    vector<Card> cards;
+    vector<const Card*> cards;
 
 public:
     int getRound() const;

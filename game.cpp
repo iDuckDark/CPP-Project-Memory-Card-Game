@@ -24,13 +24,15 @@ vector<Player> Game::getPlayers() const {
 }
 
 const Card *Game::getPreviousCard() const {
-    return &cards[cards.size() - 2];
+
+    return cards[cards.size() - 2];
 }
 
 const Card *Game::getCurrentCard() const {
-    return &cards[cards.size() - 1];
+    return cards[cards.size() - 1];
 }
 
+
 void Game::setCurrentCard(const Card *card) {
-    return cards.push_back(*card);
+    cards.push_back(card);
 }

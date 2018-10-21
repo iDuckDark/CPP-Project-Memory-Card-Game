@@ -13,7 +13,7 @@
 using namespace std;
 
 enum Letter {
-    Crab = 'C', Penguin = 'P', Octopus = 'O', Turtle = 'T', Walrus = 'W', FaceDown = 'Z'
+    A = 'A', B = 'B', C = 'C', D = 'D', E = 'E'
 };
 
 enum Number {
