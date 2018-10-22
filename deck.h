@@ -17,6 +17,7 @@ class Deck {
 public:
     Deck() = default;
 
+    //TODO : Ask Prof is this private or public???
     virtual void shuffle() = 0;
 
     virtual C *getNext() = 0;

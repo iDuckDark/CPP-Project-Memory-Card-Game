@@ -38,14 +38,6 @@ card.h
 reward.h
 /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/reward.h
 
-/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/game.cpp
-iostream
--
-string
--
-game.h
-/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/game.h
-
 /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/game.h
 iostream
 -
@@ -91,10 +83,6 @@ iostream
 -
 string
 -
-
-/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/rules.cpp
-rules.h
-/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/rules.h
 
 /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/rules.h
 iostream

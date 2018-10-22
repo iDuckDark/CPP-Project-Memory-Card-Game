@@ -12,6 +12,7 @@ Board::Board() {
             faceDownCards[x][y] = true;
         }
     }
+    setScreen();
 }
 
 Board::~Board() {

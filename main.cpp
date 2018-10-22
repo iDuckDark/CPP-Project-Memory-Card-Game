@@ -55,7 +55,7 @@ void runGame() {
                     //TODO get selection of card to turn face up from active player
                     //TODO update board in game
                 }
-                if (!rule.isValid(game) {
+                if (!rule.isValid(game)) {
                     players[i].setActive(false);
                 }
                 cout << board;
@@ -71,6 +71,10 @@ void runGame() {
 int main() {
     //Runs the game
     //runGame();
+    Board board;
+    cout << board << endl;
+    board.turnFaceUp(A, Two);
+    cout << board << endl;
     cout << "No Errors" << endl;
     return 0;
 }

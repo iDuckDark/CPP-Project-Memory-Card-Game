@@ -4,6 +4,7 @@ Reward::Reward(int nRubies) {
     if (nRubies >= 1 && nRubies <= 4) {
         _nRubies = nRubies;
     } else {
+        //TODO throw exception error to prevent contructor from being contruct
         cout << "Error Initializing Reward: Rubies must be only 1 to 4! " << endl;
     }
 }

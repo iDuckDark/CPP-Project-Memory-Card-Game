@@ -30,11 +30,11 @@ void CardDeck::shuffle() {
 Card *CardDeck::getNext() {
     if (!deck.empty()) {
         Card *last = &deck.back();
+        //TODO Verify with prof if we really need to pop?
         deck.pop_back();
         return last;
     }
     return nullptr;
-
 }
 
 bool CardDeck::isEmpty() {

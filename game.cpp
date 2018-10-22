@@ -19,6 +19,7 @@ void Game::addPlayer(const Player &player) {
     players.push_back(player);
 }
 
+//TODO : Ask Prof what is the purpose of this?
 Player &Game::getPlayer() {
     return players[players.size() - 1];
 }

@@ -44,6 +44,7 @@ public:
     ~Board();
 
     string *getScreen() const;
+
     bool *getIsFaceDownCards() const;
 
     void setScreen();
