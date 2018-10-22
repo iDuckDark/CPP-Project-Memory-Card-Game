@@ -11,6 +11,7 @@
 
 class Rules {
 
+public:
     Rules()= default;
 
     bool isValid(const Game &game);

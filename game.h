@@ -20,13 +20,20 @@ private:
     vector<const Card *> cards;
 
 public:
+
+    Game() = default;
+
     int getRound() const;
+
+    void setRound(int nRound);
 
     void addPlayer(const Player &);
 
     Player &getPlayer(); //Not used???????
 
     vector<Player> getPlayers() const; //Added own function
+
+    void setAllPlayersActive() const; //Added own function
 
     const Card *getPreviousCard() const;
 

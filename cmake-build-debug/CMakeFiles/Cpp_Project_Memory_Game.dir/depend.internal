@@ -30,9 +30,11 @@ CMakeFiles/Cpp_Project_Memory_Game.dir/main.cpp.o
  /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/card.h
  /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/carddeck.h
  /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/deck.h
+ /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/game.h
  /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/main.cpp
  /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/player.h
  /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/reward.h
+ /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/rules.h
 CMakeFiles/Cpp_Project_Memory_Game.dir/player.cpp.o
  /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/player.cpp
  /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/player.h

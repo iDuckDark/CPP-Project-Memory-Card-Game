@@ -11,6 +11,10 @@ int Game::getRound() const {
     return nRound;
 }
 
+void Game::setRound(int num) {
+    nRound = num;
+}
+
 void Game::addPlayer(const Player &player) {
     players.push_back(player);
 }
@@ -21,6 +25,12 @@ Player &Game::getPlayer() {
 
 vector<Player> Game::getPlayers() const {
     return players;
+}
+
+void Game::setAllPlayersActive() const {
+    for (int i = 0; i < players.size(); i++) {
+        getPlayers()[i].setActive(true);
+    }
 }
 
 const Card *Game::getPreviousCard() const {
