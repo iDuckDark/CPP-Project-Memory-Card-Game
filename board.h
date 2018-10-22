@@ -9,7 +9,7 @@
 #include <stdexcept>
 #include <string>
 #include <vector>
-
+#include "card.h"
 #include "carddeck.h"
 
 using namespace std;
@@ -26,27 +26,39 @@ enum Number {
 class Board {
 
 private:
-    string* screen;
+    string *screen;
+
+    bool *faceDownCards[5];
+
+    int getRowIndex(const Letter &letter) const;
+
+    int getColIndex(const Number &number) const;
+
+    int getStringRowIndex(const Letter &letter) const;
+
+    int getStringColIndex(const Number &number) const;
 
 public:
     Board();
 
     ~Board();
 
-    string * getScreen() const;
-    //Board() = default;
+    string *getScreen() const;
+    bool *getIsFaceDownCards() const;
 
     void setScreen();
 
-    bool isFaceUp(const Letter &, const Number &) const;
+    bool isFaceUp(const Letter &letter, const Number &number) const;
 
-    bool turnFaceUp(const Letter &, const Number &);
+    bool isFaceDown(int i, int y) const;
 
-    bool turnFaceDown(const Letter &, const Number &);
+    bool turnFaceUp(const Letter &letter, const Number &number);
+
+    bool turnFaceDown(const Letter &letter, const Number &number);
 
     void reset();
 
-    friend ostream &operator<<(ostream &os, const Board &board);
+    friend ostream &operator<<(ostream &os, const Board &boardnumber);
 };
 
 #endif //CPP_PROJECT_MEMORY_GAME_BOARD_H

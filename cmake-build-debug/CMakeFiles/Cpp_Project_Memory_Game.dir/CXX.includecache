@@ -6,12 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/board.cpp
-board.h
-/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/board.h
-card.h
-/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/card.h
-
 /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/board.h
 iostream
 -
@@ -21,6 +15,8 @@ string
 -
 vector
 -
+card.h
+/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/card.h
 carddeck.h
 /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/carddeck.h
 
@@ -39,6 +35,26 @@ deck.h
 /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/deck.h
 card.h
 /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/card.h
+reward.h
+/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/reward.h
+
+/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/main.cpp
+iostream
+-
+player.h
+/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/player.h
+card.h
+/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/card.h
+board.h
+/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/board.h
+
+/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/player.h
+iostream
+-
+string
+-
+vector
+-
 reward.h
 /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/reward.h
 
