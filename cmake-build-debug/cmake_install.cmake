@@ -1,4 +1,4 @@
-# Install script for directory: /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game
+# Install script for directory: /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
