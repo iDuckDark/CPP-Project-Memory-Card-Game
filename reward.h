@@ -20,6 +20,8 @@ public:
 
     explicit Reward(int);
     Reward() = default;
+
+    //friend bool operator<(const  Reward &other1,const  Reward &other2);
 private:
 
 

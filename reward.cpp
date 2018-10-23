@@ -11,18 +11,20 @@ Reward::Reward(int nRubies) {
 
 
 ostream &operator<<(ostream &os, const Reward &reward) {
-    if(reward.getNRubies()>1){
+    if (reward.getNRubies() > 1) {
 
         os << "Reward has " << reward.getNRubies() << " Rubies";
-    }else{
+    } else {
         os << "Reward has 1 Ruby";
 
     }
     return os;
 }
 
+//bool Reward::operator<(const Reward &other1, const Reward &other2) {
+//    return other1.getNRubies() < other2.getNRubies();
+//}
 
-//Added Functions
 int Reward::getNRubies() const {
     return _nRubies;
 }
