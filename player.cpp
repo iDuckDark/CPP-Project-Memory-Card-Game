@@ -6,7 +6,6 @@
 
 Player::Player(string name, string sideOfTheBoard, int nRubies) : name(name), sideOfTheBoard(sideOfTheBoard),
                                                                   nRubies(nRubies) {
-    //Initialize Reward Vector?;
     this->active = true;
     this->endOfGame = false;
 }
@@ -19,7 +18,6 @@ void Player::setActive(bool active) {
     this->active = active;
 }
 
-//TO-ASK MUST ADD CONST TO AVOID ERRORS?
 bool Player::isActive() {
     return active;
 }
@@ -27,7 +25,6 @@ bool Player::isActive() {
 int Player::getNRubies() const {
     return nRubies;
 }
-
 
 void Player::addReward(const Reward &reward) {
     rewards.push_back(reward);
@@ -39,11 +36,11 @@ void Player::setDisplayMode(bool endOfGame) {
 
 ostream &operator<<(ostream &os, const Player &player) {
     if (player.getEndOfGame()) {
-        string status = player.active? "active" : "inactive";
-        os << player.getName() << " Remember Doe: " << player.getSideOfTheBoard() << "(" << status << ")"
+        string status = player.active ? "active" : "inactive";
+        os << player.getName() << player.getSideOfTheBoard() << "(" << status << ")"
            << endl;
     } else {
-        os << player.getName() << " Remember Doe: " << player.getSideOfTheBoard() << " " << player.getNRubies()
+        os << player.getName() << player.getSideOfTheBoard() << " " << player.getNRubies()
            << " rubies" << endl;
     }
     return os;

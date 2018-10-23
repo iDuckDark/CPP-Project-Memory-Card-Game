@@ -18,7 +18,7 @@ Board::Board() {
 Board::~Board() {
     delete[] screen;
     for (int x = 0; x < 5; x++) {
-        delete [] faceDownCards[x];
+        delete[] faceDownCards[x];
     }
 }
 
