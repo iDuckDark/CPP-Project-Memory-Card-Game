@@ -43,10 +43,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game
+CMAKE_SOURCE_DIR = /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Cpp_Project_Memory_Game.dir/depend.make
@@ -59,133 +59,133 @@ include CMakeFiles/Cpp_Project_Memory_Game.dir/flags.make
 
 CMakeFiles/Cpp_Project_Memory_Game.dir/main.cpp.o: CMakeFiles/Cpp_Project_Memory_Game.dir/flags.make
 CMakeFiles/Cpp_Project_Memory_Game.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Cpp_Project_Memory_Game.dir/main.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Cpp_Project_Memory_Game.dir/main.cpp.o -c /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Cpp_Project_Memory_Game.dir/main.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Cpp_Project_Memory_Game.dir/main.cpp.o -c /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/main.cpp
 
 CMakeFiles/Cpp_Project_Memory_Game.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Cpp_Project_Memory_Game.dir/main.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/main.cpp > CMakeFiles/Cpp_Project_Memory_Game.dir/main.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/main.cpp > CMakeFiles/Cpp_Project_Memory_Game.dir/main.cpp.i
 
 CMakeFiles/Cpp_Project_Memory_Game.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Cpp_Project_Memory_Game.dir/main.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/main.cpp -o CMakeFiles/Cpp_Project_Memory_Game.dir/main.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/main.cpp -o CMakeFiles/Cpp_Project_Memory_Game.dir/main.cpp.s
 
 CMakeFiles/Cpp_Project_Memory_Game.dir/player.cpp.o: CMakeFiles/Cpp_Project_Memory_Game.dir/flags.make
 CMakeFiles/Cpp_Project_Memory_Game.dir/player.cpp.o: ../player.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Cpp_Project_Memory_Game.dir/player.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Cpp_Project_Memory_Game.dir/player.cpp.o -c /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/player.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Cpp_Project_Memory_Game.dir/player.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Cpp_Project_Memory_Game.dir/player.cpp.o -c /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/player.cpp
 
 CMakeFiles/Cpp_Project_Memory_Game.dir/player.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Cpp_Project_Memory_Game.dir/player.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/player.cpp > CMakeFiles/Cpp_Project_Memory_Game.dir/player.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/player.cpp > CMakeFiles/Cpp_Project_Memory_Game.dir/player.cpp.i
 
 CMakeFiles/Cpp_Project_Memory_Game.dir/player.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Cpp_Project_Memory_Game.dir/player.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/player.cpp -o CMakeFiles/Cpp_Project_Memory_Game.dir/player.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/player.cpp -o CMakeFiles/Cpp_Project_Memory_Game.dir/player.cpp.s
 
 CMakeFiles/Cpp_Project_Memory_Game.dir/reward.cpp.o: CMakeFiles/Cpp_Project_Memory_Game.dir/flags.make
 CMakeFiles/Cpp_Project_Memory_Game.dir/reward.cpp.o: ../reward.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Cpp_Project_Memory_Game.dir/reward.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Cpp_Project_Memory_Game.dir/reward.cpp.o -c /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/reward.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Cpp_Project_Memory_Game.dir/reward.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Cpp_Project_Memory_Game.dir/reward.cpp.o -c /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/reward.cpp
 
 CMakeFiles/Cpp_Project_Memory_Game.dir/reward.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Cpp_Project_Memory_Game.dir/reward.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/reward.cpp > CMakeFiles/Cpp_Project_Memory_Game.dir/reward.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/reward.cpp > CMakeFiles/Cpp_Project_Memory_Game.dir/reward.cpp.i
 
 CMakeFiles/Cpp_Project_Memory_Game.dir/reward.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Cpp_Project_Memory_Game.dir/reward.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/reward.cpp -o CMakeFiles/Cpp_Project_Memory_Game.dir/reward.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/reward.cpp -o CMakeFiles/Cpp_Project_Memory_Game.dir/reward.cpp.s
 
 CMakeFiles/Cpp_Project_Memory_Game.dir/card.cpp.o: CMakeFiles/Cpp_Project_Memory_Game.dir/flags.make
 CMakeFiles/Cpp_Project_Memory_Game.dir/card.cpp.o: ../card.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Cpp_Project_Memory_Game.dir/card.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Cpp_Project_Memory_Game.dir/card.cpp.o -c /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/card.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Cpp_Project_Memory_Game.dir/card.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Cpp_Project_Memory_Game.dir/card.cpp.o -c /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/card.cpp
 
 CMakeFiles/Cpp_Project_Memory_Game.dir/card.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Cpp_Project_Memory_Game.dir/card.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/card.cpp > CMakeFiles/Cpp_Project_Memory_Game.dir/card.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/card.cpp > CMakeFiles/Cpp_Project_Memory_Game.dir/card.cpp.i
 
 CMakeFiles/Cpp_Project_Memory_Game.dir/card.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Cpp_Project_Memory_Game.dir/card.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/card.cpp -o CMakeFiles/Cpp_Project_Memory_Game.dir/card.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/card.cpp -o CMakeFiles/Cpp_Project_Memory_Game.dir/card.cpp.s
 
 CMakeFiles/Cpp_Project_Memory_Game.dir/board.cpp.o: CMakeFiles/Cpp_Project_Memory_Game.dir/flags.make
 CMakeFiles/Cpp_Project_Memory_Game.dir/board.cpp.o: ../board.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Cpp_Project_Memory_Game.dir/board.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Cpp_Project_Memory_Game.dir/board.cpp.o -c /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/board.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Cpp_Project_Memory_Game.dir/board.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Cpp_Project_Memory_Game.dir/board.cpp.o -c /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/board.cpp
 
 CMakeFiles/Cpp_Project_Memory_Game.dir/board.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Cpp_Project_Memory_Game.dir/board.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/board.cpp > CMakeFiles/Cpp_Project_Memory_Game.dir/board.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/board.cpp > CMakeFiles/Cpp_Project_Memory_Game.dir/board.cpp.i
 
 CMakeFiles/Cpp_Project_Memory_Game.dir/board.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Cpp_Project_Memory_Game.dir/board.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/board.cpp -o CMakeFiles/Cpp_Project_Memory_Game.dir/board.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/board.cpp -o CMakeFiles/Cpp_Project_Memory_Game.dir/board.cpp.s
 
 CMakeFiles/Cpp_Project_Memory_Game.dir/carddeck.cpp.o: CMakeFiles/Cpp_Project_Memory_Game.dir/flags.make
 CMakeFiles/Cpp_Project_Memory_Game.dir/carddeck.cpp.o: ../carddeck.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Cpp_Project_Memory_Game.dir/carddeck.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Cpp_Project_Memory_Game.dir/carddeck.cpp.o -c /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/carddeck.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Cpp_Project_Memory_Game.dir/carddeck.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Cpp_Project_Memory_Game.dir/carddeck.cpp.o -c /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/carddeck.cpp
 
 CMakeFiles/Cpp_Project_Memory_Game.dir/carddeck.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Cpp_Project_Memory_Game.dir/carddeck.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/carddeck.cpp > CMakeFiles/Cpp_Project_Memory_Game.dir/carddeck.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/carddeck.cpp > CMakeFiles/Cpp_Project_Memory_Game.dir/carddeck.cpp.i
 
 CMakeFiles/Cpp_Project_Memory_Game.dir/carddeck.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Cpp_Project_Memory_Game.dir/carddeck.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/carddeck.cpp -o CMakeFiles/Cpp_Project_Memory_Game.dir/carddeck.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/carddeck.cpp -o CMakeFiles/Cpp_Project_Memory_Game.dir/carddeck.cpp.s
 
 CMakeFiles/Cpp_Project_Memory_Game.dir/game.cpp.o: CMakeFiles/Cpp_Project_Memory_Game.dir/flags.make
 CMakeFiles/Cpp_Project_Memory_Game.dir/game.cpp.o: ../game.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Cpp_Project_Memory_Game.dir/game.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Cpp_Project_Memory_Game.dir/game.cpp.o -c /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/game.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Cpp_Project_Memory_Game.dir/game.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Cpp_Project_Memory_Game.dir/game.cpp.o -c /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/game.cpp
 
 CMakeFiles/Cpp_Project_Memory_Game.dir/game.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Cpp_Project_Memory_Game.dir/game.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/game.cpp > CMakeFiles/Cpp_Project_Memory_Game.dir/game.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/game.cpp > CMakeFiles/Cpp_Project_Memory_Game.dir/game.cpp.i
 
 CMakeFiles/Cpp_Project_Memory_Game.dir/game.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Cpp_Project_Memory_Game.dir/game.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/game.cpp -o CMakeFiles/Cpp_Project_Memory_Game.dir/game.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/game.cpp -o CMakeFiles/Cpp_Project_Memory_Game.dir/game.cpp.s
 
 CMakeFiles/Cpp_Project_Memory_Game.dir/rules.cpp.o: CMakeFiles/Cpp_Project_Memory_Game.dir/flags.make
 CMakeFiles/Cpp_Project_Memory_Game.dir/rules.cpp.o: ../rules.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Cpp_Project_Memory_Game.dir/rules.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Cpp_Project_Memory_Game.dir/rules.cpp.o -c /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/rules.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Cpp_Project_Memory_Game.dir/rules.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Cpp_Project_Memory_Game.dir/rules.cpp.o -c /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rules.cpp
 
 CMakeFiles/Cpp_Project_Memory_Game.dir/rules.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Cpp_Project_Memory_Game.dir/rules.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/rules.cpp > CMakeFiles/Cpp_Project_Memory_Game.dir/rules.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rules.cpp > CMakeFiles/Cpp_Project_Memory_Game.dir/rules.cpp.i
 
 CMakeFiles/Cpp_Project_Memory_Game.dir/rules.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Cpp_Project_Memory_Game.dir/rules.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/rules.cpp -o CMakeFiles/Cpp_Project_Memory_Game.dir/rules.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rules.cpp -o CMakeFiles/Cpp_Project_Memory_Game.dir/rules.cpp.s
 
 CMakeFiles/Cpp_Project_Memory_Game.dir/rewarddeck.cpp.o: CMakeFiles/Cpp_Project_Memory_Game.dir/flags.make
 CMakeFiles/Cpp_Project_Memory_Game.dir/rewarddeck.cpp.o: ../rewarddeck.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Cpp_Project_Memory_Game.dir/rewarddeck.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Cpp_Project_Memory_Game.dir/rewarddeck.cpp.o -c /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/rewarddeck.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Cpp_Project_Memory_Game.dir/rewarddeck.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Cpp_Project_Memory_Game.dir/rewarddeck.cpp.o -c /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rewarddeck.cpp
 
 CMakeFiles/Cpp_Project_Memory_Game.dir/rewarddeck.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Cpp_Project_Memory_Game.dir/rewarddeck.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/rewarddeck.cpp > CMakeFiles/Cpp_Project_Memory_Game.dir/rewarddeck.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rewarddeck.cpp > CMakeFiles/Cpp_Project_Memory_Game.dir/rewarddeck.cpp.i
 
 CMakeFiles/Cpp_Project_Memory_Game.dir/rewarddeck.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Cpp_Project_Memory_Game.dir/rewarddeck.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/rewarddeck.cpp -o CMakeFiles/Cpp_Project_Memory_Game.dir/rewarddeck.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rewarddeck.cpp -o CMakeFiles/Cpp_Project_Memory_Game.dir/rewarddeck.cpp.s
 
 CMakeFiles/Cpp_Project_Memory_Game.dir/deck.cpp.o: CMakeFiles/Cpp_Project_Memory_Game.dir/flags.make
 CMakeFiles/Cpp_Project_Memory_Game.dir/deck.cpp.o: ../deck.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Cpp_Project_Memory_Game.dir/deck.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Cpp_Project_Memory_Game.dir/deck.cpp.o -c /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/deck.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Cpp_Project_Memory_Game.dir/deck.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Cpp_Project_Memory_Game.dir/deck.cpp.o -c /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/deck.cpp
 
 CMakeFiles/Cpp_Project_Memory_Game.dir/deck.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Cpp_Project_Memory_Game.dir/deck.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/deck.cpp > CMakeFiles/Cpp_Project_Memory_Game.dir/deck.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/deck.cpp > CMakeFiles/Cpp_Project_Memory_Game.dir/deck.cpp.i
 
 CMakeFiles/Cpp_Project_Memory_Game.dir/deck.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Cpp_Project_Memory_Game.dir/deck.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/deck.cpp -o CMakeFiles/Cpp_Project_Memory_Game.dir/deck.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/deck.cpp -o CMakeFiles/Cpp_Project_Memory_Game.dir/deck.cpp.s
 
 # Object files for target Cpp_Project_Memory_Game
 Cpp_Project_Memory_Game_OBJECTS = \
@@ -215,7 +215,7 @@ Cpp_Project_Memory_Game: CMakeFiles/Cpp_Project_Memory_Game.dir/rewarddeck.cpp.o
 Cpp_Project_Memory_Game: CMakeFiles/Cpp_Project_Memory_Game.dir/deck.cpp.o
 Cpp_Project_Memory_Game: CMakeFiles/Cpp_Project_Memory_Game.dir/build.make
 Cpp_Project_Memory_Game: CMakeFiles/Cpp_Project_Memory_Game.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable Cpp_Project_Memory_Game"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable Cpp_Project_Memory_Game"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Cpp_Project_Memory_Game.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -228,6 +228,6 @@ CMakeFiles/Cpp_Project_Memory_Game.dir/clean:
 .PHONY : CMakeFiles/Cpp_Project_Memory_Game.dir/clean
 
 CMakeFiles/Cpp_Project_Memory_Game.dir/depend:
-	cd /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/cmake-build-debug /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/cmake-build-debug /Users/idarkduck/CLionProjects/Cpp-Project-Memory-Game/cmake-build-debug/CMakeFiles/Cpp_Project_Memory_Game.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/cmake-build-debug /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/cmake-build-debug /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/cmake-build-debug/CMakeFiles/Cpp_Project_Memory_Game.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/Cpp_Project_Memory_Game.dir/depend
 

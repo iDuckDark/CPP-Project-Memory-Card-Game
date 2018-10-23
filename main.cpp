@@ -72,9 +72,9 @@ int main() {
     //Runs the game
     //runGame();
     Board board;
-    cout << board << endl;
+    //cout << board << endl;
     board.turnFaceUp(A, Two);
-    cout << board << endl;
+    //cout << board << endl;
     cout << "No Errors" << endl;
     return 0;
 }
