@@ -11,7 +11,13 @@ Reward::Reward(int nRubies) {
 
 
 ostream &operator<<(ostream &os, const Reward &reward) {
-    os << "Reward has " << reward.getNRubies() << "Rubies";
+    if(reward.getNRubies()>1){
+
+        os << "Reward has " << reward.getNRubies() << " Rubies";
+    }else{
+        os << "Reward has 1 Ruby";
+
+    }
     return os;
 }
 

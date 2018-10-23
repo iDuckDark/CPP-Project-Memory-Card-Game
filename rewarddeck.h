@@ -9,6 +9,9 @@
 #include "reward.h"
 #include "deck.h"
 
+
+using namespace std;
+
 //Design a class RewardDeck derived from Deck<Reward> with the corresponding properties to CardDeck.
 class RewardDeck : public Deck<Reward> {
     friend class Reward;
@@ -18,9 +21,7 @@ public:
 
     bool isEmpty() override;
 
-    RewardDeck() = default;
-
-    explicit RewardDeck(int);
+    RewardDeck();
 
     void shuffle() override;
 
