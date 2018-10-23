@@ -18,12 +18,16 @@ Board::Board() {
 Board::~Board() {
     delete[] screen;
     for (int x = 0; x < 5; x++) {
-        delete faceDownCards[x];
+        delete [] faceDownCards[x];
     }
 }
 
 string *Board::getScreen() const {
     return screen;
+}
+
+string Board::getScreenRow(int row) const {
+    return screen[row];
 }
 
 bool *Board::getIsFaceDownCards() const {
@@ -146,13 +150,11 @@ void Board::reset() {
 }
 
 ostream &operator<<(ostream &os, const Board &board) {
-
     string *screen = board.getScreen();
-
     int screenRowCounter = 0;
     int letterRowCounter = 0;
 
-    for (int i = 0; i < 20; i++) {
+    for (int i = 0; i < 19; i++) {
         bool letterRow = (i == 1 || i == 5 || i == 9 || i == 13 || i == 17);
         if (letterRow) {
             os << (char) (A + letterRowCounter) << " ";
@@ -184,7 +186,6 @@ ostream &operator<<(ostream &os, const Board &board) {
                     temp[2 + 4 * j] = 'z';
                 }
             }
-
         } else if (row3) {
             for (int j = 0; j < 5; j++) {
                 if (board.isFaceDown(2, j)) {

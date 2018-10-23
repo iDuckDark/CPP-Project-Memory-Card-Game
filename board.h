@@ -45,6 +45,8 @@ public:
 
     string *getScreen() const;
 
+    string getScreenRow(int row) const;
+
     bool *getIsFaceDownCards() const;
 
     void setScreen();
