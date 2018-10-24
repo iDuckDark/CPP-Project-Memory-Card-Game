@@ -11,6 +11,10 @@ int Game::getRound() const {
     return nRound;
 }
 
+Board Game::getBoard() const {
+    return board;
+}
+
 void Game::setRound(int num) {
     nRound = num;
 }
@@ -35,7 +39,6 @@ void Game::setAllPlayersActive() const {
 }
 
 const Card *Game::getPreviousCard() const {
-
     return cards[cards.size() - 2];
 }
 
@@ -46,4 +49,13 @@ const Card *Game::getCurrentCard() const {
 
 void Game::setCurrentCard(const Card *card) {
     cards.push_back(card);
+}
+
+ostream &operator<<(ostream &os, const Game &game) {
+    os << game.board << endl;
+    vector<Player> players = game.getPlayers();
+    for (int i = 0; i < players.size(); i++) {
+        os << players[i] << endl;
+    }
+    return os;
 }

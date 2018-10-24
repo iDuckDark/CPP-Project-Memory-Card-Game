@@ -34,23 +34,24 @@ bool *Board::getIsFaceDownCards() const {
     return &faceDownCards[0][0];
 }
 
-//TODO call make_CardDeck() function
 void Board::setScreen() {
 
     CardDeck deck;
-    CardDeck::make_CardDeck();
+    //TODO call make_CardDeck() function
+    //CardDeck &deck = CardDeck::make_CardDeck();
     deck.shuffle();
 
     vector<Card> cards;
     for (int i = 0; i < 25; i++) {
-        cards.push_back(*deck.getNext());
+        Card card = *deck.getNext(); //TODO this is crashing here
+        cards.push_back(card);
     }
 
     int screenRowCounter = 0;
     for (int i = 0; i < 25; i = i + 5) {
         for (int j = 0; j < 3; j++) {
-            string row = cards[i](j) + " " + cards[i + 1](j) + " " + cards[i + 2](j) + " " + cards[i + 3](j) + " " +
-                         cards[i + 4](j);
+            string row = (cards[i])(j) + " " + (cards[i + 1])(j) + " " + (cards[i + 2])(j) + " " + (cards[i + 3])(j) + " " +
+                    (cards[i + 4])(j);
             screen[screenRowCounter] = row;
             screenRowCounter++;
         }
@@ -173,42 +174,32 @@ ostream &operator<<(ostream &os, const Board &board) {
         if (row1) {
             for (int j = 0; j < 5; j++) {
                 if (board.isFaceDown(0, j)) {
-                    temp[0 + 4 * j] = 'z';
-                    temp[1 + 4 * j] = 'z';
-                    temp[2 + 4 * j] = 'z';
+                    temp[0 + 4 * j] = temp[1 + 4 * j] = temp[2 + 4 * j] = 'z';
                 }
             }
         } else if (row2) {
             for (int j = 0; j < 5; j++) {
                 if (board.isFaceDown(1, j)) {
-                    temp[0 + 4 * j] = 'z';
-                    temp[1 + 4 * j] = 'z';
-                    temp[2 + 4 * j] = 'z';
+                    temp[0 + 4 * j] = temp[1 + 4 * j] = temp[2 + 4 * j] = 'z';
                 }
             }
         } else if (row3) {
             for (int j = 0; j < 5; j++) {
                 if (board.isFaceDown(2, j)) {
-                    temp[0 + 4 * j] = 'z';
-                    temp[1 + 4 * j] = 'z';
-                    temp[2 + 4 * j] = 'z';
+                    temp[0 + 4 * j] = temp[1 + 4 * j] = temp[2 + 4 * j] = 'z';
                 }
             }
-
+            temp[8] = temp[9] = temp[10] = ' ';
         } else if (row4) {
             for (int j = 0; j < 5; j++) {
                 if (board.isFaceDown(3, j)) {
-                    temp[0 + 4 * j] = 'z';
-                    temp[1 + 4 * j] = 'z';
-                    temp[2 + 4 * j] = 'z';
+                    temp[0 + 4 * j] = temp[1 + 4 * j] = temp[2 + 4 * j] = 'z';
                 }
             }
         } else if (row5) {
             for (int j = 0; j < 5; j++) {
                 if (board.isFaceDown(4, j)) {
-                    temp[0 + 4 * j] = 'z';
-                    temp[1 + 4 * j] = 'z';
-                    temp[2 + 4 * j] = 'z';
+                    temp[0 + 4 * j] = temp[1 + 4 * j] = temp[2 + 4 * j] = 'z';
                 }
             }
 

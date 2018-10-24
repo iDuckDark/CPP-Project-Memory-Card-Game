@@ -44,5 +44,6 @@ bool CardDeck::isEmpty() {
 CardDeck &CardDeck::make_CardDeck() {
     CardDeck cards;
     cards.shuffle();
+    //TODO resolve warning not error: stack memory leak
     return cards;
 }

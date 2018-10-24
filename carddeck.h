@@ -20,6 +20,9 @@ public:
     bool isEmpty() override;
 
 private:
+    //CardDeck(); //TODO private contructor
+
+    //CardDeck(const CardDeck &);
 };
 
 
