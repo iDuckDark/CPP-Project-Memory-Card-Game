@@ -198,10 +198,13 @@ int main() {
     //Runs the game
     //runGame();
 
-    Board board;
+    Game game;
+    cout << game;
+
+    //Board board;
     //cout << board << endl;
     //board.turnFaceUp(A, Two);
-    temporaryRevealThreeCards(board);
+    //temporaryRevealThreeCards(board);
     //cout << board << endl;
 
 //    vector<Player> players;

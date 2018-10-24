@@ -61,7 +61,7 @@ public:
 
     void reset();
 
-    friend ostream &operator<<(ostream &os, const Board &boardnumber);
+    friend ostream &operator<<(ostream &os, const Board &board);
 };
 
 #endif //CPP_PROJECT_MEMORY_GAME_BOARD_H

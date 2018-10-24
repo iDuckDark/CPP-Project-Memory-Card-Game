@@ -10,6 +10,7 @@
 #include <vector>
 #include "player.h"
 #include "card.h"
+#include "board.h"
 
 
 class Game {
@@ -18,6 +19,7 @@ private:
     int nRound;
     vector<Player> players;
     vector<const Card *> cards;
+    Board board;
 
 public:
 
@@ -40,6 +42,8 @@ public:
     const Card *getCurrentCard() const;
 
     void setCurrentCard(const Card *);
+
+    friend ostream &operator<<(ostream &os, const Game &game);
 
 };
 
