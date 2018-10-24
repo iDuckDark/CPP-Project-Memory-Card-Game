@@ -42,7 +42,7 @@ void temporaryRevealThreeCards(Board &board, Player &player) {
     }
     cout << board << endl;
     pause();
-
+    cout << "Cards are hidden now" << endl;
     if (side == "top") {
         board.turnFaceDown(A, Two);
         board.turnFaceDown(A, Three);
@@ -81,13 +81,14 @@ void turnFaceUp(Board &board, char letter, int number) {
     board.turnFaceUp(letterMap[letter], numberMap[number]);
 }
 
-void awardActivePlayers(vector<Player> &players) {
-    for (int i = 0; i < players.size(); i++) {
-        if (players[i].isActive()) {
+void awardActivePlayers(Game &game, int nPlayers) {
+    for (int i = 0; i < nPlayers; i++) {
+        Player player = game.getPlayer();
+        if (player.isActive()) {
             srand(time(NULL));
             int randomRubies = (rand() % 4); //TODO is it random reward of 1 to 4???
             Reward reward(randomRubies);
-            players[i].addReward(reward);
+            player.addReward(reward);
         }
     }
 }
@@ -97,28 +98,26 @@ bool compareRewards(const Reward &r1, const Reward &r2) {
     return r1.getNRubies() < r2.getNRubies();
 }
 
-void printLeastToMostRubiesAndWinner(vector<Player> players) {
+void printLeastToMostRubiesAndWinner(Game &game, int nPlayers) {
     //TODO Sort them using a vector operator method
+    //TODO SET END OF GAME TO PLAYERS for cout;
     //sort(players.begin(), players.end(), compareRewards(players.begin().));
-    set<pair<int, string> > playersSet;
-    for (int i = 0; i < players.size(); i++) {
-        playersSet.insert({players[i].getNRubies(), players[i].getName()});
-    }
-    int winCounter = 0;
-    for (set<pair<int, string>>::iterator i = playersSet.begin(); i != playersSet.end(); i++) {
-        pair<int, string> element = *i;
-        if (winCounter == players.size() - 1) {
-            cout << "Winner : ";
-        }
-        cout << "Name: " << element.second << ", nRubies: " << element.first << endl;
-        winCounter++;
-    }
-//    Player winner = players[players.size() - 1];
-//    for (int i = 0; i < players.size(); i++) {
-//        if (i == players.size() - 1) {
-//            cout << "Winner is :" << endl;
+
+    //TODO I dont wanna use this but it works
+//    set<pair<int, Player> > playersSet;
+//    for (int i = 0; i < nPlayers; i++) {
+//        Player &player = game.getPlayer();
+//        player.setDisplayMode(true);
+//        playersSet.insert({player.getNRubies(), player});
+//    }
+//    int winCounter = 0;
+//    for (set<pair<int, Player>>::iterator i = playersSet.begin(); i != playersSet.end(); i++) {
+//        pair<int, Player> element = *i;
+//        if (winCounter == nPlayers - 1) {
+//            cout << "Winner : ";
 //        }
-//        cout << players[i] << endl;
+//        cout << element.second;
+//        winCounter++;
 //    }
 }
 
@@ -154,18 +153,19 @@ void runGame() {
         game.addPlayer(player);
     }
     Rules rule;
-    Board board = game.getBoard();
-    //TODO getPlayer() which gets the current player
-    vector<Player> players = game.getPlayers();
+    Board *board = &game.getBoard();
+
     while (!rule.gameOver(game)) {
-        board.reset();
+        board->reset();
         game.setAllPlayersActive();
-        //TODO getPlayer() which gets the current player
-        Player currentPlayer = game.getPlayer();
-        temporaryRevealThreeCards(board, currentPlayer);
+        for (int i = 0; i < nPlayers; i++) {
+            temporaryRevealThreeCards(*board, game.getPlayer());
+        }
         while (!rule.roundOver(game)) {
+
             for (int i = 0; i < nPlayers; i++) {
-                if (players[i].isActive()) {
+                Player &currentPlayer = game.getPlayer();
+                if (currentPlayer.isActive()) {
                     cout << "Pick a letter from A-E";
                     char letter = 'z';
                     while (letter != 'A' && letter != 'B' && letter != 'C' && letter != 'D' && letter != 'E') {
@@ -178,77 +178,45 @@ void runGame() {
                            (number != One && number != Two && number != Four && number != Five)) {
                         cin >> number;
                     }
-                    turnFaceUp(board, letter, number);
-                    cout << board << endl;
+                    turnFaceUp(*board, letter, number);
+                    cout << *board << endl;
                 }
                 if (!rule.isValid(game)) {
-                    players[i].setActive(false);
+                    currentPlayer.setActive(false);
                 }
                 cout << board;
             }
         }
-        awardActivePlayers(players);
+        awardActivePlayers(game, nPlayers);
+
     }
-    //TODO SET END OF GAME TO PLAYERS;
-    printLeastToMostRubiesAndWinner(players);
+    printLeastToMostRubiesAndWinner(game, nPlayers);
 }
 
 int main() {
     //runGame();
-
-    Board board;
+    //Game game;
+    //Board* board = &game.getBoard();
     //cout << board << endl;
-    board.turnFaceUp(A, Two);
-    Player peter{"Peter", "top", 1};
-    temporaryRevealThreeCards(board, peter);
+
+
+    //board.turnFaceUp(A, Two);
+//    Player peter{"Peter", "top", 1};
+//    Player nevin{"Nevin", "left", 2};
+//    Player div{"Divyang", "top", 3};
+//    game.addPlayer(peter);
+//    game.addPlayer(nevin);
+//    game.addPlayer(div);
+//
+//    cout << game.getPlayer() <<endl;
+//    cout << game.getPlayer() <<endl;
+//    cout << game.getPlayer() <<endl;
+//
+//    temporaryRevealThreeCards(*board, peter);
+
+
     //cout << board << endl;
 
     cout << "No Errors" << endl;
     return 0;
 }
-
-
-//vector<int> generateRandomNumbers() {
-//    srand(time(NULL));
-//    vector<int> randomVector;
-//    while (true) {
-//        int random_letter = (rand() % 5) + 0;
-//        if (random_letter != 2) {
-//            //cout << random_letter << endl;
-//            randomVector.push_back(random_letter);
-//            break;
-//        }
-//    }
-//    while (true) {
-//        int random_letter2 = (rand() % 5) + 0;
-//        if (random_letter2 != randomVector[0] && random_letter2 != 2) {
-//            //cout << random_letter2 << endl;
-//            randomVector.push_back(random_letter2);
-//            break;
-//        }
-//    }
-//    while (true) {
-//        int random_letter3 = (rand() % 5) + 0;
-//        if (random_letter3 != randomVector[0] && random_letter3 != randomVector[1] && random_letter3 != 2) {
-//            //cout << random_letter3 << endl;
-//            randomVector.push_back(random_letter3);
-//            break;
-//        }
-//    }
-//
-//    //Old random code DO NOT DELETE
-//    //Letter letters[] = {A, B, C, D, E};
-//    //Number numbers[] = {One, Two, Three, Four, Five};
-//    vector<int> randomIndexLetters = generateRandomNumbers();
-//    vector<int> randomIndexNumbers = generateRandomNumbers();
-//    for (int i = 0; i < 3; i++) {
-//        board.turnFaceUp(letters[randomIndexLetters[i]], numbers[randomIndexNumbers[i]]);
-//    }
-//    cout << board << endl;
-//    pause();
-//    for (int i = 0; i < 3; i++) {
-//        board.turnFaceDown(letters[randomIndexLetters[i]], numbers[randomIndexNumbers[i]]);
-//    }
-//    //cout << board << endl;
-//    return randomVector;
-//}

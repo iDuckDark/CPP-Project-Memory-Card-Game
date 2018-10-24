@@ -14,5 +14,5 @@ bool Rules::gameOver(const Game &game) {
 }
 
 bool Rules::roundOver(const Game &game) {
-    return game.getPlayers().size() == 1;
+    return game.getNActivePlayers() == 1;
 }

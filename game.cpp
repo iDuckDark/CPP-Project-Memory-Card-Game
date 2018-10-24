@@ -6,13 +6,16 @@
 #include <string>
 #include "game.h"
 
-
 int Game::getRound() const {
     return nRound;
 }
 
-Board Game::getBoard() const {
+Board &Game::getBoard() {
     return board;
+}
+
+int Game::getNPlayers() const {
+    return playersQueue.size();
 }
 
 void Game::setRound(int num) {
@@ -20,22 +23,34 @@ void Game::setRound(int num) {
 }
 
 void Game::addPlayer(const Player &player) {
-    players.push_back(player);
+    playersQueue.push(player);
 }
 
-//TODO : Ask Prof what is the purpose of this?
 Player &Game::getPlayer() {
-    return players[players.size() - 1];
-}
-
-vector<Player> Game::getPlayers() const {
-    return players;
+    Player &currentPlayer = playersQueue.front();
+    playersQueue.pop();
+    addPlayer(currentPlayer);
+    return currentPlayer;
 }
 
 void Game::setAllPlayersActive() const {
-    for (int i = 0; i < players.size(); i++) {
-        getPlayers()[i].setActive(true);
+    queue tempQueue = playersQueue;
+    while (!tempQueue.empty()) {
+        tempQueue.front().setActive(true);
+        tempQueue.pop();
     }
+}
+
+int Game::getNActivePlayers() const {
+    queue tempQueue = playersQueue;
+    int nActivePlayers;
+    while (!tempQueue.empty()) {
+        if (tempQueue.front().isActive()) {
+            nActivePlayers++;
+        }
+        tempQueue.pop();
+    }
+    return nActivePlayers;
 }
 
 const Card *Game::getPreviousCard() const {
@@ -46,16 +61,16 @@ const Card *Game::getCurrentCard() const {
     return cards[cards.size() - 1];
 }
 
-
 void Game::setCurrentCard(const Card *card) {
     cards.push_back(card);
 }
 
 ostream &operator<<(ostream &os, const Game &game) {
     os << game.board << endl;
-    vector<Player> players = game.getPlayers();
-    for (int i = 0; i < players.size(); i++) {
-        os << players[i] << endl;
+    queue tempQueue = game.playersQueue;
+    while (!tempQueue.empty()) {
+        os << tempQueue.front() << endl;
+        tempQueue.pop();
     }
     return os;
 }

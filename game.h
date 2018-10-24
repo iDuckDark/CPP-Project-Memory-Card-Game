@@ -8,16 +8,18 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <queue>
+
 #include "player.h"
 #include "card.h"
 #include "board.h"
-
 
 class Game {
 
 private:
     int nRound;
-    vector<Player> players;
+    int nPlayers;
+    queue<Player> playersQueue;
     vector<const Card *> cards;
     Board board;
 
@@ -27,15 +29,17 @@ public:
 
     int getRound() const;
 
-    Board getBoard() const; //TODO not sure if this is bad
+    int getNPlayers() const;
+
+    int getNActivePlayers() const;
+
+    Board &getBoard(); //TODO not sure if this is bad
 
     void setRound(int nRound);
 
     void addPlayer(const Player &);
 
-    Player &getPlayer(); //Not used???????
-
-    vector<Player> getPlayers() const; //Added own function
+    Player &getPlayer();
 
     void setAllPlayersActive() const; //Added own function
 

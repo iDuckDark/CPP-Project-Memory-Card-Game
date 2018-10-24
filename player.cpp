@@ -40,7 +40,7 @@ ostream &operator<<(ostream &os, const Player &player) {
         os << player.getName() << player.getSideOfTheBoard() << "(" << status << ")"
            << endl;
     } else {
-        os << player.getName() << player.getSideOfTheBoard() << " " << player.getNRubies()
+        os << player.getName() << " " << player.getSideOfTheBoard() << " " << player.getNRubies()
            << " rubies" << endl;
     }
     return os;
