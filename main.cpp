@@ -14,55 +14,51 @@
 
 using namespace std;
 
-vector<int> generateRandomNumbers() {
-    srand(time(NULL));
-    vector<int> randomVector;
-    while (true) {
-        int random_letter = (rand() % 5) + 0;
-        if (random_letter != 2) {
-            //cout << random_letter << endl;
-            randomVector.push_back(random_letter);
-            break;
-        }
-    }
-    while (true) {
-        int random_letter2 = (rand() % 5) + 0;
-        if (random_letter2 != randomVector[0] && random_letter2 != 2) {
-            //cout << random_letter2 << endl;
-            randomVector.push_back(random_letter2);
-            break;
-        }
-    }
-    while (true) {
-        int random_letter3 = (rand() % 5) + 0;
-        if (random_letter3 != randomVector[0] && random_letter3 != randomVector[1] && random_letter3 != 2) {
-            //cout << random_letter3 << endl;
-            randomVector.push_back(random_letter3);
-            break;
-        }
-    }
-    return randomVector;
-}
-
 void pause() {
     cin.clear();
-    cout << endl << "Press any key to continue...";
+    cout << endl << "Press enter to continue...";
     cin.ignore();
 }
 
-void temporaryRevealThreeCards(Board &board) {
+void temporaryRevealThreeCards(Board &board, Player &player) {
     cout << "Three random cards are revealed temporary in front of the players" << endl;
-    Letter letters[] = {A, B, C, D, E};
-    Number numbers[] = {One, Two, Three, Four, Five};
-    vector<int> randomIndexLetters = generateRandomNumbers();
-    vector<int> randomIndexNumbers = generateRandomNumbers();
-    for (int i = 0; i < 3; i++) {
-        board.turnFaceUp(letters[randomIndexLetters[i]], numbers[randomIndexNumbers[i]]);
+    string side = player.getSideOfTheBoard();
+    if (side == "top") {
+        board.turnFaceUp(A, Two);
+        board.turnFaceUp(A, Three);
+        board.turnFaceUp(A, Four);
+    } else if (side == "bottom") {
+        board.turnFaceUp(E, Two);
+        board.turnFaceUp(E, Three);
+        board.turnFaceUp(E, Four);
+    } else if (side == "right") {
+        board.turnFaceUp(B, One);
+        board.turnFaceUp(C, One);
+        board.turnFaceUp(D, One);
+    } else {
+        board.turnFaceUp(B, Five);
+        board.turnFaceUp(C, Five);
+        board.turnFaceUp(D, Five);
     }
     cout << board << endl;
     pause();
-    for (int i = 0; i < 3; i++) {
-        board.turnFaceDown(letters[randomIndexLetters[i]], numbers[randomIndexNumbers[i]]);
+
+    if (side == "top") {
+        board.turnFaceDown(A, Two);
+        board.turnFaceDown(A, Three);
+        board.turnFaceDown(A, Four);
+    } else if (side == "bottom") {
+        board.turnFaceDown(E, Two);
+        board.turnFaceDown(E, Three);
+        board.turnFaceDown(E, Four);
+    } else if (side == "right") {
+        board.turnFaceDown(B, One);
+        board.turnFaceDown(C, One);
+        board.turnFaceDown(D, One);
+    } else {
+        board.turnFaceDown(B, Five);
+        board.turnFaceDown(C, Five);
+        board.turnFaceDown(D, Five);
     }
     cout << board << endl;
 }
@@ -159,11 +155,14 @@ void runGame() {
     }
     Rules rule;
     Board board = game.getBoard();
+    //TODO getPlayer() which gets the current player
     vector<Player> players = game.getPlayers();
     while (!rule.gameOver(game)) {
         board.reset();
         game.setAllPlayersActive();
-        temporaryRevealThreeCards(board);
+        //TODO getPlayer() which gets the current player
+        Player currentPlayer = game.getPlayer();
+        temporaryRevealThreeCards(board, currentPlayer);
         while (!rule.roundOver(game)) {
             for (int i = 0; i < nPlayers; i++) {
                 if (players[i].isActive()) {
@@ -197,18 +196,59 @@ void runGame() {
 int main() {
     //runGame();
 
-    //CardDeck &cd = CardDeck::make_CardDeck();
-
-    //Card *card = cd.getNext();
-    //cout<< *card << endl;
-//    cd.shuffle();
-
     Board board;
-    cout << board << endl;
+    //cout << board << endl;
     board.turnFaceUp(A, Two);
-    //temporaryRevealThreeCards(board);
-    cout << board << endl;
+    Player peter{"Peter", "top", 1};
+    temporaryRevealThreeCards(board, peter);
+    //cout << board << endl;
 
     cout << "No Errors" << endl;
     return 0;
 }
+
+
+//vector<int> generateRandomNumbers() {
+//    srand(time(NULL));
+//    vector<int> randomVector;
+//    while (true) {
+//        int random_letter = (rand() % 5) + 0;
+//        if (random_letter != 2) {
+//            //cout << random_letter << endl;
+//            randomVector.push_back(random_letter);
+//            break;
+//        }
+//    }
+//    while (true) {
+//        int random_letter2 = (rand() % 5) + 0;
+//        if (random_letter2 != randomVector[0] && random_letter2 != 2) {
+//            //cout << random_letter2 << endl;
+//            randomVector.push_back(random_letter2);
+//            break;
+//        }
+//    }
+//    while (true) {
+//        int random_letter3 = (rand() % 5) + 0;
+//        if (random_letter3 != randomVector[0] && random_letter3 != randomVector[1] && random_letter3 != 2) {
+//            //cout << random_letter3 << endl;
+//            randomVector.push_back(random_letter3);
+//            break;
+//        }
+//    }
+//
+//    //Old random code DO NOT DELETE
+//    //Letter letters[] = {A, B, C, D, E};
+//    //Number numbers[] = {One, Two, Three, Four, Five};
+//    vector<int> randomIndexLetters = generateRandomNumbers();
+//    vector<int> randomIndexNumbers = generateRandomNumbers();
+//    for (int i = 0; i < 3; i++) {
+//        board.turnFaceUp(letters[randomIndexLetters[i]], numbers[randomIndexNumbers[i]]);
+//    }
+//    cout << board << endl;
+//    pause();
+//    for (int i = 0; i < 3; i++) {
+//        board.turnFaceDown(letters[randomIndexLetters[i]], numbers[randomIndexNumbers[i]]);
+//    }
+//    //cout << board << endl;
+//    return randomVector;
+//}

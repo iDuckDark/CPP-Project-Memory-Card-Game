@@ -31,6 +31,7 @@ public:
 
     string getName() const;
 
+
     void setActive(bool active);
 
     bool isActive();
