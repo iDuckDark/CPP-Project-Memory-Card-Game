@@ -3,6 +3,8 @@
 #include <vector>
 #include <cstdlib>
 #include <unordered_map>
+#include <map> //not used
+#include <set> //not used
 
 #include "game.h"
 #include "player.h"
@@ -15,12 +17,17 @@ using namespace std;
 vector<int> generateRandomNumbers() {
     srand(time(NULL));
     vector<int> randomVector;
-    int random_letter = (rand() % 5) + 0;
-    randomVector.push_back(random_letter);
-    //cout << random_letter << endl;
+    while (true) {
+        int random_letter = (rand() % 5) + 0;
+        if (random_letter != 2) {
+            //cout << random_letter << endl;
+            randomVector.push_back(random_letter);
+            break;
+        }
+    }
     while (true) {
         int random_letter2 = (rand() % 5) + 0;
-        if (random_letter2 != randomVector[0]) {
+        if (random_letter2 != randomVector[0] && random_letter2 != 2) {
             //cout << random_letter2 << endl;
             randomVector.push_back(random_letter2);
             break;
@@ -28,7 +35,7 @@ vector<int> generateRandomNumbers() {
     }
     while (true) {
         int random_letter3 = (rand() % 5) + 0;
-        if (random_letter3 != randomVector[0] && random_letter3 != randomVector[1]) {
+        if (random_letter3 != randomVector[0] && random_letter3 != randomVector[1] && random_letter3 != 2) {
             //cout << random_letter3 << endl;
             randomVector.push_back(random_letter3);
             break;
@@ -47,22 +54,16 @@ void temporaryRevealThreeCards(Board &board) {
     cout << "Three random cards are revealed temporary in front of the players" << endl;
     Letter letters[] = {A, B, C, D, E};
     Number numbers[] = {One, Two, Three, Four, Five};
-
     vector<int> randomIndexLetters = generateRandomNumbers();
     vector<int> randomIndexNumbers = generateRandomNumbers();
-
     for (int i = 0; i < 3; i++) {
         board.turnFaceUp(letters[randomIndexLetters[i]], numbers[randomIndexNumbers[i]]);
     }
-
     cout << board << endl;
-
     pause();
-
     for (int i = 0; i < 3; i++) {
         board.turnFaceDown(letters[randomIndexLetters[i]], numbers[randomIndexNumbers[i]]);
     }
-
     cout << board << endl;
 }
 
@@ -103,13 +104,26 @@ bool compareRewards(const Reward &r1, const Reward &r2) {
 void printLeastToMostRubiesAndWinner(vector<Player> players) {
     //TODO Sort them using a vector operator method
     //sort(players.begin(), players.end(), compareRewards(players.begin().));
-    Player winner = players[players.size() - 1];
+    set<pair<int, string> > playersSet;
     for (int i = 0; i < players.size(); i++) {
-        if (i == players.size() - 1) {
-            cout << "Winner is :" << endl;
-        }
-        cout << players[i] << endl;
+        playersSet.insert({players[i].getNRubies(), players[i].getName()});
     }
+    int winCounter = 0;
+    for (set<pair<int, string>>::iterator i = playersSet.begin(); i != playersSet.end(); i++) {
+        pair<int, string> element = *i;
+        if (winCounter == players.size() - 1) {
+            cout << "Winner : ";
+        }
+        cout << "Name: " << element.second << ", nRubies: " << element.first << endl;
+        winCounter++;
+    }
+//    Player winner = players[players.size() - 1];
+//    for (int i = 0; i < players.size(); i++) {
+//        if (i == players.size() - 1) {
+//            cout << "Winner is :" << endl;
+//        }
+//        cout << players[i] << endl;
+//    }
 }
 
 void runGame() {
@@ -128,7 +142,7 @@ void runGame() {
     int nPlayers = 0;
     cin >> nPlayers;
     while ((nPlayers < 2 || nPlayers > 4)) {
-        cout << "Invalid input, please try again" << endl;
+        cout << "Invalid input, please try again: " << endl;
         cin >> nPlayers;
     }
 
@@ -155,12 +169,14 @@ void runGame() {
                 if (players[i].isActive()) {
                     cout << "Pick a letter from A-E";
                     char letter = 'z';
-                    while (letter != 'A' || letter != 'B' || letter != 'C' || letter != 'D' || letter != 'E') {
+                    while (letter != 'A' && letter != 'B' && letter != 'C' && letter != 'D' && letter != 'E') {
                         cin >> letter;
                     }
                     cout << "Pick a number from 1-5";
                     int number = 0;
-                    while (number != One || number != Two || number != Three || number != Four || number != Five) {
+                    while (((number != One && number != Two && number != Three && number != Four && number != Five) &&
+                            letter == 'C') ||
+                           (number != One && number != Two && number != Four && number != Five)) {
                         cin >> number;
                     }
                     turnFaceUp(board, letter, number);
@@ -184,8 +200,16 @@ int main() {
 
     Board board;
     //cout << board << endl;
-    board.turnFaceUp(A, Two);
+    //board.turnFaceUp(A, Two);
+    temporaryRevealThreeCards(board);
     //cout << board << endl;
+
+//    vector<Player> players;
+//    players.push_back({"John", "Top", 4});
+//    players.push_back({"Peter", "Bottom", 2});
+//
+//    printLeastToMostRubiesAndWinner(players);
+
     cout << "No Errors" << endl;
     return 0;
 }

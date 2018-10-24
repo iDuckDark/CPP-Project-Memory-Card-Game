@@ -173,42 +173,32 @@ ostream &operator<<(ostream &os, const Board &board) {
         if (row1) {
             for (int j = 0; j < 5; j++) {
                 if (board.isFaceDown(0, j)) {
-                    temp[0 + 4 * j] = 'z';
-                    temp[1 + 4 * j] = 'z';
-                    temp[2 + 4 * j] = 'z';
+                    temp[0 + 4 * j] = temp[1 + 4 * j] = temp[2 + 4 * j] = 'z';
                 }
             }
         } else if (row2) {
             for (int j = 0; j < 5; j++) {
                 if (board.isFaceDown(1, j)) {
-                    temp[0 + 4 * j] = 'z';
-                    temp[1 + 4 * j] = 'z';
-                    temp[2 + 4 * j] = 'z';
+                    temp[0 + 4 * j] = temp[1 + 4 * j] = temp[2 + 4 * j] = 'z';
                 }
             }
         } else if (row3) {
             for (int j = 0; j < 5; j++) {
                 if (board.isFaceDown(2, j)) {
-                    temp[0 + 4 * j] = 'z';
-                    temp[1 + 4 * j] = 'z';
-                    temp[2 + 4 * j] = 'z';
+                    temp[0 + 4 * j] = temp[1 + 4 * j] = temp[2 + 4 * j] = 'z';
                 }
             }
-
+            temp[8] = temp[9] = temp[10] = ' ';
         } else if (row4) {
             for (int j = 0; j < 5; j++) {
                 if (board.isFaceDown(3, j)) {
-                    temp[0 + 4 * j] = 'z';
-                    temp[1 + 4 * j] = 'z';
-                    temp[2 + 4 * j] = 'z';
+                    temp[0 + 4 * j] = temp[1 + 4 * j] = temp[2 + 4 * j] = 'z';
                 }
             }
         } else if (row5) {
             for (int j = 0; j < 5; j++) {
                 if (board.isFaceDown(4, j)) {
-                    temp[0 + 4 * j] = 'z';
-                    temp[1 + 4 * j] = 'z';
-                    temp[2 + 4 * j] = 'z';
+                    temp[0 + 4 * j] = temp[1 + 4 * j] = temp[2 + 4 * j] = 'z';
                 }
             }
 
