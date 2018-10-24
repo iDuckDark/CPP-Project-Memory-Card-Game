@@ -27,6 +27,8 @@ public:
 
     int getRound() const;
 
+    Board getBoard() const; //TODO not sure if this is bad
+
     void setRound(int nRound);
 
     void addPlayer(const Player &);

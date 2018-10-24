@@ -34,23 +34,24 @@ bool *Board::getIsFaceDownCards() const {
     return &faceDownCards[0][0];
 }
 
-//TODO call make_CardDeck() function
 void Board::setScreen() {
 
     CardDeck deck;
-    CardDeck::make_CardDeck();
+    //TODO call make_CardDeck() function
+    //CardDeck &deck = CardDeck::make_CardDeck();
     deck.shuffle();
 
     vector<Card> cards;
     for (int i = 0; i < 25; i++) {
-        cards.push_back(*deck.getNext());
+        Card card = *deck.getNext(); //TODO this is crashing here
+        cards.push_back(card);
     }
 
     int screenRowCounter = 0;
     for (int i = 0; i < 25; i = i + 5) {
         for (int j = 0; j < 3; j++) {
-            string row = cards[i](j) + " " + cards[i + 1](j) + " " + cards[i + 2](j) + " " + cards[i + 3](j) + " " +
-                         cards[i + 4](j);
+            string row = (cards[i])(j) + " " + (cards[i + 1])(j) + " " + (cards[i + 2])(j) + " " + (cards[i + 3])(j) + " " +
+                    (cards[i + 4])(j);
             screen[screenRowCounter] = row;
             screenRowCounter++;
         }

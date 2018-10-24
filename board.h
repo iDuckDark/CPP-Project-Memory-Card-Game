@@ -22,7 +22,6 @@ enum Number {
     One = 1, Two = 2, Three = 3, Four = 4, Five = 5
 };
 
-//Design a class Board which holds an array of strings corresponding to the screen display of the game.
 class Board {
 
 private:

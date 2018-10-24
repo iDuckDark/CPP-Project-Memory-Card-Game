@@ -11,6 +11,10 @@ int Game::getRound() const {
     return nRound;
 }
 
+Board Game::getBoard() const {
+    return board;
+}
+
 void Game::setRound(int num) {
     nRound = num;
 }
@@ -51,7 +55,7 @@ ostream &operator<<(ostream &os, const Game &game) {
     os << game.board << endl;
     vector<Player> players = game.getPlayers();
     for (int i = 0; i < players.size(); i++) {
-        cout << players[i] << endl;
+        os << players[i] << endl;
     }
     return os;
 }

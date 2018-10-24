@@ -158,7 +158,7 @@ void runGame() {
         game.addPlayer(player);
     }
     Rules rule;
-    Board board;
+    Board board = game.getBoard();
     vector<Player> players = game.getPlayers();
     while (!rule.gameOver(game)) {
         board.reset();
@@ -195,26 +195,20 @@ void runGame() {
 }
 
 int main() {
-    //Runs the game
     //runGame();
 
-    Game game;
-    cout << game;
+    //CardDeck &cd = CardDeck::make_CardDeck();
 
-    //Board board;
-    //cout << board << endl;
-    //board.turnFaceUp(A, Two);
+    //Card *card = cd.getNext();
+    //cout<< *card << endl;
+//    cd.shuffle();
+
+    Board board;
+    cout << board << endl;
+    board.turnFaceUp(A, Two);
     //temporaryRevealThreeCards(board);
-    //cout << board << endl;
-
-//    vector<Player> players;
-//    players.push_back({"John", "Top", 4});
-//    players.push_back({"Peter", "Bottom", 2});
-//
-//    printLeastToMostRubiesAndWinner(players);
+    cout << board << endl;
 
     cout << "No Errors" << endl;
     return 0;
 }
-
-//    static CardDeck* cardDeck = &CardDeck::make_CardDeck();
