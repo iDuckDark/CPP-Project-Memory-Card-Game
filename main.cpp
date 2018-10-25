@@ -144,6 +144,7 @@ void runGame() {
     }
     Rules rule;
     Board *board = &game.getBoard();
+    cout << game << endl;
     int round = 1;
     while (!rule.gameOver(game)) {
         board->reset();
@@ -152,7 +153,6 @@ void runGame() {
             temporaryRevealThreeCards(*board, game.getPlayer());
         }
         while (!rule.roundOver(game)) {
-
             for (int i = 0; i < nPlayers; i++) {
                 Player &currentPlayer = game.getPlayer();
                 if (currentPlayer.isActive()) {
@@ -176,7 +176,7 @@ void runGame() {
                 if (!rule.isValid(game)) {
                     currentPlayer.setActive(false);
                 }
-                cout << board;
+                cout << game << endl;
             }
         }
         awardActivePlayers(game);
@@ -186,14 +186,14 @@ void runGame() {
 }
 
 int main() {
-    //runGame();
-    Game game;
-    Board *board = &game.getBoard();
-    cout << *board << endl;
-    board->turnFaceUp(B, One);
-    board->turnFaceUp(B, Two);
-    cout << *board << endl;
-    cout << "No Errors" << endl;
+    runGame();
+//    Game game;
+//    Board *board = &game.getBoard();
+//    cout << *board << endl;
+//    board->turnFaceUp(B, One);
+//    board->turnFaceUp(B, Two);
+//    cout << *board << endl;
+//    cout << "No Errors" << endl;
     return 0;
 }
 
