@@ -10,7 +10,7 @@ bool Rules::isValid(const Game &game) {
 }
 
 bool Rules::gameOver(const Game &game) {
-    return game.getRound() == 7;
+    return game.getRound() >= 7;
 }
 
 bool Rules::roundOver(const Game &game) {

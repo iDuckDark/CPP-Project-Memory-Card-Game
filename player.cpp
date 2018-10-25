@@ -35,9 +35,9 @@ void Player::setDisplayMode(bool endOfGame) {
 }
 
 ostream &operator<<(ostream &os, const Player &player) {
-    if (player.getEndOfGame()) {
+    if (!player.getEndOfGame()) {
         string status = player.active ? "active" : "inactive";
-        os << player.getName() << " " << player.getSideOfTheBoard() << "(" << status << ")"
+        os << player.getName() << ": " << player.getSideOfTheBoard() << " (" << status << ")"
            << endl;
     } else {
         os << player.getName() << " " << player.getSideOfTheBoard() << " " << player.getNRubies()

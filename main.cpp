@@ -151,7 +151,6 @@ void runGame() {
         board->reset();
         while (!rule.roundOver(game)) {
             Player &currentPlayer = game.getPlayer();
-            //cout << game << endl;
             cout << "Round: " << round << " , Turn: " << currentPlayer.getName() << endl;
             if (currentPlayer.isActive()) {
                 cout << "Pick a letter from A-E : ";
@@ -171,6 +170,7 @@ void runGame() {
             }
             //cout << "Rules are valid?  " << rule.isValid(game) << endl;
             //cout << "Round??????  " << game.getRound() << endl;
+            cout << "Rule Round over??????  " << rule.roundOver(game) << endl;
             if (!rule.isValid(game)) {
                 currentPlayer.setActive(false);
             }
