@@ -170,7 +170,7 @@ void runGame() {
             }
             //cout << "Rules are valid?  " << rule.isValid(game) << endl;
             //cout << "Round??????  " << game.getRound() << endl;
-            cout << "Rule Round over??????  " << rule.roundOver(game) << endl;
+            //cout << "Rule Round over??????  " << rule.roundOver(game) << endl;
             if (!rule.isValid(game)) {
                 currentPlayer.setActive(false);
             }

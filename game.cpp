@@ -27,7 +27,7 @@ void Game::addPlayer(const Player &player) {
 }
 
 Player &Game::getPlayer() {
-    Player &currentPlayer = playersQueue.front();
+    currentPlayer = playersQueue.front();
     playersQueue.pop();
     addPlayer(currentPlayer);
     return currentPlayer;
@@ -53,14 +53,17 @@ int Game::getNActivePlayers() const {
     return nActivePlayers;
 }
 
+//TODO need to make pairs with Card and Players
 const Card *Game::getPreviousCard() const {
     return cards[cards.size() - 2];
 }
 
+//TODO need to make pairs with Card and Players
 const Card *Game::getCurrentCard() const {
     return cards[cards.size() - 1];
 }
 
+//TODO need to make pairs with Card and Players
 void Game::setCurrentCard(const Card *card) {
     cards.push_back(card);
 }

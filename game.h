@@ -19,6 +19,7 @@ class Game {
 private:
     int nRound;
     int nPlayers;
+    Player &currentPlayer;
     queue<Player> playersQueue;
     vector<const Card *> cards;
     Board board;
