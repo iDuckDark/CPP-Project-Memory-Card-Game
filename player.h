@@ -50,9 +50,6 @@ public:
 
     friend bool operator==(const Player &lhs, const Player &rhs);
 
-
-    bool getEndOfGame() const;
-
     string getSideOfTheBoard() const;
 };
 

@@ -35,7 +35,7 @@ void Player::setDisplayMode(bool endOfGame) {
 }
 
 ostream &operator<<(ostream &os, const Player &player) {
-    if (!player.getEndOfGame()) {
+    if (!player.endOfGame) {
         string status = player.active ? "active" : "inactive";
         os << player.getName() << ": " << player.getSideOfTheBoard() << " (" << status << ")"
            << endl;
@@ -59,9 +59,6 @@ bool operator==(const Player &lhs, const Player &rhs) {
 }
 
 //Added Own Functions
-bool Player::getEndOfGame() const {
-    return this->endOfGame;
-}
 
 string Player::getSideOfTheBoard() const {
     return this->sideOfTheBoard;

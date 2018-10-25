@@ -9,6 +9,8 @@
 #include <string>
 #include <vector>
 #include <queue>
+#include <map>
+#include <cassert>
 
 #include "player.h"
 #include "card.h"
@@ -19,10 +21,11 @@ class Game {
 private:
     int nRound;
     int nPlayers;
-    Player &currentPlayer;
+    //Player &currentPlayer;
     queue<Player> playersQueue;
     vector<const Card *> cards;
     Board board;
+    map<Player, pair<Card *, Card *>> playerCardMap;
 
 public:
 

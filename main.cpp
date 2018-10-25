@@ -184,26 +184,41 @@ void runGame() {
 
 
 int main() {
-    runGame();
-//    Game game;
-//
-//    Board *board = &game.getBoard();
-//    cout << *board << endl;
-//
-//    Player *peter = new Player{"Peter", "top", 1};
-//    Player *nevin = new Player{"Nevin", "left", 2};
-//    Player *div = new Player{"Divyang", "right", 3};
-//    game.addPlayer(*peter);
-//    game.addPlayer(*nevin);
-//    game.addPlayer(*div);
-//
-//    temporaryRevealThreeCards(game);
-//    board->reset();
-//
-//    //board->turnFaceUp(B, One);
-//    //board->turnFaceUp(B, Two);
-//    cout << *board << endl;
+    //runGame();
+    Game game;
 
+    Board *board = &game.getBoard();
+    cout << *board << endl;
+
+    Player *peter = new Player{"Peter", "top", 1};
+    Player *nevin = new Player{"Nevin", "left", 2};
+    Player *div = new Player{"Divyang", "right", 3};
+    game.addPlayer(*peter);
+    game.addPlayer(*peter);
+    game.addPlayer(*nevin);
+    game.addPlayer(*div);
+    Card c{Penguin, Yellow};
+    game.setCurrentCard(&c);
+
+    Card c1{Crab, Yellow};
+
+    Card c2{Octopus, Purple};
+
+    Card c3{Octopus, Yellow};
+
+    game.setCurrentCard(&c);
+
+    game.setCurrentCard(&c1);
+
+    game.setCurrentCard(&c2);
+
+    game.setCurrentCard(&c3);
+
+
+    //temporaryRevealThreeCards(game);
+    //board->reset();
+
+     cout << *board << endl;
 
 
     cout << "No Errors" << endl;
