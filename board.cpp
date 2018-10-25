@@ -26,25 +26,26 @@ string *Board::getScreen() const {
     return screen;
 }
 
-string Board::getScreenRow(int row) const {
-    return screen[row];
-}
-
-bool *Board::getIsFaceDownCards() const {
-    return &faceDownCards[0][0];
-}
-
 void Board::setScreen() {
-
-    //CardDeck deck;
-    //deck.shuffle();
-    //TODO call make_CardDeck() function
     CardDeck &deck = CardDeck::make_CardDeck();
-
     vector<Card> cards;
     for (int i = 0; i < 25; i++) {
         Card card = *deck.getNext();
         cards.push_back(card);
+    }
+    for (int i = 0; i < 25; i = i + 5) {
+        Card *card1 = &cards[i];
+        Card *card2 = &cards[i + 1];
+        Card *card3 = &cards[i + 2];
+        Card *card4 = &cards[i + 3];
+        Card *card5 = &cards[i + 4];
+        vector<Card *> cardVector;
+        cardVector.push_back(card1);
+        cardVector.push_back(card2);
+        cardVector.push_back(card3);
+        cardVector.push_back(card4);
+        cardVector.push_back(card5);
+        cards2D.push_back(cardVector);
     }
 
     int screenRowCounter = 0;
@@ -100,6 +101,11 @@ int Board::getColIndex(const Number &number) const {
     }
 }
 
+Card *Board::getCard(const Letter &letter, const Number &number) {
+    int rowIndex = getRowIndex(letter);
+    int colIndex = getColIndex(number);
+    return cards2D[rowIndex][colIndex];
+};
 
 bool Board::turnFaceUp(const Letter &letter, const Number &number) {
     if (isFaceUp(letter, number)) {
@@ -244,35 +250,35 @@ ostream &operator<<(ostream &os, const Board &board) {
 
 //return (screen[getRowIndex(letter)])[getColIndex(number)] != 'z';
 
-
-int Board::getStringRowIndex(const Letter &letter) const {
-    if (letter == A) {
-        return 1;
-    } else if (letter == B) {
-        return 5;
-    } else if (letter == C) {
-        return 9;
-    } else if (letter == D) {
-        return 13;
-    } else if (letter == E) {
-        return 17;
-    } else {
-        throw out_of_range("Letter is out of range");
-    }
-}
-
-int Board::getStringColIndex(const Number &number) const {
-    if (number == One) {
-        return 1;
-    } else if (number == Two) {
-        return 5;
-    } else if (number == Three) {
-        return 9;
-    } else if (number == Four) {
-        return 13;
-    } else if (number == Five) {
-        return 17;
-    } else {
-        throw out_of_range("Number is out of range");
-    }
-}
+//
+//int Board::getStringRowIndex(const Letter &letter) const {
+//    if (letter == A) {
+//        return 1;
+//    } else if (letter == B) {
+//        return 5;
+//    } else if (letter == C) {
+//        return 9;
+//    } else if (letter == D) {
+//        return 13;
+//    } else if (letter == E) {
+//        return 17;
+//    } else {
+//        throw out_of_range("Letter is out of range");
+//    }
+//}
+//
+//int Board::getStringColIndex(const Number &number) const {
+//    if (number == One) {
+//        return 1;
+//    } else if (number == Two) {
+//        return 5;
+//    } else if (number == Three) {
+//        return 9;
+//    } else if (number == Four) {
+//        return 13;
+//    } else if (number == Five) {
+//        return 17;
+//    } else {
+//        throw out_of_range("Number is out of range");
+//    }
+//}

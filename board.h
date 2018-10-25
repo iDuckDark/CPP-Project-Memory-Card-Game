@@ -29,13 +29,11 @@ private:
 
     bool *faceDownCards[5];
 
+    vector<vector<Card *>> cards2D;
+
     int getRowIndex(const Letter &letter) const;
 
     int getColIndex(const Number &number) const;
-
-    int getStringRowIndex(const Letter &letter) const;
-
-    int getStringColIndex(const Number &number) const;
 
 public:
     Board();
@@ -44,11 +42,9 @@ public:
 
     string *getScreen() const;
 
-    string getScreenRow(int row) const;
-
-    bool *getIsFaceDownCards() const;
-
     void setScreen();
+
+    Card *getCard(const Letter &letter, const Number &number);
 
     bool isFaceUp(const Letter &letter, const Number &number) const;
 
@@ -64,3 +60,7 @@ public:
 };
 
 #endif //CPP_PROJECT_MEMORY_GAME_BOARD_H
+
+//int getStringRowIndex(const Letter &letter) const;
+//
+//int getStringColIndex(const Number &number) const;
