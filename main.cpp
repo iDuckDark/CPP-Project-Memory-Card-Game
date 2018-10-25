@@ -162,15 +162,15 @@ void runGame() {
         while (!rule.roundOver(game)) {
             for (int i = 0; i < nPlayers; i++) {
                 Player &currentPlayer = game.getPlayer();
-                cout << "Round: " << round << " Turn: " << currentPlayer.getName() << endl;
+                cout << "Round: " << round << " , Turn: " << currentPlayer.getName() << endl;
                 if (currentPlayer.isActive()) {
-                    cout << "Pick a letter from A-E :";
+                    cout << "Pick a letter from A-E : ";
                     char letter = 'z';
                     while (letter != 'A' && letter != 'B' && letter != 'C' && letter != 'D' && letter != 'E') {
                         cin >> letter;
                         cout << "check 1" << endl;
                     }
-                    cout << "Pick a number from 1-5 :";
+                    cout << "Pick a number from 1-5 : ";
                     int number = 0;
                     while (((number != One && number != Two && number != Three && number != Four && number != Five) &&
                             letter == 'C') ||
