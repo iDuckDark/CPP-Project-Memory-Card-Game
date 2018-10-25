@@ -3,8 +3,10 @@
 #include <vector>
 #include <cstdlib>
 #include <unordered_map>
+#include <cassert>
 #include <map> //not used
 #include <set> //not used
+#include <queue>
 
 #include "game.h"
 #include "player.h"
@@ -128,7 +130,6 @@ void runGame() {
         cout << "Invalid input, please try again: " << endl;
         cin >> nPlayers;
     }
-
     string names[nPlayers];
     for (int i = 0; i < nPlayers; i++) {
         cout << "Enter name for Player number " << (i + 1) << ": ";
@@ -142,16 +143,17 @@ void runGame() {
     }
     Rules rule;
     Board *board = &game.getBoard();
-    cout << game << endl;
+    //cout << game << endl;
     int round = 1;
     while (!rule.gameOver(game)) {
         board->reset();
         game.setAllPlayersActive();
         temporaryRevealThreeCards(game);
         board->reset();
-        while (!rule.roundOver(game)) {
-            Player &currentPlayer = game.getPlayer();
+        while (!rule.roundOver(game)) { //{Peter , Nevin, Divyang }
+            Player &currentPlayer = game.getPlayer(); // , Nevin, Divyang, Peter  but now is Peter
             cout << "Round: " << round << " , Turn: " << currentPlayer.getName() << endl;
+
             if (currentPlayer.isActive()) {
                 cout << "Pick a letter from A-E : ";
                 char letter = 'z';
@@ -168,11 +170,11 @@ void runGame() {
                 Card *selectedCard = board->getCard(static_cast<Letter>(letter), static_cast<Number>(number));
                 game.setCurrentCard(selectedCard);
             }
-            //cout << "Rules are valid?  " << rule.isValid(game) << endl;
-            //cout << "Round??????  " << game.getRound() << endl;
-            //cout << "Rule Round over??????  " << rule.roundOver(game) << endl;
             if (!rule.isValid(game)) {
                 currentPlayer.setActive(false);
+            }
+            if (game.twoCardsSelected()) {
+                game.clearSelectedCards();
             }
             cout << game << endl;
             game.setRound(++round);
@@ -186,41 +188,46 @@ void runGame() {
 int main() {
     //runGame();
     Game game;
-
+    game.addPlayer({"Peter", "top", 3});
+    game.addPlayer({"Nevin", "bottom", 4});
+    Rules rule;
+    int round = 1;
     Board *board = &game.getBoard();
-    cout << *board << endl;
+    while (!rule.roundOver(game)) {
+        Player *currentPlayer = &game.getPlayer();
+        cout << "Round: " << round << " , Turn: " << currentPlayer->getName() << endl;
 
-    Player *peter = new Player{"Peter", "top", 1};
-    Player *nevin = new Player{"Nevin", "left", 2};
-    Player *div = new Player{"Divyang", "right", 3};
-    game.addPlayer(*peter);
-    game.addPlayer(*peter);
-    game.addPlayer(*nevin);
-    game.addPlayer(*div);
-    Card c{Penguin, Yellow};
-    game.setCurrentCard(&c);
-
-    Card c1{Crab, Yellow};
-
-    Card c2{Octopus, Purple};
-
-    Card c3{Octopus, Yellow};
-
-    game.setCurrentCard(&c);
-
-    game.setCurrentCard(&c1);
-
-    game.setCurrentCard(&c2);
-
-    game.setCurrentCard(&c3);
-
-
-    //temporaryRevealThreeCards(game);
-    //board->reset();
-
-     cout << *board << endl;
-
-
+        if (currentPlayer->isActive()) {
+            cout << "Pick a letter from A-E : ";
+            char letter = 'z';
+            while (!validLetter(letter)) {
+                cin >> letter;
+            }
+            cout << "Pick a number from 1-5 : ";
+            int number = 0;
+            while (!validNumber(number, letter)) {
+                cin >> number;
+            }
+            //TODO a player can't pick the same card which is already facing up
+            turnFaceUp(*board, static_cast<Letter>(letter), static_cast<Number>(number));
+            Card *selectedCard = board->getCard(static_cast<Letter>(letter), static_cast<Number>(number));
+            game.setCurrentCard(selectedCard);
+        }
+        if (!rule.isValid(game)) {
+            cout << "INVALID RULES " << endl;
+            currentPlayer->setActive(false);
+            cout << "MAIN IS ACTIVE? " << currentPlayer->getName() << " " << currentPlayer->isActive() << endl;
+            game.playersQueue.back().setActive(false);
+            cout << "MAIN 2 IS ACTIVE? " << game.playersQueue.back().getName() << " "
+                 << game.playersQueue.back().isActive() << endl;
+        }
+        if (game.twoCardsSelected()) {
+            cout << "VALID RULES" << endl;
+            game.clearSelectedCards();
+        }
+        cout << game << endl;
+        game.setRound(++round);
+    }
     cout << "No Errors" << endl;
     return 0;
 }

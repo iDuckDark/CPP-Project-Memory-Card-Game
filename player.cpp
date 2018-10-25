@@ -6,16 +6,16 @@
 
 Player::Player(string name, string sideOfTheBoard, int nRubies) : name(name), sideOfTheBoard(sideOfTheBoard),
                                                                   nRubies(nRubies) {
-    this->active = true;
-    this->endOfGame = false;
+    active = true;
+    endOfGame = false;
 }
 
 string Player::getName() const {
     return name;
 }
 
-void Player::setActive(bool active) {
-    this->active = active;
+void Player::setActive(bool act) {
+    active = act;
 }
 
 bool Player::isActive() {

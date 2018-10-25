@@ -10,6 +10,7 @@
 #include <vector>
 #include <queue>
 #include <map>
+#include <unordered_map>
 #include <cassert>
 
 #include "player.h"
@@ -20,14 +21,13 @@ class Game {
 
 private:
     int nRound;
-    int nPlayers;
-    //Player &currentPlayer;
-    queue<Player> playersQueue;
-    vector<const Card *> cards;
+
     Board board;
-    map<Player, pair<Card *, Card *>> playerCardMap;
 
 public:
+    queue<vector<const Card *>> cardQueue;
+
+    queue<Player> playersQueue;
 
     Game() = default;
 
@@ -36,6 +36,8 @@ public:
     int getNPlayers() const;
 
     int getNActivePlayers() const;
+
+    bool twoCardsSelected() const;
 
     Board &getBoard(); //TODO not sure if this is bad
 
@@ -53,8 +55,9 @@ public:
 
     void setCurrentCard(const Card *);
 
-    friend ostream &operator<<(ostream &os, const Game &game);
+    void clearSelectedCards();
 
+    friend ostream &operator<<(ostream &os, const Game &game);
 };
 
 

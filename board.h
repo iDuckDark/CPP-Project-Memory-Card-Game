@@ -27,9 +27,11 @@ class Board {
 private:
     string *screen;
 
+    vector<Card> cards;
+
     bool *faceDownCards[5];
 
-    vector<vector<Card *>> cards2D;
+    vector<vector<Card *>*> cards2D;
 
     int getRowIndex(const Letter &letter) const;
 

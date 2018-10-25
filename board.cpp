@@ -28,25 +28,58 @@ string *Board::getScreen() const {
 
 void Board::setScreen() {
     CardDeck &deck = CardDeck::make_CardDeck();
-    vector<Card> cards;
+    cards;
     for (int i = 0; i < 25; i++) {
         Card card = *deck.getNext();
         cards.push_back(card);
     }
-    for (int i = 0; i < 25; i = i + 5) {
-        Card *card1 = &cards[i];
-        Card *card2 = &cards[i + 1];
-        Card *card3 = &cards[i + 2];
-        Card *card4 = &cards[i + 3];
-        Card *card5 = &cards[i + 4];
-        vector<Card *> cardVector;
-        cardVector.push_back(card1);
-        cardVector.push_back(card2);
-        cardVector.push_back(card3);
-        cardVector.push_back(card4);
-        cardVector.push_back(card5);
-        cards2D.push_back(cardVector);
-    }
+
+    vector<Card *> *cardVector = new vector<Card *>;
+    cardVector->push_back(&cards[0]);
+    cardVector->push_back(&cards[1]);
+    cardVector->push_back(&cards[2]);
+    cardVector->push_back(&cards[3]);
+    cardVector->push_back(&cards[4]);
+
+    vector<Card *> *cardVector1 = new vector<Card *>;
+    cardVector1->push_back(&cards[5]);
+    cardVector1->push_back(&cards[6]);
+    cardVector1->push_back(&cards[7]);
+    cardVector1->push_back(&cards[8]);
+    cardVector1->push_back(&cards[9]);
+
+
+    vector<Card *> *cardVector2 = new vector<Card *>;
+    cardVector2->push_back(&cards[10]);
+    cardVector2->push_back(&cards[11]);
+    cardVector2->push_back(&cards[12]);
+    cardVector2->push_back(&cards[13]);
+    cardVector2->push_back(&cards[14]);
+
+
+    vector<Card *> *cardVector3 = new vector<Card *>;
+    cardVector3->push_back(&cards[15]);
+    cardVector3->push_back(&cards[16]);
+    cardVector3->push_back(&cards[17]);
+    cardVector3->push_back(&cards[18]);
+    cardVector3->push_back(&cards[19]);
+
+
+    vector<Card *> *cardVector4 = new vector<Card *>;
+    cardVector4->push_back(&cards[20]);
+    cardVector4->push_back(&cards[21]);
+    cardVector4->push_back(&cards[22]);
+    cardVector4->push_back(&cards[23]);
+    cardVector4->push_back(&cards[24]);
+
+    cards2D.push_back(cardVector);
+    cards2D.push_back(cardVector1);
+    cards2D.push_back(cardVector2);
+    cards2D.push_back(cardVector3);
+    cards2D.push_back(cardVector4);
+    //cout << "SET SCREENNN!" << endl;
+
+    //cout << &(cards2D[0][0]) << endl;
 
     int screenRowCounter = 0;
     for (int i = 0; i < 25; i = i + 5) {
@@ -104,7 +137,7 @@ int Board::getColIndex(const Number &number) const {
 Card *Board::getCard(const Letter &letter, const Number &number) {
     int rowIndex = getRowIndex(letter);
     int colIndex = getColIndex(number);
-    return cards2D[rowIndex][colIndex];
+    return (*cards2D[rowIndex])[colIndex];
 };
 
 bool Board::turnFaceUp(const Letter &letter, const Number &number) {

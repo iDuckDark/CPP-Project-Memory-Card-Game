@@ -24,13 +24,23 @@ void Game::setRound(int num) {
 
 void Game::addPlayer(const Player &player) {
     playersQueue.push(player);
+    vector<const Card *> cardVector;
+    cardQueue.push(cardVector);
 }
 
 Player &Game::getPlayer() {
-    Player &currentPlayer = playersQueue.front();
-    playersQueue.pop();
-    addPlayer(currentPlayer);
+    Player &currentPlayer = playersQueue.front(); //{Peter, Nevin ,Div}
+    playersQueue.pop(); //{Nevin ,Div}
+    playersQueue.push(currentPlayer); //{ Nevin ,Div,Peter}
+
+    vector<const Card *> cardVector = cardQueue.front(); //Cards :{Peter, Nevin ,Div}
+    cardQueue.pop(); //Cards :{ Nevin ,Div}
+    cardQueue.push(cardVector);
     return currentPlayer;
+}
+
+bool Game::twoCardsSelected() const {
+    return (cardQueue.back().size() == 2);
 }
 
 void Game::setAllPlayersActive() const {
@@ -43,32 +53,43 @@ void Game::setAllPlayersActive() const {
 
 int Game::getNActivePlayers() const {
     queue tempQueue = playersQueue;
-    int nActivePlayers;
+    int nActivePlayers = 0;
     while (!tempQueue.empty()) {
         if (tempQueue.front().isActive()) {
             nActivePlayers++;
         }
         tempQueue.pop();
     }
+    cout << "N ACTIVE PLAYERS: " << nActivePlayers << endl;
     return nActivePlayers;
 }
 
-//TODO need to make pairs with Card and Players
 const Card *Game::getPreviousCard() const {
-    return cards[cards.size() - 1 - playersQueue.size()];
+    vector<const Card *> cardVector = cardQueue.back(); //peter's cards
+    const Card *previousCard = cardVector[0]; //peter's first card
+    return previousCard;
 }
 
-//TODO need to make pairs with Card and Players
 const Card *Game::getCurrentCard() const {
-
-    return cards[cards.size() - 1];
+    vector<const Card *> cardVector = cardQueue.back(); //peter's cards
+    const Card *currentCard = cardVector[1]; //peter's second card
+    return currentCard;
 }
 
-//TODO need to make pairs with Card and Players
 void Game::setCurrentCard(const Card *card) {
-    cards.push_back(card);
-//    plaert
-//    playerCardMap[playersQueue.back()] = ;
+    // Players Queue after getNext : {  Nevin, Div , Peter}
+    vector<const Card *> cardVector = cardQueue.back(); //peter's cards
+    cardVector.push_back(card); //Add a card
+    cardQueue.back() = cardVector;  //Updates Peter's Cards
+    //cout << "PETERRRRRRRRRRRR BJT!!!" << endl;
+    //cout << *cardQueue.back()[0] << endl;
+}
+
+void Game::clearSelectedCards() {
+    vector<const Card *> cardVector = cardQueue.back(); //peter's cards
+    cardVector.pop_back(); //Removes two cards
+    cardVector.pop_back();
+    cardQueue.back() = cardVector;  //Updates Peter's Cards
 }
 
 ostream &operator<<(ostream &os, const Game &game) {
