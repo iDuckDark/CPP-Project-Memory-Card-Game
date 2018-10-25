@@ -81,8 +81,8 @@ void turnFaceUp(Board &board, char letter, int number) {
     board.turnFaceUp(letterMap[letter], numberMap[number]);
 }
 
-void awardActivePlayers(Game &game, int nPlayers) {
-    for (int i = 0; i < nPlayers; i++) {
+void awardActivePlayers(Game &game) {
+    for (int i = 0; i < game.getNPlayers(); i++) {
         Player player = game.getPlayer();
         if (player.isActive()) {
             srand(time(NULL));
@@ -98,7 +98,7 @@ bool compareRewards(const Reward &r1, const Reward &r2) {
     return r1.getNRubies() < r2.getNRubies();
 }
 
-void printLeastToMostRubiesAndWinner(Game &game, int nPlayers) {
+void printLeastToMostRubiesAndWinner(Game &game) {
     //TODO Sort them using a vector operator method
     //TODO SET END OF GAME TO PLAYERS for cout;
     //sort(players.begin(), players.end(), compareRewards(players.begin().));
@@ -178,7 +178,7 @@ void runGame() {
                            (number != One && number != Two && number != Four && number != Five)) {
                         cin >> number;
                     }
-                    turnFaceUp(*board, letter, number);
+                    turnFaceUp(*board, static_cast<Letter>(letter), static_cast<Number>(number));
                     cout << *board << endl;
                 }
                 if (!rule.isValid(game)) {
@@ -187,20 +187,22 @@ void runGame() {
                 cout << board;
             }
         }
-        awardActivePlayers(game, nPlayers);
+        awardActivePlayers(game);
 
     }
-    printLeastToMostRubiesAndWinner(game, nPlayers);
+    printLeastToMostRubiesAndWinner(game);
 }
 
 int main() {
     //runGame();
-    //Game game;
-    //Board* board = &game.getBoard();
-    //cout << board << endl;
+    Game game;
+    Board *board = &game.getBoard();
+    cout << *board << endl;
 
+    int number = 5;
+    Number num = static_cast<Number>(number);
 
-    //board.turnFaceUp(A, Two);
+    board->turnFaceUp(static_cast<Letter>('B'), num);
 //    Player peter{"Peter", "top", 1};
 //    Player nevin{"Nevin", "left", 2};
 //    Player div{"Divyang", "top", 3};
@@ -215,7 +217,7 @@ int main() {
 //    temporaryRevealThreeCards(*board, peter);
 
 
-    //cout << board << endl;
+    cout << *board << endl;
 
     cout << "No Errors" << endl;
     return 0;
