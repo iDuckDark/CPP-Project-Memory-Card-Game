@@ -17,16 +17,17 @@ class RewardDeck : public Deck<Reward> {
     friend class Reward;
 
 public:
-    Reward* getNext() override;
+//    Reward* getNext() override;
 
-    bool isEmpty() override;
+//    bool isEmpty() override;
 
     RewardDeck();
+    ~RewardDeck();
 
-    void shuffle() override;
+//    void shuffle() override;
 
+    vector<Reward>* deck;
 private:
-    vector<Reward> deck;
 };
 
 

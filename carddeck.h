@@ -8,19 +8,19 @@
 class CardDeck : public Deck<Card> {
 public:
     CardDeck();
+    ~CardDeck();
 
-    Card *getNext() override;
-
-    vector<Card> deck;
 
     static CardDeck &make_CardDeck();
 
-    void shuffle() override;
+    //CardDeck(); //TODO private contructor
 
-    bool isEmpty() override;
+
+
+
+
 
 private:
-    //CardDeck(); //TODO private contructor
 
     //CardDeck(const CardDeck &);
 };
