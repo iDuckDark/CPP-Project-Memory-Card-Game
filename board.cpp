@@ -170,8 +170,8 @@ ostream &operator<<(ostream &os, const Board &board) {
         } else {
             os << "  ";
         }
-        string temp = screen[screenRowCounter];
 
+        string temp = screen[screenRowCounter];
         bool row1 = (screenRowCounter == 0 || screenRowCounter == 1 || screenRowCounter == 2);
         bool row2 = (screenRowCounter == 4 || screenRowCounter == 5 || screenRowCounter == 6);
         bool row3 = (screenRowCounter == 8 || screenRowCounter == 9 || screenRowCounter == 10);
