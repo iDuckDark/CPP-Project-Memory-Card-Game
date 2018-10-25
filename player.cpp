@@ -37,13 +37,25 @@ void Player::setDisplayMode(bool endOfGame) {
 ostream &operator<<(ostream &os, const Player &player) {
     if (player.getEndOfGame()) {
         string status = player.active ? "active" : "inactive";
-        os << player.getName() << player.getSideOfTheBoard() << "(" << status << ")"
+        os << player.getName() << " " << player.getSideOfTheBoard() << "(" << status << ")"
            << endl;
     } else {
         os << player.getName() << " " << player.getSideOfTheBoard() << " " << player.getNRubies()
            << " rubies" << endl;
     }
     return os;
+}
+
+bool operator<(const Player &lhs, const Player &rhs) {
+    return lhs.getNRubies() < rhs.getNRubies();
+}
+
+bool operator>(const Player &lhs, const Player &rhs) {
+    return lhs.getNRubies() > rhs.getNRubies();
+}
+
+bool operator==(const Player &lhs, const Player &rhs) {
+    return lhs.getNRubies() == rhs.getNRubies();
 }
 
 //Added Own Functions

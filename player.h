@@ -44,6 +44,13 @@ public:
 
     friend ostream &operator<<(ostream &os, const Player &player);
 
+    friend bool operator<(const Player &lhs, const Player &rhs);
+
+    friend bool operator>(const Player &lhs, const Player &rhs);
+
+    friend bool operator==(const Player &lhs, const Player &rhs);
+
+
     bool getEndOfGame() const;
 
     string getSideOfTheBoard() const;

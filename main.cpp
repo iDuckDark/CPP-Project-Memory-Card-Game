@@ -86,39 +86,29 @@ void awardActivePlayers(Game &game) {
         Player player = game.getPlayer();
         if (player.isActive()) {
             srand(time(NULL));
-            int randomRubies = (rand() % 4); //TODO is it random reward of 1 to 4???
+            int randomRubies = (rand() % 4);
             Reward reward(randomRubies);
             player.addReward(reward);
         }
     }
 }
 
-//https://stackoverflow.com/questions/29676147/sorting-a-vector-of-classes-based-on-a-variable-in-the-class
-bool compareRewards(const Reward &r1, const Reward &r2) {
-    return r1.getNRubies() < r2.getNRubies();
-}
-
 void printLeastToMostRubiesAndWinner(Game &game) {
-    //TODO Sort them using a vector operator method
-    //TODO SET END OF GAME TO PLAYERS for cout;
-    //sort(players.begin(), players.end(), compareRewards(players.begin().));
-
-    //TODO I dont wanna use this but it works
-//    set<pair<int, Player> > playersSet;
-//    for (int i = 0; i < nPlayers; i++) {
-//        Player &player = game.getPlayer();
-//        player.setDisplayMode(true);
-//        playersSet.insert({player.getNRubies(), player});
-//    }
-//    int winCounter = 0;
-//    for (set<pair<int, Player>>::iterator i = playersSet.begin(); i != playersSet.end(); i++) {
-//        pair<int, Player> element = *i;
-//        if (winCounter == nPlayers - 1) {
-//            cout << "Winner : ";
-//        }
-//        cout << element.second;
-//        winCounter++;
-//    }
+    set<pair<int, Player> > playersSet;
+    for (int i = 0; i < game.getNPlayers(); i++) {
+        Player &player = game.getPlayer();
+        player.setDisplayMode(true);
+        playersSet.insert({player.getNRubies(), player});
+    }
+    int winCounter = 0;
+    for (set<pair<int, Player>>::iterator i = playersSet.begin(); i != playersSet.end(); i++) {
+        pair<int, Player> element = *i;
+        if (winCounter == game.getNPlayers() - 1) {
+            cout << "Winner : ";
+        }
+        cout << element.second << endl;
+        winCounter++;
+    }
 }
 
 void runGame() {
@@ -200,12 +190,9 @@ int main() {
     Game game;
     Board *board = &game.getBoard();
     cout << *board << endl;
-
-
     board->turnFaceUp(B, One);
-
+    board->turnFaceUp(B, Two);
     cout << *board << endl;
-
     cout << "No Errors" << endl;
     return 0;
 }

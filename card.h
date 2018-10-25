@@ -27,6 +27,8 @@ public:
 
     string operator()(int) const;
 
+    friend bool operator==(const Card &lhs, const Card &rhs);
+
 private:
     friend class CardDeck;
 
