@@ -20,47 +20,56 @@ void pause() {
     cin.ignore();
 }
 
-void temporaryRevealThreeCards(Board &board, Player &player) {
+void temporaryRevealThreeCards(Game &game) {
     cout << "Three random cards are revealed temporary in front of the players" << endl;
-    string side = player.getSideOfTheBoard();
-    if (side == "top") {
-        board.turnFaceUp(A, Two);
-        board.turnFaceUp(A, Three);
-        board.turnFaceUp(A, Four);
-    } else if (side == "bottom") {
-        board.turnFaceUp(E, Two);
-        board.turnFaceUp(E, Three);
-        board.turnFaceUp(E, Four);
-    } else if (side == "right") {
-        board.turnFaceUp(B, One);
-        board.turnFaceUp(C, One);
-        board.turnFaceUp(D, One);
-    } else {
-        board.turnFaceUp(B, Five);
-        board.turnFaceUp(C, Five);
-        board.turnFaceUp(D, Five);
+    Board board = game.getBoard();
+    for (int i = 0; i < game.getNPlayers(); i++) {
+        Player player = game.getPlayer();
+        string side = player.getSideOfTheBoard();
+        if (side == "top") {
+            board.turnFaceUp(A, Two);
+            board.turnFaceUp(A, Three);
+            board.turnFaceUp(A, Four);
+        } else if (side == "bottom") {
+            board.turnFaceUp(E, Two);
+            board.turnFaceUp(E, Three);
+            board.turnFaceUp(E, Four);
+        } else if (side == "right") {
+            board.turnFaceUp(B, One);
+            board.turnFaceUp(C, One);
+            board.turnFaceUp(D, One);
+        } else {
+            board.turnFaceUp(B, Five);
+            board.turnFaceUp(C, Five);
+            board.turnFaceUp(D, Five);
+        }
     }
-    cout << board << endl;
+    cout << game << endl;
     pause();
     cout << "Cards are hidden now" << endl;
-    if (side == "top") {
-        board.turnFaceDown(A, Two);
-        board.turnFaceDown(A, Three);
-        board.turnFaceDown(A, Four);
-    } else if (side == "bottom") {
-        board.turnFaceDown(E, Two);
-        board.turnFaceDown(E, Three);
-        board.turnFaceDown(E, Four);
-    } else if (side == "right") {
-        board.turnFaceDown(B, One);
-        board.turnFaceDown(C, One);
-        board.turnFaceDown(D, One);
-    } else {
-        board.turnFaceDown(B, Five);
-        board.turnFaceDown(C, Five);
-        board.turnFaceDown(D, Five);
+    for (int i = 0; i < game.getNPlayers(); i++) {
+        Player player = game.getPlayer();
+        string side = player.getSideOfTheBoard();
+
+        if (side == "top") {
+            board.turnFaceDown(A, Two);
+            board.turnFaceDown(A, Three);
+            board.turnFaceDown(A, Four);
+        } else if (side == "bottom") {
+            board.turnFaceDown(E, Two);
+            board.turnFaceDown(E, Three);
+            board.turnFaceDown(E, Four);
+        } else if (side == "right") {
+            board.turnFaceDown(B, One);
+            board.turnFaceDown(C, One);
+            board.turnFaceDown(D, One);
+        } else {
+            board.turnFaceDown(B, Five);
+            board.turnFaceDown(C, Five);
+            board.turnFaceDown(D, Five);
+        }
     }
-    cout << board << endl;
+    cout << game << endl;
 }
 
 void turnFaceUp(Board &board, char letter, int number) {
@@ -149,33 +158,38 @@ void runGame() {
     while (!rule.gameOver(game)) {
         board->reset();
         game.setAllPlayersActive();
-        for (int i = 0; i < nPlayers; i++) {
-            temporaryRevealThreeCards(*board, game.getPlayer());
-        }
+        temporaryRevealThreeCards(game);
         while (!rule.roundOver(game)) {
             for (int i = 0; i < nPlayers; i++) {
                 Player &currentPlayer = game.getPlayer();
+                cout << "Round: " << round << " Turn: " << currentPlayer.getName() << endl;
                 if (currentPlayer.isActive()) {
-                    cout << "Pick a letter from A-E";
+                    cout << "Pick a letter from A-E :";
                     char letter = 'z';
                     while (letter != 'A' && letter != 'B' && letter != 'C' && letter != 'D' && letter != 'E') {
                         cin >> letter;
+                        cout << "check 1" << endl;
                     }
-                    cout << "Pick a number from 1-5";
+                    cout << "Pick a number from 1-5 :";
                     int number = 0;
                     while (((number != One && number != Two && number != Three && number != Four && number != Five) &&
                             letter == 'C') ||
                            (number != One && number != Two && number != Four && number != Five)) {
+                        cout << "check 2" << endl;
                         cin >> number;
                     }
+                    cout << "check 3" << endl;
+                    //TODO a player can't pick the same card which is already facing up
                     turnFaceUp(*board, static_cast<Letter>(letter), static_cast<Number>(number));
                     Card *selectedCard = board->getCard(static_cast<Letter>(letter), static_cast<Number>(number));
                     game.setCurrentCard(selectedCard);
                     cout << *board << endl;
                 }
+                cout << "check 4" << endl;
                 if (!rule.isValid(game)) {
                     currentPlayer.setActive(false);
                 }
+                cout << "check 5" << endl;
                 cout << game << endl;
             }
         }
