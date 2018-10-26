@@ -74,7 +74,7 @@ void awardActivePlayers(Game &game) {
         Player player = game.getPlayer();
         if (player.isActive()) {
             srand(time(NULL));
-            int randomRubies = (rand() % 4);
+            int randomRubies = (rand() % 4) + 1;
             Reward reward(randomRubies);
             player.addReward(reward);
         }
@@ -219,42 +219,7 @@ void runGame() {
 
 
 int main() {
-    runGame();
-//    Game game;
-//    Board *board = &game.getBoard();
-//    Rules rule;
-//    int round = 1;
-//
-//    Player peter{"Peter", "top", 1};
-//    Player nevin{"Nevin", "left", 2};
-//    Player div{"Divyang", "bottom", 3};
-//
-//    peter.setActive(false);
-//    nevin.setActive(false);
-//    div.setActive(false);
-//
-//    game.addPlayer(peter);
-//    game.addPlayer(nevin);
-//    game.addPlayer(div);
-//
-//    game.setAllPlayersActive();
-//
-//    cout << game.getPlayer().isActive() << endl;
-//    cout << game.getPlayer().isActive() << endl;
-//    cout << game.getPlayer().isActive() << endl;
-//
-//    cout << game.getPlayer() << endl;
-//    cout << game.getPlayer() << endl;
-//    cout << game.getPlayer() << endl;
-//
-//    while (!rule.gameOver(game)) {
-//        board->reset();
-//        game.setAllPlayersActive();
-//        temporaryRevealThreeCards(game);
-//        board->reset();
-//        cout << "ROUNDDD" << round << endl;
-//        game.setRound(++round);
-//    }
+    //runGame();
     return 0;
 }
 
@@ -303,48 +268,3 @@ int main() {
 //    cout << game.getPlayer() <<endl;
 //
 //    temporaryRevealThreeCards(*board, peter);
-
-
-//Game game;
-//game.addPlayer({"Peter", "top", 3});
-//game.addPlayer({"Nevin", "bottom", 4});
-//Rules rule;
-//int round = 1;
-//Board *board = &game.getBoard();
-//while (!rule.roundOver(game)) {
-//Player *currentPlayer = &game.getPlayer();
-//cout << "Round: " << round << " , Turn: " << currentPlayer->getName() << endl;
-//cout << "MAIN IS ACTIVE? " << currentPlayer->getName() << " " << currentPlayer->isActive() << endl;
-//if (currentPlayer->isActive()) {
-//cout << "Pick a letter from A-E : ";
-//char letter = 'z';
-//while (!validLetter(letter)) {
-//cin >> letter;
-//}
-//cout << "Pick a number from 1-5 : ";
-//int number = 0;
-//while (!validNumber(number, letter)) {
-//cin >> number;
-//}
-////TODO a player can't pick the same card which is already facing up
-//turnFaceUp(*board, static_cast<Letter>(letter), static_cast<Number>(number));
-//Card *selectedCard = board->getCard(static_cast<Letter>(letter), static_cast<Number>(number));
-//game.setCurrentCard(selectedCard);
-//}
-//if (!rule.isValid(game)) {
-//cout << "INVALID RULES " << endl;
-////currentPlayer->setActive(false);
-//if (game.twoCardsSelected()) {
-//game.setPlayersActive(false);
-//}
-////cout << "MAIN IS ACTIVE? " << currentPlayer->getName() << " " << currentPlayer->isActive() << endl;
-////game.playersQueue.back().setActive(false);
-////cout << "MAIN 2 IS ACTIVE? " << game.playersQueue.back().getName() << " " << game.playersQueue.back().isActive() << endl;
-//}
-//if (game.twoCardsSelected()) {
-//cout << "VALID RULES" << endl;
-//game.clearSelectedCards();
-//}
-//cout << game << endl;
-//game.setRound(++round);
-//}
