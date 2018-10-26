@@ -111,26 +111,26 @@ bool validNumber(int number, char letter) {
     }
 }
 
-int convert2Char(char* letter){
-   int  num = -1;
-   if(*letter=='A'){
-       num = 0;
-   }else if(*letter=='B'){
-       num = 1;
-   }else if(*letter=='C'){
-       num = 2;
-   }else if(*letter=='D'){
-       num = 3;
-   }else if(*letter=='E'){
-       num = 4;
-   }else{
-       num = -1;
-   }
-   return num;
+int convert2Char(char *letter) {
+    int num = -1;
+    if (*letter == 'A') {
+        num = 0;
+    } else if (*letter == 'B') {
+        num = 1;
+    } else if (*letter == 'C') {
+        num = 2;
+    } else if (*letter == 'D') {
+        num = 3;
+    } else if (*letter == 'E') {
+        num = 4;
+    } else {
+        num = -1;
+    }
+    return num;
 }
 
 
-void getValidInput(char *letter, int *number, Game game) {
+void getValidInput(char *letter, int *number, Board *board) {
     do {
         *letter = 'z';
         while (!validLetter(*letter)) {
@@ -142,10 +142,11 @@ void getValidInput(char *letter, int *number, Game game) {
             cout << "Pick a number from 1-5 : ";
             cin >> *number;
         }
-        if(!(game.getBoard().isFaceDown(convert2Char(letter),*number-1))){
-            cout<<"Card already up!"<<endl;
+        if (!(board->isFaceDown(convert2Char(letter), *number - 1))) {
+            cout << "Card already up!" << endl;
         }
-    }while(!(game.getBoard().isFaceDown(convert2Char(letter),*number-1)));
+        cout << "HERE" << endl;
+    } while (!(board->isFaceDown(convert2Char(letter), *number - 1)));
 }
 
 void runGame() {
@@ -195,7 +196,7 @@ void runGame() {
             if (currentPlayer.isActive()) {
                 char letter = 'z';
                 int number = 0;
-                getValidInput(&letter, &number, game);
+                getValidInput(&letter, &number, board);
                 turnFaceUp(*board, static_cast<Letter>(letter), static_cast<Number>(number));
                 Card *selectedCard = board->getCard(static_cast<Letter>(letter), static_cast<Number>(number));
                 game.setCurrentCard(selectedCard);
@@ -219,16 +220,14 @@ void runGame() {
 
 
 int main() {
-    //runGame();
-    int numer = -1;
-    char c ='z';
-    int* num=&numer;
-    char* letter=&c;
-    Game game;
-    Board *board = &game.getBoard();
-    board->turnFaceUp(A, One);
-    cout<<game<<endl;
-    getValidInput(letter, num, game);
+    runGame();
+//    int number;
+//    char letter;
+//    Game game;
+//    Board *board = &game.getBoard();
+//    board->turnFaceUp(A, One);
+//    cout << game << endl;
+//    getValidInput(&letter, &number, board);
     cout << "No Errors" << endl;
     return 0;
 }
