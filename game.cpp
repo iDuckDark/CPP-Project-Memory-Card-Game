@@ -65,7 +65,7 @@ int Game::getNActivePlayers() const {
         }
         tempQueue.pop();
     }
-    cout << "N ACTIVE PLAYERS: " << nActivePlayers << endl;
+    //cout << "N ACTIVE PLAYERS: " << nActivePlayers << endl;
     return nActivePlayers;
 }
 

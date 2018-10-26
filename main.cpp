@@ -202,7 +202,6 @@ void runGame() {
                 game.setCurrentCard(selectedCard);
             }
             if (!rules.isValid(game)) {
-                //currentPlayer.setActive(false);
                 if (game.twoCardsSelected()) {
                     game.setPlayersActive(false);
                 }
@@ -211,8 +210,8 @@ void runGame() {
                 game.clearSelectedCards();
             }
             cout << game << endl;
-            game.setRound(++round);
         }
+        game.setRound(++round);
         awardActivePlayers(game);
     }
     printLeastToMostRubiesAndWinner(game);
