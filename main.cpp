@@ -173,6 +173,7 @@ void runGame() {
         cout << "Enter name for Player number " << (i + 1) << ": ";
         cin >> names[i];
     }
+
     Game game;
     string sides[4] = {"top", "bottom", "left", "right"};
     for (int i = 0; i < nPlayers; i++) {
@@ -181,45 +182,49 @@ void runGame() {
     }
     Rules rules;
     Board *board = &game.getBoard();
+    if(mode == 1){
 
-    int round = 1;
-    while (!rules.gameOver(game)) {
-        board->reset();
-        game.setAllPlayersActive();
-        temporaryRevealThreeCards(game);
-        board->reset();
-        while (!rules.roundOver(game)) { //{Peter , Nevin, Divyang }
+        int round = 1;
+        while (!rules.gameOver(game)) {
+            board->reset();
+            game.setAllPlayersActive();
+            temporaryRevealThreeCards(game);
+            board->reset();
+            while (!rules.roundOver(game)) { //{Peter , Nevin, Divyang }
 
-            Player &currentPlayer = game.getPlayer(); // , Nevin, Divyang, Peter  but now is Peter
-            cout << "Round: " << round << " , Turn: " << currentPlayer.getName() << endl;
+                Player &currentPlayer = game.getPlayer(); // , Nevin, Divyang, Peter  but now is Peter
+                cout << "Round: " << round << " , Turn: " << currentPlayer.getName() << endl;
 
-            if (currentPlayer.isActive()) {
-                char letter = 'z';
-                int number = 0;
-                getValidInput(&letter, &number, board);
-                turnFaceUp(*board, static_cast<Letter>(letter), static_cast<Number>(number));
-                Card *selectedCard = board->getCard(static_cast<Letter>(letter), static_cast<Number>(number));
-                game.setCurrentCard(selectedCard);
-            }
-            if (!rules.isValid(game)) {
-                if (game.twoCardsSelected()) {
-                    game.setPlayersActive(false);
+                if (currentPlayer.isActive()) {
+                    char letter = 'z';
+                    int number = 0;
+                    getValidInput(&letter, &number, board);
+                    turnFaceUp(*board, static_cast<Letter>(letter), static_cast<Number>(number));
+                    Card *selectedCard = board->getCard(static_cast<Letter>(letter), static_cast<Number>(number));
+                    game.setCurrentCard(selectedCard);
                 }
+                if (!rules.isValid(game)) {
+                    if (game.twoCardsSelected()) {
+                        game.setPlayersActive(false);
+                    }
+                }
+                if (game.twoCardsSelected()) {
+                    game.clearSelectedCards();
+                }
+                cout << game << endl;
             }
-            if (game.twoCardsSelected()) {
-                game.clearSelectedCards();
-            }
-            cout << game << endl;
+            game.setRound(++round);
+            awardActivePlayers(game);
         }
-        game.setRound(++round);
-        awardActivePlayers(game);
+        printLeastToMostRubiesAndWinner(game);
+    }else if(mode == 2){
+        cout<<"Mode 2"<<endl;
     }
-    printLeastToMostRubiesAndWinner(game);
 }
 
 
 int main() {
-    //runGame();
+    runGame();
     return 0;
 }
 

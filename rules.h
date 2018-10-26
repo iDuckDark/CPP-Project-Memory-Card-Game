@@ -19,6 +19,12 @@ public:
     bool gameOver(const Game &game);
 
     bool roundOver(const Game &game);
+    void expertRules(const Card&, const Game&, Letter, Number);
+    void expertOctopus(const Card&, const Game&, Letter, Number);
+    void expertPenguin(const Card&, const Game&, Letter, Number);
+    void expertWalrus(const Card&, const Game&, Letter, Number);
+    void expertCrab(const Card&, const Game&, Letter, Number);
+    void expertTurtle(const Card&, const Game&, Letter, Number);
 };
 
 

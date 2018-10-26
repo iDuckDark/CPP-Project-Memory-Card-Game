@@ -29,18 +29,18 @@ public:
 
     friend bool operator==(const Card &lhs, const Card &rhs);
 
+    char getColor() const;
+    char getAnimal() const;
+
 private:
     friend class CardDeck;
-
     FaceAnimal _faceAnimal;
     FaceBackground _faceBackground;
     int _nRows = 3;
+
     char _color;
+
     char _animal;
-
-    char getColor() const;
-
-    char getAnimal() const;
 
     int getNRows() const;
 
