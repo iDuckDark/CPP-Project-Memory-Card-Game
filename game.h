@@ -45,6 +45,8 @@ public:
 
     void addPlayer(const Player &);
 
+    void setPlayersActive(bool active);
+
     Player &getPlayer();
 
     void setAllPlayersActive() const; //Added own function

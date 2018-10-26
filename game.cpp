@@ -51,6 +51,10 @@ void Game::setAllPlayersActive() const {
     }
 }
 
+void Game::setPlayersActive(bool active) {
+    playersQueue.back().setActive(active);
+}
+
 int Game::getNActivePlayers() const {
     queue tempQueue = playersQueue;
     int nActivePlayers = 0;
