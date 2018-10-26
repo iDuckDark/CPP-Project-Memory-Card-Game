@@ -43,11 +43,12 @@ bool Game::twoCardsSelected() const {
     return (cardQueue.back().size() == 2);
 }
 
-void Game::setAllPlayersActive() const {
-    queue tempQueue = playersQueue;
-    while (!tempQueue.empty()) {
-        tempQueue.front().setActive(true);
-        tempQueue.pop();
+void Game::setAllPlayersActive() {
+    for (int i = 0; i < playersQueue.size(); i++) {
+        Player player = playersQueue.front();
+        player.setActive(true);
+        playersQueue.pop();
+        playersQueue.push(player);
     }
 }
 

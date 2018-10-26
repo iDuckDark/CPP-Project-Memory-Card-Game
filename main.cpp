@@ -179,16 +179,16 @@ void runGame() {
         Player player(names[i], sides[i], 0);
         game.addPlayer(player);
     }
-    Rules rule;
+    Rules rules;
     Board *board = &game.getBoard();
 
     int round = 1;
-    while (!rule.gameOver(game)) {
+    while (!rules.gameOver(game)) {
         board->reset();
         game.setAllPlayersActive();
         temporaryRevealThreeCards(game);
         board->reset();
-        while (!rule.roundOver(game)) { //{Peter , Nevin, Divyang }
+        while (!rules.roundOver(game)) { //{Peter , Nevin, Divyang }
 
             Player &currentPlayer = game.getPlayer(); // , Nevin, Divyang, Peter  but now is Peter
             cout << "Round: " << round << " , Turn: " << currentPlayer.getName() << endl;
@@ -201,7 +201,7 @@ void runGame() {
                 Card *selectedCard = board->getCard(static_cast<Letter>(letter), static_cast<Number>(number));
                 game.setCurrentCard(selectedCard);
             }
-            if (!rule.isValid(game)) {
+            if (!rules.isValid(game)) {
                 //currentPlayer.setActive(false);
                 if (game.twoCardsSelected()) {
                     game.setPlayersActive(false);
@@ -221,14 +221,41 @@ void runGame() {
 
 int main() {
     runGame();
-//    int number;
-//    char letter;
 //    Game game;
 //    Board *board = &game.getBoard();
-//    board->turnFaceUp(A, One);
-//    cout << game << endl;
-//    getValidInput(&letter, &number, board);
-    cout << "No Errors" << endl;
+//    Rules rule;
+//    int round = 1;
+//
+//    Player peter{"Peter", "top", 1};
+//    Player nevin{"Nevin", "left", 2};
+//    Player div{"Divyang", "bottom", 3};
+//
+//    peter.setActive(false);
+//    nevin.setActive(false);
+//    div.setActive(false);
+//
+//    game.addPlayer(peter);
+//    game.addPlayer(nevin);
+//    game.addPlayer(div);
+//
+//    game.setAllPlayersActive();
+//
+//    cout << game.getPlayer().isActive() << endl;
+//    cout << game.getPlayer().isActive() << endl;
+//    cout << game.getPlayer().isActive() << endl;
+//
+//    cout << game.getPlayer() << endl;
+//    cout << game.getPlayer() << endl;
+//    cout << game.getPlayer() << endl;
+//
+//    while (!rule.gameOver(game)) {
+//        board->reset();
+//        game.setAllPlayersActive();
+//        temporaryRevealThreeCards(game);
+//        board->reset();
+//        cout << "ROUNDDD" << round << endl;
+//        game.setRound(++round);
+//    }
     return 0;
 }
 

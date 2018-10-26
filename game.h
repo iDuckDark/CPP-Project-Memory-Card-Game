@@ -49,7 +49,7 @@ public:
 
     Player &getPlayer();
 
-    void setAllPlayersActive() const; //Added own function
+    void setAllPlayersActive(); //Added own function
 
     const Card *getPreviousCard() const;
 

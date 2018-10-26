@@ -21,6 +21,7 @@ bool Rules::isValid(const Game &game) {
 }
 
 bool Rules::gameOver(const Game &game) {
+    cout << "GAME OVER ? " << game.getRound() << endl;
     return game.getRound() >= 7;
 }
 
