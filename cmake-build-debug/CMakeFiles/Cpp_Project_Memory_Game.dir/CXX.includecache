@@ -37,14 +37,16 @@ card.h
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/card.h
 reward.h
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/reward.h
-
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/game.cpp
+vector
+-
+random
+-
+algorithm
+-
+iterator
+-
 iostream
 -
-string
--
-game.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/game.h
 
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/game.h
 iostream
@@ -56,6 +58,8 @@ vector
 queue
 -
 map
+-
+unordered_map
 -
 cassert
 -
@@ -77,9 +81,13 @@ cstdlib
 -
 unordered_map
 -
+cassert
+-
 map
 -
 set
+-
+queue
 -
 game.h
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/game.h
@@ -107,10 +115,6 @@ iostream
 -
 string
 -
-
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rules.cpp
-rules.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rules.h
 
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rules.h
 iostream
