@@ -152,6 +152,23 @@ void getValidInput(char *letter, int *number, Board *board) {
     } while (!(board->isFaceDown(convert2Char(letter), *number - 1)));
 }
 
+void expertModePrint(std::map<std::string, Card*> cardMap){
+    //pprint cards
+    for(int i = 0;i<3;i++){
+        for( auto const& [key, val] : cardMap ) {
+            cout << (*val)(i) + " ";
+        }
+        cout<<endl;
+    }
+    //print location
+        for( auto const& [key, val] : cardMap ) {
+            cout << key + "  ";
+        }
+        cout<<endl;
+
+
+}
+
 void runGame() {
     cout << endl;
     cout << "Welcome to Nevin's and Peter's Memory Card Game Fall 2018" << endl;
@@ -221,6 +238,8 @@ void runGame() {
         }
         printLeastToMostRubiesAndWinner(game);
     }else if(mode == 2){
+        std::map<std::string, Card*> cardMap;
+
         //if expertMode
         int round = 1;
         while (!rules.gameOver(game)) {
@@ -243,6 +262,10 @@ void runGame() {
                     turnFaceUp(*board, static_cast<Letter>(letter), static_cast<Number>(number));
                     Card *selectedCard = board->getCard(static_cast<Letter>(letter), static_cast<Number>(number));
                     rules.expertRules(selectedCard, game, static_cast<Letter>(letter), static_cast<Number>(number));
+
+                    cardMap[letter+ to_string(number)]=selectedCard;
+
+                    expertModePrint(cardMap);
                     game.setCurrentCard(selectedCard);
                 }
                 if (!rules.isValid(game)) {
