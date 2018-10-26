@@ -111,19 +111,41 @@ bool validNumber(int number, char letter) {
     }
 }
 
-void getValidInput(char *letter, int *number, Game game) {
-    cout << "Pick a letter from A-E : ";
-    *letter = 'z';
-    while (!validLetter(*letter)) {
-        cin >> *letter;
-    }
-    cout << "Pick a number from 1-5 : ";
-    *number = 0;
-    while (!validNumber(*number, *letter)) {
-        cin >> *number;
-    }
-    //TODO a player can't pick the same card which is already facing up
+int convert2Char(char* letter){
+   int  num = -1;
+   if(*letter=='A'){
+       num = 0;
+   }else if(*letter=='B'){
+       num = 1;
+   }else if(*letter=='C'){
+       num = 2;
+   }else if(*letter=='D'){
+       num = 3;
+   }else if(*letter=='E'){
+       num = 4;
+   }else{
+       num = -1;
+   }
+   return num;
+}
 
+
+void getValidInput(char *letter, int *number, Game game) {
+    do {
+        *letter = 'z';
+        while (!validLetter(*letter)) {
+            cout << "Pick a letter from A-E : ";
+            cin >> *letter;
+        }
+        *number = -1;
+        while (!validNumber(*number, *letter)) {
+            cout << "Pick a number from 1-5 : ";
+            cin >> *number;
+        }
+        if(!(game.getBoard().isFaceDown(convert2Char(letter),*number-1))){
+            cout<<"Card already up!"<<endl;
+        }
+    }while(!(game.getBoard().isFaceDown(convert2Char(letter),*number-1)));
 }
 
 void runGame() {
@@ -198,6 +220,15 @@ void runGame() {
 
 int main() {
     //runGame();
+    int numer = -1;
+    char c ='z';
+    int* num=&numer;
+    char* letter=&c;
+    Game game;
+    Board *board = &game.getBoard();
+    board->turnFaceUp(A, One);
+    cout<<game<<endl;
+    getValidInput(letter, num, game);
     cout << "No Errors" << endl;
     return 0;
 }
