@@ -22,7 +22,7 @@ void pause() {
     cin.ignore();
 }
 
-void temporaryRevealThreeCards(Game &game) {
+void temporaryRevealThreeCards(Game &game, int mode) {
     cout << "Three random cards are revealed temporary in front of the players" << endl;
     Board *board = &game.getBoard();
     for (int i = 0; i < game.getNPlayers(); i++) {
@@ -46,7 +46,10 @@ void temporaryRevealThreeCards(Game &game) {
             board->turnFaceUp(D, Five);
         }
     }
-    cout << game << endl;
+    if(mode == 1){
+
+        cout << game << endl;
+    }
     //pause();
     cout << "Cards are hidden now" << endl;
 }
@@ -183,12 +186,12 @@ void runGame() {
     Rules rules;
     Board *board = &game.getBoard();
     if(mode == 1){
-
+    //if normal mode
         int round = 1;
         while (!rules.gameOver(game)) {
             board->reset();
             game.setAllPlayersActive();
-            temporaryRevealThreeCards(game);
+            temporaryRevealThreeCards(game,mode);
             board->reset();
             while (!rules.roundOver(game)) { //{Peter , Nevin, Divyang }
 
@@ -218,7 +221,44 @@ void runGame() {
         }
         printLeastToMostRubiesAndWinner(game);
     }else if(mode == 2){
-        cout<<"Mode 2"<<endl;
+        //if expertMode
+        int round = 1;
+        while (!rules.gameOver(game)) {
+            cout<<"Expert Mode"<<endl;
+            board->reset();
+            game.setAllPlayersActive();
+            temporaryRevealThreeCards(game,mode);
+            board->reset();
+            while (!rules.roundOver(game)) { //{Peter , Nevin, Divyang }
+                cout<<"Expert Mode 2"<<endl;
+
+
+                Player &currentPlayer = game.getPlayer(); // , Nevin, Divyang, Peter  but now is Peter
+                cout << "Round: " << round << " , Turn: " << currentPlayer.getName() << endl;
+
+                if (currentPlayer.isActive()) {
+                    char letter = 'z';
+                    int number = 0;
+                    getValidInput(&letter, &number, board);
+                    turnFaceUp(*board, static_cast<Letter>(letter), static_cast<Number>(number));
+                    Card *selectedCard = board->getCard(static_cast<Letter>(letter), static_cast<Number>(number));
+                    rules.expertRules(selectedCard, game, static_cast<Letter>(letter), static_cast<Number>(number));
+                    game.setCurrentCard(selectedCard);
+                }
+                if (!rules.isValid(game)) {
+                    if (game.twoCardsSelected()) {
+                        game.setPlayersActive(false);
+                    }
+                }
+                if (game.twoCardsSelected()) {
+                    game.clearSelectedCards();
+                }
+
+            }
+            game.setRound(++round);
+            awardActivePlayers(game);
+        }
+        printLeastToMostRubiesAndWinner(game);
     }
 }
 
