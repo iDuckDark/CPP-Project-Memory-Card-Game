@@ -16,6 +16,7 @@
 #include "player.h"
 #include "card.h"
 #include "board.h"
+#include "rewarddeck.h"
 
 class Game {
 
@@ -23,6 +24,9 @@ private:
     int nRound;
 
     Board board;
+
+    RewardDeck rewardDeck;
+
 
 public:
     queue<vector<const Card *>> cardQueue;

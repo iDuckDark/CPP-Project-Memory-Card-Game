@@ -15,6 +15,7 @@ RewardDeck::RewardDeck() {
     }
     deck->emplace_back(Reward{3});
     deck->emplace_back(Reward{4});
+    Deck<Reward>::shuffle();
 
 }
 RewardDeck::~RewardDeck() {

@@ -36,7 +36,7 @@ public:
 
     C* getNext() {
         if (!(*deck).empty()) {
-            Card *last = &(*deck).back();
+            C *last = &(*deck).back();
             deck->pop_back();
             return last;
         }

@@ -25,8 +25,6 @@ public:
     ~RewardDeck();
 
 //    void shuffle() override;
-
-    vector<Reward>* deck;
 private:
 };
 

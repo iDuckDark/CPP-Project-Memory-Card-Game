@@ -101,11 +101,9 @@ void Game::awardActivePlayers() {
     for (int i = 0; i < playersQueue.size(); i++) {
         Player player = playersQueue.front();
         if (player.isActive()) {
-            srand(time(NULL));
-            int randomRubies = (rand() % 4) + 1;
-            Reward reward(randomRubies);
+            Reward reward = *rewardDeck.getNext();
             player.addReward(reward);
-            cout << "Awarded " << player.getName() << " with Rubies: " << reward.getNRubies() << endl;
+            cout << "Awarded " << player.getName() <<": "<< reward <<"!" <<endl;
         }
         playersQueue.pop();
         playersQueue.push(player);
