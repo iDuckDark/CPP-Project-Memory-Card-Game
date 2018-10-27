@@ -6,17 +6,17 @@
 
 
 bool Rules::isValid(const Game &game) {
-    cout << "TEST RULES IS VALID?" << endl;
+    cout << endl << "TEST RULES IS VALID? " << endl;
     if (game.twoCardsSelected()) {
-        cout << "Previous card" << endl << *game.getPreviousCard() << endl;
-        cout << "Next card" << endl << *game.getCurrentCard() << endl;
-        if (game.getPreviousCard() == game.getCurrentCard()) {
+        cout << "Previous & Next card Equal? " << (game.getPreviousCard() == game.getCurrentCard()) << endl
+             << *game.getPreviousCard() << endl << *game.getCurrentCard() << endl;
+        if (*game.getPreviousCard() == *game.getCurrentCard()) {
             return true;
         } else {
             return false;
         }
     }
-    cout << "NO TWO CARDS SELECTED" << endl;
+    cout << "NO TWO CARDS SELECTED" << endl << endl;
     return false;
 }
 
@@ -30,50 +30,50 @@ bool Rules::roundOver(const Game &game) {
 }
 
 
-void Rules::expertRules(Card* card, Game &game,Letter letter, Number number){
-    if (card->getAnimal()== 'O'){
-        expertOctopus(card,game,letter,number);
-    }else if (card->getAnimal()== 'P'){
-        expertPenguin(card,game,letter,number);
-    }else if (card->getAnimal()== 'C'){
-        expertCrab(card,game,letter,number);
-    }else if (card->getAnimal()== 'W'){
-        expertWalrus(card,game,letter,number);
-    }else{//Turtle
-        expertTurtle(card,game,letter,number);
+void Rules::expertRules(Card *card, Game &game, Letter letter, Number number) {
+    if (card->getAnimal() == 'O') {
+        expertOctopus(card, game, letter, number);
+    } else if (card->getAnimal() == 'P') {
+        expertPenguin(card, game, letter, number);
+    } else if (card->getAnimal() == 'C') {
+        expertCrab(card, game, letter, number);
+    } else if (card->getAnimal() == 'W') {
+        expertWalrus(card, game, letter, number);
+    } else {//Turtle
+        expertTurtle(card, game, letter, number);
     }
 }
 
-void Rules::expertOctopus(Card* card, Game &game,Letter letter, Number number){
-    cout<<"Octopus"<<endl;
+void Rules::expertOctopus(Card *card, Game &game, Letter letter, Number number) {
+    cout << "Octopus" << endl;
     game.setPlayersActive(true);
     // When an octopus card is turned over, the
     //card is exchanging position with an adjacent card in the same row or the same column (4-neighbourhood)
     //The adjacent card may be face up or down and will remain unchanged.
 }
 
-void Rules::expertPenguin(Card* card, Game &game,Letter letter, Number number){
-    cout<<"Penguin"<<endl;
+void Rules::expertPenguin(Card *card, Game &game, Letter letter, Number number) {
+    cout << "Penguin" << endl;
     //If a player turns over a penguin,
     //then this player is allowed to turn a face-up card face-down. If the penguin is the first card turned up, no
     //special action will take place.
 
 }
 
-void Rules::expertWalrus(Card* card, Game &game,Letter letter, Number number){
-    cout<<"Walrus"<<endl;
+void Rules::expertWalrus(Card *card, Game &game, Letter letter, Number number) {
+    cout << "Walrus" << endl;
 //The walrus enables a player to block a face down card for the next player
 //and hence the next player must choose another location.
 }
 
-void Rules::expertCrab(Card* card, Game &game,Letter letter, Number number){
-    cout<<"Crab"<<endl;
+void Rules::expertCrab(Card *card, Game &game, Letter letter, Number number) {
+    cout << "Crab" << endl;
 //The player who turns over a crab card must
 //immediately turn over another card. If that card does not fit, the player loses the current round.
 }
 
-void Rules::expertTurtle(Card* card, Game &game,Letter letter, Number number){
-    cout<<"Turtle"<<endl;
+void Rules::expertTurtle(Card *card, Game &game, Letter letter, Number number) {
+    cout << "Turtle" << endl;
 //. Finally,
 //with the turtle the next player in the current round is skipped, i.e., the next player will not turn over a card
 //and will not lose in the next step.

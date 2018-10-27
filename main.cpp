@@ -46,7 +46,7 @@ void temporaryRevealThreeCards(Game &game, int mode) {
             board->turnFaceUp(D, Five);
         }
     }
-    if(mode == 1){
+    if (mode == 1) {
 
         cout << game << endl;
     }
@@ -148,25 +148,22 @@ void getValidInput(char *letter, int *number, Board *board) {
         if (!(board->isFaceDown(convert2Char(letter), *number - 1))) {
             cout << "Card already up!" << endl;
         }
-        cout << "HERE" << endl;
     } while (!(board->isFaceDown(convert2Char(letter), *number - 1)));
 }
 
-void expertModePrint(std::map<std::string, Card*> cardMap){
-    //pprint cards
-    for(int i = 0;i<3;i++){
-        for( auto const& [key, val] : cardMap ) {
+void expertModePrint(std::map<std::string, Card *> cardMap) {
+    //print cards
+    for (int i = 0; i < 3; i++) {
+        for (auto const&[key, val] : cardMap) {
             cout << (*val)(i) + " ";
         }
-        cout<<endl;
+        cout << endl;
     }
     //print location
-        for( auto const& [key, val] : cardMap ) {
-            cout << key + "  ";
-        }
-        cout<<endl;
-
-
+    for (auto const&[key, val] : cardMap) {
+        cout << key + "  ";
+    }
+    cout << endl;
 }
 
 void runGame() {
@@ -202,13 +199,13 @@ void runGame() {
     }
     Rules rules;
     Board *board = &game.getBoard();
-    if(mode == 1){
-    //if normal mode
+    if (mode == 1) {
+        //if normal mode
         int round = 1;
         while (!rules.gameOver(game)) {
             board->reset();
             game.setAllPlayersActive();
-            temporaryRevealThreeCards(game,mode);
+            temporaryRevealThreeCards(game, mode);
             board->reset();
             while (!rules.roundOver(game)) { //{Peter , Nevin, Divyang }
 
@@ -237,19 +234,19 @@ void runGame() {
             awardActivePlayers(game);
         }
         printLeastToMostRubiesAndWinner(game);
-    }else if(mode == 2){
-        std::map<std::string, Card*> cardMap;
+    } else if (mode == 2) {
+        std::map<std::string, Card *> cardMap;
 
         //if expertMode
         int round = 1;
         while (!rules.gameOver(game)) {
-            cout<<"Expert Mode"<<endl;
+            cout << "Expert Mode" << endl;
             board->reset();
             game.setAllPlayersActive();
-            temporaryRevealThreeCards(game,mode);
+            temporaryRevealThreeCards(game, mode);
             board->reset();
             while (!rules.roundOver(game)) { //{Peter , Nevin, Divyang }
-                cout<<"Expert Mode 2"<<endl;
+                cout << "Expert Mode 2" << endl;
 
 
                 Player &currentPlayer = game.getPlayer(); // , Nevin, Divyang, Peter  but now is Peter
@@ -263,7 +260,7 @@ void runGame() {
                     Card *selectedCard = board->getCard(static_cast<Letter>(letter), static_cast<Number>(number));
                     rules.expertRules(selectedCard, game, static_cast<Letter>(letter), static_cast<Number>(number));
 
-                    cardMap[letter+ to_string(number)]=selectedCard;
+                    cardMap[letter + to_string(number)] = selectedCard;
 
                     expertModePrint(cardMap);
                     game.setCurrentCard(selectedCard);
