@@ -8,7 +8,7 @@
 bool Rules::isValid(const Game &game) {
     cout << endl << "TEST RULES IS VALID? " << endl;
     if (game.twoCardsSelected()) {
-        cout << "Previous & Next card Equal? " << (game.getPreviousCard() == game.getCurrentCard()) << endl
+        cout << "Previous & Next card Equal? " << (*game.getPreviousCard() == *game.getCurrentCard()) << endl
              << *game.getPreviousCard() << endl << *game.getCurrentCard() << endl;
         if (*game.getPreviousCard() == *game.getCurrentCard()) {
             return true;
