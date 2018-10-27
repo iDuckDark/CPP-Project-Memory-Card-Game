@@ -18,7 +18,6 @@ class Player {
 private:
     string name;
     bool active;
-    vector<Reward> rewards;
     bool endOfGame;
     string sideOfTheBoard;
     int nRubies;
@@ -27,7 +26,7 @@ public:
 
     Player() = default;
 
-    Player(string name, string sideOfTheBoard, int nRubies);
+    Player(string name, string sideOfTheBoard);
 
     string getName() const;
 

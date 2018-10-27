@@ -59,6 +59,8 @@ public:
 
     void clearSelectedCards();
 
+    void awardActivePlayers();
+
     friend ostream &operator<<(ostream &os, const Game &game);
 };
 

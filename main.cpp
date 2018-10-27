@@ -72,33 +72,21 @@ void turnFaceUp(Board &board, char letter, int number) {
     board.turnFaceUp(letterMap[letter], numberMap[number]);
 }
 
-void awardActivePlayers(Game &game) {
-    for (int i = 0; i < game.getNPlayers(); i++) {
-        Player player = game.getPlayer();
-        if (player.isActive()) {
-            srand(time(NULL));
-            int randomRubies = (rand() % 4) + 1;
-            Reward reward(randomRubies);
-            player.addReward(reward);
-        }
-    }
-}
-
 void printLeastToMostRubiesAndWinner(Game &game) {
-    set<pair<int, Player> > playersSet;
+    vector<Player> players;
     for (int i = 0; i < game.getNPlayers(); i++) {
         Player &player = game.getPlayer();
         player.setDisplayMode(true);
-        playersSet.insert({player.getNRubies(), player});
+        players.push_back(player);
     }
-    int winCounter = 0;
-    for (set<pair<int, Player>>::iterator i = playersSet.begin(); i != playersSet.end(); i++) {
-        pair<int, Player> element = *i;
-        if (winCounter == game.getNPlayers() - 1) {
+    int winCounter = 1;
+    sort(players.begin(), players.end());
+    for (auto player : players) {
+        if (winCounter == players.size()) {
             cout << "Winner : ";
         }
-        cout << element.second << endl;
         winCounter++;
+        cout << player.getName() << " with Rubies: " << player.getNRubies() << endl;
     }
 }
 
@@ -194,7 +182,7 @@ void runGame() {
     Game game;
     string sides[4] = {"top", "bottom", "left", "right"};
     for (int i = 0; i < nPlayers; i++) {
-        Player player(names[i], sides[i], 0);
+        Player player(names[i], sides[i]);
         game.addPlayer(player);
     }
     Rules rules;
@@ -231,7 +219,7 @@ void runGame() {
                 cout << game << endl;
             }
             game.setRound(++round);
-            awardActivePlayers(game);
+            game.awardActivePlayers();
         }
         printLeastToMostRubiesAndWinner(game);
     } else if (mode == 2) {
@@ -276,7 +264,7 @@ void runGame() {
 
             }
             game.setRound(++round);
-            awardActivePlayers(game);
+            game.awardActivePlayers();
         }
         printLeastToMostRubiesAndWinner(game);
     }
@@ -323,7 +311,7 @@ int main() {
 
 //    Player peter{"Peter", "top", 1};
 //    Player nevin{"Nevin", "left", 2};
-//    Player div{"Divyang", "top", 3};
+//    Player div{"Divyang", "bottom", 3};
 //    game.addPlayer(peter);
 //    game.addPlayer(nevin);
 //    game.addPlayer(div);

@@ -4,10 +4,8 @@
 
 #include "player.h"
 
-Player::Player(string name, string sideOfTheBoard, int nRubies) : name(name), sideOfTheBoard(sideOfTheBoard),
-                                                                  nRubies(nRubies) {
-    active = true;
-    endOfGame = false;
+Player::Player(string name, string sideOfTheBoard) : name(name), sideOfTheBoard(sideOfTheBoard),
+                                                     nRubies(0), active(true) , endOfGame(false){
 }
 
 string Player::getName() const {
@@ -27,7 +25,8 @@ int Player::getNRubies() const {
 }
 
 void Player::addReward(const Reward &reward) {
-    rewards.push_back(reward);
+    //rewards.push_back(reward);
+    nRubies += reward.getNRubies();
 }
 
 void Player::setDisplayMode(bool endOfGame) {

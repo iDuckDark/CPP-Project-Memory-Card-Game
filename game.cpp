@@ -97,6 +97,21 @@ void Game::clearSelectedCards() {
     cardQueue.back() = cardVector;  //Updates Peter's Cards
 }
 
+void Game::awardActivePlayers() {
+    for (int i = 0; i < playersQueue.size(); i++) {
+        Player player = playersQueue.front();
+        if (player.isActive()) {
+            srand(time(NULL));
+            int randomRubies = (rand() % 4) + 1;
+            Reward reward(randomRubies);
+            player.addReward(reward);
+            cout << "Awarded " << player.getName() << " with Rubies: " << reward.getNRubies() << endl;
+        }
+        playersQueue.pop();
+        playersQueue.push(player);
+    }
+}
+
 ostream &operator<<(ostream &os, const Game &game) {
     os << game.board << endl;
     queue tempQueue = game.playersQueue;
