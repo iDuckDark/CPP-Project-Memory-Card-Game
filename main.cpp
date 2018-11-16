@@ -22,23 +22,24 @@ void temporaryRevealThreeCards(Game &game, int mode) {
     Board *board = &game.getBoard();
     for (int i = 0; i < game.getNPlayers(); i++) {
         Player player = game.getPlayer();
-        string side = sideToString(player.getSide());
-        if (side == "top") {
-            board->turnFaceUp(A, Two);
-            board->turnFaceUp(A, Three);
-            board->turnFaceUp(A, Four);
-        } else if (side == "bottom") {
-            board->turnFaceUp(E, Two);
-            board->turnFaceUp(E, Three);
-            board->turnFaceUp(E, Four);
-        } else if (side == "right") {
-            board->turnFaceUp(B, One);
-            board->turnFaceUp(C, One);
-            board->turnFaceUp(D, One);
-        } else {
-            board->turnFaceUp(B, Five);
-            board->turnFaceUp(C, Five);
-            board->turnFaceUp(D, Five);
+        Side side = player.getSide();
+        switch (side) {
+            case Top:
+                board->turnFaceUp(A, Two);
+                board->turnFaceUp(A, Three);
+                board->turnFaceUp(A, Four);
+            case Bottom :
+                board->turnFaceUp(E, Two);
+                board->turnFaceUp(E, Three);
+                board->turnFaceUp(E, Four);
+            case Right:
+                board->turnFaceUp(B, One);
+                board->turnFaceUp(C, One);
+                board->turnFaceUp(D, One);
+            case Left:
+                board->turnFaceUp(B, Five);
+                board->turnFaceUp(C, Five);
+                board->turnFaceUp(D, Five);
         }
     }
     if (mode == 1) {
@@ -46,6 +47,7 @@ void temporaryRevealThreeCards(Game &game, int mode) {
     }
     cout << "Cards are hidden now" << endl;
 }
+
 
 void turnFaceUp(Board &board, char letter, int number) {
     unordered_map<char, Letter> letterMap;

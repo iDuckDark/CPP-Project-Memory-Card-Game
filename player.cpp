@@ -4,7 +4,7 @@
 
 #include "player.h"
 
-Player::Player(string name) : name(name), nRubies(0), active(true), endOfGame(false) {}
+Player::Player(string name) : name(name), nRubies(0), active(true), endOfGame(false), side(Top) {}
 
 string Player::getName() const { return name; }
 
@@ -18,24 +18,9 @@ void Player::addReward(const Reward &reward) { nRubies += reward.getNRubies(); }
 
 void Player::setDisplayMode(bool endOfGame) { this->endOfGame = endOfGame; }
 
-Side Player::getSide() const {
-    return side;
-}
+Side Player::getSide() const { return side; }
 
 void Player::setSide(Side side) { this->side = side; }
-
-string sideToString(Side side) {
-    switch (side) {
-        case Top:
-            return "Top";
-        case Bottom:
-            return "Bottom";
-        case Right:
-            return "Right";
-        default:
-            return "Left";
-    }
-}
 
 ostream &operator<<(ostream &os, const Player &player) {
     os << player.getName() << ": " << player.getSide();
@@ -46,7 +31,6 @@ ostream &operator<<(ostream &os, const Player &player) {
     }
     return os;
 }
-
 
 bool operator<(const Player &lhs, const Player &rhs) { return lhs.getNRubies() < rhs.getNRubies(); }
 

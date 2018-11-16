@@ -1,23 +1,14 @@
 #include "reward.h"
 
 Reward::Reward(int nRubies) {
-    if (nRubies >= 1 && nRubies <= 4) {
-        _nRubies = nRubies;
-    } else {
-        //TODO throw exception error to prevent contructor from being contruct
-        cout << "Error Initializing Reward: Rubies must be only 1 to 4! " << endl;
-    }
+    if (nRubies >= 1 && nRubies <= 4) _nRubies = nRubies;
+    else throw out_of_range("Error Initializing Reward: Rubies must be only 1 to 4! ");
 }
 
+int Reward::getNRubies() const { return _nRubies; }
 
 ostream &operator<<(ostream &os, const Reward &reward) {
-    if (reward.getNRubies() > 1) {
-
-        os << "Reward has " << reward.getNRubies() << " Rubies";
-    } else {
-        os << "Reward has 1 Ruby";
-
-    }
+    os << "Reward has " << reward.getNRubies() << (reward.getNRubies() > 1 ? " Rubies" : " Ruby");
     return os;
 }
 
@@ -25,6 +16,3 @@ ostream &operator<<(ostream &os, const Reward &reward) {
 //    return other1.getNRubies() < other2.getNRubies();
 //}
 
-int Reward::getNRubies() const {
-    return _nRubies;
-}

@@ -12,12 +12,10 @@
 
 using namespace std;
 
-//TODO change to enum class
+//TODO change to enum class?
 enum Side {
     Top, Bottom, Right, Left
 };
-
-string sideToString(Side);
 
 class Player {
 
@@ -26,7 +24,6 @@ private:
     bool active;
     bool endOfGame;
     Side side;
-    string sideOfTheBoard;
     int nRubies;
 
 public:
@@ -56,7 +53,6 @@ public:
     friend bool operator>(const Player &, const Player &);
 
     friend bool operator==(const Player &, const Player &);
-
 };
 
 
