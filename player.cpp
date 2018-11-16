@@ -6,49 +6,39 @@
 
 Player::Player(string name) : name(name), nRubies(0), active(true), endOfGame(false) {}
 
-Player::Player(string name, Side side) : name(name), side(side), nRubies(0), active(true), endOfGame(false) {}
+string Player::getName() const { return name; }
 
-Player::Player(string name, string sideOfTheBoard) :
-        name(name),
-        sideOfTheBoard(sideOfTheBoard),
-        nRubies(0), active(true), endOfGame(false) {
-}
+void Player::setActive(bool active) { this->active = active; }
 
-string Player::getName() const {
-    return name;
-}
+bool Player::isActive() { return active; }
 
-void Player::setActive(bool active) {
-    this->active = active;
-}
+int Player::getNRubies() const { return nRubies; }
 
-bool Player::isActive() {
-    return active;
-}
+void Player::addReward(const Reward &reward) { nRubies += reward.getNRubies(); }
 
-int Player::getNRubies() const {
-    return nRubies;
-}
-
-void Player::addReward(const Reward &reward) {
-    //rewards.push_back(reward);
-    nRubies += reward.getNRubies();
-}
-
-void Player::setDisplayMode(bool endOfGame) {
-    this->endOfGame = endOfGame;
-}
+void Player::setDisplayMode(bool endOfGame) { this->endOfGame = endOfGame; }
 
 Side Player::getSide() const {
     return side;
 }
 
-void Player::setSide(Side side) {
-    this->side = side;
+void Player::setSide(Side side) { this->side = side; }
+
+string sideToString(Side side) {
+    switch (side) {
+        case Top:
+            return "Top";
+        case Bottom:
+            return "Bottom";
+        case Right:
+            return "Right";
+        default:
+            return "Left";
+    }
 }
 
 ostream &operator<<(ostream &os, const Player &player) {
-    os << player.getName() << ": " << player.getSideOfTheBoard();
+    os << player.getName() << ": " << player.getSide();
     if (!player.endOfGame) {
         os << " (" << (player.active ? "active" : "inactive") << ")" << endl;
     } else {
@@ -57,20 +47,9 @@ ostream &operator<<(ostream &os, const Player &player) {
     return os;
 }
 
-bool operator<(const Player &lhs, const Player &rhs) {
-    return lhs.getNRubies() < rhs.getNRubies();
-}
 
-bool operator>(const Player &lhs, const Player &rhs) {
-    return lhs.getNRubies() > rhs.getNRubies();
-}
+bool operator<(const Player &lhs, const Player &rhs) { return lhs.getNRubies() < rhs.getNRubies(); }
 
-bool operator==(const Player &lhs, const Player &rhs) {
-    return lhs.getNRubies() == rhs.getNRubies();
-}
+bool operator>(const Player &lhs, const Player &rhs) { return lhs.getNRubies() > rhs.getNRubies(); }
 
-//Added Own Functions
-
-string Player::getSideOfTheBoard() const {
-    return this->sideOfTheBoard;
-}
+bool operator==(const Player &lhs, const Player &rhs) { return lhs.getNRubies() == rhs.getNRubies(); }

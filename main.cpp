@@ -22,7 +22,7 @@ void temporaryRevealThreeCards(Game &game, int mode) {
     Board *board = &game.getBoard();
     for (int i = 0; i < game.getNPlayers(); i++) {
         Player player = game.getPlayer();
-        string side = player.getSideOfTheBoard();
+        string side = sideToString(player.getSide());
         if (side == "top") {
             board->turnFaceUp(A, Two);
             board->turnFaceUp(A, Three);
@@ -160,7 +160,7 @@ void runGame() {
         cin >> mode;
     }
     cout << "Number of Players " << "(Minimum 2 - Maximum 4) : ";
-    int nPlayers=0;
+    int nPlayers = 0;
     cin >> nPlayers;
     while ((nPlayers < 2 || nPlayers > 4)) {
         cout << "Invalid input, please try again: " << endl;
@@ -173,9 +173,10 @@ void runGame() {
     }
 
     Game game;
-    string sides[4] = {"top", "bottom", "left", "right"};
+    Side sides[4] = {Top, Bottom, Left, Right};
     for (int i = 0; i < nPlayers; i++) {
-        Player player(names[i], sides[i]);
+        Player player{names[i]};
+        player.setSide(sides[i]);
         game.addPlayer(player);
     }
     Rules rules;
@@ -188,7 +189,7 @@ void runGame() {
             game.setAllPlayersActive();
             temporaryRevealThreeCards(game, mode);
             board->reset();
-            while (!rules.roundOver(game)) { //{Peter , Nevin, Divyang }
+            while (!rules.roundOver(game)) { //{Peter , Nevin, Divyang, Hansel }
 
                 Player &currentPlayer = game.getPlayer(); // , Nevin, Divyang, Peter  but now is Peter
                 cout << "Round: " << round << " , Turn: " << currentPlayer.getName() << endl;
