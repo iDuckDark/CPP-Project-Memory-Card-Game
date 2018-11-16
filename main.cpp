@@ -16,11 +16,6 @@
 
 using namespace std;
 
-void pause() {
-    cin.clear();
-    cout << endl << "Press enter to continue...";
-    cin.ignore();
-}
 
 void temporaryRevealThreeCards(Game &game, int mode) {
     cout << "Three random cards are revealed temporary in front of the players" << endl;
@@ -49,7 +44,6 @@ void temporaryRevealThreeCards(Game &game, int mode) {
     if (mode == 1) {
         cout << game << endl;
     }
-    //pause();
     cout << "Cards are hidden now" << endl;
 }
 
@@ -166,13 +160,13 @@ void runGame() {
         cin >> mode;
     }
     cout << "Number of Players " << "(Minimum 2 - Maximum 4) : ";
-    int nPlayers = 0;
+    int nPlayers=0;
     cin >> nPlayers;
     while ((nPlayers < 2 || nPlayers > 4)) {
         cout << "Invalid input, please try again: " << endl;
         cin >> nPlayers;
     }
-    string names[nPlayers];
+    vector<string> names(nPlayers);
     for (int i = 0; i < nPlayers; i++) {
         cout << "Enter name for Player number " << (i + 1) << ": ";
         cin >> names[i];
@@ -271,53 +265,7 @@ void runGame() {
 
 
 int main() {
-    runGame();
-
+    //runGame();
     return 0;
 }
 
-
-//board->turnFaceUp(A, One);
-//board->turnFaceUp(A, Two);
-//board->turnFaceUp(A, Three);
-//board->turnFaceUp(A, Four);
-//board->turnFaceUp(A, Five);
-//
-//
-//board->turnFaceUp(B, One);
-//board->turnFaceUp(B, Two);
-//board->turnFaceUp(B, Three);
-//board->turnFaceUp(B, Four);
-//board->turnFaceUp(B, Five);
-//
-//board->turnFaceUp(C, One);
-//board->turnFaceUp(C, Two);
-//board->turnFaceUp(C, Four);
-//board->turnFaceUp(C, Five);
-//
-//
-//board->turnFaceUp(D, One);
-//board->turnFaceUp(D, Two);
-//board->turnFaceUp(D, Three);
-//board->turnFaceUp(D, Four);
-//board->turnFaceUp(D, Five);
-//
-//board->turnFaceUp(E, One);
-//board->turnFaceUp(E, Two);
-//board->turnFaceUp(E, Three);
-//board->turnFaceUp(E, Four);
-//board->turnFaceUp(E, Five);
-
-
-//    Player peter{"Peter", "top", 1};
-//    Player nevin{"Nevin", "left", 2};
-//    Player div{"Divyang", "bottom", 3};
-//    game.addPlayer(peter);
-//    game.addPlayer(nevin);
-//    game.addPlayer(div);
-//
-//    cout << game.getPlayer() <<endl;
-//    cout << game.getPlayer() <<endl;
-//    cout << game.getPlayer() <<endl;
-//
-//    temporaryRevealThreeCards(*board, peter);
