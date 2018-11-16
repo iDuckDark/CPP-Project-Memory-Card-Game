@@ -12,8 +12,7 @@
 
 using namespace std;
 
-//TODO change to enum class?
-enum Side {
+enum class Side {
     Top, Bottom, Right, Left
 };
 
@@ -24,11 +23,18 @@ private:
     bool active;
     bool endOfGame;
     Side side;
+    string sideOfTheBoard;
     int nRubies;
 
 public:
 
+    Player() = default;
+
     Player(string name);
+
+    Player(string name, Side sideOfTheBoard);
+
+    Player(string name, string sideOfTheBoard);
 
     string getName() const;
 
@@ -46,13 +52,15 @@ public:
 
     void setSide(Side);
 
-    friend ostream &operator<<(ostream &, const Player &);
+    friend ostream &operator<<(ostream &os, const Player &player);
 
-    friend bool operator<(const Player &, const Player &);
+    friend bool operator<(const Player &lhs, const Player &rhs);
 
-    friend bool operator>(const Player &, const Player &);
+    friend bool operator>(const Player &lhs, const Player &rhs);
 
-    friend bool operator==(const Player &, const Player &);
+    friend bool operator==(const Player &lhs, const Player &rhs);
+
+    string getSideOfTheBoard() const;
 };
 
 

@@ -1,47 +1,55 @@
-#include "card.h"
+#include <iostream>
 
-Card::Card(FaceAnimal faceAnimal, FaceBackground faceBackground) :
-        _faceAnimal(faceAnimal),
-        _faceBackground(faceBackground),
-        _color(getColor()),
-        _animal(getAnimal()) {
+using namespace std;
+
+#include "card.h"
+#include <cmath>
+
+
+Card::Card(FaceAnimal faceAnimal, FaceBackground faceBackground) {
+    _faceAnimal = faceAnimal;
+    _faceBackground = faceBackground;
+    _color = getColor();
+    _animal = getAnimal();
 }
 
 int Card::getNRows() const { return _nRows; }
 
 
 char Card::getAnimal() const {
-    switch (_faceAnimal) {
-        case Crab:
-            return 'C';
-        case Penguin:
-            return 'P';
-        case Octopus:
-            return 'O';
-        case Turtle:
-            return 'T';
-        case Walrus:
-            return 'W';
-        default:
-            throw out_of_range("FaceAnimal is out of range");
+    char animal;
+    if (_faceAnimal == Crab) {
+        animal = 'C';
+    } else if (_faceAnimal == Penguin) {
+        animal = 'P';
+    } else if (_faceAnimal == Octopus) {
+        animal = 'O';
+    } else if (_faceAnimal == Turtle) {
+        animal = 'T';
+    } else if (_faceAnimal == Walrus) {
+        animal = 'W';
+    } else {
+        animal = '?';
     }
+    return animal;
 }
 
 char Card::getColor() const {
-    switch (_faceBackground) {
-        case Crab:
-            return 'r';
-        case Penguin:
-            return 'g';
-        case Octopus:
-            return 'p';
-        case Turtle:
-            return 'b';
-        case Walrus:
-            return 'y';
-        default:
-            throw out_of_range("FaceBackground is out of range");
+    char color;
+    if (_faceBackground == Red) {
+        color = 'r';
+    } else if (_faceBackground == Green) {
+        color = 'g';
+    } else if (_faceBackground == Purple) {
+        color = 'p';
+    } else if (_faceBackground == Blue) {
+        color = 'b';
+    } else if (_faceBackground == Yellow) {
+        color = 'y';
+    } else {
+        color = '?';
     }
+    return color;
 }
 
 ostream &operator<<(ostream &os, const Card &card) {
@@ -54,7 +62,9 @@ ostream &operator<<(ostream &os, const Card &card) {
 
 string Card::operator()(int row) const {
     string rowString{_color, _color, _color};
-    if (row == ceil(getNRows() / 2)) rowString[1] = _animal;
+    if (row == ceil(getNRows() / 2)) {
+        rowString[1] = _animal;
+    }
     return rowString;
 }
 

@@ -31,7 +31,7 @@ private:
 
     bool *faceDownCards[5];
 
-    vector<vector<Card *> *> cards2D;
+    vector<vector<Card *>*> cards2D;
 
     int getRowIndex(const Letter &letter) const;
 
@@ -62,3 +62,7 @@ public:
 };
 
 #endif //CPP_PROJECT_MEMORY_GAME_BOARD_H
+
+//int getStringRowIndex(const Letter &letter) const;
+//
+//int getStringColIndex(const Number &number) const;

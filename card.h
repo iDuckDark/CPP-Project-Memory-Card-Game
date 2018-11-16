@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include <string>
-#include <cmath>
 
 using namespace std;
 enum FaceAnimal {
@@ -16,9 +15,13 @@ enum FaceBackground {
 
 //TODO Need to give friend access to CardDeck,make constructor private
 class Card {
-
 public:
-    friend class CardDeck;
+
+    Card() = default;
+
+    Card(FaceAnimal faceAnimal, FaceBackground faceBackground);
+
+    //Card(const Card&);//making copy constructor private
 
     friend ostream &operator<<(ostream &os, const Card &card);
 
@@ -27,16 +30,10 @@ public:
     friend bool operator==(const Card &lhs, const Card &rhs);
 
     char getColor() const;
-
     char getAnimal() const;
 
 private:
-    //Card() = default;
-
-    Card(FaceAnimal faceAnimal, FaceBackground faceBackground);
-
-    //Card(const Card&);//making copy constructor private
-
+    friend class CardDeck;
     FaceAnimal _faceAnimal;
     FaceBackground _faceBackground;
     int _nRows = 3;
