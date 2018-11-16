@@ -4,142 +4,140 @@
 	<Project>
 		<Option title="Cpp_Project_Memory_Game"/>
 		<Option makefile_is_custom="1"/>
-		<Option compiler="msvc8"/>
+		<Option compiler="gcc"/>
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/cmake-build-debug"/>
+				<Option working_dir="/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="nmake /NOLOGO /f Y:\Documents\GitHub\CPP-Project-Memory-Card-Game\cmake-build-debug\Makefile VERBOSE=1 all"/>
-					<CompileFile command="nmake /NOLOGO /f Y:\Documents\GitHub\CPP-Project-Memory-Card-Game\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f Y:\Documents\GitHub\CPP-Project-Memory-Card-Game\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f Y:\Documents\GitHub\CPP-Project-Memory-Card-Game\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j12 -f &quot;/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/cmake-build-debug"/>
+				<Option working_dir="/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="nmake /NOLOGO /f Y:\Documents\GitHub\CPP-Project-Memory-Card-Game\cmake-build-debug\Makefile VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="nmake /NOLOGO /f Y:\Documents\GitHub\CPP-Project-Memory-Card-Game\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f Y:\Documents\GitHub\CPP-Project-Memory-Card-Game\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f Y:\Documents\GitHub\CPP-Project-Memory-Card-Game\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="Cpp_Project_Memory_Game">
-				<Option output="Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/cmake-build-debug/Cpp_Project_Memory_Game.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="msvc8"/>
-				<Compiler>
-					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.15.26726\ATLMFC\include"/>
-					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.15.26726\include"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17134.0\ucrt"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17134.0\shared"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17134.0\um"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17134.0\winrt"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17134.0\cppwinrt"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="nmake /NOLOGO /f Y:\Documents\GitHub\CPP-Project-Memory-Card-Game\cmake-build-debug\Makefile VERBOSE=1 Cpp_Project_Memory_Game"/>
-					<CompileFile command="nmake /NOLOGO /f Y:\Documents\GitHub\CPP-Project-Memory-Card-Game\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f Y:\Documents\GitHub\CPP-Project-Memory-Card-Game\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f Y:\Documents\GitHub\CPP-Project-Memory-Card-Game\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="Cpp_Project_Memory_Game/fast">
-				<Option output="Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/cmake-build-debug/Cpp_Project_Memory_Game.exe" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/cmake-build-debug"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="msvc8"/>
-				<Compiler>
-					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.15.26726\ATLMFC\include"/>
-					<Add directory="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.15.26726\include"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17134.0\ucrt"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17134.0\shared"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17134.0\um"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17134.0\winrt"/>
-					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.17134.0\cppwinrt"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="nmake /NOLOGO /f Y:\Documents\GitHub\CPP-Project-Memory-Card-Game\cmake-build-debug\Makefile VERBOSE=1 Cpp_Project_Memory_Game/fast"/>
-					<CompileFile command="nmake /NOLOGO /f Y:\Documents\GitHub\CPP-Project-Memory-Card-Game\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f Y:\Documents\GitHub\CPP-Project-Memory-Card-Game\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f Y:\Documents\GitHub\CPP-Project-Memory-Card-Game\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j12 -f &quot;/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/cmake-build-debug"/>
+				<Option working_dir="/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="nmake /NOLOGO /f Y:\Documents\GitHub\CPP-Project-Memory-Card-Game\cmake-build-debug\Makefile VERBOSE=1 edit_cache"/>
-					<CompileFile command="nmake /NOLOGO /f Y:\Documents\GitHub\CPP-Project-Memory-Card-Game\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="nmake /NOLOGO /f Y:\Documents\GitHub\CPP-Project-Memory-Card-Game\cmake-build-debug\Makefile VERBOSE=1 clean"/>
-					<DistClean command="nmake /NOLOGO /f Y:\Documents\GitHub\CPP-Project-Memory-Card-Game\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j12 -f &quot;/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Cpp_Project_Memory_Game">
+				<Option output="/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/cmake-build-debug/Cpp_Project_Memory_Game" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/10.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/cmake-build-debug/Makefile&quot;  VERBOSE=1 Cpp_Project_Memory_Game"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Cpp_Project_Memory_Game/fast">
+				<Option output="/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/cmake-build-debug/Cpp_Project_Memory_Game" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/10.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/cmake-build-debug/Makefile&quot;  VERBOSE=1 Cpp_Project_Memory_Game/fast"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/board.cpp">
+		<Unit filename="/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/board.cpp">
 			<Option target="Cpp_Project_Memory_Game"/>
 		</Unit>
-		<Unit filename="Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/board.h">
+		<Unit filename="/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/board.h">
 			<Option target="Cpp_Project_Memory_Game"/>
 		</Unit>
-		<Unit filename="Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/card.cpp">
+		<Unit filename="/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/card.cpp">
 			<Option target="Cpp_Project_Memory_Game"/>
 		</Unit>
-		<Unit filename="Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/card.h">
+		<Unit filename="/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/card.h">
 			<Option target="Cpp_Project_Memory_Game"/>
 		</Unit>
-		<Unit filename="Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/carddeck.cpp">
+		<Unit filename="/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/carddeck.cpp">
 			<Option target="Cpp_Project_Memory_Game"/>
 		</Unit>
-		<Unit filename="Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/carddeck.h">
+		<Unit filename="/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/carddeck.h">
 			<Option target="Cpp_Project_Memory_Game"/>
 		</Unit>
-		<Unit filename="Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/deck.cpp">
+		<Unit filename="/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/deck.cpp">
 			<Option target="Cpp_Project_Memory_Game"/>
 		</Unit>
-		<Unit filename="Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/deck.h">
+		<Unit filename="/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/deck.h">
 			<Option target="Cpp_Project_Memory_Game"/>
 		</Unit>
-		<Unit filename="Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/game.cpp">
+		<Unit filename="/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/game.cpp">
 			<Option target="Cpp_Project_Memory_Game"/>
 		</Unit>
-		<Unit filename="Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/game.h">
+		<Unit filename="/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/game.h">
 			<Option target="Cpp_Project_Memory_Game"/>
 		</Unit>
-		<Unit filename="Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/main.cpp">
+		<Unit filename="/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/main.cpp">
 			<Option target="Cpp_Project_Memory_Game"/>
 		</Unit>
-		<Unit filename="Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/player.cpp">
+		<Unit filename="/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/player.cpp">
 			<Option target="Cpp_Project_Memory_Game"/>
 		</Unit>
-		<Unit filename="Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/player.h">
+		<Unit filename="/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/player.h">
 			<Option target="Cpp_Project_Memory_Game"/>
 		</Unit>
-		<Unit filename="Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/reward.cpp">
+		<Unit filename="/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/reward.cpp">
 			<Option target="Cpp_Project_Memory_Game"/>
 		</Unit>
-		<Unit filename="Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/reward.h">
+		<Unit filename="/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/reward.h">
 			<Option target="Cpp_Project_Memory_Game"/>
 		</Unit>
-		<Unit filename="Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/rewarddeck.cpp">
+		<Unit filename="/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rewarddeck.cpp">
 			<Option target="Cpp_Project_Memory_Game"/>
 		</Unit>
-		<Unit filename="Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/rewarddeck.h">
+		<Unit filename="/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rewarddeck.h">
 			<Option target="Cpp_Project_Memory_Game"/>
 		</Unit>
-		<Unit filename="Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/rules.cpp">
+		<Unit filename="/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rules.cpp">
 			<Option target="Cpp_Project_Memory_Game"/>
 		</Unit>
-		<Unit filename="Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/rules.h">
+		<Unit filename="/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rules.h">
 			<Option target="Cpp_Project_Memory_Game"/>
 		</Unit>
-		<Unit filename="Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/CMakeLists.txt">
+		<Unit filename="/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>
