@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/board.h
+Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/board.h
 iostream
 -
 stdexcept
@@ -16,27 +16,27 @@ string
 vector
 -
 card.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/card.h
+Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/card.h
 carddeck.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/carddeck.h
+Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/carddeck.h
 
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/card.h
+Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/card.h
 iostream
 -
 string
 -
 
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/carddeck.h
+Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/carddeck.h
 vector
 -
 deck.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/deck.h
+Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/deck.h
 
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/deck.h
+Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/deck.h
 card.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/card.h
+Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/card.h
 reward.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/reward.h
+Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/reward.h
 vector
 -
 random
@@ -48,15 +48,7 @@ iterator
 iostream
 -
 
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/game.cpp
-iostream
--
-string
--
-game.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/game.h
-
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/game.h
+Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/game.h
 iostream
 -
 string
@@ -72,15 +64,15 @@ unordered_map
 cassert
 -
 player.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/player.h
+Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/player.h
 card.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/card.h
+Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/card.h
 board.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/board.h
+Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/board.h
 rewarddeck.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rewarddeck.h
+Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/rewarddeck.h
 
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/main.cpp
+Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/main.cpp
 iostream
 -
 string
@@ -100,21 +92,17 @@ set
 queue
 -
 game.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/game.h
+Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/game.h
 player.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/player.h
+Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/player.h
 card.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/card.h
+Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/card.h
 board.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/board.h
+Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/board.h
 rules.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rules.h
+Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/rules.h
 
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/player.cpp
-player.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/player.h
-
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/player.h
+Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/player.h
 iostream
 -
 string
@@ -122,31 +110,27 @@ string
 vector
 -
 reward.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/reward.h
+Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/reward.h
 
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/reward.h
+Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/reward.h
 iostream
 -
 string
 -
 
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rewarddeck.h
+Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/rewarddeck.h
 vector
 -
 reward.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/reward.h
+Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/reward.h
 deck.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/deck.h
+Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/deck.h
 
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rules.cpp
-rules.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rules.h
-
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rules.h
+Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/rules.h
 iostream
 -
 string
 -
 game.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/game.h
+Y:/Documents/GitHub/CPP-Project-Memory-Card-Game/game.h
 
