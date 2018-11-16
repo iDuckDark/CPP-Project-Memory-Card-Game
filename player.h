@@ -12,13 +12,17 @@
 
 using namespace std;
 
-class Player {
+enum class Side {
+    Top, Bottom, Right, Left
+};
 
+class Player {
 
 private:
     string name;
     bool active;
     bool endOfGame;
+    Side side;
     string sideOfTheBoard;
     int nRubies;
 
@@ -26,12 +30,15 @@ public:
 
     Player() = default;
 
+    Player(string name);
+
+    Player(string name, Side sideOfTheBoard);
+
     Player(string name, string sideOfTheBoard);
 
     string getName() const;
 
-
-    void setActive(bool active);
+    void setActive(bool);
 
     bool isActive();
 
@@ -39,7 +46,11 @@ public:
 
     void addReward(const Reward &);
 
-    void setDisplayMode(bool endOfGame);
+    void setDisplayMode(bool);
+
+    Side getSide() const;
+
+    void setSide(Side);
 
     friend ostream &operator<<(ostream &os, const Player &player);
 

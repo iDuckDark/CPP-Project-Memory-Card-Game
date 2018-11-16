@@ -47,7 +47,6 @@ void temporaryRevealThreeCards(Game &game, int mode) {
         }
     }
     if (mode == 1) {
-
         cout << game << endl;
     }
     //pause();

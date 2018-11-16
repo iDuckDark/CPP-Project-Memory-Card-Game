@@ -4,16 +4,22 @@
 
 #include "player.h"
 
-Player::Player(string name, string sideOfTheBoard) : name(name), sideOfTheBoard(sideOfTheBoard),
-                                                     nRubies(0), active(true) , endOfGame(false){
+Player::Player(string name) : name(name), nRubies(0), active(true), endOfGame(false) {}
+
+Player::Player(string name, Side side) : name(name), side(side), nRubies(0), active(true), endOfGame(false) {}
+
+Player::Player(string name, string sideOfTheBoard) :
+        name(name),
+        sideOfTheBoard(sideOfTheBoard),
+        nRubies(0), active(true), endOfGame(false) {
 }
 
 string Player::getName() const {
     return name;
 }
 
-void Player::setActive(bool act) {
-    active = act;
+void Player::setActive(bool active) {
+    this->active = active;
 }
 
 bool Player::isActive() {
@@ -33,14 +39,20 @@ void Player::setDisplayMode(bool endOfGame) {
     this->endOfGame = endOfGame;
 }
 
+Side Player::getSide() const {
+    return side;
+}
+
+void Player::setSide(Side side) {
+    this->side = side;
+}
+
 ostream &operator<<(ostream &os, const Player &player) {
+    os << player.getName() << ": " << player.getSideOfTheBoard();
     if (!player.endOfGame) {
-        string status = player.active ? "active" : "inactive";
-        os << player.getName() << ": " << player.getSideOfTheBoard() << " (" << status << ")"
-           << endl;
+        os << " (" << (player.active ? "active" : "inactive") << ")" << endl;
     } else {
-        os << player.getName() << " " << player.getSideOfTheBoard() << " " << player.getNRubies()
-           << " rubies" << endl;
+        os << " " << player.getNRubies() << " rubies" << endl;
     }
     return os;
 }

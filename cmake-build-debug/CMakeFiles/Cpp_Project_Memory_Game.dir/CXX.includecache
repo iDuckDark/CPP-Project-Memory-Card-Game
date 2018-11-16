@@ -48,6 +48,14 @@ iterator
 iostream
 -
 
+/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/game.cpp
+iostream
+-
+string
+-
+game.h
+/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/game.h
+
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/game.h
 iostream
 -
@@ -69,6 +77,8 @@ card.h
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/card.h
 board.h
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/board.h
+rewarddeck.h
+/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rewarddeck.h
 
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/main.cpp
 iostream
@@ -100,6 +110,10 @@ board.h
 rules.h
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rules.h
 
+/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/player.cpp
+player.h
+/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/player.h
+
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/player.h
 iostream
 -
@@ -115,6 +129,18 @@ iostream
 -
 string
 -
+
+/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rewarddeck.h
+vector
+-
+reward.h
+/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/reward.h
+deck.h
+/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/deck.h
+
+/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rules.cpp
+rules.h
+/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rules.h
 
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rules.h
 iostream
