@@ -101,9 +101,9 @@ void Game::awardActivePlayers() {
     for (int i = 0; i < playersQueue.size(); i++) {
         Player player = playersQueue.front();
         if (player.isActive()) {
-            Reward reward = *rewardDeck.getNext();
-            player.addReward(reward);
-            cout << "Awarded " << player.getName() <<": "<< reward <<"!" <<endl;
+//            Reward &reward = *rewardDeck.getNext();
+//            player.addReward(reward);
+//            cout << "Awarded " << player.getName() << ": " << reward << "!" << endl;
         }
         playersQueue.pop();
         playersQueue.push(player);
