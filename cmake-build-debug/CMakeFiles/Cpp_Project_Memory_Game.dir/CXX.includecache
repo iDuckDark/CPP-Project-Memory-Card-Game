@@ -6,7 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/board.h
+C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/board.cpp
+board.h
+C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/board.h
+
+C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/board.h
 iostream
 -
 stdexcept
@@ -16,27 +20,47 @@ string
 vector
 -
 card.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/card.h
+C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/card.h
 carddeck.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/carddeck.h
+C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/carddeck.h
 
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/card.h
+C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/card.cpp
+card.h
+C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/card.h
+
+C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/card.h
 iostream
 -
 string
 -
+cmath
+-
 
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/carddeck.h
+C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/carddeck.cpp
+carddeck.h
+C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/carddeck.h
+random
+-
+algorithm
+-
+iterator
+-
+iostream
+-
+
+C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/carddeck.h
 vector
 -
 deck.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/deck.h
+C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/deck.h
 
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/deck.h
+C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/deck.cpp
+
+C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/deck.h
 card.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/card.h
+C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/card.h
 reward.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/reward.h
+C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/reward.h
 vector
 -
 random
@@ -48,15 +72,15 @@ iterator
 iostream
 -
 
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/game.cpp
+C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/game.cpp
 iostream
 -
 string
 -
 game.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/game.h
+C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/game.h
 
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/game.h
+C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/game.h
 iostream
 -
 string
@@ -72,15 +96,15 @@ unordered_map
 cassert
 -
 player.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/player.h
+C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/player.h
 card.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/card.h
+C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/card.h
 board.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/board.h
+C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/board.h
 rewarddeck.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rewarddeck.h
+C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/rewarddeck.h
 
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/main.cpp
+C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/main.cpp
 iostream
 -
 string
@@ -100,21 +124,21 @@ set
 queue
 -
 game.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/game.h
+C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/game.h
 player.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/player.h
+C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/player.h
 card.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/card.h
+C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/card.h
 board.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/board.h
+C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/board.h
 rules.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rules.h
+C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/rules.h
 
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/player.cpp
+C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/player.cpp
 player.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/player.h
+C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/player.h
 
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/player.h
+C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/player.h
 iostream
 -
 string
@@ -122,31 +146,49 @@ string
 vector
 -
 reward.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/reward.h
+C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/reward.h
 
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/reward.h
+C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/reward.cpp
+reward.h
+C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/reward.h
+
+C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/reward.h
 iostream
 -
 string
 -
-
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rewarddeck.h
-vector
+cassert
 -
+
+C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/rewarddeck.cpp
+rewarddeck.h
+C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/rewarddeck.h
+
+C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/rewarddeck.h
 reward.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/reward.h
+C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/reward.h
 deck.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/deck.h
+C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/deck.h
+vector
+-
+random
+-
+algorithm
+-
+iterator
+-
+iostream
+-
 
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rules.cpp
+C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/rules.cpp
 rules.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rules.h
+C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/rules.h
 
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rules.h
+C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/rules.h
 iostream
 -
 string
 -
 game.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/game.h
+C:/Users/pfara/Documents/University/Year 3 Term 1/CSI2372/project/game.h
 
