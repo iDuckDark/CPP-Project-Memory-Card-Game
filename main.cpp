@@ -1,9 +1,8 @@
 #include <iostream>
 #include <vector>
-#include <unordered_map>
-#include <map> //not used
-#include <set> //not used
 #include <queue>
+#include <exception>
+#include <stdexcept>
 
 #include "game.h"
 #include "rules.h"
@@ -15,50 +14,37 @@ void temporaryRevealThreeCards(Game &game, int mode) {
     cout << "Three random cards are revealed temporary in front of the players" << endl;
     Board *board = &game.getBoard();
     for (int i = 0; i < game.getNPlayers(); i++) {
-        Player player = game.getPlayer();
-        Side side = player.getSide();
+        const Player &player = game.getPlayer();
+        const Side &side = player.getSide();
         switch (side) {
             case Top:
                 board->turnFaceUp(A, Two);
                 board->turnFaceUp(A, Three);
                 board->turnFaceUp(A, Four);
+                break;
             case Bottom :
                 board->turnFaceUp(E, Two);
                 board->turnFaceUp(E, Three);
                 board->turnFaceUp(E, Four);
+                break;
             case Right:
                 board->turnFaceUp(B, One);
                 board->turnFaceUp(C, One);
                 board->turnFaceUp(D, One);
+                break;
             case Left:
                 board->turnFaceUp(B, Five);
                 board->turnFaceUp(C, Five);
                 board->turnFaceUp(D, Five);
+                break;
+            default:
+                break;
         }
     }
     if (mode == 1) {
         cout << game << endl;
     }
     cout << "Cards are hidden now" << endl;
-}
-
-
-void turnFaceUp(Board &board, char letter, int number) {
-    unordered_map<char, Letter> letterMap;
-    letterMap['A'] = A;
-    letterMap['B'] = B;
-    letterMap['C'] = C;
-    letterMap['D'] = D;
-    letterMap['E'] = E;
-
-    unordered_map<int, Number> numberMap;
-    numberMap[1] = One;
-    numberMap[2] = Two;
-    numberMap[3] = Three;
-    numberMap[4] = Four;
-    numberMap[5] = Five;
-
-    board.turnFaceUp(letterMap[letter], numberMap[number]);
 }
 
 void printLeastToMostRubiesAndWinner(Game &game) {
@@ -79,53 +65,28 @@ void printLeastToMostRubiesAndWinner(Game &game) {
     }
 }
 
-bool validLetter(char letter) {
-    return letter == 'A' || letter == 'B' || letter == 'C' || letter == 'D' || letter == 'E';
-}
 
-bool validNumber(int number, char letter) {
-    if (letter == 'C') {
-        return number == One || number == Two || number == Four || number == Five;
-    } else {
-        return number == One || number == Two || number == Three || number == Four || number == Five;
+void getValidInput(Letter *letter, Number *number, Board *board) {
+    while (true) {
+        string input;
+        cout << "Pick a card from (A to E) and from (1 to 5): ";
+        while (true) {
+            cin >> input;
+            if (input.length() == 2) break;
+            else cout << "Invalid input, please try again: ";
+        }
+        *letter = static_cast<Letter>(toEnum(input[0]));
+        *number = static_cast<Number>(toEnum(input[1]));
+        try {
+            if (!board->isFaceUp(*letter, *number)) break;
+            else cout << "Card is already faced up! " << endl;
+        } catch (const std::exception &exc) {
+            cout << "Invalid Card Selected, please try again" << endl;
+            cerr << exc.what() << endl;
+        }
     }
 }
 
-int convert2Char(const char *letter) {
-    switch (*letter) {
-        case 'A':
-            return 0;
-        case 'B':
-            return 1;
-        case 'C':
-            return 2;
-        case 'D':
-            return 3;
-        case 'E':
-            return 4;
-        default:
-            return -1;
-    }
-}
-
-
-void getValidInput(char *letter, int *number, Board *board) {
-    do {
-        *letter = 'z';
-        while (!validLetter(*letter)) {
-            cout << "Pick a letter from A-E : ";
-            cin >> *letter;
-        }
-        *number = -1;
-        while (!validNumber(*number, *letter)) {
-            cout << "Pick a number from 1-5 : ";
-            cin >> *number;
-        }
-        if (!(board->isFaceDown(convert2Char(letter), *number - 1))) {
-            cout << "Card already up!" << endl;
-        }
-    } while (!(board->isFaceDown(convert2Char(letter), *number - 1)));
-}
 
 void expertModePrint(std::map<std::string, Card *> cardMap) {
     //print cards
@@ -177,7 +138,6 @@ void runGame() {
     Rules rules;
     Board *board = &game.getBoard();
     if (mode == 1) {
-        //if normal mode
         int round = 1;
         while (!rules.gameOver(game)) {
             board->reset();
@@ -190,11 +150,12 @@ void runGame() {
                 cout << "Round: " << round << " , Turn: " << currentPlayer.getName() << endl;
 
                 if (currentPlayer.isActive()) {
-                    char letter = 'z';
-                    int number = 0;
+
+                    Letter letter = Z;
+                    Number number = Zero;
                     getValidInput(&letter, &number, board);
-                    turnFaceUp(*board, static_cast<Letter>(letter), static_cast<Number>(number));
-                    Card *selectedCard = board->getCard(static_cast<Letter>(letter), static_cast<Number>(number));
+                    board->turnFaceUp(letter, number);
+                    Card *selectedCard = board->getCard(letter, number);
                     game.setCurrentCard(selectedCard);
                 }
                 if (!rules.isValid(game)) {
@@ -211,57 +172,67 @@ void runGame() {
             game.awardActivePlayers();
         }
         printLeastToMostRubiesAndWinner(game);
-    } else if (mode == 2) {
-        std::map<std::string, Card *> cardMap;
-
-        //if expertMode
-        int round = 1;
-        while (!rules.gameOver(game)) {
-            cout << "Expert Mode" << endl;
-            board->reset();
-            game.setAllPlayersActive();
-            temporaryRevealThreeCards(game, mode);
-            board->reset();
-            while (!rules.roundOver(game)) { //{Peter , Nevin, Divyang }
-                cout << "Expert Mode 2" << endl;
-
-
-                Player &currentPlayer = game.getPlayer(); // , Nevin, Divyang, Peter  but now is Peter
-                cout << "Round: " << round << " , Turn: " << currentPlayer.getName() << endl;
-
-                if (currentPlayer.isActive()) {
-                    char letter = 'z';
-                    int number = 0;
-                    getValidInput(&letter, &number, board);
-                    turnFaceUp(*board, static_cast<Letter>(letter), static_cast<Number>(number));
-                    Card *selectedCard = board->getCard(static_cast<Letter>(letter), static_cast<Number>(number));
-                    rules.expertRules(selectedCard, game, static_cast<Letter>(letter), static_cast<Number>(number));
-
-                    cardMap[letter + to_string(number)] = selectedCard;
-
-                    expertModePrint(cardMap);
-                    game.setCurrentCard(selectedCard);
-                }
-                if (!rules.isValid(game)) {
-                    if (game.twoCardsSelected()) {
-                        game.setPlayerActive(false);
-                    }
-                }
-                if (game.twoCardsSelected()) {
-                    game.clearSelectedCards();
-                }
-
-            }
-            game.setRound(++round);
-            game.awardActivePlayers();
-        }
-        printLeastToMostRubiesAndWinner(game);
     }
+
+//    else if (mode == 2) {
+//        std::map<std::string, Card *> cardMap;
+//
+//        //if expertMode
+//        int round = 1;
+//        while (!rules.gameOver(game)) {
+//            cout << "Expert Mode" << endl;
+//            board->reset();
+//            game.setAllPlayersActive();
+//            temporaryRevealThreeCards(game, mode);
+//            board->reset();
+//            while (!rules.roundOver(game)) { //{Peter , Nevin, Divyang }
+//                cout << "Expert Mode 2" << endl;
+//
+//
+//                Player &currentPlayer = game.getPlayer(); // , Nevin, Divyang, Peter  but now is Peter
+//                cout << "Round: " << round << " , Turn: " << currentPlayer.getName() << endl;
+//
+//                if (currentPlayer.isActive()) {
+//                    char letter = 'z';
+//                    int number = 0;
+//                    getValidInput(&letter, &number, board);
+//                    turnFaceUp(*board, static_cast<Letter>(letter), static_cast<Number>(number));
+//                    Card *selectedCard = board->getCard(static_cast<Letter>(letter), static_cast<Number>(number));
+//                    rules.expertRules(selectedCard, game, static_cast<Letter>(letter), static_cast<Number>(number));
+//
+//                    cardMap[letter + to_string(number)] = selectedCard;
+//
+//                    expertModePrint(cardMap);
+//                    game.setCurrentCard(selectedCard);
+//                }
+//                if (!rules.isValid(game)) {
+//                    if (game.twoCardsSelected()) {
+//                        game.setPlayerActive(false);
+//                    }
+//                }
+//                if (game.twoCardsSelected()) {
+//                    game.clearSelectedCards();
+//                }
+//
+//            }
+//            game.setRound(++round);
+//            game.awardActivePlayers();
+//        }
+//        printLeastToMostRubiesAndWinner(game);
+//    }
 }
 
 
 int main() {
     //runGame();
+//    Game game;
+//    Board *board = &game.getBoard();
+//    cout << *board << endl;
+//    Letter letter = Z;
+//    Number number = Zero;
+//    getValidInput(&letter, &number, board);
+//    board->turnFaceUp(letter, number);
+//    cout << *board << endl;
     return 0;
 }
 

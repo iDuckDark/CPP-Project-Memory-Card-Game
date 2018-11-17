@@ -22,10 +22,12 @@ Side Player::getSide() const { return side; }
 
 void Player::setSide(Side side) { this->side = side; }
 
+//string Player::get
+
 ostream &operator<<(ostream &os, const Player &player) {
-    os << player.getName() << ": " << player.getSide();
+    os << player.getName() << ": ";
     if (!player.endOfGame) {
-        return os << " (" << (player.active ? "active" : "inactive") << ")" << endl;
+        return os << player.getSide() << " (" << (player.active ? "active" : "inactive") << ")" << endl;
     } else {
         return os << " " << player.getNRubies() << " rubies" << endl;
     }

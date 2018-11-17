@@ -6,21 +6,29 @@
 #define CPP_PROJECT_MEMORY_GAME_BOARD_H
 
 #include <iostream>
-#include <stdexcept>
 #include <string>
 #include <vector>
+#include <stdexcept>
+
 #include "card.h"
 #include "carddeck.h"
 
 using namespace std;
 
+//enum Letter {
+//    A = 'A', B = 'B', C = 'C', D = 'D', E = 'E', Z = -1
+//};
+
 enum Letter {
-    A = 'A', B = 'B', C = 'C', D = 'D', E = 'E'
+    A = 1, B = 2, C = 3, D = 4, E = 5, Z = -1
 };
 
+
 enum Number {
-    One = 1, Two = 2, Three = 3, Four = 4, Five = 5
+    One = 1, Two = 2, Three = 3, Four = 4, Five = 5, Zero = -1
 };
+
+int toEnum(char const input);
 
 class Board {
 
@@ -33,28 +41,26 @@ private:
 
     vector<vector<Card *> *> cards2D;
 
-    int getRowIndex(const Letter &letter) const;
+    int getIndex(const int &, const string &) const;
 
-    int getColIndex(const Number &number) const;
+    void setScreen();
+
+    string *getScreen() const;
+
+    bool isFaceDown(const int &i, const int &y) const;
 
 public:
     Board();
 
     ~Board();
 
-    string *getScreen() const;
+    bool isFaceUp(const Letter &, const Number &) const;
 
-    void setScreen();
+    bool turnFaceUp(const Letter &, const Number &);
 
-    Card *getCard(const Letter &letter, const Number &number);
+    bool turnFaceDown(const Letter &, const Number &);
 
-    bool isFaceUp(const Letter &letter, const Number &number) const;
-
-    bool isFaceDown(int i, int y) const;
-
-    bool turnFaceUp(const Letter &letter, const Number &number);
-
-    bool turnFaceDown(const Letter &letter, const Number &number);
+    Card *getCard(const Letter &, const Number &);
 
     void reset();
 
