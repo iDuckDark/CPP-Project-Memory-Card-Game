@@ -20,7 +20,7 @@
 class Game {
 
 private:
-    int nRound;
+    int nRound{0};
 
     Board board;
 

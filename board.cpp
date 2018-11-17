@@ -6,10 +6,10 @@
 
 Board::Board() {
     screen = new string[19];
-    for (int x = 0; x < 5; x++) {
-        faceDownCards[x] = new bool[5];
+    for (auto &faceDownCard : faceDownCards) {
+        faceDownCard = new bool[5];
         for (int y = 0; y < 5; y++) {
-            faceDownCards[x][y] = true;
+            faceDownCard[y] = true;
         }
     }
     setScreen();
@@ -17,8 +17,8 @@ Board::Board() {
 
 Board::~Board() {
     delete[] screen;
-    for (int x = 0; x < 5; x++) {
-        delete[] faceDownCards[x];
+    for (auto &faceDownCard : faceDownCards) {
+        delete[] faceDownCard;
     }
 }
 
@@ -29,18 +29,18 @@ string *Board::getScreen() const {
 void Board::setScreen() {
     CardDeck &deck = CardDeck::make_CardDeck();
     for (int i = 0; i < 25; i++) {
-        Card card = *deck.getNext();
+        Card& card = *deck.getNext();
         cards.push_back(card);
     }
 
-    vector<Card *> *cardVector = new vector<Card *>;
+    auto *cardVector = new vector<Card *>;
     cardVector->push_back(&cards[0]);
     cardVector->push_back(&cards[1]);
     cardVector->push_back(&cards[2]);
     cardVector->push_back(&cards[3]);
     cardVector->push_back(&cards[4]);
 
-    vector<Card *> *cardVector1 = new vector<Card *>;
+    auto *cardVector1 = new vector<Card *>;
     cardVector1->push_back(&cards[5]);
     cardVector1->push_back(&cards[6]);
     cardVector1->push_back(&cards[7]);
@@ -48,7 +48,7 @@ void Board::setScreen() {
     cardVector1->push_back(&cards[9]);
 
 
-    vector<Card *> *cardVector2 = new vector<Card *>;
+    auto *cardVector2 = new vector<Card *>;
     cardVector2->push_back(&cards[10]);
     cardVector2->push_back(&cards[11]);
     cardVector2->push_back(&cards[12]);
@@ -56,7 +56,7 @@ void Board::setScreen() {
     cardVector2->push_back(&cards[14]);
 
 
-    vector<Card *> *cardVector3 = new vector<Card *>;
+    auto *cardVector3 = new vector<Card *>;
     cardVector3->push_back(&cards[15]);
     cardVector3->push_back(&cards[16]);
     cardVector3->push_back(&cards[17]);
@@ -64,7 +64,7 @@ void Board::setScreen() {
     cardVector3->push_back(&cards[19]);
 
 
-    vector<Card *> *cardVector4 = new vector<Card *>;
+    auto *cardVector4 = new vector<Card *>;
     cardVector4->push_back(&cards[20]);
     cardVector4->push_back(&cards[21]);
     cardVector4->push_back(&cards[22]);
@@ -178,9 +178,9 @@ bool Board::turnFaceDown(const Letter &letter, const Number &number) {
 
 
 void Board::reset() {
-    for (int x = 0; x < 5; x++) {
+    for (auto &faceDownCard : faceDownCards) {
         for (int y = 0; y < 5; y++) {
-            faceDownCards[x][y] = true;
+            faceDownCard[y] = true;
         }
     }
 }

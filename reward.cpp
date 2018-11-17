@@ -5,7 +5,12 @@ Reward::Reward(int nRubies) {
     else throw out_of_range("Error Initializing Reward: Rubies must be only 1 to 4! ");
 }
 
-//Reward::Reward(const Reward &reward) : _nRubies(reward.getNRubies()) {}
+Reward::Reward(const Reward &reward) : _nRubies(reward.getNRubies()) {}
+
+Reward &Reward::operator=(const Reward &reward) {
+    if (this != &reward) this->_nRubies = reward.getNRubies();
+    return (*this);
+}
 
 int Reward::getNRubies() const { return _nRubies; }
 

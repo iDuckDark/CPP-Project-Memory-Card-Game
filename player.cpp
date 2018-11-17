@@ -4,7 +4,7 @@
 
 #include "player.h"
 
-Player::Player(string name) : name(name), nRubies(0), active(true), endOfGame(false), side(Top) {}
+Player::Player(const string &name) : name(name), nRubies(0), active(true), endOfGame(false), side(Top) {}
 
 string Player::getName() const { return name; }
 

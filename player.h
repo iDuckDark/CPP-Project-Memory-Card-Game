@@ -28,7 +28,7 @@ private:
 
 public:
 
-    Player(string name);
+    explicit Player(const string &);
 
     string getName() const;
 

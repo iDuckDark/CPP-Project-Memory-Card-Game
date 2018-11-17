@@ -11,7 +11,7 @@ int Game::getRound() const { return nRound; }
 Board &Game::getBoard() { return board; }
 
 int Game::getNPlayers() const {
-    return playersQueue.size();
+    return static_cast<int>(playersQueue.size());
 }
 
 void Game::setRound(int num) { nRound = num; }

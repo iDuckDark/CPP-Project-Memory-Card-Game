@@ -15,30 +15,28 @@ enum FaceBackground {
     Red, Green, Purple, Blue, Yellow, Colors
 };
 
-//TODO Need to give friend access to CardDeck,make constructor private
 class Card {
 
 public:
     friend class CardDeck;
 
-    friend ostream &operator<<(ostream &os, const Card &card);
-
     string operator()(int) const;
 
-    friend bool operator==(const Card &lhs, const Card &rhs);
+    friend ostream &operator<<(ostream &, const Card &);
+
+    friend bool operator==(const Card &, const Card &);
 
     char getColor() const;
 
     char getAnimal() const;
 
 private:
-    //Card() = default;
 
     Card(FaceAnimal faceAnimal, FaceBackground faceBackground);
-
-    //Card(const Card&);//making copy constructor private
+    //TODO Need to make copy constructor and assignment operator private
 
     FaceAnimal _faceAnimal;
+
     FaceBackground _faceBackground;
     int _nRows = 3;
 
@@ -47,8 +45,6 @@ private:
     char _animal;
 
     int getNRows() const;
-
 };
-
 
 #endif //CPP_PROJECT_MEMORY_GAME_CARD_H

@@ -5,9 +5,8 @@
 #ifndef CPP_PROJECT_MEMORY_GAME_REWARDDECK_H
 #define CPP_PROJECT_MEMORY_GAME_REWARDDECK_H
 
-
-#include "reward.h"
 #include "deck.h"
+#include "reward.h"
 
 #include <vector>
 #include <random>

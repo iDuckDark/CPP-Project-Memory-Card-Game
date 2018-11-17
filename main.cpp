@@ -1,17 +1,11 @@
 #include <iostream>
-#include <string>
 #include <vector>
-#include <cstdlib>
 #include <unordered_map>
-#include <cassert>
 #include <map> //not used
 #include <set> //not used
 #include <queue>
 
 #include "game.h"
-#include "player.h"
-#include "card.h"
-#include "board.h"
 #include "rules.h"
 
 using namespace std;
@@ -76,7 +70,7 @@ void printLeastToMostRubiesAndWinner(Game &game) {
     }
     int winCounter = 1;
     sort(players.begin(), players.end());
-    for (auto player : players) {
+    for (const auto &player : players) {
         if (winCounter == players.size()) {
             cout << "Winner : ";
         }
@@ -97,22 +91,21 @@ bool validNumber(int number, char letter) {
     }
 }
 
-int convert2Char(char *letter) {
-    int num = -1;
-    if (*letter == 'A') {
-        num = 0;
-    } else if (*letter == 'B') {
-        num = 1;
-    } else if (*letter == 'C') {
-        num = 2;
-    } else if (*letter == 'D') {
-        num = 3;
-    } else if (*letter == 'E') {
-        num = 4;
-    } else {
-        num = -1;
+int convert2Char(const char *letter) {
+    switch (*letter) {
+        case 'A':
+            return 0;
+        case 'B':
+            return 1;
+        case 'C':
+            return 2;
+        case 'D':
+            return 3;
+        case 'E':
+            return 4;
+        default:
+            return -1;
     }
-    return num;
 }
 
 
@@ -168,7 +161,7 @@ void runGame() {
         cout << "Invalid input, please try again: " << endl;
         cin >> nPlayers;
     }
-    vector<string> names(nPlayers);
+    vector<string> names(static_cast<unsigned long>(nPlayers));
     for (int i = 0; i < nPlayers; i++) {
         cout << "Enter name for Player number " << (i + 1) << ": ";
         cin >> names[i];
