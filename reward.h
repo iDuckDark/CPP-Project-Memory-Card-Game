@@ -31,6 +31,10 @@ private:
     int _nRubies;
 
     explicit Reward(int);
+
+    //Reward(const Reward &);
+
+    //Reward &operator=(const Reward &);
 };
 
 

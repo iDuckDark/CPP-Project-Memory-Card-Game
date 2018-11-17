@@ -20,6 +20,9 @@ Board::~Board() {
     for (auto &faceDownCard : faceDownCards) {
         delete[] faceDownCard;
     }
+    for (auto &cardVector : cards2D) {
+        delete cardVector;
+    }
 }
 
 string *Board::getScreen() const {
@@ -28,54 +31,12 @@ string *Board::getScreen() const {
 
 void Board::setScreen() {
     CardDeck &deck = CardDeck::make_CardDeck();
-    for (int i = 0; i < 25; i++) {
-        Card& card = *deck.getNext();
-        cards.push_back(card);
+    for (int i = 0; i < 25; i++) { cards.push_back(*deck.getNext()); }
+    for (int i = 0; i < 25; i = i + 5) {
+        auto *cardVector = new vector<Card *>;
+        for (int j = 0; j < 5; j++) { cardVector->push_back(&cards[i + j]); }
+        cards2D.push_back(cardVector);
     }
-
-    auto *cardVector = new vector<Card *>;
-    cardVector->push_back(&cards[0]);
-    cardVector->push_back(&cards[1]);
-    cardVector->push_back(&cards[2]);
-    cardVector->push_back(&cards[3]);
-    cardVector->push_back(&cards[4]);
-
-    auto *cardVector1 = new vector<Card *>;
-    cardVector1->push_back(&cards[5]);
-    cardVector1->push_back(&cards[6]);
-    cardVector1->push_back(&cards[7]);
-    cardVector1->push_back(&cards[8]);
-    cardVector1->push_back(&cards[9]);
-
-
-    auto *cardVector2 = new vector<Card *>;
-    cardVector2->push_back(&cards[10]);
-    cardVector2->push_back(&cards[11]);
-    cardVector2->push_back(&cards[12]);
-    cardVector2->push_back(&cards[13]);
-    cardVector2->push_back(&cards[14]);
-
-
-    auto *cardVector3 = new vector<Card *>;
-    cardVector3->push_back(&cards[15]);
-    cardVector3->push_back(&cards[16]);
-    cardVector3->push_back(&cards[17]);
-    cardVector3->push_back(&cards[18]);
-    cardVector3->push_back(&cards[19]);
-
-
-    auto *cardVector4 = new vector<Card *>;
-    cardVector4->push_back(&cards[20]);
-    cardVector4->push_back(&cards[21]);
-    cardVector4->push_back(&cards[22]);
-    cardVector4->push_back(&cards[23]);
-    cardVector4->push_back(&cards[24]);
-
-    cards2D.push_back(cardVector);
-    cards2D.push_back(cardVector1);
-    cards2D.push_back(cardVector2);
-    cards2D.push_back(cardVector3);
-    cards2D.push_back(cardVector4);
 
     int screenRowCounter = 0;
     for (int i = 0; i < 25; i = i + 5) {
@@ -83,56 +44,39 @@ void Board::setScreen() {
             string row =
                     (cards[i])(j) + " " + (cards[i + 1])(j) + " " + (cards[i + 2])(j) + " " + (cards[i + 3])(j) + " " +
                     (cards[i + 4])(j);
-            screen[screenRowCounter] = row;
-            screenRowCounter++;
+            screen[screenRowCounter++] = row;
         }
         screenRowCounter++;
     }
 }
 
 bool Board::isFaceUp(const Letter &letter, const Number &number) const {
-    return !((faceDownCards[getRowIndex(letter)])[getColIndex(number)]);
+    return !((faceDownCards[getIndex(letter, "Letter")])[getIndex(number, "Number")]);
 }
 
-bool Board::isFaceDown(int i, int j) const {
+bool Board::isFaceDown(const int &i, const int &j) const {
     return faceDownCards[i][j];
 }
 
-int Board::getRowIndex(const Letter &letter) const {
-    if (letter == A) {
-        return 0;
-    } else if (letter == B) {
-        return 1;
-    } else if (letter == C) {
-        return 2;
-    } else if (letter == D) {
-        return 3;
-    } else if (letter == E) {
-        return 4;
-    } else {
-        throw out_of_range("Letter is out of range");
-    }
-}
-
-int Board::getColIndex(const Number &number) const {
-    switch (number) {
-        case One:
+int Board::getIndex(const int &input, const string &typeEnum) const {
+    switch (input) {
+        case A:
             return 0;
-        case Two:
+        case B:
             return 1;
-        case Three:
-            return 1;
-        case Four:
-            return 1;
-        case Five:
-            return 1;
+        case C:
+            return 2;
+        case D:
+            return 3;
+        case E:
+            return 4;
         default:
-            throw out_of_range("Number is out of range");
+            throw out_of_range(typeEnum + " is out of range");
     }
 }
 
 Card *Board::getCard(const Letter &letter, const Number &number) {
-    return (*cards2D[getRowIndex(letter)])[getColIndex(number)];
+    return (*cards2D[getIndex(letter, "Letter")])[getIndex(number, "Number")];
 }
 
 bool Board::turnFaceUp(const Letter &letter, const Number &number) {
@@ -192,12 +136,8 @@ ostream &operator<<(ostream &os, const Board &board) {
 
     for (int i = 0; i < 19; i++) {
         bool letterRow = (i == 1 || i == 5 || i == 9 || i == 13 || i == 17);
-        if (letterRow) {
-            os << (char) (A + letterRowCounter) << " ";
-            letterRowCounter++;
-        } else {
-            os << "  ";
-        }
+        if (letterRow) os << (char) ('A' + letterRowCounter++) << " ";
+        else os << "  ";
 
         string temp = screen[screenRowCounter];
         bool row1 = (screenRowCounter == 0 || screenRowCounter == 1 || screenRowCounter == 2);
@@ -243,4 +183,26 @@ ostream &operator<<(ostream &os, const Board &board) {
     }
     os << "   " << "1" << "   " << "2" << "   " << "3" << "   " << "4" << "   " << "5" << endl;
     return os;
+}
+
+int toEnum(const char input) {
+    switch (input) {
+        case 'A':
+        case '1':
+            return 1;
+        case 'B':
+        case '2':
+            return 2;
+        case 'C':
+        case '3':
+            return 3;
+        case 'D':
+        case '4':
+            return 4;
+        case 'E':
+        case '5':
+            return 5;
+        default:
+            return -1;
+    }
 }
