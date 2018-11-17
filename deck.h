@@ -29,7 +29,7 @@ public:
 
     C *getNext() {
         if (!(*deck).empty()) {
-            C *last = &(*deck).back();
+            C *last = deck->back();
             deck->pop_back();
             return last;
         }
@@ -37,9 +37,10 @@ public:
     }
 
     bool isEmpty() { return (*deck).empty(); }
+    virtual ~Deck(){};
 
 protected:
-    vector<C> *deck;//= new vector<C>();
+    vector<C*> *deck;//= new vector<C>();
 
 };
 

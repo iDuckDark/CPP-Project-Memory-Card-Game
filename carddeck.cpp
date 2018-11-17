@@ -7,17 +7,20 @@
 using namespace std;
 
 CardDeck::CardDeck() : Deck() {
-    deck = new vector<Card>();
+    deck = new vector<Card*>();
     for (int i = 0; i != Colors; ++i) {
         auto color = (FaceBackground) i;
         for (int j = 0; j != Animals; ++j) {
             auto animal = (FaceAnimal) j;
-            deck->emplace_back(Card{animal, color});
+            deck->emplace_back(new Card{animal, color});
         }
     }
 }
 
 CardDeck::~CardDeck() {
+    for (vector< Card* >::iterator it = deck->begin() ; it != deck->end(); ++it) {
+        delete (*it);
+    }
     delete deck;
 }
 

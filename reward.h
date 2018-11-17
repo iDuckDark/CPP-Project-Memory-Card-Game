@@ -22,13 +22,13 @@ public:
 
     friend bool operator==(const Reward &, const Reward &);
 
+private:
+
+    int _nRubies;
     //TODO make these two private constructor, AFTER fixing class Deck and Emplace Back Method
     Reward(const Reward &);
 
     Reward &operator=(const Reward &);
-
-private:
-    int _nRubies;
 
     explicit Reward(int);
 
