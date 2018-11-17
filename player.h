@@ -26,6 +26,8 @@ private:
     Side side;
     int nRubies;
 
+    string getSideToString() const;
+
 public:
 
     explicit Player(const string &);

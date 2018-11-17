@@ -35,7 +35,7 @@ class Board {
 private:
     string *screen;
 
-    vector<Card> cards;
+    vector<Card*> cards;
 
     bool *faceDownCards[5];
 
@@ -62,9 +62,11 @@ public:
 
     Card *getCard(const Letter &, const Number &);
 
+    //void setCard(const Letter &, const Number &, Card *); //TODO why do we need this?
+
     void reset();
 
-    friend ostream &operator<<(ostream &os, const Board &board);
+    friend ostream &operator<<(ostream &, const Board &);
 };
 
 #endif //CPP_PROJECT_MEMORY_GAME_BOARD_H

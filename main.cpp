@@ -9,8 +9,18 @@
 
 using namespace std;
 
+void setMode(int &mode) {
+    cout << "Please choose your game version:" << endl;
+    cout << "Enter 1 for Base Mode and 2 for Expect Mode: ";
+    while (true) {
+        cin >> mode;
+        if (mode != 1 && mode != 2) {
+            cout << "Invalid input, please try again: ";
+        } else break;
+    }
+}
 
-void temporaryRevealThreeCards(Game &game, int mode) {
+void temporaryRevealThreeCards(Game &game, const int &mode) {
     cout << "Three random cards are revealed temporary in front of the players" << endl;
     Board *board = &game.getBoard();
     for (int i = 0; i < game.getNPlayers(); i++) {
@@ -47,25 +57,6 @@ void temporaryRevealThreeCards(Game &game, int mode) {
     cout << "Cards are hidden now" << endl;
 }
 
-void printLeastToMostRubiesAndWinner(Game &game) {
-    vector<Player> players;
-    for (int i = 0; i < game.getNPlayers(); i++) {
-        Player &player = game.getPlayer();
-        player.setDisplayMode(true);
-        players.push_back(player);
-    }
-    int winCounter = 1;
-    sort(players.begin(), players.end());
-    for (const auto &player : players) {
-        if (winCounter == players.size()) {
-            cout << "Winner : ";
-        }
-        winCounter++;
-        cout << player.getName() << " with Rubies: " << player.getNRubies() << endl;
-    }
-}
-
-
 void getValidInput(Letter *letter, Number *number, Board *board) {
     while (true) {
         string input;
@@ -87,6 +78,23 @@ void getValidInput(Letter *letter, Number *number, Board *board) {
     }
 }
 
+void printLeastToMostRubiesAndWinner(Game &game) {
+    vector<Player> players;
+    for (int i = 0; i < game.getNPlayers(); i++) {
+        Player &player = game.getPlayer();
+        player.setDisplayMode(true);
+        players.push_back(player);
+    }
+    int winCounter = 1;
+    sort(players.begin(), players.end());
+    for (const auto &player : players) {
+        if (winCounter == players.size()) {
+            cout << "Winner : ";
+        }
+        winCounter++;
+        cout << player.getName() << " with Rubies: " << player.getNRubies() << endl;
+    }
+}
 
 void expertModePrint(std::map<std::string, Card *> cardMap) {
     //print cards
@@ -106,15 +114,9 @@ void expertModePrint(std::map<std::string, Card *> cardMap) {
 void runGame() {
     cout << endl;
     cout << "Welcome to Nevin's and Peter's Memory Card Game Fall 2018" << endl;
-
-    cout << "Please choose your game version:" << endl;
-    cout << "Enter 1 for Base Mode and 2 for Expect Mode: ";
     int mode = 0;
-    cin >> mode;
-    while (mode != 1 && mode != 2) {
-        cout << "Invalid input, please try again: " << endl;
-        cin >> mode;
-    }
+    setMode(mode);
+
     cout << "Number of Players " << "(Minimum 2 - Maximum 4) : ";
     int nPlayers = 0;
     cin >> nPlayers;
@@ -224,7 +226,7 @@ void runGame() {
 
 
 int main() {
-    //runGame();
+    runGame();
 //    Game game;
 //    Board *board = &game.getBoard();
 //    cout << *board << endl;

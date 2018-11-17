@@ -23,31 +23,35 @@ Board::~Board() {
     for (auto &cardVector : cards2D) {
         delete cardVector;
     }
-}
-
-string *Board::getScreen() const {
-    return screen;
+    for (vector< Card* >::iterator it = cards.begin() ; it != cards.end(); ++it) {
+        delete (*it);
+    }
 }
 
 void Board::setScreen() {
     CardDeck &deck = CardDeck::make_CardDeck();
-    for (int i = 0; i < 25; i++) { cards.push_back(*deck.getNext()); }
+    for (int i = 0; i < 25; i++) {
+        cards.push_back(deck.getNext());
+    }
     for (int i = 0; i < 25; i = i + 5) {
         auto *cardVector = new vector<Card *>;
-        for (int j = 0; j < 5; j++) { cardVector->push_back(&cards[i + j]); }
+        for (int j = 0; j < 5; j++) { cardVector->push_back(cards[i + j]); }
         cards2D.push_back(cardVector);
     }
-
     int screenRowCounter = 0;
     for (int i = 0; i < 25; i = i + 5) {
         for (int j = 0; j < 3; j++) {
             string row =
-                    (cards[i])(j) + " " + (cards[i + 1])(j) + " " + (cards[i + 2])(j) + " " + (cards[i + 3])(j) + " " +
-                    (cards[i + 4])(j);
+                    (*cards[i])(j) + " " + (*cards[i + 1])(j) + " " + (*cards[i + 2])(j) + " " + (*cards[i + 3])(j) + " " +
+                    (*cards[i + 4])(j);
             screen[screenRowCounter++] = row;
         }
         screenRowCounter++;
     }
+}
+
+string *Board::getScreen() const {
+    return screen;
 }
 
 bool Board::isFaceUp(const Letter &letter, const Number &number) const {
@@ -77,6 +81,10 @@ int Board::getIndex(const int &input, const string &typeEnum) const {
 
 Card *Board::getCard(const Letter &letter, const Number &number) {
     return (*cards2D[getIndex(letter, "Letter")])[getIndex(number, "Number")];
+}
+
+void setCard(const Letter &letter, const Number &number, Card* card){
+
 }
 
 bool Board::turnFaceUp(const Letter &letter, const Number &number) {
