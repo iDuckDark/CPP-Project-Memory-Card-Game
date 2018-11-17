@@ -4,24 +4,18 @@
 
 #include "rules.h"
 
-
 bool Rules::isValid(const Game &game) {
     cout << endl << "TEST RULES IS VALID? " << endl;
     if (game.twoCardsSelected()) {
         cout << "Previous & Next card Equal? " << (*game.getPreviousCard() == *game.getCurrentCard()) << endl
              << *game.getPreviousCard() << endl << *game.getCurrentCard() << endl;
-        if (*game.getPreviousCard() == *game.getCurrentCard()) {
-            return true;
-        } else {
-            return false;
-        }
+        return (*game.getPreviousCard() == *game.getCurrentCard());
     }
     cout << "NO TWO CARDS SELECTED" << endl << endl;
     return false;
 }
 
 bool Rules::gameOver(const Game &game) {
-    //cout << "GAME OVER ? " << game.getRound() << endl;
     return game.getRound() >= 7;
 }
 
@@ -46,7 +40,7 @@ void Rules::expertRules(Card *card, Game &game, Letter letter, Number number) {
 
 void Rules::expertOctopus(Card *card, Game &game, Letter letter, Number number) {
     cout << "Octopus" << endl;
-    game.setPlayersActive(true);
+    game.setPlayerActive(true);
     // When an octopus card is turned over, the
     //card is exchanging position with an adjacent card in the same row or the same column (4-neighbourhood)
     //The adjacent card may be face up or down and will remain unchanged.

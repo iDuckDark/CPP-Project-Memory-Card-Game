@@ -11,7 +11,6 @@
 #include <queue>
 #include <map>
 #include <unordered_map>
-#include <cassert>
 
 #include "player.h"
 #include "card.h"
@@ -26,7 +25,6 @@ private:
     Board board;
 
     RewardDeck rewardDeck;
-
 
 public:
     queue<vector<const Card *>> cardQueue;
@@ -45,11 +43,11 @@ public:
 
     Board &getBoard(); //TODO not sure if this is bad
 
-    void setRound(int nRound);
+    void setRound(int);
 
     void addPlayer(const Player &);
 
-    void setPlayersActive(bool active);
+    void setPlayerActive(bool active);
 
     Player &getPlayer();
 

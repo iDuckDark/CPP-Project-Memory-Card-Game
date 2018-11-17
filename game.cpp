@@ -6,21 +6,15 @@
 #include <string>
 #include "game.h"
 
-int Game::getRound() const {
-    return nRound;
-}
+int Game::getRound() const { return nRound; }
 
-Board &Game::getBoard() {
-    return board;
-}
+Board &Game::getBoard() { return board; }
 
 int Game::getNPlayers() const {
     return playersQueue.size();
 }
 
-void Game::setRound(int num) {
-    nRound = num;
-}
+void Game::setRound(int num) { nRound = num; }
 
 void Game::addPlayer(const Player &player) {
     playersQueue.push(player);
@@ -32,7 +26,6 @@ Player &Game::getPlayer() {
     Player &currentPlayer = playersQueue.front(); //{Peter, Nevin ,Div}
     playersQueue.pop(); //{Nevin ,Div}
     playersQueue.push(currentPlayer); //{ Nevin ,Div,Peter}
-
     vector<const Card *> cardVector = cardQueue.front(); //Cards :{Peter, Nevin ,Div}
     cardQueue.pop(); //Cards :{ Nevin ,Div}
     cardQueue.push(cardVector);
@@ -52,7 +45,7 @@ void Game::setAllPlayersActive() {
     }
 }
 
-void Game::setPlayersActive(bool active) {
+void Game::setPlayerActive(bool active) {
     playersQueue.back().setActive(active);
 }
 
@@ -86,7 +79,6 @@ void Game::setCurrentCard(const Card *card) {
     vector<const Card *> cardVector = cardQueue.back(); //peter's cards
     cardVector.push_back(card); //Add a card
     cardQueue.back() = cardVector;  //Updates Peter's Cards
-    //cout << "PETERRRRRRRRRRRR BJT!!!" << endl;
     //cout << *cardQueue.back()[0] << endl;
 }
 

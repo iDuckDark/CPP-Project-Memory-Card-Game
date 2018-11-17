@@ -25,11 +25,10 @@ void Player::setSide(Side side) { this->side = side; }
 ostream &operator<<(ostream &os, const Player &player) {
     os << player.getName() << ": " << player.getSide();
     if (!player.endOfGame) {
-        os << " (" << (player.active ? "active" : "inactive") << ")" << endl;
+        return os << " (" << (player.active ? "active" : "inactive") << ")" << endl;
     } else {
-        os << " " << player.getNRubies() << " rubies" << endl;
+        return os << " " << player.getNRubies() << " rubies" << endl;
     }
-    return os;
 }
 
 bool operator<(const Player &lhs, const Player &rhs) { return lhs.getNRubies() < rhs.getNRubies(); }

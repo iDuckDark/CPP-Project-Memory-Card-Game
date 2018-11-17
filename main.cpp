@@ -206,7 +206,7 @@ void runGame() {
                 }
                 if (!rules.isValid(game)) {
                     if (game.twoCardsSelected()) {
-                        game.setPlayersActive(false);
+                        game.setPlayerActive(false);
                     }
                 }
                 if (game.twoCardsSelected()) {
@@ -251,7 +251,7 @@ void runGame() {
                 }
                 if (!rules.isValid(game)) {
                     if (game.twoCardsSelected()) {
-                        game.setPlayersActive(false);
+                        game.setPlayerActive(false);
                     }
                 }
                 if (game.twoCardsSelected()) {

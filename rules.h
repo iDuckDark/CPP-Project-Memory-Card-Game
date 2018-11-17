@@ -12,19 +12,25 @@
 class Rules {
 
 public:
-    Rules()= default;
+    Rules() = default;
 
     bool isValid(const Game &game);
 
     bool gameOver(const Game &game);
 
     bool roundOver(const Game &game);
-    void expertRules(Card*, Game&, Letter, Number);
-    void expertOctopus(Card*, Game&, Letter, Number);
-    void expertPenguin(Card*, Game&, Letter, Number);
-    void expertWalrus(Card*, Game&, Letter, Number);
-    void expertCrab(Card*, Game&, Letter, Number);
-    void expertTurtle(Card*, Game&, Letter, Number);
+
+    void expertRules(Card *, Game &, Letter, Number);
+
+    void expertOctopus(Card *, Game &, Letter, Number);
+
+    void expertPenguin(Card *, Game &, Letter, Number);
+
+    void expertWalrus(Card *, Game &, Letter, Number);
+
+    void expertCrab(Card *, Game &, Letter, Number);
+
+    void expertTurtle(Card *, Game &, Letter, Number);
 };
 
 

@@ -3,28 +3,33 @@
 
 #include <iostream>
 #include <string>
-#include <cassert>
 
 using namespace std;
 
-
 class Reward {
+
 private:
     int _nRubies;
 
     Reward(int);
-    //TODO Need to give friend access to RewardDeck, make constructor private
+
     //Reward(const Reward &);
-    //const Reward &operator=(const Reward &);
 
 public:
-    friend class RewardDeck;
 
-    //explicit Reward(int);
+    //Reward &operator=(const Reward &);
+
+    friend class RewardDeck;
 
     int getNRubies() const;
 
-    friend ostream &operator<<(ostream &os, const Reward &reward);
+    friend ostream &operator<<(ostream &, const Reward &);
+
+    friend bool operator<(const Reward &, const Reward &);
+
+    friend bool operator>(const Reward &, const Reward &);
+
+    friend bool operator==(const Reward &, const Reward &);
 };
 
 

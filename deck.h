@@ -15,18 +15,11 @@
 #include <iostream>
 
 template<class C>
-class Deck {
 
+class Deck {
 
 public:
     Deck() = default;
-
-//    //TODO : Ask Prof is this private or public???
-//    void shuffle() = 0;
-//
-//    C *getNext() = 0;
-//
-//    bool isEmpty() = 0;
 
     void shuffle() {
         std::random_device rd;
@@ -34,7 +27,7 @@ public:
         std::shuffle(deck->begin(), deck->end(), g);
     }
 
-    C* getNext() {
+    C *getNext() {
         if (!(*deck).empty()) {
             C *last = &(*deck).back();
             deck->pop_back();
@@ -43,12 +36,10 @@ public:
         return nullptr;
     }
 
-    bool isEmpty() {
-        return (*deck).empty();
-    }
+    bool isEmpty() { return (*deck).empty(); }
 
 protected:
-    vector<C>* deck = new vector<C>();
+    vector<C> *deck;//= new vector<C>();
 
 };
 

@@ -6,6 +6,7 @@
 #include <cmath>
 
 using namespace std;
+
 enum FaceAnimal {
     Crab, Penguin, Octopus, Turtle, Walrus, Animals
 };
