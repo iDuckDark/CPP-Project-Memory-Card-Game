@@ -107,52 +107,53 @@ void runGame() {
         }
         printLeastToMostRubiesAndWinner(game);
     }
-//    else if (mode == 2) {
-//        std::map<std::string, Card *> cardMap;
-//        int round = 1;
-//        while (!rules.gameOver(game)) {
-//            cout << "Expert Mode" << endl;
-//            board->reset();
-//            game.setAllPlayersActive();
-//            temporaryRevealThreeCards(game, mode);
-//            board->reset();
-//            int sideCounter = 0;
-//            while (!rules.roundOver(game)) {
-//                Player &currentPlayer = game.getPlayer(sides[0 + sideCounter++]);
-//                cout << "Round: " << round << " , Turn: " << currentPlayer.getName() << endl;
-//                if (currentPlayer.isActive()) {
-//                    Letter letter = Z;
-//                    Number number = Zero;
-//                    getValidInput(&letter, &number, board);
-//                    board->turnFaceUp(letter, number);
-//                    Card *selectedCard = board->getCard(letter, number);
-//                    rules.expertRules(selectedCard, game, letter, number);
-//                    char cara = 'Z';
-//                    if (letter == A) {
-//                        cara = 'A';
-//                    } else if (letter == B) {
-//                        cara = 'B';
-//                    } else if (letter == C) {
-//                        cara = 'C';
-//                    } else if (letter == D) {
-//                        cara = 'D';
-//                    } else if (letter == E) {
-//                        cara = 'E';
-//                    }
-//                    cardMap[cara + to_string(number)] = selectedCard;
-//                    expertModePrint(cardMap);
-//                    game.setCurrentCard(selectedCard);
-//                }
-//                if (!rules.isValid(game)) {
-//                    if (game.twoCardsSelected()) { currentPlayer.setActive(false); }
-//                }
-//                if (game.twoCardsSelected()) { game.clearSelectedCards(); }
-//            }
-//            game.setRound(++round);
-//            game.awardActivePlayers();
-//        }
-//        printLeastToMostRubiesAndWinner(game);
-//    }
+    else if (mode == 2) {
+        std::map<std::string, Card *> cardMap;
+        int round = 1;
+        while (!rules.gameOver(game)) {
+            //cout << "Expert Mode" << endl;
+            game.reset(mode);
+            //game.setAllPlayersActive();
+            //board->reset();
+            int sideCounter = 0;
+            while (!rules.roundOver(game)) {
+
+                Player &currentPlayer = game.getPlayer(sides[0 + sideCounter++]);
+                if (sideCounter >= nPlayers) { sideCounter = 0; }
+                cout << "Round: " << round << " , Turn: " << currentPlayer.getName() << endl;
+                if (currentPlayer.isActive()) {
+                    Letter letter = Z;
+                    Number number = Zero;
+                    game.getValidInput(&letter, &number);
+                    //board->turnFaceUp(letter, number);
+                    Card *selectedCard = game.getCard(letter, number);
+                    rules.expertRules(selectedCard, game, letter, number);
+                    char cara = 'Z';
+                    if (letter == A) {
+                        cara = 'A';
+                    } else if (letter == B) {
+                        cara = 'B';
+                    } else if (letter == C) {
+                        cara = 'C';
+                    } else if (letter == D) {
+                        cara = 'D';
+                    } else if (letter == E) {
+                        cara = 'E';
+                    }
+                    cardMap[cara + to_string(number)] = selectedCard;
+                    expertModePrint(cardMap);
+                    game.setCurrentCard(selectedCard);
+                }
+                if (!rules.isValid(game)) {
+                    if (game.twoCardsSelected()) { currentPlayer.setActive(false); }
+                }
+                if (game.twoCardsSelected()) { game.clearSelectedCards(); }
+            }
+            game.setRound(++round);
+            game.awardActivePlayers();
+        }
+        printLeastToMostRubiesAndWinner(game);
+    }
 }
 
 
