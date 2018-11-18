@@ -20,17 +20,17 @@ public:
 
     bool roundOver(const Game &game);
 
-    void expertRules(Card *, Game &, Letter, Number);
+    void expertRules(Card *, Game &, Letter, Number,Player&,std::map<std::string, Card *>*);
 
-    void expertOctopus(Card *, Game &, Letter, Number);
+    void expertOctopus(Card *, Game &, Letter, Number,Player&);
 
-    void expertPenguin(Card *, Game &, Letter, Number);
+    void expertPenguin(Card *, Game &, Letter, Number,Player&,std::map<std::string, Card *>*);
 
-    void expertWalrus(Card *, Game &, Letter, Number);
+    void expertWalrus(Card *, Game &, Letter, Number,Player&);
 
-    void expertCrab(Card *, Game &, Letter, Number);
+    void expertCrab(Card *, Game &, Letter, Number,Player&);
 
-    void expertTurtle(Card *, Game &, Letter, Number);
+    void expertTurtle(Card *, Game &, Letter, Number,Player&);
 };
 
 

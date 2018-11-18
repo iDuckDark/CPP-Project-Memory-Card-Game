@@ -24,23 +24,23 @@ bool Rules::roundOver(const Game &game) {
 }
 
 
-void Rules::expertRules(Card *card, Game &game, Letter letter, Number number) {
+void Rules::expertRules(Card *card, Game &game, Letter letter, Number number,Player& player, std::map<std::string, Card *>* cardMap) {
     if (card->getAnimal() == 'O') {
-        expertOctopus(card, game, letter, number);
+        expertOctopus(card, game, letter, number, player);
     } else if (card->getAnimal() == 'P') {
-        expertPenguin(card, game, letter, number);
+        expertPenguin(card, game, letter, number, player, cardMap);
     } else if (card->getAnimal() == 'C') {
-        expertCrab(card, game, letter, number);
+        expertCrab(card, game, letter, number, player);
     } else if (card->getAnimal() == 'W') {
-        expertWalrus(card, game, letter, number);
+        expertWalrus(card, game, letter, number, player);
     } else {//Turtle
-        expertTurtle(card, game, letter, number);
+        expertTurtle(card, game, letter, number,  player);
     }
 }
 
-void Rules::expertOctopus(Card *card, Game &game, Letter letter, Number number) {
+void Rules::expertOctopus(Card *card, Game &game, Letter letter, Number number, Player& player) {
     cout << "You have picked an Octopus!" << endl;
-    cout << "Pick position with an adjacent card in the same row or the same column " << endl;
+    cout << "Pick position with an adjacent card in the same row or the same column to swap: " << endl;
 
     //TODO Get input and implement logic
 
@@ -49,31 +49,75 @@ void Rules::expertOctopus(Card *card, Game &game, Letter letter, Number number) 
     //The adjacent card may be face up or down and will remain unchanged.
 }
 
-void Rules::expertPenguin(Card *card, Game &game, Letter letter, Number number) {
+void Rules::expertPenguin(Card *card, Game &game, Letter letter, Number number, Player& player, std::map<std::string, Card *>* cardMap) {
     cout << "You have picked a Penguin!" << endl;
-    cout << "Pick a card to change face up or face down " << endl;
-    //TODO Get input and implement logic
-    //If the penguin is the first card turned up, no
-    //special action will take place.
+    cout << "Pick a card to change face up or face down: " << endl;
+    Letter someLetter = Z;
+    Number someNumber = Zero;
+    string input;
+    while (true) {
+        cin >> input;
+        if (input.length() == 2) break;
+        else cout << "Invalid input, please try again: ";
+    }
+    someLetter = static_cast<Letter>(toEnum(input[0]));
+    someNumber = static_cast<Number>(toEnum(input[1]));
 
+    Card *selectedCard = game.getCard(someLetter, someNumber);
+    char cara = 'Z';
+    if (someLetter == A) {
+        cara = 'A';
+    } else if (someLetter == B) {
+        cara = 'B';
+    } else if (someLetter == C) {
+        cara = 'C';
+    } else if (someLetter == D) {
+        cara = 'D';
+    } else if (someLetter == E) {
+        cara = 'E';
+    }
+    if(cardMap->count( cara+to_string(someNumber) )){
+
+        cout<<"Turning Face down :"<<endl;
+        cardMap->erase(cara+to_string(someNumber));
+        //TODO need to make card face down from game->
+
+    }else{
+        cout<<"Turning Face Up:"<<endl;
+        cardMap->operator[](cara+to_string(someNumber))=selectedCard;
+        game.setCurrentCard(selectedCard);
+    }
+    cout<<*selectedCard<<endl;
 }
 
-void Rules::expertWalrus(Card *card, Game &game, Letter letter, Number number) {
+void Rules::expertWalrus(Card *card, Game &game, Letter letter, Number number, Player& player) {
     cout << "You have picked a Walrus!" << endl;
-    cout << "Pick a card to block from being chosen in the next round" << endl;
+    cout << "Pick a card to block from being chosen in the next round:" << endl;
     //TODO Get input and implement logic
 }
 
-void Rules::expertCrab(Card *card, Game &game, Letter letter, Number number) {
+void Rules::expertCrab(Card *card, Game &game, Letter letter, Number number, Player& player) {
     cout << "You have picked a Crab!" << endl;
-    cout << "Pick another card. If it doesn't match, you lose the round" << endl;
-    //TODO Get input and implement logic
+    cout<<*card<<endl;
+    cout << "Pick another card. If it doesn't match, you lose the round:" << endl;
+    Letter someLetter = Z;
+    Number someNumber = Zero;
+    game.getValidInput(&someLetter,&someNumber);
+    Card *selectedCard = game.getCard(someLetter, someNumber);
 
-    //The player who turns over a crab card must
-    //immediately turn over another card. If that card does not fit, the player loses the current round.
+    cout<<"You picked:"<<endl;
+    cout<<*selectedCard<<endl;
+
+    if(selectedCard->getColor() != card->getColor() && selectedCard->getAnimal() !=card->getAnimal()){
+        cout<<"The cards didn't match :( "+player.getName()+" is out of the current round."<<endl;
+        player.setActive(false);
+
+    }else{
+        cout<<"The cards matched :) "+player.getName()+" is still in the current round."<<endl;
+    }
 }
 
-void Rules::expertTurtle(Card *card, Game &game, Letter letter, Number number) {
+void Rules::expertTurtle(Card *card, Game &game, Letter letter, Number number, Player& player) {
     cout << "You have picked a Turtle!" << endl;
     cout << "Skipping next player's turn." << endl;
     //TODO Get input and implement logic

@@ -118,6 +118,7 @@ void runGame() {
             int sideCounter = 0;
             while (!rules.roundOver(game)) {
 
+
                 Player &currentPlayer = game.getPlayer(sides[0 + sideCounter++]);
                 if (sideCounter >= nPlayers) { sideCounter = 0; }
                 cout << "Round: " << round << " , Turn: " << currentPlayer.getName() << endl;
@@ -127,7 +128,7 @@ void runGame() {
                     game.getValidInput(&letter, &number);
                     //board->turnFaceUp(letter, number);
                     Card *selectedCard = game.getCard(letter, number);
-                    rules.expertRules(selectedCard, game, letter, number);
+                    rules.expertRules(selectedCard, game, letter, number, currentPlayer,&cardMap);
                     char cara = 'Z';
                     if (letter == A) {
                         cara = 'A';
