@@ -43,7 +43,7 @@ public:
 
     Board &getBoard(); //TODO not sure if this is bad
 
-    void setRound(int);
+    void setRound(int&);
 
     void addPlayer(const Player &);
 

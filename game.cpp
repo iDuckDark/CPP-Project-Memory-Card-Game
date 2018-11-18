@@ -14,7 +14,7 @@ int Game::getNPlayers() const {
     return static_cast<int>(playersQueue.size());
 }
 
-void Game::setRound(int num) { nRound = num; }
+void Game::setRound(int &num) { nRound = num; }
 
 void Game::addPlayer(const Player &player) {
     playersQueue.push(player);
