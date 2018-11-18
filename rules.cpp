@@ -40,7 +40,6 @@ void Rules::expertRules(Card *card, Game &game, Letter letter, Number number) {
 
 void Rules::expertOctopus(Card *card, Game &game, Letter letter, Number number) {
     cout << "Octopus" << endl;
-    game.setPlayerActive(true);
     // When an octopus card is turned over, the
     //card is exchanging position with an adjacent card in the same row or the same column (4-neighbourhood)
     //The adjacent card may be face up or down and will remain unchanged.

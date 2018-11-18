@@ -14,7 +14,10 @@
 #include <iterator>
 #include <iostream>
 
+using namespace std;
+
 template<class C>
+
 
 class Deck {
 
@@ -37,10 +40,11 @@ public:
     }
 
     bool isEmpty() { return (*deck).empty(); }
-    virtual ~Deck(){};
+
+    virtual ~Deck() {}
 
 protected:
-    vector<C*> *deck;//= new vector<C>();
+    vector<C *> *deck;
 
 };
 

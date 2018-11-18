@@ -22,36 +22,31 @@ class Game {
 private:
     int nRound{0};
 
+    Side currentSide;
+
     Board board;
 
     RewardDeck rewardDeck;
 
-public:
-    queue<vector<const Card *>> cardQueue;
+    vector<vector<const Card *>> cards;
 
-    queue<Player> playersQueue;
+    vector<Player> players;
+
+    void setSide(Side);
+
+    void temporaryRevealThreeCards(const int &mode);
+
+public:
 
     Game() = default;
 
+    void setRound(int &);
+
     int getRound() const;
-
-    int getNPlayers() const;
-
-    int getNActivePlayers() const;
-
-    bool twoCardsSelected() const;
-
-    Board &getBoard(); //TODO not sure if this is bad
-
-    void setRound(int&);
 
     void addPlayer(const Player &);
 
-    void setPlayerActive(bool active);
-
-    Player &getPlayer();
-
-    void setAllPlayersActive(); //Added own function
+    Player &getPlayer(Side);
 
     const Card *getPreviousCard() const;
 
@@ -59,9 +54,27 @@ public:
 
     void setCurrentCard(const Card *);
 
+    Card *getCard(const Letter &, const Number &);
+
+    void setCard(const Letter &, const Number &, Card *);
+
+    //TODO minimize own public methods
+
+    int getNPlayers() const;
+
+    int getNActivePlayers() const;
+
+    bool twoCardsSelected() const;
+
+    void reset(const int &);
+
+    void setAllPlayersActive();
+
     void clearSelectedCards();
 
     void awardActivePlayers();
+
+    void getValidInput(Letter *letter, Number *number);
 
     friend ostream &operator<<(ostream &os, const Game &game);
 };
