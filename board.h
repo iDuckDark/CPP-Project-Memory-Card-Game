@@ -72,7 +72,7 @@ public:
 
     bool isBlocked(const Letter &, const Number &) const; //Expert Walrus
 
-    bool setBlocked(const Letter &, const Number &); //Expert Walrus
+    void setBlocked(const Letter &, const Number &); //Expert Walrus
 };
 
 #endif //CPP_PROJECT_MEMORY_GAME_BOARD_H

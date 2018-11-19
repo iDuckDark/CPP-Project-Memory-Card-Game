@@ -60,7 +60,7 @@ bool Board::isBlocked(const Letter &letter, const Number &number) const {
     return blockedCards[getIndex(letter, "Letter")][getIndex(number, "Number")];
 }
 
-bool Board::setBlocked(const Letter &letter, const Number &number) {
+void Board::setBlocked(const Letter &letter, const Number &number) {
     blockedCards[getIndex(letter, "Letter")][getIndex(number, "Number")] = true;
 }
 
