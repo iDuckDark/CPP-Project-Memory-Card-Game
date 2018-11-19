@@ -70,6 +70,8 @@ public:
 
     friend ostream &operator<<(ostream &, const Board &);
 
+    bool isValidCard(const Letter &, const Number &) const; //Expert
+
     bool isBlocked(const Letter &, const Number &) const; //Expert Walrus
 
     void setBlocked(const Letter &, const Number &); //Expert Walrus

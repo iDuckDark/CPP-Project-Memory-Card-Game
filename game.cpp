@@ -132,6 +132,11 @@ void Game::getValidInput(Letter *letter, Number *number) {
     setCard(*letter, *number, getCard(*letter, *number));
 }
 
+
+bool Game::isValidCard(const Letter &letter, const Number &number) const {
+    return board.isValidCard(letter, number);
+}
+
 bool Game::isBlocked(const Letter &letter, const Number &number) const {
     return board.isBlocked(letter, number);
 }

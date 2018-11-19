@@ -46,6 +46,12 @@ void Board::setScreen() {
 
 string *Board::getScreen() const { return screen; }
 
+bool Board::isValidCard(const Letter &letter, const Number &number) const {
+    if (getIndex(letter, "Letter") == 2 && getIndex(number, "Number") == 2)
+        throw out_of_range("Not allowed to pick treasure card!");
+    return true;
+}
+
 bool Board::isFaceUp(const Letter &letter, const Number &number) const {
     if (getIndex(letter, "Letter") == 2 && getIndex(number, "Number") == 2)
         throw out_of_range("Not allowed to pick treasure card!");

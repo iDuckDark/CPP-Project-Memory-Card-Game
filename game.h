@@ -78,6 +78,8 @@ public:
 
     friend ostream &operator<<(ostream &os, const Game &game);
 
+    bool isValidCard(const Letter &letter, const Number &number) const;
+
     bool isBlocked(const Letter &, const Number &) const; //Expert Walrus
 
     void setBlocked(const Letter &, const Number &); //Expert Walrus
