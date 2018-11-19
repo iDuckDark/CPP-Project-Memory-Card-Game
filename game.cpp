@@ -60,45 +60,31 @@ void Game::setAllPlayersActive() {
 void Game::reset(const int &mode) {
     setAllPlayersActive();
     temporaryRevealThreeCards(mode);
-    board.reset();
 }
 
 void Game::temporaryRevealThreeCards(const int &mode) {
     cout << "Three random cards are revealed temporary in front of the players" << endl;
-    const Side sides[4] = {Top, Bottom, Left, Right};
-    for (int i = 0; i < getNPlayers(); i++) {
-        const Player &player = getPlayer(static_cast<Side>(i));
-        cout << player << endl;
-        const Side &side = player.getSide();
-        switch (side) {
+    for (const auto player: players) {
+        switch (player.getSide()) {
             case Top:
-                board.turnFaceUp(A, Two);
-                board.turnFaceUp(A, Three);
-                board.turnFaceUp(A, Four);
+                for (int i = 0; i < 3; i++) board.turnFaceUp(A, Number(Two + i));
                 break;
             case Bottom :
-                board.turnFaceUp(E, Two);
-                board.turnFaceUp(E, Three);
-                board.turnFaceUp(E, Four);
+                for (int i = 0; i < 3; i++) board.turnFaceUp(E, Number(Two + i));
                 break;
             case Left:
-                board.turnFaceUp(B, One);
-                board.turnFaceUp(C, One);
-                board.turnFaceUp(D, One);
+                for (int i = 0; i < 3; i++) board.turnFaceUp(Letter(B + i), One);
                 break;
             case Right:
-                board.turnFaceUp(B, Five);
-                board.turnFaceUp(C, Five);
-                board.turnFaceUp(D, Five);
+                for (int i = 0; i < 3; i++) board.turnFaceUp(Letter(B + i), Five);
                 break;
             default:
                 break;
         }
     }
-    if (mode == 1) {
-        cout << (*this) << endl;
-    }
+    if (mode == 1) { cout << (*this) << endl; }
     cout << "Cards are hidden now" << endl;
+    board.reset();
 }
 
 
@@ -115,7 +101,7 @@ void Game::clearSelectedCards() {
 }
 
 void Game::awardActivePlayers() {
-    for (auto player: players) {
+    for (auto &player: players) {
         if (player.isActive()) {
             Reward &reward = *rewardDeck.getNext();
             player.addReward(reward);
@@ -144,6 +130,14 @@ void Game::getValidInput(Letter *letter, Number *number) {
         }
     }
     setCard(*letter, *number, getCard(*letter, *number));
+}
+
+bool Game::isBlocked(const Letter &letter, const Number &number) const {
+    board.isBlocked(letter, number);
+}
+
+bool Game::setBlocked(const Letter &letter, const Number &number) {
+    board.setBlocked(letter, number);
 }
 
 void Game::setCard(const Letter &letter, const Number &number, Card *card) {

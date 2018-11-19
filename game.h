@@ -77,6 +77,10 @@ public:
     void getValidInput(Letter *letter, Number *number);
 
     friend ostream &operator<<(ostream &os, const Game &game);
+
+    bool isBlocked(const Letter &, const Number &) const; //Expert Walrus
+
+    bool setBlocked(const Letter &, const Number &); //Expert Walrus
 };
 
 

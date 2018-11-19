@@ -35,9 +35,11 @@ class Board {
 private:
     string *screen;
 
-    vector<Card*> cards;
+    vector<Card *> cards;
 
     bool *faceDownCards[5];
+
+    bool *blockedCards[5];
 
     vector<vector<Card *> *> cards2D;
 
@@ -67,6 +69,10 @@ public:
     void reset();
 
     friend ostream &operator<<(ostream &, const Board &);
+
+    bool isBlocked(const Letter &, const Number &) const; //Expert Walrus
+
+    bool setBlocked(const Letter &, const Number &); //Expert Walrus
 };
 
 #endif //CPP_PROJECT_MEMORY_GAME_BOARD_H

@@ -116,18 +116,16 @@ void runGame() {
             //board->reset();
             int sideCounter = 0;
             while (!rules.roundOver(game)) {
-
-
-                Player &currentPlayer = game.getPlayer(sides[0 + sideCounter++]);
+                const Side &side =sides[0 + sideCounter++];
+                Player &currentPlayer = game.getPlayer(side);
                 if (sideCounter >= nPlayers) { sideCounter = 0; }
                 cout << "Round: " << round << " , Turn: " << currentPlayer.getName() << endl;
                 if (currentPlayer.isActive()) {
                     Letter letter = Z;
                     Number number = Zero;
                     game.getValidInput(&letter, &number);
-                    //board->turnFaceUp(letter, number);
                     Card *selectedCard = game.getCard(letter, number);
-                    rules.expertRules(selectedCard, game, letter, number, currentPlayer, &cardMap);
+                    rules.expertRules(selectedCard, game, letter, number, side, &cardMap);
                     char cara = 'Z';
                     if (letter == A) {
                         cara = 'A';
@@ -159,6 +157,10 @@ void runGame() {
 
 int main() {
     runGame();
+
+//    for (int row = 0; row <= 16; row = row + 4) {
+//        cout << row << endl;
+//    }
 //    Game game;
 //    Player peter("Peter");
 //    peter.setSide(Top);

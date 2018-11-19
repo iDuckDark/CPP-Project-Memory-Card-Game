@@ -5,6 +5,7 @@
 #include "rules.h"
 
 bool Rules::isValid(const Game &game) {
+    //TODO remove cout once game is complete (Debugging purpose)
     cout << endl << "TEST RULES IS VALID? " << endl;
     if (game.twoCardsSelected()) {
         cout << "Previous & Next card Equal? " << (*game.getPreviousCard() == *game.getCurrentCard()) << endl
@@ -20,21 +21,28 @@ bool Rules::gameOver(const Game &game) { return game.getRound() >= 7; }
 bool Rules::roundOver(const Game &game) { return game.getNActivePlayers() == 1; }
 
 
-void Rules::expertRules(Card *card, Game &game, Letter letter, Number number,Player& player, std::map<std::string, Card *>* cardMap) {
-    if (card->getAnimal() == 'O') {
-        expertOctopus(card, game, letter, number, player);
-    } else if (card->getAnimal() == 'P') {
-        expertPenguin(card, game, letter, number, player, cardMap);
-    } else if (card->getAnimal() == 'C') {
-        expertCrab(card, game, letter, number, player);
-    } else if (card->getAnimal() == 'W') {
-        expertWalrus(card, game, letter, number, player);
-    } else {
-        expertTurtle(card, game, letter, number,  player);
+void Rules::expertRules(Card *card, Game &game, Letter &letter, Number &number, const Side &side,
+                        std::map<std::string, Card *> *cardMap) {
+    switch (card->getAnimal()) {
+        case '0':
+            expertOctopus(card, game, letter, number, side);
+            break;
+        case 'P':
+            expertPenguin(card, game, letter, number, side, cardMap);
+            break;
+        case 'C':
+            expertCrab(card, game, letter, number, side);
+            break;
+        case 'W':
+            expertWalrus(card, game, letter, number, side);
+            break;
+        default:
+            expertTurtle(card, game, letter, number, side);
+            break;
     }
 }
 
-void Rules::expertOctopus(Card *card, Game &game, Letter letter, Number number, Player& player) {
+void Rules::expertOctopus(Card *card, Game &game, Letter &letter, Number &number, const Side &side) {
     cout << "You have picked an Octopus!" << endl;
     cout << "Pick position with an adjacent card in the same row or the same column to swap: " << endl;
 
@@ -45,7 +53,9 @@ void Rules::expertOctopus(Card *card, Game &game, Letter letter, Number number, 
     //The adjacent card may be face up or down and will remain unchanged.
 }
 
-void Rules::expertPenguin(Card *card, Game &game, Letter letter, Number number, Player& player, std::map<std::string, Card *>* cardMap) {
+void Rules::expertPenguin(Card *card, Game &game, Letter &letter, Number &number, const Side &side,
+                          std::map<std::string, Card *> *cardMap) {
+    Player &player = game.getPlayer(side);
     cout << "You have picked a Penguin!" << endl;
     cout << "Pick a card to change face up or face down: " << endl;
     Letter someLetter = Z;
@@ -72,48 +82,48 @@ void Rules::expertPenguin(Card *card, Game &game, Letter letter, Number number, 
     } else if (someLetter == E) {
         cara = 'E';
     }
-    if(cardMap->count( cara+to_string(someNumber) )){
+    if (cardMap->count(cara + to_string(someNumber))) {
 
-        cout<<"Turning Face down :"<<endl;
-        cardMap->erase(cara+to_string(someNumber));
+        cout << "Turning Face down :" << endl;
+        cardMap->erase(cara + to_string(someNumber));
         //TODO need to make card face down from game->
-
-    }else{
-        cout<<"Turning Face Up:"<<endl;
-        cardMap->operator[](cara+to_string(someNumber))=selectedCard;
+    } else {
+        cout << "Turning Face Up:" << endl;
+        cardMap->operator[](cara + to_string(someNumber)) = selectedCard;
         game.setCurrentCard(selectedCard);
     }
-    cout<<*selectedCard<<endl;
+    cout << *selectedCard << endl;
 }
 
-void Rules::expertWalrus(Card *card, Game &game, Letter letter, Number number, Player& player) {
+void Rules::expertWalrus(Card *card, Game &game, Letter &letter, Number &number, const Side &side) {
     cout << "You have picked a Walrus!" << endl;
     cout << "Pick a card to block from being chosen in the next round:" << endl;
     //TODO Get input and implement logic
 }
 
-void Rules::expertCrab(Card *card, Game &game, Letter letter, Number number, Player& player) {
+void Rules::expertCrab(Card *card, Game &game, Letter &letter, Number &number, const Side &side) {
+    Player &player = game.getPlayer(side);
     cout << "You have picked a Crab!" << endl;
-    cout<<*card<<endl;
+    cout << *card << endl;
     cout << "Pick another card. If it doesn't match, you lose the round:" << endl;
     Letter someLetter = Z;
     Number someNumber = Zero;
-    game.getValidInput(&someLetter,&someNumber);
+    game.getValidInput(&someLetter, &someNumber);
     Card *selectedCard = game.getCard(someLetter, someNumber);
 
-    cout<<"You picked:"<<endl;
-    cout<<*selectedCard<<endl;
+    cout << "You picked:" << endl;
+    cout << *selectedCard << endl;
 
-    if(selectedCard->getColor() != card->getColor() && selectedCard->getAnimal() !=card->getAnimal()){
-        cout<<"The cards didn't match :( "+player.getName()+" is out of the current round."<<endl;
+    if (selectedCard->getColor() != card->getColor() && selectedCard->getAnimal() != card->getAnimal()) {
+        cout << "The cards didn't match :( " + player.getName() + " is out of the current round." << endl;
         player.setActive(false);
-
-    }else{
-        cout<<"The cards matched :) "+player.getName()+" is still in the current round."<<endl;
+    } else {
+        cout << "The cards matched :) " + player.getName() + " is still in the current round." << endl;
     }
 }
 
-void Rules::expertTurtle(Card *card, Game &game, Letter letter, Number number, Player& player) {
+void Rules::expertTurtle(Card *card, Game &game, Letter &letter, Number &number, const Side &side) {
+    Player &player = game.getPlayer(side);
     cout << "You have picked a Turtle!" << endl;
     cout << "Skipping next player's turn." << endl;
     //TODO Get input and implement logic
