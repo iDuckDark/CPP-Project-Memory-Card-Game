@@ -133,11 +133,11 @@ void Game::getValidInput(Letter *letter, Number *number) {
 }
 
 bool Game::isBlocked(const Letter &letter, const Number &number) const {
-    board.isBlocked(letter, number);
+    return board.isBlocked(letter, number);
 }
 
 void Game::setBlocked(const Letter &letter, const Number &number) {
-    return board.setBlocked(letter, number);
+    board.setBlocked(letter, number);
 }
 
 void Game::setCard(const Letter &letter, const Number &number, Card *card) {
