@@ -112,13 +112,12 @@ void runGame() {
         while (!rules.gameOver(game)) {
             //cout << "Expert Mode" << endl;
             game.reset(mode);
-            //game.setAllPlayersActive();
-            //board->reset();
             int sideCounter = 0;
             while (!rules.roundOver(game)) {
                 const Side &side =sides[0 + sideCounter++];
                 Player &currentPlayer = game.getPlayer(side);
                 if (sideCounter >= nPlayers) { sideCounter = 0; }
+                bool skipTurn = false;
                 cout << "Round: " << round << " , Turn: " << currentPlayer.getName() << endl;
                 if (currentPlayer.isActive()) {
                     Letter letter = Z;
@@ -157,10 +156,6 @@ void runGame() {
 
 int main() {
     runGame();
-
-//    for (int row = 0; row <= 16; row = row + 4) {
-//        cout << row << endl;
-//    }
 //    Game game;
 //    Player peter("Peter");
 //    peter.setSide(Top);
