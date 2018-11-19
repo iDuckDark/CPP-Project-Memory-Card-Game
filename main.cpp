@@ -72,7 +72,7 @@ void runGame() {
         cin >> names[i];
     }
     Game game;
-    Side sides[4] = {Top, Bottom, Left, Right};
+    const Side sides[4] = {Top, Bottom, Left, Right};
     for (int i = 0; i < nPlayers; i++) {
         Player player{names[i]};
         player.setSide(sides[i]);
@@ -106,8 +106,7 @@ void runGame() {
             game.awardActivePlayers();
         }
         printLeastToMostRubiesAndWinner(game);
-    }
-    else if (mode == 2) {
+    } else if (mode == 2) {
         std::map<std::string, Card *> cardMap;
         int round = 1;
         while (!rules.gameOver(game)) {
@@ -128,7 +127,7 @@ void runGame() {
                     game.getValidInput(&letter, &number);
                     //board->turnFaceUp(letter, number);
                     Card *selectedCard = game.getCard(letter, number);
-                    rules.expertRules(selectedCard, game, letter, number, currentPlayer,&cardMap);
+                    rules.expertRules(selectedCard, game, letter, number, currentPlayer, &cardMap);
                     char cara = 'Z';
                     if (letter == A) {
                         cara = 'A';
@@ -167,14 +166,14 @@ int main() {
 //    nevin.setSide(Bottom);
 //    game.addPlayer(peter);
 //    game.addPlayer(nevin);
+//    Player div{"Divyang"};
+//    div.setSide(Left);
+//    game.addPlayer(div);
 //    Player &p = game.getPlayer(Top);
 //    Player &p1 = game.getPlayer(Bottom);
-//    p.setActive(false);
-//    p1.setActive(false);
-//    cout << p << endl;
-//    cout << game.getNActivePlayers() << endl;
-//    game.setAllPlayersActive();
-//    cout << game.getNActivePlayers() << endl;
+//    Player &p2=game.getPlayer(static_cast<Side>(1));
+
+//    cout << p2 << endl;
 
 //   Board *board = &game.getBoard();
 //    cout << *board << endl;

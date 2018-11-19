@@ -19,6 +19,7 @@ using namespace std;
 class RewardDeck : public Deck<Reward> {
 
 public:
+
     RewardDeck();
 
     ~RewardDeck();

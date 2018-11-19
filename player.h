@@ -14,7 +14,7 @@ using namespace std;
 
 //TODO change to enum class?
 enum Side {
-    Top, Bottom, Right, Left
+    Top = 0, Bottom = 1, Left = 2, Right = 3
 };
 
 class Player {

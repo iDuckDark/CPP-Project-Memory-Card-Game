@@ -65,8 +65,10 @@ void Game::reset(const int &mode) {
 
 void Game::temporaryRevealThreeCards(const int &mode) {
     cout << "Three random cards are revealed temporary in front of the players" << endl;
+    const Side sides[4] = {Top, Bottom, Left, Right};
     for (int i = 0; i < getNPlayers(); i++) {
         const Player &player = getPlayer(static_cast<Side>(i));
+        cout << player << endl;
         const Side &side = player.getSide();
         switch (side) {
             case Top:

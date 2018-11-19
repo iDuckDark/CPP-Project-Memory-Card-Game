@@ -39,9 +39,8 @@ ostream &operator<<(ostream &os, const Player &player) {
     os << player.getName() << ": ";
     if (!player.endOfGame) {
         return os << player.getSideToString() << " (" << (player.active ? "active" : "inactive") << ")" << endl;
-    } else {
-        return os << " " << player.getNRubies() << " rubies" << endl;
     }
+    return os << " " << player.getNRubies() << " rubies" << endl;
 }
 
 bool operator<(const Player &lhs, const Player &rhs) { return lhs.getNRubies() < rhs.getNRubies(); }

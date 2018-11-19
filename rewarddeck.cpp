@@ -10,8 +10,6 @@ RewardDeck::RewardDeck() : Deck() {
 }
 
 RewardDeck::~RewardDeck() {
-    for (vector< Reward* >::iterator it = deck->begin() ; it != deck->end(); ++it) {
-        delete (*it);
-    }
+    for (vector< Reward* >::iterator it = deck->begin() ; it != deck->end(); ++it) { delete (*it); }
     delete deck;
 }

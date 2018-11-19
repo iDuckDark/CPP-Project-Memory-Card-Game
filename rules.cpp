@@ -15,13 +15,9 @@ bool Rules::isValid(const Game &game) {
     return false;
 }
 
-bool Rules::gameOver(const Game &game) {
-    return game.getRound() >= 7;
-}
+bool Rules::gameOver(const Game &game) { return game.getRound() >= 7; }
 
-bool Rules::roundOver(const Game &game) {
-    return game.getNActivePlayers() == 1;
-}
+bool Rules::roundOver(const Game &game) { return game.getNActivePlayers() == 1; }
 
 
 void Rules::expertRules(Card *card, Game &game, Letter letter, Number number,Player& player, std::map<std::string, Card *>* cardMap) {
@@ -33,7 +29,7 @@ void Rules::expertRules(Card *card, Game &game, Letter letter, Number number,Pla
         expertCrab(card, game, letter, number, player);
     } else if (card->getAnimal() == 'W') {
         expertWalrus(card, game, letter, number, player);
-    } else {//Turtle
+    } else {
         expertTurtle(card, game, letter, number,  player);
     }
 }
