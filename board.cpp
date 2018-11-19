@@ -57,10 +57,14 @@ bool Board::isFaceDown(const int &i, const int &j) const {
 }
 
 bool Board::isBlocked(const Letter &letter, const Number &number) const {
+    if (getIndex(letter, "Letter") == 2 && getIndex(number, "Number") == 2)
+        throw out_of_range("Not allowed to pick treasure card!");
     return blockedCards[getIndex(letter, "Letter")][getIndex(number, "Number")];
 }
 
 void Board::setBlocked(const Letter &letter, const Number &number) {
+    if (getIndex(letter, "Letter") == 2 && getIndex(number, "Number") == 2)
+        throw out_of_range("Not allowed to pick treasure card!");
     blockedCards[getIndex(letter, "Letter")][getIndex(number, "Number")] = true;
 }
 
@@ -90,6 +94,7 @@ void setCard(const Letter &letter, const Number &number, Card *card) {}
 
 bool Board::turnFaceUp(const Letter &letter, const Number &number) {
     if (isFaceUp(letter, number)) { return false; }
+    else if (isBlocked(letter, number)) { return false; }
     return !(faceDownCards[getIndex(letter, "Letter")][getIndex(number, "Number")] = false);
 }
 
@@ -111,18 +116,14 @@ ostream &operator<<(ostream &os, const Board &board) {
         if (letterRow) os << (char) ('A' + letterRowCounter++) << " ";
         else os << "  ";
         string temp = screen[screenRowCounter];
-        vector<bool> rows;
         for (int row = 0; row <= 16; row = row + 4) {
-            rows.push_back(screenRowCounter >= (0 + row) && screenRowCounter <= (2 + row));
-        }
-        for (int index = 0; index < rows.size(); index++) {
-            if (rows[index]) {
+            if (screenRowCounter >= (0 + row) && screenRowCounter <= (2 + row)) {
                 for (int j = 0; j < 5; j++) {
-                    if (board.isFaceDown(index, j)) {
+                    if (board.isFaceDown((row / 4), j)) {
                         temp[0 + 4 * j] = temp[1 + 4 * j] = temp[2 + 4 * j] = 'z';
                     }
                 }
-                if (index == 2) { temp[8] = temp[9] = temp[10] = ' '; };
+                if ((row / 4) == 2) { temp[8] = temp[9] = temp[10] = ' '; };
             }
         }
         os << temp << endl;
