@@ -136,8 +136,8 @@ bool Game::isBlocked(const Letter &letter, const Number &number) const {
     board.isBlocked(letter, number);
 }
 
-bool Game::setBlocked(const Letter &letter, const Number &number) {
-    board.setBlocked(letter, number);
+void Game::setBlocked(const Letter &letter, const Number &number) {
+    return board.setBlocked(letter, number);
 }
 
 void Game::setCard(const Letter &letter, const Number &number, Card *card) {

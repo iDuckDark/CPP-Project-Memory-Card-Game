@@ -80,7 +80,7 @@ public:
 
     bool isBlocked(const Letter &, const Number &) const; //Expert Walrus
 
-    bool setBlocked(const Letter &, const Number &); //Expert Walrus
+    void setBlocked(const Letter &, const Number &); //Expert Walrus
 };
 
 
