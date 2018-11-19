@@ -113,18 +113,21 @@ void runGame() {
             //cout << "Expert Mode" << endl;
             game.reset(mode);
             int sideCounter = 0;
+            bool* skipTurn = new bool(false);
             while (!rules.roundOver(game)) {
+                //to skip a turn do side++
+                if(*skipTurn) sideCounter++;
                 const Side &side =sides[0 + sideCounter++];
+                *skipTurn = false;
                 Player &currentPlayer = game.getPlayer(side);
                 if (sideCounter >= nPlayers) { sideCounter = 0; }
-                bool skipTurn = false;
                 cout << "Round: " << round << " , Turn: " << currentPlayer.getName() << endl;
                 if (currentPlayer.isActive()) {
                     Letter letter = Z;
                     Number number = Zero;
                     game.getValidInput(&letter, &number);
                     Card *selectedCard = game.getCard(letter, number);
-                    rules.expertRules(selectedCard, game, letter, number, side, &cardMap);
+                    rules.expertRules(selectedCard, game, letter, number, side, &cardMap,skipTurn);
                     char cara = 'Z';
                     if (letter == A) {
                         cara = 'A';

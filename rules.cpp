@@ -22,7 +22,7 @@ bool Rules::roundOver(const Game &game) { return game.getNActivePlayers() == 1; 
 
 
 void Rules::expertRules(Card *card, Game &game, Letter &letter, Number &number, const Side &side,
-                        std::map<std::string, Card *> *cardMap) {
+                        std::map<std::string, Card *> *cardMap,bool* skip) {
     switch (card->getAnimal()) {
         case '0':
             expertOctopus(card, game, letter, number, side);
@@ -37,7 +37,7 @@ void Rules::expertRules(Card *card, Game &game, Letter &letter, Number &number, 
             expertWalrus(card, game, letter, number, side);
             break;
         default:
-            expertTurtle(card, game, letter, number, side);
+            expertTurtle(card, game, letter, number, side, skip);
             break;
     }
 }
@@ -122,10 +122,11 @@ void Rules::expertCrab(Card *card, Game &game, Letter &letter, Number &number, c
     }
 }
 
-void Rules::expertTurtle(Card *card, Game &game, Letter &letter, Number &number, const Side &side) {
+void Rules::expertTurtle(Card *card, Game &game, Letter &letter, Number &number, const Side &side, bool* skip) {
     Player &player = game.getPlayer(side);
     cout << "You have picked a Turtle!" << endl;
     cout << "Skipping next player's turn." << endl;
+    *skip = true;
     //TODO Get input and implement logic
     //. Finally,
     //with the turtle the next player in the current round is skipped, i.e., the next player will not turn over a card
