@@ -15,10 +15,6 @@
 
 using namespace std;
 
-//enum Letter {
-//    A = 'A', B = 'B', C = 'C', D = 'D', E = 'E', Z = -1
-//};
-
 enum Letter {
     A = 1, B = 2, C = 3, D = 4, E = 5, Z = -1
 };
@@ -64,7 +60,7 @@ public:
 
     Card *getCard(const Letter &, const Number &);
 
-    //void setCard(const Letter &, const Number &, Card *); //TODO why do we need this?
+    void setCard(const Letter &, const Number &, Card *); //TODO why do we need this?
 
     void reset();
 
@@ -75,6 +71,8 @@ public:
     bool isBlocked(const Letter &, const Number &) const; //Expert Walrus
 
     void setBlocked(const Letter &, const Number &); //Expert Walrus
+
+    void setUnblocked(const Letter &, const Number &); //Expert Walrus
 };
 
 #endif //CPP_PROJECT_MEMORY_GAME_BOARD_H

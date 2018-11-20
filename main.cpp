@@ -21,46 +21,8 @@ void setMode(int &mode) {
     }
 }
 
-void printLeastToMostRubiesAndWinner(Game &game) {
-    vector<Player> players;
-    for (int i = 0; i < game.getNPlayers(); i++) {
-        Player &player = game.getPlayer(static_cast<Side>(i));
-        player.setDisplayMode(true);
-        players.push_back(player);
-    }
-    int winCounter = 1;
-    sort(players.begin(), players.end());
-    for (const auto &player : players) {
-        if (winCounter == players.size()) {
-            cout << "Winner : ";
-        }
-        winCounter++;
-        cout << player.getName() << " with Rubies: " << player.getNRubies() << endl;
-    }
-}
-
-void expertModePrint(std::map<std::string, Card *> cardMap) {
-    //print cards
-    for (int i = 0; i < 3; i++) {
-        for (auto const&[key, val] : cardMap) {
-            cout << (*val)(i) + " ";
-        }
-        cout << endl;
-    }
-    //print location
-    for (auto const&[key, val] : cardMap) {
-        cout << key + "  ";
-    }
-    cout << endl;
-}
-
-void runGame() {
-    cout << endl;
-    cout << "Welcome to Nevin's and Peter's Memory Card Game Fall 2018" << endl;
-    int mode = 0;
-    setMode(mode);
+void createPlayers(Game &game, int &nPlayers, const vector<Side> &sides) {
     cout << "Number of Players " << "(Minimum 2 - Maximum 4) : ";
-    int nPlayers = 0;
     cin >> nPlayers;
     while ((nPlayers < 2 || nPlayers > 4)) {
         cout << "Invalid input, please try again: " << endl;
@@ -71,34 +33,71 @@ void runGame() {
         cout << "Enter name for Player number " << (i + 1) << ": ";
         cin >> names[i];
     }
-    Game game;
-    const Side sides[4] = {Top, Bottom, Left, Right};
     for (int i = 0; i < nPlayers; i++) {
         Player player{names[i]};
         player.setSide(sides[i]);
         game.addPlayer(player);
     }
+}
+
+void printLeastToMostRubiesAndWinner(Game &game) {
+    vector<Player> players;
+    for (int i = 0; i < game.getNPlayers(); i++) {
+        Player &player = game.getPlayer(static_cast<Side>(i));
+        player.setDisplayMode(true);
+        players.push_back(player);
+    }
+    int winCounter = 1;
+    sort(players.begin(), players.end());
+    for (const auto &player : players) {
+        if (winCounter == players.size()) { cout << "Winner : "; }
+        winCounter++;
+        cout << player.getName() << " with Rubies: " << player.getNRubies() << endl;
+    }
+}
+
+void expertModePrint(std::map<std::string, Card *> cardMap) {
+    for (int i = 0; i < 3; i++) {
+        for (auto const&[key, val] : cardMap) {
+            cout << (*val)(i) + " ";
+        }
+        cout << endl;
+    }
+    for (auto const&[key, val] : cardMap) { cout << key + "  "; }
+    cout << endl;
+}
+
+void runGame() {
+    cout << endl;
+    cout << "Welcome to Nevin's and Peter's Memory Card Game Fall 2018" << endl;
+    int mode = 0, nPlayers;
+    setMode(mode);
+    Game game;
+    const vector<Side> sides = {Top, Bottom, Left, Right};
+    createPlayers(game, nPlayers, sides);
     Rules rules;
+    //TODO CardDeck IN MAIN using SET CARD
+//    CardDeck &deck = CardDeck::make_CardDeck();
+//    while (!deck.isEmpty()) { cards.push_back(deck.getNext()); }
+
     if (mode == 1) {
         int round = 1;
         while (!rules.gameOver(game)) {
             game.reset(mode);
             int sideCounter = 0;
             while (!rules.roundOver(game)) {
-                Player &currentPlayer = game.getPlayer(sides[0 + sideCounter++]);
+                Player &currentPlayer = game.getPlayer(sides[sideCounter++]);
                 if (sideCounter >= nPlayers) { sideCounter = 0; }
                 cout << "Round: " << round << " , Turn: " << currentPlayer.getName() << endl;
-
                 if (currentPlayer.isActive()) {
                     Letter letter = Z;
                     Number number = Zero;
                     game.getValidInput(&letter, &number);
                     Card *selectedCard = game.getCard(letter, number);
                     game.setCurrentCard(selectedCard);
+                    game.setCard(letter, number, selectedCard);
                 }
-                if (!rules.isValid(game)) {
-                    if (game.twoCardsSelected()) { currentPlayer.setActive(false); }
-                }
+                if (!rules.isValid(game)) { if (game.twoCardsSelected()) { currentPlayer.setActive(false); }}
                 if (game.twoCardsSelected()) { game.clearSelectedCards(); }
                 cout << game << endl;
             }
@@ -113,11 +112,11 @@ void runGame() {
             //cout << "Expert Mode" << endl;
             game.reset(mode);
             int sideCounter = 0;
-            bool* skipTurn = new bool(false);
+            bool *skipTurn = new bool(false);
             while (!rules.roundOver(game)) {
                 //to skip a turn do side++
-                if(*skipTurn) sideCounter++;
-                const Side &side =sides[0 + sideCounter++];
+                if (*skipTurn) sideCounter++;
+                const Side &side = sides[sideCounter++];
                 *skipTurn = false;
                 Player &currentPlayer = game.getPlayer(side);
                 if (sideCounter >= nPlayers) { sideCounter = 0; }
@@ -127,7 +126,7 @@ void runGame() {
                     Number number = Zero;
                     game.getValidInput(&letter, &number);
                     Card *selectedCard = game.getCard(letter, number);
-                    rules.expertRules(selectedCard, game, letter, number, side, &cardMap,skipTurn);
+                    rules.expertRules(selectedCard, game, letter, number, side, &cardMap, skipTurn);
                     char cara = 'Z';
                     if (letter == A) {
                         cara = 'A';
@@ -169,11 +168,10 @@ int main() {
 //    Player div{"Divyang"};
 //    div.setSide(Left);
 //    game.addPlayer(div);
-//    Player &p = game.getPlayer(Top);
-//    Player &p1 = game.getPlayer(Bottom);
-//    Player &p2=game.getPlayer(static_cast<Side>(1));
+//
+//    game.setCard(A, Two, nullptr);
+//    cout << game << endl;
 
-//    cout << p2 << endl;
 
 //   Board *board = &game.getBoard();
 //    cout << *board << endl;

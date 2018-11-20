@@ -27,7 +27,7 @@ Board::~Board() {
 
 void Board::setScreen() {
     CardDeck &deck = CardDeck::make_CardDeck();
-    for (int i = 0; i < 25; i++) { cards.push_back(deck.getNext()); }
+    while (!deck.isEmpty()) { cards.push_back(deck.getNext()); }
     for (int i = 0; i < 25; i = i + 5) {
         auto *cardVector = new vector<Card *>;
         for (int j = 0; j < 5; j++) { cardVector->push_back(cards[i + j]); }
@@ -74,6 +74,12 @@ void Board::setBlocked(const Letter &letter, const Number &number) {
     blockedCards[getIndex(letter, "Letter")][getIndex(number, "Number")] = true;
 }
 
+void Board::setUnblocked(const Letter &letter, const Number &number) {
+    if (getIndex(letter, "Letter") == 2 && getIndex(number, "Number") == 2)
+        throw out_of_range("Not allowed to pick treasure card!");
+    blockedCards[getIndex(letter, "Letter")][getIndex(number, "Number")] = false;
+}
+
 int Board::getIndex(const int &input, const string &typeEnum) const {
     switch (input) {
         case A:
@@ -95,8 +101,9 @@ Card *Board::getCard(const Letter &letter, const Number &number) {
     return (*cards2D[getIndex(letter, "Letter")])[getIndex(number, "Number")];
 }
 
-//TODO don't know why is this needed
-void setCard(const Letter &letter, const Number &number, Card *card) {}
+void Board::setCard(const Letter &letter, const Number &number, Card *card) {
+    turnFaceUp(letter, number);
+}
 
 bool Board::turnFaceUp(const Letter &letter, const Number &number) {
     if (isFaceUp(letter, number)) { return false; }
@@ -110,8 +117,13 @@ bool Board::turnFaceDown(const Letter &letter, const Number &number) {
 }
 
 void Board::reset() {
-    for (auto &faceDownCard : faceDownCards) { for (int y = 0; y < 5; y++) { faceDownCard[y] = true; }}
-    for (auto &blockedCard : blockedCards) { for (int y = 0; y < 5; y++) { blockedCard[y] = true; }}
+    for (int i = 1; i <= 5; i++) {
+        for (int j = 1; j <= 5; j++) {
+            if (i == 3 && j == 3) continue;
+            turnFaceDown(static_cast<Letter>(i), static_cast<Number >(j));
+            setUnblocked(static_cast<Letter>(i), static_cast<Number >(j));
+        }
+    }
 }
 
 ostream &operator<<(ostream &os, const Board &board) {
@@ -125,9 +137,7 @@ ostream &operator<<(ostream &os, const Board &board) {
         for (int row = 0; row <= 16; row = row + 4) {
             if (screenRowCounter >= (0 + row) && screenRowCounter <= (2 + row)) {
                 for (int j = 0; j < 5; j++) {
-                    if (board.isFaceDown((row / 4), j)) {
-                        temp[0 + 4 * j] = temp[1 + 4 * j] = temp[2 + 4 * j] = 'z';
-                    }
+                    if (board.isFaceDown((row / 4), j)) { temp[0 + 4 * j] = temp[1 + 4 * j] = temp[2 + 4 * j] = 'z'; }
                 }
                 if ((row / 4) == 2) { temp[8] = temp[9] = temp[10] = ' '; };
             }
@@ -135,8 +145,7 @@ ostream &operator<<(ostream &os, const Board &board) {
         os << temp << endl;
         screenRowCounter++;
     }
-    os << "   " << "1" << "   " << "2" << "   " << "3" << "   " << "4" << "   " << "5" << endl;
-    return os;
+    return (os << "   " << "1" << "   " << "2" << "   " << "3" << "   " << "4" << "   " << "5" << endl);
 }
 
 int toEnum(const char input) {

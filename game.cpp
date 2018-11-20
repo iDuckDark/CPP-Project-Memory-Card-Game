@@ -90,7 +90,7 @@ void Game::temporaryRevealThreeCards(const int &mode) {
 
 int Game::getNActivePlayers() const {
     int activePlayers = 0;
-    for (auto player: players) { if (player.isActive()) { activePlayers++; }}
+    for (auto player: players) { if (player.isActive()) activePlayers++; }
     return activePlayers;
 }
 
@@ -129,7 +129,6 @@ void Game::getValidInput(Letter *letter, Number *number) {
             cerr << exc.what() << endl;
         }
     }
-    setCard(*letter, *number, getCard(*letter, *number));
 }
 
 
@@ -146,7 +145,7 @@ void Game::setBlocked(const Letter &letter, const Number &number) {
 }
 
 void Game::setCard(const Letter &letter, const Number &number, Card *card) {
-    board.turnFaceUp(letter, number);
+    board.setCard(letter, number, card);
 }
 
 Card *Game::getCard(const Letter &letter, const Number &number) {

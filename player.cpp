@@ -30,7 +30,7 @@ string Player::getSideToString() const {
             return "bottom";
         case Right:
             return "right";
-        case Left:
+        default:
             return "left";
     }
 }

@@ -8,11 +8,11 @@
 using namespace std;
 
 enum FaceAnimal {
-    Crab, Penguin, Octopus, Turtle, Walrus, Animals
+    Crab , Penguin, Octopus, Turtle, Walrus , Animals
 };
 
 enum FaceBackground {
-    Red, Green, Purple, Blue, Yellow, Colors
+    Red , Green, Purple , Blue , Yellow , Colors
 };
 
 class Card {
