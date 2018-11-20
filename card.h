@@ -26,6 +26,10 @@ public:
 
     friend bool operator==(const Card &, const Card &);
 
+    operator FaceBackground();
+
+    operator FaceAnimal();
+
     char getColor() const;
 
     char getAnimal() const;

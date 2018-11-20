@@ -24,6 +24,10 @@ Card &Card::operator=(const Card &card) {
     return (*this);
 }
 
+Card::operator FaceBackground() { return _faceBackground; }
+
+Card::operator FaceAnimal() { return _faceAnimal; }
+
 int Card::getNRows() const { return _nRows; }
 
 
