@@ -29,15 +29,15 @@ char Card::getAnimal() const {
 
 char Card::getColor() const {
     switch (_faceBackground) {
-        case Crab:
+        case static_cast<FaceBackground>(Crab):
             return 'r';
-        case Penguin:
+        case static_cast<FaceBackground>(Penguin):
             return 'g';
-        case Octopus:
+        case static_cast<FaceBackground>(Octopus):
             return 'p';
-        case Turtle:
+        case static_cast<FaceBackground>(Turtle):
             return 'b';
-        case Walrus:
+        case static_cast<FaceBackground>(Walrus):
             return 'y';
         default:
             throw out_of_range("FaceBackground is out of range");

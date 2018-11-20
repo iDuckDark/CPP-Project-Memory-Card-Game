@@ -16,7 +16,7 @@ Board::Board() {
     }
 }
 
-Board::~Board(){
+Board::~Board() {
     delete[] screen;
     for (auto &faceDownCard : faceDownCards) { delete[] faceDownCard; }
     for (auto &blockedCard : blockedCards) { delete[] blockedCard; }
@@ -147,7 +147,7 @@ ostream &operator<<(ostream &os, const Board &board) {
     return (os << "   " << "1" << "   " << "2" << "   " << "3" << "   " << "4" << "   " << "5" << endl);
 }
 
-int toEnum(const char input) {
+int toEnum(char &input) {
     switch (input) {
         case 'A':
         case '1':
