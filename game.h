@@ -81,6 +81,7 @@ public:
     int getNActivePlayers() const;
 
     void getValidInputExpert(Letter *letter, Number *number);
+    void getValidInputExpertOct(Letter *letter, Number *number);
 
     bool twoCardsSelected() const;
 

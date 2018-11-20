@@ -57,10 +57,10 @@ void Rules::expertOctopus(Card *card, Game &game, Letter &letter, Number &number
 
     Letter _letter = Z;
     Number _number = Zero;
-    game.getValidInputExpert(&_letter, &_number);
+    game.getValidInputExpertOct(&_letter, &_number);
     while(!(_letter == letter || number== _number)){
         cout << "Incorrect Card! Pick position with an adjacent card in the same row or the same column to swap: " << endl;
-        game.getValidInputExpert(&_letter, &_number);
+        game.getValidInputExpertOct(&_letter, &_number);
     }
     Card *selectedCard = game.getCard(_letter, _number);
 
@@ -80,9 +80,11 @@ void Rules::expertOctopus(Card *card, Game &game, Letter &letter, Number &number
     }
     //if second caard in map swap them in the map
     if (cardMap->count(cara + to_string(_number))) {
+        cout<<cara + to_string(_number)<<endl;
         Card *temp = card;
         card = selectedCard;
-        selectedCard = temp;
+        cardMap->operator[](cara + to_string(_number)) = temp;
+        cout<<*temp<<endl;
 
     }
     //Swap game bool arrays - Nevin

@@ -63,8 +63,6 @@ void runGame() {
                     game.getValidInputExpert(&letter, &number);
                     cout << letter << number << " FIXED???" << endl;
                     Card *selectedCard = game.getCard(letter, number);
-                    rules.expertRules(selectedCard, game, letter, number, side, &cardMap, skipTurn);
-                    //TODO fix letter and number input?
                     char cara = 'Z';
                     if (letter == A) { cara = 'A'; }
                     else if (letter == B) { cara = 'B'; }
@@ -72,6 +70,8 @@ void runGame() {
                     else if (letter == D) { cara = 'D'; }
                     else if (letter == E) { cara = 'E'; }
                     cardMap[cara + to_string(number)] = selectedCard;
+                    rules.expertRules(selectedCard, game, letter, number, side, &cardMap, skipTurn);
+                    //TODO fix letter and number input?
                     expertModePrint(cardMap);
                     game.setCurrentCard(selectedCard);
                 }

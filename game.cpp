@@ -204,6 +204,26 @@ void Game::getValidInputExpert(Letter *letter, Number *number) {
         }
     }
 }
+void Game::getValidInputExpertOct(Letter *letter, Number *number) {
+    while (true) {
+        string input;
+        cout << "Pick a card from (A to E) and from (1 to 5): ";
+        while (true) {
+            cin >> input;
+            if (input.length() == 2) break;
+            else cout << "Invalid input, please try again: ";
+        }
+        *letter = static_cast<Letter>(toEnum(input[0]));
+        *number = static_cast<Number>(toEnum(input[1]));
+        try {
+            if (!board.isValidCard(*letter, *number)) break;
+            else cout << "Card is not valid! " << endl;
+        } catch (const exception &exc) {
+            cout << "Invalid Card Selected, please try again" << endl;
+            cerr << exc.what() << endl;
+        }
+    }
+}
 
 void Game::awardActivePlayers() {//TODO rewarddeck pointer?
     for (auto &player: players)if (player.isActive() && !rewardDeck.isEmpty())player.addReward(*rewardDeck.getNext());
