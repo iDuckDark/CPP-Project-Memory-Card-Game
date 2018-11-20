@@ -62,23 +62,25 @@ void Game::setAllPlayersActive() {
 }
 
 void Game::temporaryRevealThreeCards(const int &mode) {
-    cout << "Three random cards are revealed temporary in front of the players" << endl;
-    for (const auto player: players) {
-        switch (player.getSide()) {
-            case Top:
-                for (int i = 0; i < 3; i++) board.turnFaceUp(A, Number(Two + i));
-                break;
-            case Bottom :
-                for (int i = 0; i < 3; i++) board.turnFaceUp(E, Number(Two + i));
-                break;
-            case Left:
-                for (int i = 0; i < 3; i++) board.turnFaceUp(Letter(B + i), One);
-                break;
-            case Right:
-                for (int i = 0; i < 3; i++) board.turnFaceUp(Letter(B + i), Five);
-                break;
-            default:
-                break;
+    if (mode == 1) {
+        cout << "Three random cards are revealed temporary in front of the players" << endl;
+        for (const auto player: players) {
+            switch (player.getSide()) {
+                case Top:
+                    for (int i = 0; i < 3; i++) board.turnFaceUp(A, Number(Two + i));
+                    break;
+                case Bottom :
+                    for (int i = 0; i < 3; i++) board.turnFaceUp(E, Number(Two + i));
+                    break;
+                case Left:
+                    for (int i = 0; i < 3; i++) board.turnFaceUp(Letter(B + i), One);
+                    break;
+                case Right:
+                    for (int i = 0; i < 3; i++) board.turnFaceUp(Letter(B + i), Five);
+                    break;
+                default:
+                    break;
+            }
         }
     }
     if (mode == 1) { cout << (*this) << endl; }
