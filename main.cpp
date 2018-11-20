@@ -50,6 +50,7 @@ void runGame() {
             auto *skipTurn = new bool(false);
             while (!rules.roundOver(game)) {
                 if (*skipTurn) sideCounter++;
+                if (sideCounter >= nPlayers) { sideCounter = 0; }
                 const Side &side = sides[sideCounter++];
                 *skipTurn = false;
                 Player &currentPlayer = game.getPlayer(side);
