@@ -216,7 +216,7 @@ void Game::getValidInputExpertOct(Letter *letter, Number *number) {
         *letter = static_cast<Letter>(toEnum(input[0]));
         *number = static_cast<Number>(toEnum(input[1]));
         try {
-            if (!board.isValidCard(*letter, *number)) break;
+            if (board.isValidCard(*letter, *number)) break;
             else cout << "Card is not valid! " << endl;
         } catch (const exception &exc) {
             cout << "Invalid Card Selected, please try again" << endl;

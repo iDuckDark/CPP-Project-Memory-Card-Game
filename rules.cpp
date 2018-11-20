@@ -66,6 +66,8 @@ void Rules::expertOctopus(Card *card, Game &game, Letter &letter, Number &number
 
     //SWAPPING HERE
     //Swap map - Peter
+
+    //card to be swapped with (second card)
     char cara = 'Z';
     if (_letter == A) {
         cara = 'A';
@@ -78,16 +80,42 @@ void Rules::expertOctopus(Card *card, Game &game, Letter &letter, Number &number
     } else if (_letter == E) {
         cara = 'E';
     }
-    //if second caard in map swap them in the map
+    //current card
+    char cara2 = 'Z';
+    if (letter == A) {
+        cara2 = 'A';
+    } else if (letter == B) {
+        cara2 = 'B';
+    } else if (letter == C) {
+        cara2 = 'C';
+    } else if (letter == D) {
+        cara2 = 'D';
+    } else if (letter == E) {
+        cara2 = 'E';
+    }
+
+    //if the second card is already face up
     if (cardMap->count(cara + to_string(_number))) {
         cout<<cara + to_string(_number)<<endl;
         Card *temp = card;
         card = selectedCard;
-        cardMap->operator[](cara + to_string(_number)) = temp;
-        cout<<*temp<<endl;
+        selectedCard = temp;
+        //swap hashes
+        cardMap->operator[](cara + to_string(_number)) = selectedCard;
+        cardMap->operator[](cara2 + to_string(number)) = card;
+
+    }else{//swapping with faced down card
+        std::map<string,Card*>::iterator it = (*cardMap).find(cara2+ to_string(number));
+        cardMap->erase(it);
+        Card *temp = card;
+        card = selectedCard;
+        selectedCard = temp;
+        //hashed to new location
+        cardMap->operator[](cara + to_string(_number)) = selectedCard;
+
+        //need to set new location to face up and old location to face down --nevin
 
     }
-    //Swap game bool arrays - Nevin
 
     // When an octopus card is turned over, the
     //card is exchanging position with an adjacent card in the same row or the same column (4-neighbourhood)
