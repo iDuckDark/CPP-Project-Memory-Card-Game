@@ -40,27 +40,21 @@ void createPlayers(Game &game, int &nPlayers, const vector<Side> &sides) {
     }
 }
 
-void printLeastToMostRubiesAndWinner(Game &game) {
-    vector<Player> players;
-    for (int i = 0; i < game.getNPlayers(); i++) {
-        Player &player = game.getPlayer(static_cast<Side>(i));
-        player.setDisplayMode(true);
-        players.push_back(player);
-    }
-    int winCounter = 1;
-    sort(players.begin(), players.end());
-    for (const auto &player : players) {
-        if (winCounter == players.size()) { cout << "Winner : "; }
-        winCounter++;
-        cout << player.getName() << " with Rubies: " << player.getNRubies() << endl;
+void makeCardDeck(Game &game) {
+    CardDeck &deck = CardDeck::make_CardDeck();
+    int i = 1, j = 1;
+    while (!deck.isEmpty()) {
+        game.setCard(static_cast<Letter>(i), static_cast<Number>(j++), deck.getNext());
+        if (j == 5) {
+            j = 0;
+            i++;
+        }
     }
 }
 
 void expertModePrint(std::map<std::string, Card *> cardMap) {
     for (int i = 0; i < 3; i++) {
-        for (auto const&[key, val] : cardMap) {
-            cout << (*val)(i) + " ";
-        }
+        for (auto const&[key, val] : cardMap) { cout << (*val)(i) + " "; }
         cout << endl;
     }
     for (auto const&[key, val] : cardMap) { cout << key + "  "; }
@@ -73,13 +67,10 @@ void runGame() {
     int mode = 0, nPlayers;
     setMode(mode);
     Game game;
+    Rules rules;
     const vector<Side> sides = {Top, Bottom, Left, Right};
     createPlayers(game, nPlayers, sides);
-    Rules rules;
-    //TODO CardDeck IN MAIN using SET CARD
-//    CardDeck &deck = CardDeck::make_CardDeck();
-//    while (!deck.isEmpty()) { cards.push_back(deck.getNext()); }
-
+    makeCardDeck(game);
     if (mode == 1) {
         int round = 1;
         while (!rules.gameOver(game)) {
@@ -89,32 +80,23 @@ void runGame() {
                 Player &currentPlayer = game.getPlayer(sides[sideCounter++]);
                 if (sideCounter >= nPlayers) { sideCounter = 0; }
                 cout << "Round: " << round << " , Turn: " << currentPlayer.getName() << endl;
-                if (currentPlayer.isActive()) {
-                    Letter letter = Z;
-                    Number number = Zero;
-                    game.getValidInput(&letter, &number);
-                    Card *selectedCard = game.getCard(letter, number);
-                    game.setCurrentCard(selectedCard);
-                    game.setCard(letter, number, selectedCard);
-                }
-                if (!rules.isValid(game)) { if (game.twoCardsSelected()) { currentPlayer.setActive(false); }}
+                if (currentPlayer.isActive()) { game.setCurrentCard(game.getCard(Z, Zero)); }
+                if (!rules.isValid(game)) { if (game.twoCardsSelected()) currentPlayer.setActive(false); }
                 if (game.twoCardsSelected()) { game.clearSelectedCards(); }
                 cout << game << endl;
             }
             game.setRound(++round);
-            game.awardActivePlayers();
         }
-        printLeastToMostRubiesAndWinner(game);
-    } else if (mode == 2) {
+        cout << game << endl;
+    }
+    else if (mode == 2) {
         std::map<std::string, Card *> cardMap;
         int round = 1;
         while (!rules.gameOver(game)) {
-            //cout << "Expert Mode" << endl;
             game.reset(mode);
             int sideCounter = 0;
             bool *skipTurn = new bool(false);
             while (!rules.roundOver(game)) {
-                //to skip a turn do side++
                 if (*skipTurn) sideCounter++;
                 const Side &side = sides[sideCounter++];
                 *skipTurn = false;
@@ -124,34 +106,25 @@ void runGame() {
                 if (currentPlayer.isActive()) {
                     Letter letter = Z;
                     Number number = Zero;
-                    game.getValidInput(&letter, &number);
-                    Card *selectedCard = game.getCard(letter, number);
+                    Card *selectedCard = game.getCard(Z, Zero);
                     rules.expertRules(selectedCard, game, letter, number, side, &cardMap, skipTurn);
+                    //TODO fix letter and number input
                     char cara = 'Z';
-                    if (letter == A) {
-                        cara = 'A';
-                    } else if (letter == B) {
-                        cara = 'B';
-                    } else if (letter == C) {
-                        cara = 'C';
-                    } else if (letter == D) {
-                        cara = 'D';
-                    } else if (letter == E) {
-                        cara = 'E';
-                    }
+                    if (letter == A) { cara = 'A'; }
+                    else if (letter == B) { cara = 'B'; }
+                    else if (letter == C) { cara = 'C'; }
+                    else if (letter == D) { cara = 'D'; }
+                    else if (letter == E) { cara = 'E'; }
                     cardMap[cara + to_string(number)] = selectedCard;
                     expertModePrint(cardMap);
                     game.setCurrentCard(selectedCard);
                 }
-                if (!rules.isValid(game)) {
-                    if (game.twoCardsSelected()) { currentPlayer.setActive(false); }
-                }
+                if (!rules.isValid(game)) { if (game.twoCardsSelected()) { currentPlayer.setActive(false); }}
                 if (game.twoCardsSelected()) { game.clearSelectedCards(); }
             }
             game.setRound(++round);
-            game.awardActivePlayers();
         }
-        printLeastToMostRubiesAndWinner(game);
+        cout << game << endl;
     }
 }
 
@@ -171,15 +144,6 @@ int main() {
 //
 //    game.setCard(A, Two, nullptr);
 //    cout << game << endl;
-
-
-//   Board *board = &game.getBoard();
-//    cout << *board << endl;
-//    Letter letter = Z;
-//    Number number = Zero;
-//    getValidInput(&letter, &number, board);
-//    board->turnFaceUp(letter, number);
-//    cout << *board << endl;
     return 0;
 }
 

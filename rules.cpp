@@ -22,7 +22,7 @@ bool Rules::roundOver(const Game &game) { return game.getNActivePlayers() == 1; 
 
 
 void Rules::expertRules(Card *card, Game &game, Letter &letter, Number &number, const Side &side,
-                        std::map<std::string, Card *> *cardMap,bool* skip) {
+                        std::map<std::string, Card *> *cardMap, bool *skip) {
     switch (card->getAnimal()) {
         case '0':
             expertOctopus(card, game, letter, number, side);
@@ -106,14 +106,9 @@ void Rules::expertCrab(Card *card, Game &game, Letter &letter, Number &number, c
     cout << "You have picked a Crab!" << endl;
     cout << *card << endl;
     cout << "Pick another card. If it doesn't match, you lose the round:" << endl;
-    Letter someLetter = Z;
-    Number someNumber = Zero;
-    game.getValidInput(&someLetter, &someNumber);
-    Card *selectedCard = game.getCard(someLetter, someNumber);
-
+    Card *selectedCard = game.getCard(Z, Zero);
     cout << "You picked:" << endl;
     cout << *selectedCard << endl;
-
     if (selectedCard->getColor() != card->getColor() && selectedCard->getAnimal() != card->getAnimal()) {
         cout << "The cards didn't match :( " + player.getName() + " is out of the current round." << endl;
         player.setActive(false);
@@ -122,7 +117,7 @@ void Rules::expertCrab(Card *card, Game &game, Letter &letter, Number &number, c
     }
 }
 
-void Rules::expertTurtle(Card *card, Game &game, Letter &letter, Number &number, const Side &side, bool* skip) {
+void Rules::expertTurtle(Card *card, Game &game, Letter &letter, Number &number, const Side &side, bool *skip) {
     Player &player = game.getPlayer(side);
     cout << "You have picked a Turtle!" << endl;
     cout << "Skipping next player's turn." << endl;

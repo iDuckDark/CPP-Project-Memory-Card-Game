@@ -6,7 +6,10 @@
 #include <string>
 #include "game.h"
 
-void Game::setRound(int &num) { nRound = num; }
+void Game::setRound(int &num) {
+    nRound = num;
+    awardActivePlayers();
+}
 
 int Game::getRound() const { return nRound; }
 
@@ -45,21 +48,17 @@ void Game::setCurrentCard(const Card *card) {
     cardVector.push_back(card);
 }
 
-int Game::getNPlayers() const {
-    return static_cast<int>(players.size());
-}
-
 bool Game::twoCardsSelected() const {
     return (cards[currentSide].size() == 2);
-}
-
-void Game::setAllPlayersActive() {
-    for (auto &player: players) { player.setActive(true); }
 }
 
 void Game::reset(const int &mode) {
     setAllPlayersActive();
     temporaryRevealThreeCards(mode);
+}
+
+void Game::setAllPlayersActive() {
+    for (auto &player: players) { player.setActive(true); }
 }
 
 void Game::temporaryRevealThreeCards(const int &mode) {
@@ -100,14 +99,23 @@ void Game::clearSelectedCards() {
     cardVector.pop_back();
 }
 
-void Game::awardActivePlayers() {
-    for (auto &player: players) {
-        if (player.isActive()) {
-            Reward &reward = *rewardDeck.getNext();
-            player.addReward(reward);
-            cout << "Awarded " << player.getName() << ": " << reward << "!" << endl;
-        }
-    }
+bool Game::isValidCard(const Letter &letter, const Number &number) const { return board.isValidCard(letter, number); }
+
+bool Game::isBlocked(const Letter &letter, const Number &number) const { return board.isBlocked(letter, number); }
+
+void Game::setBlocked(const Letter &letter, const Number &number) {
+    board.setBlocked(letter, number);
+}
+
+void Game::setCard(const Letter &letter, const Number &number, Card *card) {
+    board.setCard(letter, number, card);
+}
+
+Card *Game::getCard(const Letter &letter, const Number &number) {
+    Letter let = letter;
+    Number num = number;
+    getValidInput(&let, &num);
+    return board.getCard(let, num);
 }
 
 void Game::getValidInput(Letter *letter, Number *number) {
@@ -129,32 +137,39 @@ void Game::getValidInput(Letter *letter, Number *number) {
             cerr << exc.what() << endl;
         }
     }
+    board.turnFaceUp(*letter, *number);
 }
 
-
-bool Game::isValidCard(const Letter &letter, const Number &number) const {
-    return board.isValidCard(letter, number);
-}
-
-bool Game::isBlocked(const Letter &letter, const Number &number) const {
-    return board.isBlocked(letter, number);
-}
-
-void Game::setBlocked(const Letter &letter, const Number &number) {
-    board.setBlocked(letter, number);
-}
-
-void Game::setCard(const Letter &letter, const Number &number, Card *card) {
-    board.setCard(letter, number, card);
-}
-
-Card *Game::getCard(const Letter &letter, const Number &number) {
-    Card *selectedCard = board.getCard(letter, number);
-    return selectedCard;
+void Game::awardActivePlayers() {
+    RewardDeck rewardDeck; //TODO keep making reward deck? Should I put rewarddeck in rungame
+    for (auto &player: players) {
+        if (player.isActive()) {
+            if (!rewardDeck.isEmpty()) {
+                Reward &reward = *rewardDeck.getNext();
+                player.addReward(reward);
+                cout << "Awarded " << player.getName() << ": " << reward << "!" << endl;
+            }
+        }
+    }
 }
 
 ostream &operator<<(ostream &os, const Game &game) {
-    os << game.board << endl;
-    for (auto player: game.players) { os << player << endl; }
+    if (game.getRound() < 7) {
+        os << game.board << endl;
+        for (auto player: game.players) { os << player << endl; }
+    } else game.printLeastToMostRubiesAndWinner();
     return os;
+}
+
+void Game::printLeastToMostRubiesAndWinner() const {
+    vector<Player> playerS = players;
+    for (auto &player: playerS) { player.setDisplayMode(true); }
+    int winCounter = 1;
+    sort(playerS.begin(), playerS.end());
+    for (auto &player : playerS) {
+        if (winCounter == playerS.size()) { cout << "Winner : "; }
+        winCounter++;
+        cout << player.getName() << " with Rubies: " << player.getNRubies() << endl;
+        player.setDisplayMode(false);
+    }
 }

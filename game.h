@@ -26,15 +26,21 @@ private:
 
     Board board;
 
-    RewardDeck rewardDeck;
-
     vector<vector<const Card *>> cards;
 
     vector<Player> players;
 
     void setSide(Side);
 
+    void setAllPlayersActive();
+
     void temporaryRevealThreeCards(const int &mode);
+
+    void getValidInput(Letter *letter, Number *number);
+
+    void awardActivePlayers();
+
+    void printLeastToMostRubiesAndWinner() const;
 
 public:
 
@@ -58,25 +64,16 @@ public:
 
     void setCard(const Letter &, const Number &, Card *);
 
-    //TODO minimize own public methods
+    friend ostream &operator<<(ostream &os, const Game &game);
 
-    int getNPlayers() const;
+    //TODO minimize own public functions
+    void reset(const int &);
 
     int getNActivePlayers() const;
 
     bool twoCardsSelected() const;
 
-    void reset(const int &);
-
-    void setAllPlayersActive();
-
     void clearSelectedCards();
-
-    void awardActivePlayers();
-
-    void getValidInput(Letter *letter, Number *number);
-
-    friend ostream &operator<<(ostream &os, const Game &game);
 
     bool isValidCard(const Letter &letter, const Number &number) const;
 

@@ -14,10 +14,9 @@ Board::Board() {
         blockedCard = new bool[5];
         for (int y = 0; y < 5; y++) { blockedCard[y] = false; }
     }
-    setScreen();
 }
 
-Board::~Board() {
+Board::~Board(){
     delete[] screen;
     for (auto &faceDownCard : faceDownCards) { delete[] faceDownCard; }
     for (auto &blockedCard : blockedCards) { delete[] blockedCard; }
@@ -25,9 +24,12 @@ Board::~Board() {
     for (vector<Card *>::iterator it = cards.begin(); it != cards.end(); ++it) { delete (*it); }
 }
 
+void Board::setCard(const Letter &letter, const Number &number, Card *card) {
+    cards.push_back(card);
+    if (cards.size() == 25) { setScreen(); }
+}
+
 void Board::setScreen() {
-    CardDeck &deck = CardDeck::make_CardDeck();
-    while (!deck.isEmpty()) { cards.push_back(deck.getNext()); }
     for (int i = 0; i < 25; i = i + 5) {
         auto *cardVector = new vector<Card *>;
         for (int j = 0; j < 5; j++) { cardVector->push_back(cards[i + j]); }
@@ -101,9 +103,6 @@ Card *Board::getCard(const Letter &letter, const Number &number) {
     return (*cards2D[getIndex(letter, "Letter")])[getIndex(number, "Number")];
 }
 
-void Board::setCard(const Letter &letter, const Number &number, Card *card) {
-    turnFaceUp(letter, number);
-}
 
 bool Board::turnFaceUp(const Letter &letter, const Number &number) {
     if (isFaceUp(letter, number)) { return false; }
