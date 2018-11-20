@@ -43,7 +43,7 @@ private:
 
     void setAllPlayersActive();
 
-    void temporaryRevealThreeCards(const int &mode);
+    void temporaryRevealThreeCards();
 
     void getValidInput(Letter *letter, Number *number);
 
@@ -76,7 +76,7 @@ public:
     friend ostream &operator<<(ostream &os, const Game &game);
 
     //TODO minimize own public functions
-    void reset(const int &);
+    void reset();
 
     int getNActivePlayers() const;
 

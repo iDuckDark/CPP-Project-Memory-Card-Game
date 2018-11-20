@@ -27,7 +27,7 @@ void runGame() {
     if (mode == 1) {
         int round = 1;
         while (!rules.gameOver(game)) {
-            game.reset(mode);
+            game.reset();
             int sideCounter = 0;
             while (!rules.roundOver(game)) {
                 Player &currentPlayer = game.getPlayer(sides[sideCounter++]);
@@ -45,7 +45,7 @@ void runGame() {
         std::map<std::string, Card *> cardMap;
         int round = 1;
         while (!rules.gameOver(game)) {
-            game.reset(mode);
+            game.reset();
             int sideCounter = 0;
             auto *skipTurn = new bool(false);
             while (!rules.roundOver(game)) {
