@@ -74,7 +74,7 @@ void Game::setSide(Side side) { currentSide = side; }
 Player &Game::getPlayer(Side side) {
     for (auto &player: players) {
         if (player.getSide() == side) {
-            //setSide(side);
+            setSide(side);
             return player;
         }
     }
