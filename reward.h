@@ -6,8 +6,6 @@
 
 using namespace std;
 
-class RewardDeck;
-
 class Reward {
     friend class RewardDeck;
 
@@ -24,7 +22,7 @@ public:
 
     Reward &operator=(const int &x); // conversion from int (assignment):
 
-    operator int();     //conversion to int (type-cast operator)
+    explicit operator int();     //conversion to int (type-cast operator)
 
 private:
 

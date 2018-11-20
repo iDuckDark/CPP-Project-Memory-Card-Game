@@ -28,7 +28,7 @@ public:
 
     operator FaceBackground();
 
-    operator FaceAnimal();
+    explicit operator FaceAnimal();
 
     char getColor() const;
 
