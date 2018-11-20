@@ -31,8 +31,8 @@ bool Rules::roundOver(const Game &game) { return game.getNActivePlayers() == 1; 
 void Rules::expertRules(Card *card, Game &game, Letter &letter, Number &number, const Side &side,
                         std::map<std::string, Card *> *cardMap, bool *skip) {
     switch (card->getAnimal()) {
-        case '0':
-            expertOctopus(card, game, letter, number, side);
+        case 'O':
+            expertOctopus(card, game, letter, number, side, cardMap);
             break;
         case 'P':
             expertPenguin(card, game, letter, number, side, cardMap);
@@ -49,11 +49,43 @@ void Rules::expertRules(Card *card, Game &game, Letter &letter, Number &number, 
     }
 }
 
-void Rules::expertOctopus(Card *card, Game &game, Letter &letter, Number &number, const Side &side) {
+void Rules::expertOctopus(Card *card, Game &game, Letter &letter, Number &number, const Side &side, std::map<std::string, Card *> *cardMap) {
     cout << "You have picked an Octopus!" << endl;
     cout << "Pick position with an adjacent card in the same row or the same column to swap: " << endl;
 
     //TODO Get input and implement logic
+
+    Letter _letter = Z;
+    Number _number = Zero;
+    game.getValidInputExpert(&_letter, &_number);
+    while(!(_letter == letter || number== _number)){
+        cout << "Incorrect Card! Pick position with an adjacent card in the same row or the same column to swap: " << endl;
+        game.getValidInputExpert(&_letter, &_number);
+    }
+    Card *selectedCard = game.getCard(_letter, _number);
+
+    //SWAPPING HERE
+    //Swap map - Peter
+    char cara = 'Z';
+    if (_letter == A) {
+        cara = 'A';
+    } else if (_letter == B) {
+        cara = 'B';
+    } else if (_letter == C) {
+        cara = 'C';
+    } else if (_letter == D) {
+        cara = 'D';
+    } else if (_letter == E) {
+        cara = 'E';
+    }
+    //if second caard in map swap them in the map
+    if (cardMap->count(cara + to_string(_number))) {
+        Card *temp = card;
+        card = selectedCard;
+        selectedCard = temp;
+
+    }
+    //Swap game bool arrays - Nevin
 
     // When an octopus card is turned over, the
     //card is exchanging position with an adjacent card in the same row or the same column (4-neighbourhood)

@@ -27,7 +27,7 @@ public:
 
     void expertRules(Card *, Game &, Letter &, Number &, const Side &, std::map<std::string, Card *> *, bool *);
 
-    void expertOctopus(Card *, Game &, Letter &, Number &, const Side &);
+    void expertOctopus(Card *, Game &, Letter &, Number &, const Side &,std::map<std::string, Card *> * );
 
     void expertPenguin(Card *, Game &, Letter &, Number &, const Side &, std::map<std::string, Card *> *);
 
