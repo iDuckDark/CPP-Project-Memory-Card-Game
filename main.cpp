@@ -46,6 +46,7 @@ void runGame() {
         int round = 1;
         while (!rules.gameOver(game)) {
             game.reset();
+            cardMap.clear();
             int sideCounter = 0;
             auto *skipTurn = new bool(false);
             while (!rules.roundOver(game)) {

@@ -113,7 +113,16 @@ void Rules::expertCrab(Card *card, Game &game, Letter &letter, Number &number, c
     cout << "You have picked a Crab!" << endl;
     cout << *card << endl;
     cout << "Pick another card. If it doesn't match, you lose the round:" << endl;
-    Card *selectedCard = game.getCard(Z, Zero);
+    Letter _letter = Z;
+    Number _number = Zero;
+    game.getValidInputExpert(&_letter, &_number);
+    Card *selectedCard = game.getCard(_letter, _number);
+    cout<<*selectedCard<<endl;
+    while(selectedCard->getColor()== card->getColor() && selectedCard->getAnimal() == card->getAnimal()){
+        cout<<"This is the card you just picked. Chose another"<<endl;
+        game.getValidInputExpert(&_letter, &_number);
+        selectedCard = game.getCard(_letter, _number);
+    }
     cout << "You picked:" << endl;
     cout << *selectedCard << endl;
     if (selectedCard->getColor() != card->getColor() && selectedCard->getAnimal() != card->getAnimal()) {
