@@ -24,17 +24,14 @@ const vector<Side> sides = {Top, Bottom, Left, Right};
 class Game {
 
 private:
+
+    int mode{0};
     int nRound{0};
-
     Side currentSide;
-
-    Board board;
-
-    RewardDeck rewardDeck;
-
-    vector<vector<const Card *>> cards;
-
     vector<Player> players;
+    Board board;
+    RewardDeck rewardDeck;
+    vector<vector<const Card *>> cards;
 
     void setSide(Side);
 
@@ -82,6 +79,8 @@ public:
     void reset(const int &);
 
     int getNActivePlayers() const;
+
+    void getValidInputExpert(Letter *letter, Number *number);
 
     bool twoCardsSelected() const;
 

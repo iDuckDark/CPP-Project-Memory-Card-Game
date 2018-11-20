@@ -59,9 +59,11 @@ void runGame() {
                 if (currentPlayer.isActive()) {
                     Letter letter = Z;
                     Number number = Zero;
-                    Card *selectedCard = game.getCard(Z, Zero);
+                    game.getValidInputExpert(&letter, &number);
+                    cout << letter << number << " FIXED???" << endl;
+                    Card *selectedCard = game.getCard(letter, number);
                     rules.expertRules(selectedCard, game, letter, number, side, &cardMap, skipTurn);
-                    //TODO fix letter and number input
+                    //TODO fix letter and number input?
                     char cara = 'Z';
                     if (letter == A) { cara = 'A'; }
                     else if (letter == B) { cara = 'B'; }

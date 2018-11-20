@@ -14,7 +14,10 @@ bool Player::isActive() { return active; }
 
 int Player::getNRubies() const { return nRubies; }
 
-void Player::addReward(const Reward &reward) { nRubies += reward.getNRubies(); }
+void Player::addReward(const Reward &reward) {
+    nRubies += reward.getNRubies();
+    cout << "Awarded " << getName() << ": " << reward << "!" << endl;
+}
 
 void Player::setDisplayMode(bool endOfGame) { this->endOfGame = endOfGame; }
 

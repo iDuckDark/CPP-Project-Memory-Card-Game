@@ -7,6 +7,23 @@ Card::Card(FaceAnimal faceAnimal, FaceBackground faceBackground) :
         _animal(getAnimal()) {
 }
 
+Card::Card(const Card &card) :
+        _faceAnimal(card._faceAnimal),
+        _faceBackground(card._faceBackground),
+        _color(card.getColor()),
+        _animal(card.getAnimal()) {
+}
+
+Card &Card::operator=(const Card &card) {
+    if (this != &card) {
+        _faceAnimal = (card._faceAnimal);
+        _faceBackground = (card._faceBackground);
+        _color = (card.getColor());
+        _animal = (card.getAnimal());
+    }
+    return (*this);
+}
+
 int Card::getNRows() const { return _nRows; }
 
 

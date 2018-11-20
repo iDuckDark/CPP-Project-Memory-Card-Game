@@ -25,16 +25,13 @@ public:
 private:
 
     int _nRubies;
-    //TODO make these two private constructor, AFTER fixing class Deck and Emplace Back Method
+
+    explicit Reward(int);
+
     Reward(const Reward &);
 
     Reward &operator=(const Reward &);
 
-    explicit Reward(int);
-
-    //Reward(const Reward &);
-
-    //Reward &operator=(const Reward &);
 };
 
 

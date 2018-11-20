@@ -33,7 +33,12 @@ public:
 private:
 
     Card(FaceAnimal faceAnimal, FaceBackground faceBackground);
+
     //TODO Need to make copy constructor and assignment operator private
+
+    Card(const Card &);
+
+    Card &operator=(const Card &);
 
     FaceAnimal _faceAnimal;
 

@@ -22,6 +22,7 @@ void Game::setMode(int &mode) {
         if (mode == 1 || mode == 2) break;
         else cout << "Invalid input, please try again: ";
     }
+    this->mode = mode;
 }
 
 void Game::createPlayers(int &nPlayers) {
@@ -161,7 +162,8 @@ void Game::setCard(const Letter &letter, const Number &number, Card *card) { boa
 Card *Game::getCard(const Letter &letter, const Number &number) {
     Letter let = letter;
     Number num = number;
-    getValidInput(&let, &num);
+    if (mode == 1) { getValidInput(&let, &num); }
+    board.turnFaceUp(let, num);
     return board.getCard(let, num);
 }
 
@@ -179,24 +181,36 @@ void Game::getValidInput(Letter *letter, Number *number) {
         try {
             if (!board.isFaceUp(*letter, *number)) break;
             else cout << "Card is already faced up! " << endl;
-        } catch (const std::exception &exc) {
+        } catch (const exception &exc) {
             cout << "Invalid Card Selected, please try again" << endl;
             cerr << exc.what() << endl;
         }
     }
-    board.turnFaceUp(*letter, *number);
 }
 
-void Game::awardActivePlayers() {
-    for (auto &player: players) {
-        if (player.isActive()) {
-            if (!rewardDeck.isEmpty()) { //TODO rewarddeck pointer?
-                Reward &reward = *rewardDeck.getNext();
-                player.addReward(reward);
-                cout << "Awarded " << player.getName() << ": " << reward << "!" << endl;
-            }
+void Game::getValidInputExpert(Letter *letter, Number *number) {
+    while (true) {
+        string input;
+        cout << "Pick a card from (A to E) and from (1 to 5): ";
+        while (true) {
+            cin >> input;
+            if (input.length() == 2) break;
+            else cout << "Invalid input, please try again: ";
+        }
+        *letter = static_cast<Letter>(toEnum(input[0]));
+        *number = static_cast<Number>(toEnum(input[1]));
+        try {
+            if (!board.isFaceUp(*letter, *number)) break;
+            else cout << "Card is already faced up! " << endl;
+        } catch (const exception &exc) {
+            cout << "Invalid Card Selected, please try again" << endl;
+            cerr << exc.what() << endl;
         }
     }
+}
+
+void Game::awardActivePlayers() {//TODO rewarddeck pointer?
+    for (auto &player: players)if (player.isActive() && !rewardDeck.isEmpty())player.addReward(*rewardDeck.getNext());
 }
 
 ostream &operator<<(ostream &os, const Game &game) {
