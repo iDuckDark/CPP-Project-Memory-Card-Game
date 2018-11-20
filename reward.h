@@ -22,11 +22,15 @@ public:
 
     friend bool operator==(const Reward &, const Reward &);
 
+    Reward &operator=(const int &x); // conversion from int (assignment):
+
+    operator int();     //conversion to int (type-cast operator)
+
 private:
 
     int _nRubies;
 
-    explicit Reward(int);
+    explicit Reward(const int &);
 
     Reward(const Reward &);
 

@@ -26,6 +26,10 @@ public:
 
     friend bool operator==(const Card &, const Card &);
 
+    operator FaceBackground();
+
+    operator FaceAnimal();
+
     char getColor() const;
 
     char getAnimal() const;
@@ -34,8 +38,6 @@ private:
 
     Card(FaceAnimal faceAnimal, FaceBackground faceBackground);
 
-    //TODO Need to make copy constructor and assignment operator private
-
     Card(const Card &);
 
     Card &operator=(const Card &);
@@ -43,6 +45,7 @@ private:
     FaceAnimal _faceAnimal;
 
     FaceBackground _faceBackground;
+
     int _nRows = 3;
 
     char _color;
