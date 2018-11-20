@@ -9,49 +9,6 @@
 
 using namespace std;
 
-void setMode(int &mode) {
-    cout << "Please choose your game version:" << endl;
-    cout << "Enter 1 for Base Mode and 2 for Expect Mode: ";
-    while (true) {
-        char input;
-        cin >> input;
-        mode = ((int) input - 48);
-        if (mode == 1 || mode == 2) break;
-        else cout << "Invalid input, please try again: ";
-    }
-}
-
-void createPlayers(Game &game, int &nPlayers, const vector<Side> &sides) {
-    cout << "Number of Players " << "(Minimum 2 - Maximum 4) : ";
-    cin >> nPlayers;
-    while ((nPlayers < 2 || nPlayers > 4)) {
-        cout << "Invalid input, please try again: " << endl;
-        cin >> nPlayers;
-    }
-    vector<string> names(static_cast<unsigned long>(nPlayers));
-    for (int i = 0; i < nPlayers; i++) {
-        cout << "Enter name for Player number " << (i + 1) << ": ";
-        cin >> names[i];
-    }
-    for (int i = 0; i < nPlayers; i++) {
-        Player player{names[i]};
-        player.setSide(sides[i]);
-        game.addPlayer(player);
-    }
-}
-
-void makeCardDeck(Game &game) {
-    CardDeck &deck = CardDeck::make_CardDeck();
-    int i = 1, j = 1;
-    while (!deck.isEmpty()) {
-        game.setCard(static_cast<Letter>(i), static_cast<Number>(j++), deck.getNext());
-        if (j == 5) {
-            j = 0;
-            i++;
-        }
-    }
-}
-
 void expertModePrint(std::map<std::string, Card *> cardMap) {
     for (int i = 0; i < 3; i++) {
         for (auto const&[key, val] : cardMap) { cout << (*val)(i) + " "; }
@@ -65,12 +22,8 @@ void runGame() {
     cout << endl;
     cout << "Welcome to Nevin's and Peter's Memory Card Game Fall 2018" << endl;
     int mode = 0, nPlayers;
-    setMode(mode);
-    Game game;
-    Rules rules;
-    const vector<Side> sides = {Top, Bottom, Left, Right};
-    createPlayers(game, nPlayers, sides);
-    makeCardDeck(game);
+    Game game(mode, nPlayers);
+    Rules rules(nPlayers);
     if (mode == 1) {
         int round = 1;
         while (!rules.gameOver(game)) {
@@ -88,8 +41,7 @@ void runGame() {
             game.setRound(++round);
         }
         cout << game << endl;
-    }
-    else if (mode == 2) {
+    } else if (mode == 2) {
         std::map<std::string, Card *> cardMap;
         int round = 1;
         while (!rules.gameOver(game)) {

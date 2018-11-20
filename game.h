@@ -17,6 +17,10 @@
 #include "board.h"
 #include "rewarddeck.h"
 
+class Rules;
+
+const vector<Side> sides = {Top, Bottom, Left, Right};
+
 class Game {
 
 private:
@@ -26,11 +30,19 @@ private:
 
     Board board;
 
+    RewardDeck rewardDeck;
+
     vector<vector<const Card *>> cards;
 
     vector<Player> players;
 
     void setSide(Side);
+
+    void setMode(int &);
+
+    void createPlayers(int &);
+
+    void makeCardDeck();
 
     void setAllPlayersActive();
 
@@ -44,7 +56,7 @@ private:
 
 public:
 
-    Game() = default;
+    Game(int &, int &);
 
     void setRound(int &);
 

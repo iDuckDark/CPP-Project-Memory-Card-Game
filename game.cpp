@@ -6,6 +6,56 @@
 #include <string>
 #include "game.h"
 
+Game::Game(int &mode, int &nPlayers) : nRound(0) {
+    setMode(mode);
+    createPlayers(nPlayers);
+    makeCardDeck();
+}
+
+void Game::setMode(int &mode) {
+    cout << "Please choose your game version:" << endl;
+    cout << "Enter 1 for Base Mode and 2 for Expect Mode: ";
+    while (true) {
+        char input;
+        cin >> input;
+        mode = ((int) input - 48);
+        if (mode == 1 || mode == 2) break;
+        else cout << "Invalid input, please try again: ";
+    }
+}
+
+void Game::createPlayers(int &nPlayers) {
+    cout << "Number of Players " << "(Minimum 2 - Maximum 4) : ";
+    cin >> nPlayers;
+    while ((nPlayers < 2 || nPlayers > 4)) {
+        cout << "Invalid input, please try again: " << endl;
+        cin >> nPlayers;
+    }
+    vector<string> names(static_cast<unsigned long>(nPlayers));
+    for (int i = 0; i < nPlayers; i++) {
+        cout << "Enter name for Player number " << (i + 1) << ": ";
+        cin >> names[i];
+    }
+    const vector<Side> sides = {Top, Bottom, Left, Right};
+    for (int i = 0; i < nPlayers; i++) {
+        Player player{names[i]};
+        player.setSide(sides[i]);
+        addPlayer(player);
+    }
+}
+
+void Game::makeCardDeck() {
+    CardDeck &deck = CardDeck::make_CardDeck();
+    int i = 1, j = 1;
+    while (!deck.isEmpty()) {
+        setCard(static_cast<Letter>(i), static_cast<Number>(j++), deck.getNext());
+        if (j == 5) {
+            j = 0;
+            i++;
+        }
+    }
+}
+
 void Game::setRound(int &num) {
     nRound = num;
     awardActivePlayers();
@@ -24,7 +74,7 @@ void Game::setSide(Side side) { currentSide = side; }
 Player &Game::getPlayer(Side side) {
     for (auto &player: players) {
         if (player.getSide() == side) {
-            setSide(side);
+            //setSide(side);
             return player;
         }
     }
@@ -61,6 +111,12 @@ void Game::setAllPlayersActive() {
     for (auto &player: players) { player.setActive(true); }
 }
 
+int Game::getNActivePlayers() const {
+    int nActive = 0;
+    for (auto player: players) { if (player.isActive()) nActive++; }
+    return nActive;
+}
+
 void Game::temporaryRevealThreeCards(const int &mode) {
     if (mode == 1) {
         cout << "Three random cards are revealed temporary in front of the players" << endl;
@@ -88,13 +144,6 @@ void Game::temporaryRevealThreeCards(const int &mode) {
     board.reset();
 }
 
-
-int Game::getNActivePlayers() const {
-    int activePlayers = 0;
-    for (auto player: players) { if (player.isActive()) activePlayers++; }
-    return activePlayers;
-}
-
 void Game::clearSelectedCards() {
     vector<const Card *> &cardVector = cards[currentSide];
     cardVector.pop_back();
@@ -105,13 +154,9 @@ bool Game::isValidCard(const Letter &letter, const Number &number) const { retur
 
 bool Game::isBlocked(const Letter &letter, const Number &number) const { return board.isBlocked(letter, number); }
 
-void Game::setBlocked(const Letter &letter, const Number &number) {
-    board.setBlocked(letter, number);
-}
+void Game::setBlocked(const Letter &letter, const Number &number) { board.setBlocked(letter, number); }
 
-void Game::setCard(const Letter &letter, const Number &number, Card *card) {
-    board.setCard(letter, number, card);
-}
+void Game::setCard(const Letter &letter, const Number &number, Card *card) { board.setCard(letter, number, card); }
 
 Card *Game::getCard(const Letter &letter, const Number &number) {
     Letter let = letter;
@@ -143,10 +188,9 @@ void Game::getValidInput(Letter *letter, Number *number) {
 }
 
 void Game::awardActivePlayers() {
-    RewardDeck rewardDeck; //TODO keep making reward deck? Should I put rewarddeck in rungame
     for (auto &player: players) {
         if (player.isActive()) {
-            if (!rewardDeck.isEmpty()) {
+            if (!rewardDeck.isEmpty()) { //TODO rewarddeck pointer?
                 Reward &reward = *rewardDeck.getNext();
                 player.addReward(reward);
                 cout << "Awarded " << player.getName() << ": " << reward << "!" << endl;

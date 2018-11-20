@@ -4,6 +4,9 @@
 
 #include "rules.h"
 
+
+Rules::Rules(int nPlayers) : nPlayers(nPlayers), currentSide(Top) {}
+
 bool Rules::isValid(const Game &game) {
     //TODO remove cout once game is complete (Debugging purpose)
     cout << endl << "TEST RULES IS VALID? " << endl;
@@ -20,6 +23,10 @@ bool Rules::gameOver(const Game &game) { return game.getRound() >= 7; }
 
 bool Rules::roundOver(const Game &game) { return game.getNActivePlayers() == 1; }
 
+//TODO why is this needed?
+//const Player &Rules::getNextPlayer(const Game &game) {
+//    return game.getPlayer(currentSide);
+//}
 
 void Rules::expertRules(Card *card, Game &game, Letter &letter, Number &number, const Side &side,
                         std::map<std::string, Card *> *cardMap, bool *skip) {

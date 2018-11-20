@@ -10,9 +10,12 @@
 #include "game.h"
 
 class Rules {
-
+private:
+    int nPlayers;
+    Side currentSide;
 public:
-    Rules() = default;
+
+    Rules(int nPlayers = 0);
 
     bool isValid(const Game &game);
 
@@ -20,7 +23,9 @@ public:
 
     bool roundOver(const Game &game);
 
-    void expertRules(Card *, Game &, Letter &, Number &, const Side &, std::map<std::string, Card *> *, bool*);
+    //const Player &getNextPlayer(Game &); //TODO why is this needed?
+
+    void expertRules(Card *, Game &, Letter &, Number &, const Side &, std::map<std::string, Card *> *, bool *);
 
     void expertOctopus(Card *, Game &, Letter &, Number &, const Side &);
 
@@ -30,7 +35,7 @@ public:
 
     void expertCrab(Card *, Game &, Letter &, Number &, const Side &);
 
-    void expertTurtle(Card *, Game &, Letter &, Number &, const Side &, bool*);
+    void expertTurtle(Card *, Game &, Letter &, Number &, const Side &, bool *);
 };
 
 
