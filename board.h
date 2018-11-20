@@ -24,7 +24,7 @@ enum Number {
     One = 1, Two = 2, Three = 3, Four = 4, Five = 5, Zero = -1
 };
 
-int toEnum(char const input);
+int toEnum(char &input);
 
 class Board {
 

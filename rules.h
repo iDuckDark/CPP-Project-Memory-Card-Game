@@ -15,7 +15,7 @@ private:
     Side currentSide;
 public:
 
-    Rules(int nPlayers = 0);
+    explicit Rules(int nPlayers = 0);
 
     bool isValid(const Game &game);
 

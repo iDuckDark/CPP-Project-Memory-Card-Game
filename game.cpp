@@ -6,7 +6,7 @@
 #include <string>
 #include "game.h"
 
-Game::Game(int &mode, int &nPlayers) : nRound(0) {
+Game::Game(int &mode, int &nPlayers) : nRound(0), currentSide(Top) {
     setMode(mode);
     createPlayers(nPlayers);
     makeCardDeck();
@@ -120,7 +120,7 @@ int Game::getNActivePlayers() const {
 void Game::temporaryRevealThreeCards(const int &mode) {
     if (mode == 1) {
         cout << "Three random cards are revealed temporary in front of the players" << endl;
-        for (const auto player: players) {
+        for (const auto &player: players) {
             switch (player.getSide()) {
                 case Top:
                     for (int i = 0; i < 3; i++) board.turnFaceUp(A, Number(Two + i));
@@ -202,7 +202,7 @@ void Game::awardActivePlayers() {
 ostream &operator<<(ostream &os, const Game &game) {
     if (game.getRound() < 7) {
         os << game.board << endl;
-        for (auto player: game.players) { os << player << endl; }
+        for (const auto &player: game.players) { os << player << endl; }
     } else game.printLeastToMostRubiesAndWinner();
     return os;
 }

@@ -11,10 +11,10 @@ using namespace std;
 
 void expertModePrint(std::map<std::string, Card *> cardMap) {
     for (int i = 0; i < 3; i++) {
-        for (auto const&[key, val] : cardMap) { cout << (*val)(i) + " "; }
+        for (auto const&[key, val] : cardMap) { cout << (*val)(i) << " "; }
         cout << endl;
     }
-    for (auto const&[key, val] : cardMap) { cout << key + "  "; }
+    for (auto const &card : cardMap) { cout << card.first << "  "; }
     cout << endl;
 }
 
@@ -47,7 +47,7 @@ void runGame() {
         while (!rules.gameOver(game)) {
             game.reset(mode);
             int sideCounter = 0;
-            bool *skipTurn = new bool(false);
+            auto *skipTurn = new bool(false);
             while (!rules.roundOver(game)) {
                 if (*skipTurn) sideCounter++;
                 const Side &side = sides[sideCounter++];

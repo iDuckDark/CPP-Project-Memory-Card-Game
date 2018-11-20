@@ -21,7 +21,7 @@ Board::~Board(){
     for (auto &faceDownCard : faceDownCards) { delete[] faceDownCard; }
     for (auto &blockedCard : blockedCards) { delete[] blockedCard; }
     for (auto &cardVector : cards2D) { delete cardVector; }
-    for (vector<Card *>::iterator it = cards.begin(); it != cards.end(); ++it) { delete (*it); }
+    for (auto &card : cards) { delete card; }
 }
 
 void Board::setCard(const Letter &letter, const Number &number, Card *card) {
@@ -112,7 +112,7 @@ bool Board::turnFaceUp(const Letter &letter, const Number &number) {
 
 bool Board::turnFaceDown(const Letter &letter, const Number &number) {
     if (!isFaceUp(letter, number)) { return false; }
-    return faceDownCards[getIndex(letter, "Letter")][getIndex(number, "Number")] = true;
+    return (faceDownCards[getIndex(letter, "Letter")][getIndex(number, "Number")] = true);
 }
 
 void Board::reset() {

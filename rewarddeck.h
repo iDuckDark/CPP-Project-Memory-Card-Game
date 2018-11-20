@@ -22,7 +22,7 @@ public:
 
     RewardDeck();
 
-    ~RewardDeck();
+    ~RewardDeck() override;
 };
 
 

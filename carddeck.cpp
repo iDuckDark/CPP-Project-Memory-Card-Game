@@ -18,15 +18,12 @@ CardDeck::CardDeck() : Deck() {
 }
 
 CardDeck::~CardDeck() {
-    for (vector< Card* >::iterator it = deck->begin() ; it != deck->end(); ++it) {
-        delete (*it);
-    }
+    for (auto &it : *deck) { delete it; }
     delete deck;
 }
 
 CardDeck& CardDeck::make_CardDeck() {
     static CardDeck c;
     c.shuffle();
-    //TODO resolve warning not error: stack memory leak
     return  c;
 }

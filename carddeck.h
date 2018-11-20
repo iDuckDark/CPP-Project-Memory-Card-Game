@@ -12,7 +12,7 @@ class CardDeck : public Deck<Card> {
 
 public:
 
-    ~CardDeck();
+    ~CardDeck() override;
 
     static CardDeck &make_CardDeck();
 

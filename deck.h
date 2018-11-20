@@ -41,7 +41,7 @@ public:
 
     bool isEmpty() { return (*deck).empty(); }
 
-    virtual ~Deck() {}
+    virtual ~Deck() = default;
 
 protected:
     vector<C *> *deck;
