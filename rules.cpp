@@ -29,7 +29,7 @@ bool Rules::roundOver(const Game &game) { return game.getNActivePlayers() == 1; 
 //}
 
 void Rules::expertRules(Card *card, Game &game, Letter &letter, Number &number, const Side &side,
-                        std::map<std::string, Card *> *cardMap, bool *skip) {
+                        std::map<std::string, Card *> *cardMap, bool *skip, string* walrus) {
     switch (card->getAnimal()) {
         case 'O':
             expertOctopus(card, game, letter, number, side, cardMap);
@@ -41,7 +41,7 @@ void Rules::expertRules(Card *card, Game &game, Letter &letter, Number &number, 
             expertCrab(card, game, letter, number, side);
             break;
         case 'W':
-            expertWalrus(card, game, letter, number, side);
+            expertWalrus(card, game, letter, number, side,walrus);
             break;
         default:
             expertTurtle(card, game, letter, number, side, skip);
@@ -164,10 +164,26 @@ void Rules::expertPenguin(Card *card, Game &game, Letter &letter, Number &number
     cout << *selectedCard << endl;
 }
 
-void Rules::expertWalrus(Card *card, Game &game, Letter &letter, Number &number, const Side &side) {
+void Rules::expertWalrus(Card *card, Game &game, Letter &letter, Number &number, const Side &side, string* walrus) {
     cout << "You have picked a Walrus!" << endl;
     cout << "Pick a card to block from being chosen in the next round:" << endl;
+    Letter someLetter = Z;
+    Number someNumber = Zero;
     //TODO Get input and implement logic
+    game.getValidInputExpert(&someLetter, &someNumber);
+    char cara = 'Z';
+    if (someLetter == A) {
+        cara = 'A';
+    } else if (someLetter == B) {
+        cara = 'B';
+    } else if (someLetter == C) {
+        cara = 'C';
+    } else if (someLetter == D) {
+        cara = 'D';
+    } else if (someLetter == E) {
+        cara = 'E';
+    }
+    *walrus=cara+to_string(someNumber);
 }
 
 void Rules::expertCrab(Card *card, Game &game, Letter &letter, Number &number, const Side &side) {

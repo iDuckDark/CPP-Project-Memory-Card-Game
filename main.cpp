@@ -18,6 +18,16 @@ void expertModePrint(std::map<std::string, Card *> cardMap) {
     cout << endl;
 }
 
+string convertToString(Letter letter, Number number){
+    char cara = 'Z';
+    if (letter == A) { cara = 'A'; }
+    else if (letter == B) { cara = 'B'; }
+    else if (letter == C) { cara = 'C'; }
+    else if (letter == D) { cara = 'D'; }
+    else if (letter == E) { cara = 'E'; }
+    return(cara+to_string(number));
+}
+
 void runGame() {
     cout << endl;
     cout << "Welcome to Nevin's and Peter's Memory Card Game Fall 2018" << endl;
@@ -49,6 +59,7 @@ void runGame() {
             cardMap.clear();
             int sideCounter = 0;
             auto *skipTurn = new bool(false);
+            string walrusBlockValue = "Z0";
             while (!rules.roundOver(game)) {
                 if (*skipTurn) sideCounter++;
                 if (sideCounter >= nPlayers) { sideCounter = 0; }
@@ -61,16 +72,14 @@ void runGame() {
                     Letter letter = Z;
                     Number number = Zero;
                     game.getValidInputExpert(&letter, &number);
+                    while(convertToString(letter,number)==walrusBlockValue){
+                        cout<<"Selected Card blocked by walrus"<<endl;
+                        game.getValidInputExpert(&letter, &number);
+                    }
                     cout << letter << number << " FIXED???" << endl;
                     Card *selectedCard = game.getCard(letter, number);
-                    char cara = 'Z';
-                    if (letter == A) { cara = 'A'; }
-                    else if (letter == B) { cara = 'B'; }
-                    else if (letter == C) { cara = 'C'; }
-                    else if (letter == D) { cara = 'D'; }
-                    else if (letter == E) { cara = 'E'; }
-                    cardMap[cara + to_string(number)] = selectedCard;
-                    rules.expertRules(selectedCard, game, letter, number, side, &cardMap, skipTurn);
+                    cardMap[convertToString(letter,number)] = selectedCard;
+                    rules.expertRules(selectedCard, game, letter, number, side, &cardMap, skipTurn, &walrusBlockValue);
                     //TODO fix letter and number input?
                     expertModePrint(cardMap);
                     game.setCurrentCard(selectedCard);
@@ -79,7 +88,9 @@ void runGame() {
                 if (game.twoCardsSelected()) { game.clearSelectedCards(); }
             }
             game.setRound(++round);
+            delete skipTurn;
         }
+
         cout << game << endl;
     }
 }
