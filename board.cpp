@@ -147,6 +147,14 @@ ostream &operator<<(ostream &os, const Board &board) {
     return (os << "   " << "1" << "   " << "2" << "   " << "3" << "   " << "4" << "   " << "5" << endl);
 }
 
+void Board::swapCards(const Letter &l1, const Number &n1, const Letter &l2, const Number &n2) {
+    bool &first = faceDownCards[getIndex(l1, "Letter")][getIndex(n1, "Number")];
+    bool &second = faceDownCards[getIndex(l2, "Letter")][getIndex(n2, "Number")];
+    bool temp = first;
+    first = second;
+    second = temp;
+}
+
 int toEnum(char &input) {
     switch (input) {
         case 'A':

@@ -68,6 +68,8 @@ public:
 
     bool isValidCard(const Letter &, const Number &) const; //Expert
 
+    void swapCards(const Letter &, const Number &,const Letter &, const Number &); //Expert Octopus
+
     bool isBlocked(const Letter &, const Number &) const; //Expert Walrus
 
     void setBlocked(const Letter &, const Number &); //Expert Walrus

@@ -114,7 +114,7 @@ void Rules::expertOctopus(Card *card, Game &game, Letter &letter, Number &number
         cardMap->operator[](cara + to_string(_number)) = selectedCard;
 
         //need to set new location to face up and old location to face down --nevin
-
+        game.swapCards(letter, number, _letter, _number); //Expert Octopus
     }
 
     // When an octopus card is turned over, the

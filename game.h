@@ -87,6 +87,8 @@ public:
 
     void clearSelectedCards();
 
+    void swapCards(const Letter &, const Number &,const Letter &, const Number &); //Expert Octopus
+
     bool isValidCard(const Letter &letter, const Number &number) const;
 
     bool isBlocked(const Letter &, const Number &) const; //Expert Walrus

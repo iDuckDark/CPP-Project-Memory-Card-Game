@@ -6,7 +6,7 @@
 #include <string>
 #include "game.h"
 
-Game::Game(int &mode, int &nPlayers) : nRound(0), currentSide(Top) {
+Game::Game(int &mode, int &nPlayers) : nRound(0), currentSide(Top), mode(0) {
     setMode(mode);
     createPlayers(nPlayers);
     makeCardDeck();
@@ -99,9 +99,7 @@ void Game::setCurrentCard(const Card *card) {
     cardVector.push_back(card);
 }
 
-bool Game::twoCardsSelected() const {
-    return (cards[currentSide].size() == 2);
-}
+bool Game::twoCardsSelected() const { return (cards[currentSide].size() == 2); }
 
 void Game::reset() {
     setAllPlayersActive();
@@ -204,6 +202,7 @@ void Game::getValidInputExpert(Letter *letter, Number *number) {
         }
     }
 }
+
 void Game::getValidInputExpertOct(Letter *letter, Number *number) {
     while (true) {
         string input;
@@ -235,6 +234,10 @@ ostream &operator<<(ostream &os, const Game &game) {
         for (const auto &player: game.players) { os << player << endl; }
     } else game.printLeastToMostRubiesAndWinner();
     return os;
+}
+
+void Game::swapCards(const Letter &l1, const Number &n1, const Letter &l2, const Number &n2) {
+    board.swapCards(l1, n1, l2, n2);
 }
 
 void Game::printLeastToMostRubiesAndWinner() const {
