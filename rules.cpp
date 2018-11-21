@@ -37,7 +37,7 @@ const Player &Rules::getNextPlayer(Game &game) {
 }
 
 void Rules::expertRules(Card *card, Game &game, Letter &letter, Number &number, const Side &side,
-                        std::map<std::string, Card *> *cardMap, bool *skip, string *walrus) {
+                        map<string, Card *> *cardMap, bool *skip, string *walrus) {
     switch (card->getAnimal()) {
         case 'O':
             expertOctopus(card, game, letter, number, side, cardMap);
@@ -142,7 +142,7 @@ void Rules::expertPenguin(Card *card, Game &game, Letter &letter, Number &number
 
         cout << "Turning Face down :" << endl;
         cardMap->erase(cara + to_string(someNumber));
-        game.hideCard(someLetter, someNumber);
+        //game.hideCard(someLetter, someNumber);
     } else {
         cout << "Turning Face Up:" << endl;
         cardMap->operator[](cara + to_string(someNumber)) = selectedCard;

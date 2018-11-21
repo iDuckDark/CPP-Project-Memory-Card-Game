@@ -10,7 +10,7 @@ Game::Game(int &mode, int &nPlayers) : nRound(1), currentSide(Top) {
     makeCardDeck();
     makeRewardDeck();
     reset();
-    ready = true;
+    //ready = true;
 }
 
 void Game::setMode(int &mode) {
@@ -39,8 +39,17 @@ void Game::createPlayers(int &nPlayers) {
         cin >> names[i];
         Player player{names[i]};
         player.setSide(sides[i]);
-        addPlayer(player);
+        if (!containsPlayer(player)) addPlayer(player);
+        else --i;
     }
+}
+
+bool Game::containsPlayer(const Player &player) {
+    if (find(players.begin(), players.end(), player) != players.end()) {
+        cout << "Player already added to Game!" << endl;
+        return true;
+    }
+    return false;
 }
 
 void Game::makeCardDeck() {
@@ -119,7 +128,7 @@ void Game::clearSelectedCards() {
 void Game::reset() {
     setAllPlayersActive();
     if (mode == 1) temporaryRevealThreeCards();
-    if (mode == 2) { cardMap.clear(); }
+    //if (mode == 2) { cardMap.clear(); }
     cout << "Cards are hidden now" << endl;
     board.reset();
 }
@@ -160,19 +169,20 @@ bool Game::isBlocked(const Letter &letter, const Number &number) const { return 
 void Game::setBlocked(const Letter &letter, const Number &number) { board.setBlocked(letter, number); }
 
 void Game::setCard(const Letter &letter, const Number &number, Card *card) {
-    if (!ready) { board.setCard(letter, number, card); }
-    else if (ready && mode == 2) { cardMap[convertToString(letter, number)] = card; }
+    board.setCard(letter, number, card);
+    //if (!ready) { board.setCard(letter, number, card); }
+    //else if (ready && mode == 2) { cardMap[convertToString(letter, number)] = card; }
 }
 
-string Game::convertToString(const Letter &letter, const Number &number) {
-    char cara = 'Z';
-    if (letter == A) { cara = 'A'; }
-    else if (letter == B) { cara = 'B'; }
-    else if (letter == C) { cara = 'C'; }
-    else if (letter == D) { cara = 'D'; }
-    else if (letter == E) { cara = 'E'; }
-    return (cara + to_string(number));
-}
+//string Game::convertToString(const Letter &letter, const Number &number) {
+//    char cara = 'Z';
+//    if (letter == A) { cara = 'A'; }
+//    else if (letter == B) { cara = 'B'; }
+//    else if (letter == C) { cara = 'C'; }
+//    else if (letter == D) { cara = 'D'; }
+//    else if (letter == E) { cara = 'E'; }
+//    return (cara + to_string(number));
+//}
 
 Card *Game::getCard(const Letter &letter, const Number &number) {
     Letter let = letter;
@@ -182,8 +192,8 @@ Card *Game::getCard(const Letter &letter, const Number &number) {
     return board.getCard(let, num);
 }
 
-void Game::hideCard(const Letter &letter, const Number &number){
-    board.turnFaceDown(letter,number);
+void Game::hideCard(const Letter &letter, const Number &number) {
+    board.turnFaceDown(letter, number);
 }
 
 void Game::getValidInput(Letter *letter, Number *number) {
@@ -199,7 +209,7 @@ void Game::getValidInput(Letter *letter, Number *number) {
         *number = static_cast<Number>(toEnum(input[1]));
         try {
             if (!board.isFaceUp(*letter, *number)) break;
-            else cout << "Card is already faced up! " << endl;
+            else cout << "Card is already faced up! 212 " << endl;
         } catch (const exception &exc) {
             cout << "Invalid Card Selected, please try again" << endl;
             cerr << exc.what() << endl;
@@ -243,7 +253,8 @@ ostream &operator<<(ostream &os, const Game &game) {
     if (game.mode == 1 && game.getRound() < 7) {
         os << game.board << endl;
         for (const auto &player: game.players) { os << player << endl; }
-    } else if (game.mode == 2) { game.expertModePrint(); }
+    }
+    //else if (game.mode == 2) { game.expertModePrint(); }
     else game.printLeastToMostRubiesAndWinner();
     return os;
 }
@@ -265,13 +276,13 @@ void Game::printLeastToMostRubiesAndWinner() const {
     }
 }
 
-void Game::expertModePrint() const {
-    for (int i = 0; i < 3; i++) {
-        for (auto const&[key, val] : cardMap) { cout << (*val)(i) << " "; }
-        cout << endl;
-    }
-    for (auto const &card : cardMap) { cout << card.first << "  "; }
-    cout << endl;
-}
+//void Game::expertModePrint() const {
+//    for (int i = 0; i < 3; i++) {
+//        for (auto const&[key, val] : cardMap) { cout << (*val)(i) << " "; }
+//        cout << endl;
+//    }
+//    for (auto const &card : cardMap) { cout << card.first << "  "; }
+//    cout << endl;
+//}
 
-map<string, Card *> &Game::getCardMap() { return cardMap; }
+//map<string, Card *> &Game::getCardMap() { return cardMap; }

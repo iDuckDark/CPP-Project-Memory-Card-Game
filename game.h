@@ -31,14 +31,16 @@ private:
     Board board;
     vector<vector<const Card *>> cards;
     vector<const Reward *> rewardDeck;
-    map<string, Card *> cardMap; //Expert Mode
-    bool ready = false;
+    //map<string, Card *> cardMap; //Expert Mode
+    //bool ready = false;
 
     void setSide(Side);
 
     void setMode(int &);
 
     void createPlayers(int &);
+
+    bool containsPlayer(const Player&);
 
     void makeCardDeck();
 
@@ -94,7 +96,7 @@ public:
 
     int getNActivePlayers() const;
 
-    map<string, Card *> &getCardMap();
+    //map<string, Card *> &getCardMap();
 
     void getValidInputExpert(Letter *letter, Number *number);
 
@@ -104,7 +106,7 @@ public:
 
     void swapCards(const Letter &, const Number &, const Letter &, const Number &); //Expert Octopus
 
-    string convertToString(const Letter &letter, const Number &number); //Expert
+    //string convertToString(const Letter &letter, const Number &number); //Expert
 
 };
 

@@ -41,13 +41,13 @@ string Player::getSideToString() const {
 ostream &operator<<(ostream &os, const Player &player) {
     os << player.getName() << ": ";
     if (!player.endOfGame) {
-        return os << player.getSideToString() << " (" << (player.active ? "active" : "inactive") << ")" << endl;
+        return (os << player.getSideToString() << " (" << (player.active ? "active" : "inactive") << ")" << endl);
     }
-    return os << " " << player.getNRubies() << " rubies" << endl;
+    return (os << " " << player.getNRubies() << " rubies" << endl);
 }
 
 bool operator<(const Player &lhs, const Player &rhs) { return lhs.getNRubies() < rhs.getNRubies(); }
 
 bool operator>(const Player &lhs, const Player &rhs) { return lhs.getNRubies() > rhs.getNRubies(); }
 
-bool operator==(const Player &lhs, const Player &rhs) { return lhs.getNRubies() == rhs.getNRubies(); }
+bool operator==(const Player &l, const Player &r) { return l.getName() == r.getName(); }
