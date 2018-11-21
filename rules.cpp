@@ -61,9 +61,6 @@ void Rules::expertOctopus(Card *card, Game &game, Letter &letter, Number &number
                           map<string, Card *> *cardMap) {
     cout << "You have picked an Octopus!" << endl;
     cout << "Pick position with an adjacent card in the same row or the same column to swap: " << endl;
-
-    //TODO Get input and implement logic
-
     Letter _letter = Z;
     Number _number = Zero;
     game.getValidInputExpertOct(&_letter, &_number);
@@ -73,10 +70,8 @@ void Rules::expertOctopus(Card *card, Game &game, Letter &letter, Number &number
         game.getValidInputExpertOct(&_letter, &_number);
     }
     Card *selectedCard = game.getCard(_letter, _number);
-
     //SWAPPING HERE
     //Swap map - Peter
-
     //card to be swapped with (second card)
     char cara = 'Z';
     if (_letter == A) { cara = 'A'; }
@@ -91,7 +86,6 @@ void Rules::expertOctopus(Card *card, Game &game, Letter &letter, Number &number
     else if (letter == C) { cara2 = 'C'; }
     else if (letter == D) { cara2 = 'D'; }
     else if (letter == E) { cara2 = 'E'; }
-
     //if the second card is already face up
     if (cardMap->count(cara + to_string(_number))) {
         cout << cara + to_string(_number) << endl;
@@ -101,9 +95,8 @@ void Rules::expertOctopus(Card *card, Game &game, Letter &letter, Number &number
         //swap hashes
         cardMap->operator[](cara + to_string(_number)) = selectedCard;
         cardMap->operator[](cara2 + to_string(number)) = card;
-
     } else {//swapping with faced down card
-        map<string, Card *>::iterator it = (*cardMap).find(cara2 + to_string(number));
+        auto it = (*cardMap).find(cara2 + to_string(number));
         cardMap->erase(it);
         Card *temp = card;
         card = selectedCard;
@@ -114,10 +107,6 @@ void Rules::expertOctopus(Card *card, Game &game, Letter &letter, Number &number
         //need to set new location to face up and old location to face down --nevin
         game.swapCards(letter, number, _letter, _number); //Expert Octopus
     }
-
-    // When an octopus card is turned over, the
-    //card is exchanging position with an adjacent card in the same row or the same column (4-neighbourhood)
-    //The adjacent card may be face up or down and will remain unchanged.
 }
 
 void Rules::expertPenguin(Card *card, Game &game, Letter &letter, Number &number, const Side &side,
@@ -153,7 +142,7 @@ void Rules::expertPenguin(Card *card, Game &game, Letter &letter, Number &number
 
         cout << "Turning Face down :" << endl;
         cardMap->erase(cara + to_string(someNumber));
-        //TODO need to make card face down from game->
+        game.hideCard(someLetter, someNumber);
     } else {
         cout << "Turning Face Up:" << endl;
         cardMap->operator[](cara + to_string(someNumber)) = selectedCard;
@@ -167,7 +156,6 @@ void Rules::expertWalrus(Card *card, Game &game, Letter &letter, Number &number,
     cout << "Pick a card to block from being chosen in the next round:" << endl;
     Letter someLetter = Z;
     Number someNumber = Zero;
-    //TODO Get input and implement logic
     game.getValidInputExpert(&someLetter, &someNumber);
     char cara = 'Z';
     if (someLetter == A) {
@@ -214,8 +202,4 @@ void Rules::expertTurtle(Card *card, Game &game, Letter &letter, Number &number,
     cout << "You have picked a Turtle!" << endl;
     cout << "Skipping next player's turn." << endl;
     *skip = true;
-    //TODO Get input and implement logic
-    //. Finally,
-    //with the turtle the next player in the current round is skipped, i.e., the next player will not turn over a card
-    //and will not lose in the next step.
 }

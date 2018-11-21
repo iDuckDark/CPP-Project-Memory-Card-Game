@@ -26,7 +26,7 @@ Board::~Board() {
 
 void Board::setCard(const Letter &letter, const Number &number, Card *card) {
     cards.push_back(card);
-    if (cards.size() == 25) { setScreen(); }
+    if (cards.size() == 25) setScreen();
 }
 
 void Board::setScreen() {

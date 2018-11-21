@@ -98,6 +98,8 @@ public:
 
     void getValidInputExpert(Letter *letter, Number *number);
 
+    void hideCard(const Letter &letter, const Number &number); //Expert penguin
+
     void getValidInputExpertOct(Letter *letter, Number *number);
 
     void swapCards(const Letter &, const Number &, const Letter &, const Number &); //Expert Octopus

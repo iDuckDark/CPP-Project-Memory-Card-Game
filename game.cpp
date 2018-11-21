@@ -37,8 +37,6 @@ void Game::createPlayers(int &nPlayers) {
     for (int i = 0; i < nPlayers; i++) {
         cout << "Enter name for Player number " << (i + 1) << ": ";
         cin >> names[i];
-    }
-    for (int i = 0; i < nPlayers; i++) {
         Player player{names[i]};
         player.setSide(sides[i]);
         addPlayer(player);
@@ -182,6 +180,10 @@ Card *Game::getCard(const Letter &letter, const Number &number) {
     if (mode == 1) { getValidInput(&let, &num); }
     board.turnFaceUp(let, num);
     return board.getCard(let, num);
+}
+
+void Game::hideCard(const Letter &letter, const Number &number){
+    board.turnFaceDown(letter,number);
 }
 
 void Game::getValidInput(Letter *letter, Number *number) {
