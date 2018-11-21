@@ -11,6 +11,7 @@
 #include <queue>
 #include <map>
 #include <unordered_map>
+#include <stdexcept>
 
 #include "player.h"
 #include "card.h"
@@ -51,6 +52,7 @@ private:
 
     void printLeastToMostRubiesAndWinner() const;
 
+    void clearSelectedCards();
 public:
 
     Game(int &, int &);
@@ -81,11 +83,8 @@ public:
     int getNActivePlayers() const;
 
     void getValidInputExpert(Letter *letter, Number *number);
+
     void getValidInputExpertOct(Letter *letter, Number *number);
-
-    bool twoCardsSelected() const;
-
-    void clearSelectedCards();
 
     void swapCards(const Letter &, const Number &,const Letter &, const Number &); //Expert Octopus
 

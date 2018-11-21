@@ -8,15 +8,13 @@
 Rules::Rules(int nPlayers) : nPlayers(nPlayers), currentSide(Top) {}
 
 bool Rules::isValid(const Game &game) {
-    //TODO remove cout once game is complete (Debugging purpose)
-    cout << endl << "TEST RULES IS VALID? " << endl;
-    if (game.twoCardsSelected()) {
-        cout << "Previous & Next card Equal? " << (*game.getPreviousCard() == *game.getCurrentCard()) << endl
-             << *game.getPreviousCard() << endl << *game.getCurrentCard() << endl;
-        return (*game.getPreviousCard() == *game.getCurrentCard());
-    }
-    cout << "NO TWO CARDS SELECTED" << endl << endl;
-    return false;
+    if (twoCardsSelected(game)) { return (*game.getPreviousCard() == *game.getCurrentCard()); }
+    return true;
+}
+
+bool Rules::twoCardsSelected(const Game &game) const {
+    try { return (game.getPreviousCard() != nullptr && game.getCurrentCard() != nullptr); }
+    catch (...) { return false; }
 }
 
 bool Rules::gameOver(const Game &game) { return game.getRound() >= 7; }
@@ -29,7 +27,7 @@ bool Rules::roundOver(const Game &game) { return game.getNActivePlayers() == 1; 
 //}
 
 void Rules::expertRules(Card *card, Game &game, Letter &letter, Number &number, const Side &side,
-                        std::map<std::string, Card *> *cardMap, bool *skip, string* walrus) {
+                        std::map<std::string, Card *> *cardMap, bool *skip, string *walrus) {
     switch (card->getAnimal()) {
         case 'O':
             expertOctopus(card, game, letter, number, side, cardMap);
@@ -41,7 +39,7 @@ void Rules::expertRules(Card *card, Game &game, Letter &letter, Number &number, 
             expertCrab(card, game, letter, number, side);
             break;
         case 'W':
-            expertWalrus(card, game, letter, number, side,walrus);
+            expertWalrus(card, game, letter, number, side, walrus);
             break;
         default:
             expertTurtle(card, game, letter, number, side, skip);
@@ -49,7 +47,8 @@ void Rules::expertRules(Card *card, Game &game, Letter &letter, Number &number, 
     }
 }
 
-void Rules::expertOctopus(Card *card, Game &game, Letter &letter, Number &number, const Side &side, std::map<std::string, Card *> *cardMap) {
+void Rules::expertOctopus(Card *card, Game &game, Letter &letter, Number &number, const Side &side,
+                          std::map<std::string, Card *> *cardMap) {
     cout << "You have picked an Octopus!" << endl;
     cout << "Pick position with an adjacent card in the same row or the same column to swap: " << endl;
 
@@ -58,8 +57,9 @@ void Rules::expertOctopus(Card *card, Game &game, Letter &letter, Number &number
     Letter _letter = Z;
     Number _number = Zero;
     game.getValidInputExpertOct(&_letter, &_number);
-    while(!(_letter == letter || number== _number)){
-        cout << "Incorrect Card! Pick position with an adjacent card in the same row or the same column to swap: " << endl;
+    while (!(_letter == letter || number == _number)) {
+        cout << "Incorrect Card! Pick position with an adjacent card in the same row or the same column to swap: "
+             << endl;
         game.getValidInputExpertOct(&_letter, &_number);
     }
     Card *selectedCard = game.getCard(_letter, _number);
@@ -96,7 +96,7 @@ void Rules::expertOctopus(Card *card, Game &game, Letter &letter, Number &number
 
     //if the second card is already face up
     if (cardMap->count(cara + to_string(_number))) {
-        cout<<cara + to_string(_number)<<endl;
+        cout << cara + to_string(_number) << endl;
         Card *temp = card;
         card = selectedCard;
         selectedCard = temp;
@@ -104,8 +104,8 @@ void Rules::expertOctopus(Card *card, Game &game, Letter &letter, Number &number
         cardMap->operator[](cara + to_string(_number)) = selectedCard;
         cardMap->operator[](cara2 + to_string(number)) = card;
 
-    }else{//swapping with faced down card
-        std::map<string,Card*>::iterator it = (*cardMap).find(cara2+ to_string(number));
+    } else {//swapping with faced down card
+        std::map<string, Card *>::iterator it = (*cardMap).find(cara2 + to_string(number));
         cardMap->erase(it);
         Card *temp = card;
         card = selectedCard;
@@ -164,7 +164,7 @@ void Rules::expertPenguin(Card *card, Game &game, Letter &letter, Number &number
     cout << *selectedCard << endl;
 }
 
-void Rules::expertWalrus(Card *card, Game &game, Letter &letter, Number &number, const Side &side, string* walrus) {
+void Rules::expertWalrus(Card *card, Game &game, Letter &letter, Number &number, const Side &side, string *walrus) {
     cout << "You have picked a Walrus!" << endl;
     cout << "Pick a card to block from being chosen in the next round:" << endl;
     Letter someLetter = Z;
@@ -183,7 +183,7 @@ void Rules::expertWalrus(Card *card, Game &game, Letter &letter, Number &number,
     } else if (someLetter == E) {
         cara = 'E';
     }
-    *walrus=cara+to_string(someNumber);
+    *walrus = cara + to_string(someNumber);
 }
 
 void Rules::expertCrab(Card *card, Game &game, Letter &letter, Number &number, const Side &side) {
@@ -195,9 +195,9 @@ void Rules::expertCrab(Card *card, Game &game, Letter &letter, Number &number, c
     Number _number = Zero;
     game.getValidInputExpert(&_letter, &_number);
     Card *selectedCard = game.getCard(_letter, _number);
-    cout<<*selectedCard<<endl;
-    while(selectedCard->getColor()== card->getColor() && selectedCard->getAnimal() == card->getAnimal()){
-        cout<<"This is the card you just picked. Chose another"<<endl;
+    cout << *selectedCard << endl;
+    while (selectedCard->getColor() == card->getColor() && selectedCard->getAnimal() == card->getAnimal()) {
+        cout << "This is the card you just picked. Chose another" << endl;
         game.getValidInputExpert(&_letter, &_number);
         selectedCard = game.getCard(_letter, _number);
     }
@@ -221,3 +221,8 @@ void Rules::expertTurtle(Card *card, Game &game, Letter &letter, Number &number,
     //with the turtle the next player in the current round is skipped, i.e., the next player will not turn over a card
     //and will not lose in the next step.
 }
+
+
+//if (game.twoCardsSelected()) {
+//cout << "Previous & Next card Equal? " << (*game.getPreviousCard() == *game.getCurrentCard()) << endl
+//<< *game.getPreviousCard() << endl << *game.getCurrentCard() << endl;

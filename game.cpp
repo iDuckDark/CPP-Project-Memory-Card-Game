@@ -2,8 +2,6 @@
 // Created by iDarkDuck on 2018-10-19.
 //
 
-#include <iostream>
-#include <string>
 #include "game.h"
 
 Game::Game(int &mode, int &nPlayers) : nRound(0), currentSide(Top), mode(0) {
@@ -84,22 +82,34 @@ Player &Game::getPlayer(Side side) {
 
 const Card *Game::getPreviousCard() const {
     vector<const Card *> cardVector = cards[currentSide];
+    if (cardVector.size() == 0) { throw new out_of_range("No previous card selected!"); }
     const Card *previousCard = cardVector[0];
     return previousCard;
 }
 
 const Card *Game::getCurrentCard() const {
     vector<const Card *> cardVector = cards[currentSide];
+    if (cardVector.size() <= 1) { throw new out_of_range("No current card selected!"); }
     const Card *currentCard = cardVector[1];
     return currentCard;
 }
 
 void Game::setCurrentCard(const Card *card) {
-    vector<const Card *> &cardVector = cards[currentSide];
-    cardVector.push_back(card);
+    if (card != nullptr) {
+        vector<const Card *> &cardVector = cards[currentSide];
+        cardVector.push_back(card);
+    } else if (card == nullptr && cards[currentSide].size() != 0) {
+        clearSelectedCards();
+    }
 }
 
-bool Game::twoCardsSelected() const { return (cards[currentSide].size() == 2); }
+void Game::clearSelectedCards() {
+    vector<const Card *> &cardVector = cards[currentSide];
+    cardVector.pop_back();
+    cardVector.pop_back();
+}
+
+//bool Game::twoCardsSelected() const { return (cards[currentSide].size() == 2); }
 
 void Game::reset() {
     setAllPlayersActive();
@@ -137,12 +147,6 @@ void Game::temporaryRevealThreeCards() {
         }
     }
     cout << (*this) << endl;
-}
-
-void Game::clearSelectedCards() {
-    vector<const Card *> &cardVector = cards[currentSide];
-    cardVector.pop_back();
-    cardVector.pop_back();
 }
 
 bool Game::isValidCard(const Letter &letter, const Number &number) const { return board.isValidCard(letter, number); }

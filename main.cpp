@@ -18,14 +18,14 @@ void expertModePrint(std::map<std::string, Card *> cardMap) {
     cout << endl;
 }
 
-string convertToString(Letter letter, Number number){
+string convertToString(Letter letter, Number number) {
     char cara = 'Z';
     if (letter == A) { cara = 'A'; }
     else if (letter == B) { cara = 'B'; }
     else if (letter == C) { cara = 'C'; }
     else if (letter == D) { cara = 'D'; }
     else if (letter == E) { cara = 'E'; }
-    return(cara+to_string(number));
+    return (cara + to_string(number));
 }
 
 void runGame() {
@@ -44,8 +44,10 @@ void runGame() {
                 if (sideCounter >= nPlayers) { sideCounter = 0; }
                 cout << "Round: " << round << " , Turn: " << currentPlayer.getName() << endl;
                 if (currentPlayer.isActive()) { game.setCurrentCard(game.getCard(Z, Zero)); }
-                if (!rules.isValid(game)) { if (game.twoCardsSelected()) currentPlayer.setActive(false); }
-                if (game.twoCardsSelected()) { game.clearSelectedCards(); }
+                if (!rules.isValid(game)) {
+                    currentPlayer.setActive(false);
+                    game.setCurrentCard(nullptr);
+                }
                 cout << game << endl;
             }
             game.setRound(++round);
@@ -72,25 +74,25 @@ void runGame() {
                     Letter letter = Z;
                     Number number = Zero;
                     game.getValidInputExpert(&letter, &number);
-                    while(convertToString(letter,number)==walrusBlockValue){
-                        cout<<"Selected Card blocked by walrus"<<endl;
+                    while (convertToString(letter, number) == walrusBlockValue) {
+                        cout << "Selected Card blocked by walrus" << endl;
                         game.getValidInputExpert(&letter, &number);
                     }
-                    cout << letter << number << " FIXED???" << endl;
                     Card *selectedCard = game.getCard(letter, number);
-                    cardMap[convertToString(letter,number)] = selectedCard;
+                    cardMap[convertToString(letter, number)] = selectedCard;
                     rules.expertRules(selectedCard, game, letter, number, side, &cardMap, skipTurn, &walrusBlockValue);
                     //TODO fix letter and number input?
                     expertModePrint(cardMap);
                     game.setCurrentCard(selectedCard);
                 }
-                if (!rules.isValid(game)) { if (game.twoCardsSelected()) { currentPlayer.setActive(false); }}
-                if (game.twoCardsSelected()) { game.clearSelectedCards(); }
+                if (!rules.isValid(game)) {
+                    currentPlayer.setActive(false);
+                    game.setCurrentCard(nullptr);
+                }
             }
             game.setRound(++round);
             delete skipTurn;
         }
-
         cout << game << endl;
     }
 }
@@ -98,6 +100,8 @@ void runGame() {
 
 int main() {
     runGame();
+//    int players = 2;
+//    int mode = 1;
 //    Game game;
 //    Player peter("Peter");
 //    peter.setSide(Top);
@@ -105,12 +109,21 @@ int main() {
 //    nevin.setSide(Bottom);
 //    game.addPlayer(peter);
 //    game.addPlayer(nevin);
-//    Player div{"Divyang"};
-//    div.setSide(Left);
-//    game.addPlayer(div);
-//
-//    game.setCard(A, Two, nullptr);
-//    cout << game << endl;
+//    cout << game.getPlayer(Top) << endl;
+//    game.setCurrentCard(game.getCard(A, One));
+//    game.setCurrentCard(game.getCard(A, Two));
+//    Rules rules;
+//    if (!rules.isValid(game)) {
+//        peter.setActive(false);
+//        game.setCurrentCard(nullptr);
+//        cout << "rules valid 1?" << endl;
+//    }
+//    if (!rules.isValid(game)) {
+//        peter.setActive(false);
+//        game.setCurrentCard(nullptr);
+//        cout << "rules valid 2?" << endl;
+//    }
+//    cout << "rules valid 3?" << endl;
     return 0;
 }
 

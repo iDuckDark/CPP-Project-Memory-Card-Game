@@ -13,6 +13,8 @@ class Rules {
 private:
     int nPlayers;
     Side currentSide;
+    bool twoCardsSelected(const Game&) const;
+
 public:
 
     explicit Rules(int nPlayers = 0);
@@ -25,13 +27,13 @@ public:
 
     //const Player &getNextPlayer(Game &); //TODO why is this needed?
 
-    void expertRules(Card *, Game &, Letter &, Number &, const Side &, std::map<std::string, Card *> *, bool *, string*);
+    void expertRules(Card *, Game &, Letter &, Number &, const Side &, std::map<std::string, Card *> *, bool *, string *);
 
-    void expertOctopus(Card *, Game &, Letter &, Number &, const Side &,std::map<std::string, Card *> * );
+    void expertOctopus(Card *, Game &, Letter &, Number &, const Side &, std::map<std::string, Card *> *);
 
     void expertPenguin(Card *, Game &, Letter &, Number &, const Side &, std::map<std::string, Card *> *);
 
-    void expertWalrus(Card *, Game &, Letter &, Number &, const Side &, string*);
+    void expertWalrus(Card *, Game &, Letter &, Number &, const Side &, string *);
 
     void expertCrab(Card *, Game &, Letter &, Number &, const Side &);
 

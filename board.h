@@ -60,7 +60,7 @@ public:
 
     Card *getCard(const Letter &, const Number &);
 
-    void setCard(const Letter &, const Number &, Card *); //TODO why do we need this?
+    void setCard(const Letter &, const Number &, Card *);
 
     void reset();
 
@@ -68,7 +68,7 @@ public:
 
     bool isValidCard(const Letter &, const Number &) const; //Expert
 
-    void swapCards(const Letter &, const Number &,const Letter &, const Number &); //Expert Octopus
+    void swapCards(const Letter &, const Number &, const Letter &, const Number &); //Expert Octopus
 
     bool isBlocked(const Letter &, const Number &) const; //Expert Walrus
 
