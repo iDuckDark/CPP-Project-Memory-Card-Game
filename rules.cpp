@@ -103,7 +103,8 @@ void Rules::expertOctopus(Card *card, Game &game, Letter &letter, Number &number
         selectedCard = temp;
         //hashed to new location
         cardMap->operator[](cara + to_string(_number)) = selectedCard;
-
+        cout << "FIRST CARD: " << letter << number << endl;
+        cout << "SECOND CARD: " << _letter << _number << endl;
         //need to set new location to face up and old location to face down --nevin
         game.swapCards(letter, number, _letter, _number); //Expert Octopus
     }

@@ -150,9 +150,13 @@ ostream &operator<<(ostream &os, const Board &board) {
 void Board::swapCards(const Letter &l1, const Number &n1, const Letter &l2, const Number &n2) {
     bool &first = faceDownCards[getIndex(l1, "Letter")][getIndex(n1, "Number")];
     bool &second = faceDownCards[getIndex(l2, "Letter")][getIndex(n2, "Number")];
+    cout << "BEFORE: " << first << endl;
+    cout << "BEFORE: " << second << endl;
     bool temp = first;
     first = second;
     second = temp;
+    cout << "AFTER: " << first << endl;
+    cout << "AFTER: " << second << endl;
 }
 
 int toEnum(char &input) {

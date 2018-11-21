@@ -94,7 +94,7 @@ void runGame() {
 
 
 int main() {
-    //runGame();
+    runGame();
 //    bool *faceDownCards[5];
 //    for (auto &faceDownCard : faceDownCards) {
 //        faceDownCard = new bool[5];
@@ -104,9 +104,14 @@ int main() {
 //
 //    bool &first = faceDownCards[0][0];
 //    bool &second = faceDownCards[1][1];
+//    cout << first << endl;
+//    cout << second << endl;
 //    bool temp = first;
 //    first = second;
 //    second = temp;
+//
+//    cout << first << endl;
+//    cout << second << endl;
 
 //    cout << (0 % 3) << endl;
 //    cout << (1 % 3) << endl;
