@@ -20,9 +20,17 @@ class RewardDeck : public Deck<Reward> {
 
 public:
 
+    ~RewardDeck() override;
+
+    static RewardDeck &make_RewardDeck();
+
+private:
+
     RewardDeck();
 
-    ~RewardDeck() override;
+    RewardDeck(const RewardDeck &);
+
+    RewardDeck &operator=(const RewardDeck &);
 };
 
 

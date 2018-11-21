@@ -6,13 +6,14 @@
 #define CPP_PROJECT_MEMORY_GAME_DECK_H
 
 
-#include "card.h"
-#include "reward.h"
+#include <iostream>
 #include <vector>
 #include <random>
 #include <algorithm>
 #include <iterator>
-#include <iostream>
+
+#include "card.h"
+#include "reward.h"
 
 using namespace std;
 

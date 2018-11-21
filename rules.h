@@ -10,10 +10,12 @@
 #include "game.h"
 
 class Rules {
+
 private:
     int nPlayers;
     int currentSide;
-    bool twoCardsSelected(const Game&) const;
+
+    bool twoCardsSelected(const Game &) const;
 
 public:
 
@@ -27,11 +29,11 @@ public:
 
     const Player &getNextPlayer(Game &);
 
-    void expertRules(Card *, Game &, Letter &, Number &, const Side &, std::map<std::string, Card *> *, bool *, string *);
+    void expertRules(Card *, Game &, Letter &, Number &, const Side &, map<string, Card *> *, bool *, string *);
 
-    void expertOctopus(Card *, Game &, Letter &, Number &, const Side &, std::map<std::string, Card *> *);
+    void expertOctopus(Card *, Game &, Letter &, Number &, const Side &, map<string, Card *> *);
 
-    void expertPenguin(Card *, Game &, Letter &, Number &, const Side &, std::map<std::string, Card *> *);
+    void expertPenguin(Card *, Game &, Letter &, Number &, const Side &, map<string, Card *> *);
 
     void expertWalrus(Card *, Game &, Letter &, Number &, const Side &, string *);
 

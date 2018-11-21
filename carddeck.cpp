@@ -4,8 +4,6 @@
 
 #include "carddeck.h"
 
-using namespace std;
-
 CardDeck::CardDeck() : Deck() {
     deck = new vector<Card*>();
     for (int i = 0; i != Colors; ++i) {

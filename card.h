@@ -17,23 +17,6 @@ enum FaceBackground {
 
 class Card {
 
-public:
-    friend class CardDeck;
-
-    string operator()(int) const;
-
-    friend ostream &operator<<(ostream &, const Card &);
-
-    friend bool operator==(const Card &, const Card &);
-
-    operator FaceBackground();
-
-    explicit operator FaceAnimal();
-
-    char getColor() const;
-
-    char getAnimal() const;
-
 private:
 
     Card(FaceAnimal faceAnimal, FaceBackground faceBackground);
@@ -43,16 +26,29 @@ private:
     Card &operator=(const Card &);
 
     FaceAnimal _faceAnimal;
-
     FaceBackground _faceBackground;
-
     int _nRows = 3;
-
     char _color;
-
     char _animal;
 
     int getNRows() const;
+
+public:
+    friend class CardDeck;
+
+    string operator()(int) const;
+
+    friend ostream &operator<<(ostream &, const Card &);
+
+    friend bool operator==(const Card &, const Card &);
+
+    explicit operator FaceBackground();
+
+    explicit operator FaceAnimal();
+
+    char getColor() const;
+
+    char getAnimal() const;
 };
 
 #endif //CPP_PROJECT_MEMORY_GAME_CARD_H

@@ -17,6 +17,7 @@ public:
     static CardDeck &make_CardDeck();
 
 private:
+
     CardDeck();
 
     CardDeck(const CardDeck &);

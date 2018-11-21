@@ -8,7 +8,9 @@ Game::Game(int &mode, int &nPlayers) : nRound(1), currentSide(Top) {
     setMode(mode);
     createPlayers(nPlayers);
     makeCardDeck();
+    makeRewardDeck();
     reset();
+    ready = true;
 }
 
 void Game::setMode(int &mode) {
@@ -36,7 +38,6 @@ void Game::createPlayers(int &nPlayers) {
         cout << "Enter name for Player number " << (i + 1) << ": ";
         cin >> names[i];
     }
-    const vector<Side> sides = {Top, Bottom, Left, Right};
     for (int i = 0; i < nPlayers; i++) {
         Player player{names[i]};
         player.setSide(sides[i]);
@@ -56,16 +57,21 @@ void Game::makeCardDeck() {
     }
 }
 
+void Game::makeRewardDeck() {
+    RewardDeck &deck = RewardDeck::make_RewardDeck();
+    while (!deck.isEmpty()) { rewardDeck.push_back(deck.getNext()); }
+}
+
+
 void Game::nextRound() {
     ++nRound;;
     awardActivePlayers();
     reset();
 }
 
-
 int Game::getRound() const { return nRound; }
 
-void Game::addPlayer(const Player &player) {
+void Game::addPlayer(const Player &player) { //TODO check if added?
     players.push_back(player);
     vector<const Card *> cardVector;
     cards.push_back(cardVector);
@@ -85,7 +91,7 @@ Player &Game::getPlayer(Side side) {
 
 const Card *Game::getPreviousCard() const {
     vector<const Card *> cardVector = cards[currentSide];
-    if (cardVector.size() == 0) { throw new out_of_range("No previous card selected!"); }
+    if (cardVector.empty()) { throw new out_of_range("No previous card selected!"); }
     const Card *previousCard = cardVector[0];
     return previousCard;
 }
@@ -115,14 +121,12 @@ void Game::clearSelectedCards() {
 void Game::reset() {
     setAllPlayersActive();
     if (mode == 1) temporaryRevealThreeCards();
+    if (mode == 2) { cardMap.clear(); }
     cout << "Cards are hidden now" << endl;
     board.reset();
-    if (mode == 2) { cardMap.clear(); }
 }
 
-void Game::setAllPlayersActive() {
-    for (auto &player: players) { player.setActive(true); }
-}
+void Game::setAllPlayersActive() { for (auto &player: players) { player.setActive(true); }}
 
 int Game::getNActivePlayers() const {
     int nActive = 0;
@@ -158,10 +162,8 @@ bool Game::isBlocked(const Letter &letter, const Number &number) const { return 
 void Game::setBlocked(const Letter &letter, const Number &number) { board.setBlocked(letter, number); }
 
 void Game::setCard(const Letter &letter, const Number &number, Card *card) {
-    board.setCard(letter, number, card);
-//    else if (ready && mode == 2) {
-//        cardMap[convertToString(letter, number)] = card;
-//    }
+    if (!ready) { board.setCard(letter, number, card); }
+    else if (ready && mode == 2) { cardMap[convertToString(letter, number)] = card; }
 }
 
 string Game::convertToString(const Letter &letter, const Number &number) {
@@ -203,26 +205,7 @@ void Game::getValidInput(Letter *letter, Number *number) {
     }
 }
 
-void Game::getValidInputExpert(Letter *letter, Number *number) {
-    while (true) {
-        string input;
-        cout << "Pick a card from (A to E) and from (1 to 5): ";
-        while (true) {
-            cin >> input;
-            if (input.length() == 2) break;
-            else cout << "Invalid input, please try again: ";
-        }
-        *letter = static_cast<Letter>(toEnum(input[0]));
-        *number = static_cast<Number>(toEnum(input[1]));
-        try {
-            if (!board.isFaceUp(*letter, *number)) break;
-            else cout << "Card is already faced up! " << endl;
-        } catch (const exception &exc) {
-            cout << "Invalid Card Selected, please try again" << endl;
-            cerr << exc.what() << endl;
-        }
-    }
-}
+void Game::getValidInputExpert(Letter *letter, Number *number) { getValidInput(letter, number); }
 
 void Game::getValidInputExpertOct(Letter *letter, Number *number) {
     while (true) {
@@ -245,16 +228,20 @@ void Game::getValidInputExpertOct(Letter *letter, Number *number) {
     }
 }
 
-void Game::awardActivePlayers() {//TODO rewarddeck pointer?
-    for (auto &player: players)if (player.isActive() && !rewardDeck.isEmpty())player.addReward(*rewardDeck.getNext());
+void Game::awardActivePlayers() {
+    for (auto &player: players) {
+        if (player.isActive() && !rewardDeck.empty()) {
+            player.addReward(*rewardDeck.back());
+            rewardDeck.pop_back();
+        }
+    }
 }
 
 ostream &operator<<(ostream &os, const Game &game) {
     if (game.mode == 1 && game.getRound() < 7) {
         os << game.board << endl;
         for (const auto &player: game.players) { os << player << endl; }
-    }
-    //else if (game.mode == 2) { game.expertModePrint(); }
+    } else if (game.mode == 2) { game.expertModePrint(); }
     else game.printLeastToMostRubiesAndWinner();
     return os;
 }

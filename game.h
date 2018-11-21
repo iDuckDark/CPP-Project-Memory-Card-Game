@@ -18,8 +18,6 @@
 #include "board.h"
 #include "rewarddeck.h"
 
-class Rules;
-
 const vector<Side> sides = {Top, Bottom, Left, Right};
 
 class Game {
@@ -31,8 +29,8 @@ private:
     Side currentSide;
     vector<Player> players;
     Board board;
-    RewardDeck rewardDeck;
     vector<vector<const Card *>> cards;
+    vector<const Reward *> rewardDeck;
     map<string, Card *> cardMap; //Expert Mode
     bool ready = false;
 
@@ -43,6 +41,8 @@ private:
     void createPlayers(int &);
 
     void makeCardDeck();
+
+    void makeRewardDeck();
 
     void setAllPlayersActive();
 
