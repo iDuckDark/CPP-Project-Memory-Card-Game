@@ -4,10 +4,11 @@
 
 #include "game.h"
 
-Game::Game(int &mode, int &nPlayers) : nRound(0), currentSide(Top), mode(0) {
+Game::Game(int &mode, int &nPlayers) : nRound(1), currentSide(Top) {
     setMode(mode);
     createPlayers(nPlayers);
     makeCardDeck();
+    reset();
 }
 
 void Game::setMode(int &mode) {
@@ -55,10 +56,12 @@ void Game::makeCardDeck() {
     }
 }
 
-void Game::setRound(int &num) {
-    nRound = num;
+void Game::nextRound() {
+    ++nRound;;
     awardActivePlayers();
+    reset();
 }
+
 
 int Game::getRound() const { return nRound; }
 
@@ -109,13 +112,12 @@ void Game::clearSelectedCards() {
     cardVector.pop_back();
 }
 
-//bool Game::twoCardsSelected() const { return (cards[currentSide].size() == 2); }
-
 void Game::reset() {
     setAllPlayersActive();
     if (mode == 1) temporaryRevealThreeCards();
     cout << "Cards are hidden now" << endl;
     board.reset();
+    if (mode == 2) { cardMap.clear(); }
 }
 
 void Game::setAllPlayersActive() {
@@ -155,7 +157,22 @@ bool Game::isBlocked(const Letter &letter, const Number &number) const { return 
 
 void Game::setBlocked(const Letter &letter, const Number &number) { board.setBlocked(letter, number); }
 
-void Game::setCard(const Letter &letter, const Number &number, Card *card) { board.setCard(letter, number, card); }
+void Game::setCard(const Letter &letter, const Number &number, Card *card) {
+    board.setCard(letter, number, card);
+//    else if (ready && mode == 2) {
+//        cardMap[convertToString(letter, number)] = card;
+//    }
+}
+
+string Game::convertToString(const Letter &letter, const Number &number) {
+    char cara = 'Z';
+    if (letter == A) { cara = 'A'; }
+    else if (letter == B) { cara = 'B'; }
+    else if (letter == C) { cara = 'C'; }
+    else if (letter == D) { cara = 'D'; }
+    else if (letter == E) { cara = 'E'; }
+    return (cara + to_string(number));
+}
 
 Card *Game::getCard(const Letter &letter, const Number &number) {
     Letter let = letter;
@@ -219,7 +236,7 @@ void Game::getValidInputExpertOct(Letter *letter, Number *number) {
         *letter = static_cast<Letter>(toEnum(input[0]));
         *number = static_cast<Number>(toEnum(input[1]));
         try {
-            if (board.isValidCard(*letter, *number)) break;
+            if (isValidCard(*letter, *number)) break;
             else cout << "Card is not valid! " << endl;
         } catch (const exception &exc) {
             cout << "Invalid Card Selected, please try again" << endl;
@@ -233,10 +250,12 @@ void Game::awardActivePlayers() {//TODO rewarddeck pointer?
 }
 
 ostream &operator<<(ostream &os, const Game &game) {
-    if (game.getRound() < 7) {
+    if (game.mode == 1 && game.getRound() < 7) {
         os << game.board << endl;
         for (const auto &player: game.players) { os << player << endl; }
-    } else game.printLeastToMostRubiesAndWinner();
+    }
+    //else if (game.mode == 2) { game.expertModePrint(); }
+    else game.printLeastToMostRubiesAndWinner();
     return os;
 }
 
@@ -256,3 +275,14 @@ void Game::printLeastToMostRubiesAndWinner() const {
         player.setDisplayMode(false);
     }
 }
+
+void Game::expertModePrint() const {
+    for (int i = 0; i < 3; i++) {
+        for (auto const&[key, val] : cardMap) { cout << (*val)(i) << " "; }
+        cout << endl;
+    }
+    for (auto const &card : cardMap) { cout << card.first << "  "; }
+    cout << endl;
+}
+
+map<string, Card *> &Game::getCardMap() { return cardMap; }

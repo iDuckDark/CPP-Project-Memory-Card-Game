@@ -9,40 +9,18 @@
 
 using namespace std;
 
-void expertModePrint(std::map<std::string, Card *> cardMap) {
-    for (int i = 0; i < 3; i++) {
-        for (auto const&[key, val] : cardMap) { cout << (*val)(i) << " "; }
-        cout << endl;
-    }
-    for (auto const &card : cardMap) { cout << card.first << "  "; }
-    cout << endl;
-}
-
-string convertToString(Letter letter, Number number) {
-    char cara = 'Z';
-    if (letter == A) { cara = 'A'; }
-    else if (letter == B) { cara = 'B'; }
-    else if (letter == C) { cara = 'C'; }
-    else if (letter == D) { cara = 'D'; }
-    else if (letter == E) { cara = 'E'; }
-    return (cara + to_string(number));
-}
-
 void runGame() {
-    cout << endl;
-    cout << "Welcome to Nevin's and Peter's Memory Card Game Fall 2018" << endl;
-    int mode = 0, nPlayers;
+    cout << endl << "Welcome to Nevin's and Peter's Memory Card Game Fall 2018" << endl;
+    int mode = 0, nPlayers = 0;
     Game game(mode, nPlayers);
     Rules rules(nPlayers);
     if (mode == 1) {
-        int round = 1;
         while (!rules.gameOver(game)) {
-            game.reset();
             int sideCounter = 0;
             while (!rules.roundOver(game)) {
                 Player &currentPlayer = game.getPlayer(sides[sideCounter++]);
                 if (sideCounter >= nPlayers) { sideCounter = 0; }
-                cout << "Round: " << round << " , Turn: " << currentPlayer.getName() << endl;
+                cout << "Round: " << game.getRound() << " , Turn: " << currentPlayer.getName() << endl;
                 if (currentPlayer.isActive()) { game.setCurrentCard(game.getCard(Z, Zero)); }
                 if (!rules.isValid(game)) {
                     currentPlayer.setActive(false);
@@ -50,15 +28,13 @@ void runGame() {
                 }
                 cout << game << endl;
             }
-            game.setRound(++round);
+            game.nextRound();
         }
         cout << game << endl;
     } else if (mode == 2) {
-        std::map<std::string, Card *> cardMap;
-        int round = 1;
+        //map<string, Card *> cardMap;
         while (!rules.gameOver(game)) {
-            game.reset();
-            cardMap.clear();
+            //cardMap.clear();
             int sideCounter = 0;
             auto *skipTurn = new bool(false);
             string walrusBlockValue = "Z0";
@@ -69,20 +45,21 @@ void runGame() {
                 *skipTurn = false;
                 Player &currentPlayer = game.getPlayer(side);
                 if (sideCounter >= nPlayers) { sideCounter = 0; }
-                cout << "Round: " << round << " , Turn: " << currentPlayer.getName() << endl;
+                cout << "Round: " << game.getRound() << " , Turn: " << currentPlayer.getName() << endl;
                 if (currentPlayer.isActive()) {
                     Letter letter = Z;
                     Number number = Zero;
                     game.getValidInputExpert(&letter, &number);
-                    while (convertToString(letter, number) == walrusBlockValue) {
+                    while (game.convertToString(letter, number) == walrusBlockValue) {
                         cout << "Selected Card blocked by walrus" << endl;
                         game.getValidInputExpert(&letter, &number);
                     }
                     Card *selectedCard = game.getCard(letter, number);
-                    cardMap[convertToString(letter, number)] = selectedCard;
-                    rules.expertRules(selectedCard, game, letter, number, side, &cardMap, skipTurn, &walrusBlockValue);
-                    //TODO fix letter and number input?
-                    expertModePrint(cardMap);
+                    game.setCard(letter, number, selectedCard); //cardMap[convertToString(letter, number)] = selCard;
+                    map<string, Card *> cardMap = game.getCardMap();
+                    rules.expertRules(selectedCard, game, letter, number, side, &cardMap, skipTurn,
+                                      &walrusBlockValue);
+                    cout << game << endl;
                     game.setCurrentCard(selectedCard);
                 }
                 if (!rules.isValid(game)) {
@@ -90,7 +67,7 @@ void runGame() {
                     game.setCurrentCard(nullptr);
                 }
             }
-            game.setRound(++round);
+            game.nextRound();
             delete skipTurn;
         }
         cout << game << endl;
@@ -100,6 +77,14 @@ void runGame() {
 
 int main() {
     runGame();
+//    cout << (0 % 3) << endl;
+//    cout << (1 % 3) << endl;
+//    cout << (2 % 3) << endl;
+//    cout << (3 % 3) << endl;
+//    cout << (4 % 3) << endl;
+//    cout << (5 % 3) << endl;
+//    cout << (6 % 3) << endl;
+//    cout << (7 % 3) << endl;
 //    int players = 2;
 //    int mode = 1;
 //    Game game;

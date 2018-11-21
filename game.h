@@ -33,6 +33,8 @@ private:
     Board board;
     RewardDeck rewardDeck;
     vector<vector<const Card *>> cards;
+    map<string, Card *> cardMap; //Expert Mode
+    bool ready = false;
 
     void setSide(Side);
 
@@ -52,12 +54,21 @@ private:
 
     void printLeastToMostRubiesAndWinner() const;
 
+    void expertModePrint() const;
+
     void clearSelectedCards();
+
+    void reset();
+
+    bool isValidCard(const Letter &letter, const Number &number) const;
+
+    bool isBlocked(const Letter &, const Number &) const; //Expert Walrus
+
+    void setBlocked(const Letter &, const Number &); //Expert Walrus
+
 public:
 
     Game(int &, int &);
-
-    void setRound(int &);
 
     int getRound() const;
 
@@ -77,22 +88,22 @@ public:
 
     friend ostream &operator<<(ostream &os, const Game &game);
 
+    void nextRound();
+
     //TODO minimize own public functions
-    void reset();
 
     int getNActivePlayers() const;
+
+    map<string, Card *> &getCardMap();
 
     void getValidInputExpert(Letter *letter, Number *number);
 
     void getValidInputExpertOct(Letter *letter, Number *number);
 
-    void swapCards(const Letter &, const Number &,const Letter &, const Number &); //Expert Octopus
+    void swapCards(const Letter &, const Number &, const Letter &, const Number &); //Expert Octopus
 
-    bool isValidCard(const Letter &letter, const Number &number) const;
+    string convertToString(const Letter &letter, const Number &number); //Expert
 
-    bool isBlocked(const Letter &, const Number &) const; //Expert Walrus
-
-    void setBlocked(const Letter &, const Number &); //Expert Walrus
 };
 
 

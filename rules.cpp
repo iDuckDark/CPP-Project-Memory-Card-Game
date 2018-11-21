@@ -5,7 +5,7 @@
 #include "rules.h"
 
 
-Rules::Rules(int nPlayers) : nPlayers(nPlayers), currentSide(Top) {}
+Rules::Rules(int nPlayers) : nPlayers(nPlayers), currentSide(0) {}
 
 bool Rules::isValid(const Game &game) {
     if (twoCardsSelected(game)) { return (*game.getPreviousCard() == *game.getCurrentCard()); }
@@ -19,12 +19,22 @@ bool Rules::twoCardsSelected(const Game &game) const {
 
 bool Rules::gameOver(const Game &game) { return game.getRound() >= 7; }
 
-bool Rules::roundOver(const Game &game) { return game.getNActivePlayers() == 1; }
+//TODO Fix error
+bool Rules::roundOver(const Game &game) {
+//    int nActivePlayers = 0;
+//    for (int i = 0; i < nPlayers; i++) {
+//        auto player = getNextPlayer(game);
+//        if (player.isActive()) { nActivePlayers++; }
+//    }
+//    return nActivePlayers;
+    return game.getNActivePlayers() == 1;
+}
 
-//TODO why is this needed?
-//const Player &Rules::getNextPlayer(const Game &game) {
-//    return game.getPlayer(currentSide);
-//}
+const Player &Rules::getNextPlayer(Game &game) {
+    const Player &p = game.getPlayer(sides[currentSide++]);
+    if (currentSide >= nPlayers) { currentSide = 0; }
+    return p;
+}
 
 void Rules::expertRules(Card *card, Game &game, Letter &letter, Number &number, const Side &side,
                         std::map<std::string, Card *> *cardMap, bool *skip, string *walrus) {

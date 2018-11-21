@@ -12,7 +12,7 @@
 class Rules {
 private:
     int nPlayers;
-    Side currentSide;
+    int currentSide;
     bool twoCardsSelected(const Game&) const;
 
 public:
@@ -25,7 +25,7 @@ public:
 
     bool roundOver(const Game &game);
 
-    //const Player &getNextPlayer(Game &); //TODO why is this needed?
+    const Player &getNextPlayer(Game &);
 
     void expertRules(Card *, Game &, Letter &, Number &, const Side &, std::map<std::string, Card *> *, bool *, string *);
 
