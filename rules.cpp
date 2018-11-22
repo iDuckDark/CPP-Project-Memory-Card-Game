@@ -69,7 +69,7 @@ void Rules::expertOctopus(Card *card, Game &game, Letter &letter, Number &number
              << endl;
         game.getValidInputExpertOct(&_letter, &_number);
     }
-    Card *selectedCard = game.getCard(_letter, _number);
+
     //SWAPPING HERE
     //Swap map - Peter
     //card to be swapped with (second card)
@@ -86,6 +86,8 @@ void Rules::expertOctopus(Card *card, Game &game, Letter &letter, Number &number
     else if (letter == C) { cara2 = 'C'; }
     else if (letter == D) { cara2 = 'D'; }
     else if (letter == E) { cara2 = 'E'; }
+
+    Card *selectedCard = game.getCard(_letter, _number); //turns face up
     //if the second card is already face up
     if (cardMap->count(cara + to_string(_number))) {
         cout << cara + to_string(_number) << endl;
@@ -96,6 +98,7 @@ void Rules::expertOctopus(Card *card, Game &game, Letter &letter, Number &number
         cardMap->operator[](cara + to_string(_number)) = selectedCard;
         cardMap->operator[](cara2 + to_string(number)) = card;
     } else {//swapping with faced down card
+        game.hideCard(_letter, _number); //turn face down
         auto it = (*cardMap).find(cara2 + to_string(number));
         cardMap->erase(it);
         Card *temp = card;
@@ -140,10 +143,9 @@ void Rules::expertPenguin(Card *card, Game &game, Letter &letter, Number &number
         cara = 'E';
     }
     if (cardMap->count(cara + to_string(someNumber))) {
-
         cout << "Turning Face down :" << endl;
         cardMap->erase(cara + to_string(someNumber));
-        //game.hideCard(someLetter, someNumber);
+        game.hideCard(someLetter, someNumber);
     } else {
         cout << "Turning Face Up:" << endl;
         cardMap->operator[](cara + to_string(someNumber)) = selectedCard;

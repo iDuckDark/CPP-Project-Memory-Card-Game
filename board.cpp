@@ -148,6 +148,20 @@ ostream &operator<<(ostream &os, const Board &board) {
 }
 
 void Board::swapCards(const Letter &l1, const Number &n1, const Letter &l2, const Number &n2) {
+    Card *card1 = (*cards2D[getIndex(l1, "Letter")])[getIndex(n1, "Number")];
+    Card *card2 = (*cards2D[getIndex(l2, "Letter")])[getIndex(n2, "Number")];
+    cout << "BEFORE SWAP CARDS" << endl;
+    cout << *(*cards2D[getIndex(l1, "Letter")])[getIndex(n1, "Number")] << endl;
+    cout << *(*cards2D[getIndex(l2, "Letter")])[getIndex(n2, "Number")] << endl;
+
+    Card *tempCard = (*cards2D[getIndex(l1, "Letter")])[getIndex(n1, "Number")];
+    (*cards2D[getIndex(l1, "Letter")])[getIndex(n1, "Number")] = card2;
+    (*cards2D[getIndex(l2, "Letter")])[getIndex(n2, "Number")] = tempCard;
+
+    cout << "AFTER SWAP CARDS" << endl << *card1 << *card2 << endl;
+    cout << *(*cards2D[getIndex(l1, "Letter")])[getIndex(n1, "Number")] << endl;
+    cout << *(*cards2D[getIndex(l2, "Letter")])[getIndex(n2, "Number")] << endl;
+
     bool &first = faceDownCards[getIndex(l1, "Letter")][getIndex(n1, "Number")];
     bool &second = faceDownCards[getIndex(l2, "Letter")][getIndex(n2, "Number")];
     cout << "BEFORE: " << first << endl;

@@ -9,25 +9,6 @@
 
 using namespace std;
 
-void expertModePrint(map<string, Card *> cardMap) {
-    for (int i = 0; i < 3; i++) {
-        for (auto const&[key, val] : cardMap) { cout << (*val)(i) << " "; }
-        cout << endl;
-    }
-    for (auto const &card : cardMap) { cout << card.first << "  "; }
-    cout << endl;
-}
-
-string convertToString(Letter letter, Number number) {
-    char cara = 'Z';
-    if (letter == A) { cara = 'A'; }
-    else if (letter == B) { cara = 'B'; }
-    else if (letter == C) { cara = 'C'; }
-    else if (letter == D) { cara = 'D'; }
-    else if (letter == E) { cara = 'E'; }
-    return (cara + to_string(number));
-}
-
 void runGame() {
     cout << endl << "Welcome to Nevin's and Peter's Memory Card Game Fall 2018" << endl;
     int mode = 0, nPlayers = 0;
@@ -51,9 +32,9 @@ void runGame() {
         }
         cout << game << endl;
     } else if (mode == 2) {
-        map<string, Card *> cardMap;
+        //map<string, Card *> cardMap;
         while (!rules.gameOver(game)) {
-            cardMap.clear();
+            //cardMap.clear();
             int sideCounter = 0;
             auto *skipTurn = new bool(false);
             string walrusBlockValue = "Z0";
@@ -69,16 +50,19 @@ void runGame() {
                     Letter letter = Z;
                     Number number = Zero;
                     game.getValidInputExpert(&letter, &number);
-                    while (convertToString(letter, number) == walrusBlockValue) {
+                    while (game.convertToString(letter, number) == walrusBlockValue) {
                         cout << "Selected Card blocked by walrus" << endl;
                         game.getValidInputExpert(&letter, &number);
                     }
                     Card *selectedCard = game.getCard(letter, number);
-                    cardMap[convertToString(letter, number)] = selectedCard;
+                    //cardMap[game.convertToString(letter, number)] = selectedCard;
+                    game.setCard(letter, number, selectedCard);
+                    map<string, Card *> &cardMap = game.getCardMap();
+                    game.setCurrentCard(selectedCard);
                     rules.expertRules(selectedCard, game, letter, number, side, &cardMap, skipTurn,
                                       &walrusBlockValue);
-                    expertModePrint(cardMap);
-                    game.setCurrentCard(selectedCard);
+                    cout << game << endl; //expertModePrint(cardMap);
+//                    game.setCurrentCard(selectedCard);
                 }
                 if (!rules.isValid(game)) {
                     currentPlayer.setActive(false);
@@ -95,23 +79,7 @@ void runGame() {
 
 int main() {
     runGame();
-//    bool *faceDownCards[5];
-//    for (auto &faceDownCard : faceDownCards) {
-//        faceDownCard = new bool[5];
-//        for (int y = 0; y < 5; y++) { faceDownCard[y] = true; }
-//    }
-//    faceDownCards[0][0] = false;
-//
-//    bool &first = faceDownCards[0][0];
-//    bool &second = faceDownCards[1][1];
-//    cout << first << endl;
-//    cout << second << endl;
-//    bool temp = first;
-//    first = second;
-//    second = temp;
-//
-//    cout << first << endl;
-//    cout << second << endl;
+
 
 //    cout << (0 % 3) << endl;
 //    cout << (1 % 3) << endl;
