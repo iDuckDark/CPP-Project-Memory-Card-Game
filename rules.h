@@ -14,8 +14,13 @@ class Rules {
 private:
     int nPlayers;
     int currentSide;
+    string walrusBlockValue = "Z0";
 
     bool twoCardsSelected(const Game &) const;
+
+    char LetterToChar(const Letter &letter); //Expert
+
+    string convertToString(const Letter &letter, const Number &number); //Expert
 
 public:
 
@@ -29,7 +34,9 @@ public:
 
     const Player &getNextPlayer(Game &);
 
-    void expertRules(Card *, Game &, Letter &, Number &, const Side &, map<string, Card *> *, bool *, string *);
+    void handleExpertRules(Game &game, const Side &side, bool &skipTurn);
+
+    void expertRules(Card *, Game &, Letter &, Number &, const Side &, map<string, Card *> *, bool &, string *);
 
     void expertOctopus(Card *, Game &, Letter &, Number &, const Side &, map<string, Card *> *);
 
@@ -39,7 +46,7 @@ public:
 
     void expertCrab(Card *, Game &, Letter &, Number &, const Side &);
 
-    void expertTurtle(Card *, Game &, Letter &, Number &, const Side &, bool *);
+    void expertTurtle(Card *, Game &, Letter &, Number &, const Side &, bool &);
 };
 
 

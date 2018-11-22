@@ -40,7 +40,7 @@ private:
 
     void createPlayers(int &);
 
-    bool containsPlayer(const Player&);
+    bool containsPlayer(const Player &);
 
     void makeCardDeck();
 
@@ -67,6 +67,12 @@ private:
     bool isBlocked(const Letter &, const Number &) const; //Expert Walrus
 
     void setBlocked(const Letter &, const Number &); //Expert Walrus
+
+    char LetterToChar(const Letter &letter); //Expert
+
+    string convertToString(const Letter &letter, const Number &number); //Expert
+
+    void getValidInputExpertOct(Letter *letter, Number *number); //Expert Octopus
 
 public:
 
@@ -98,16 +104,11 @@ public:
 
     map<string, Card *> &getCardMap();
 
-    void getValidInputExpert(Letter *letter, Number *number);
+    Card *getCard(Letter &letter, Number &number, const FaceAnimal &animal);
 
     void hideCard(const Letter &letter, const Number &number); //Expert penguin
 
-    void getValidInputExpertOct(Letter *letter, Number *number);
-
     void swapCards(const Letter &, const Number &, const Letter &, const Number &); //Expert Octopus
-
-    string convertToString(const Letter &letter, const Number &number); //Expert
-
 };
 
 

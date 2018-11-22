@@ -5,6 +5,7 @@
 #include "game.h"
 
 Game::Game(int &mode, int &nPlayers) : nRound(1), currentSide(Top) {
+    cout << endl << "Welcome to Nevin's and Peter's Memory Card Game Fall 2018" << endl;
     setMode(mode);
     createPlayers(nPlayers);
     makeCardDeck();
@@ -69,7 +70,6 @@ void Game::makeRewardDeck() {
     while (!deck.isEmpty()) rewardDeck.push_back(deck.getNext());
 }
 
-
 void Game::nextRound() {
     ++nRound;;
     awardActivePlayers();
@@ -114,9 +114,7 @@ void Game::setCurrentCard(const Card *card) {
     if (card != nullptr) {
         vector<const Card *> &cardVector = cards[currentSide];
         cardVector.push_back(card);
-    } else if (card == nullptr && cards[currentSide].size() != 0) {
-        clearSelectedCards();
-    }
+    } else if (card == nullptr && cards[currentSide].size() != 0) { clearSelectedCards(); }
 }
 
 void Game::clearSelectedCards() {
@@ -169,26 +167,33 @@ bool Game::isBlocked(const Letter &letter, const Number &number) const { return 
 void Game::setBlocked(const Letter &letter, const Number &number) { board.setBlocked(letter, number); }
 
 void Game::setCard(const Letter &letter, const Number &number, Card *card) {
-    //board.setCard(letter, number, card);
     if (!ready) { board.setCard(letter, number, card); }
     if (mode == 2) { cardMap[convertToString(letter, number)] = card; }
 }
 
-string Game::convertToString(const Letter &letter, const Number &number) {
-    char cara = 'Z';
-    if (letter == A) { cara = 'A'; }
-    else if (letter == B) { cara = 'B'; }
-    else if (letter == C) { cara = 'C'; }
-    else if (letter == D) { cara = 'D'; }
-    else if (letter == E) { cara = 'E'; }
-    return (cara + to_string(number));
+string Game::convertToString(const Letter &let, const Number &num) { return (LetterToChar(let) + to_string(num)); }
+
+char Game::LetterToChar(const Letter &_letter) {
+    if (_letter == A) { return 'A'; }
+    else if (_letter == B) { return 'B'; }
+    else if (_letter == C) { return 'C'; }
+    else if (_letter == D) { return 'D'; }
+    else if (_letter == E) { return 'E'; }
+    return 'Z';
 }
 
 Card *Game::getCard(const Letter &letter, const Number &number) {
     Letter let = letter;
     Number num = number;
-    if (mode == 1) { getValidInput(&let, &num); }
+    if (mode == 1) getValidInput(&let, &num);
     board.turnFaceUp(let, num);
+    return board.getCard(let, num);
+}
+
+Card *Game::getCard(Letter &let, Number &num, const FaceAnimal &animal) {
+    if (animal == Penguin || animal == Walrus || animal == Crab) { getValidInput(&let, &num); }
+    if (animal == Octopus) { getValidInputExpertOct(&let, &num); }
+    if (animal == Penguin) { board.turnFaceUp(let, num); }
     return board.getCard(let, num);
 }
 
@@ -209,16 +214,13 @@ void Game::getValidInput(Letter *letter, Number *number) {
         *number = static_cast<Number>(toEnum(input[1]));
         try {
             if (!board.isFaceUp(*letter, *number)) break;
-            else cout << "Card is already faced up! 212 " << endl;
+            else cout << "Card is already faced up!" << endl;
         } catch (const exception &exc) {
             cout << "Invalid Card Selected, please try again" << endl;
             cerr << exc.what() << endl;
         }
     }
-
 }
-
-void Game::getValidInputExpert(Letter *letter, Number *number) { getValidInput(letter, number); }
 
 void Game::getValidInputExpertOct(Letter *letter, Number *number) {
     while (true) {
@@ -254,8 +256,7 @@ ostream &operator<<(ostream &os, const Game &game) {
     if (game.mode == 1 && game.getRound() < 7) {
         os << game.board << endl;
         for (const auto &player: game.players) { os << player << endl; }
-    }
-    else if (game.mode == 2) { game.expertModePrint(); }
+    } else if (game.mode == 2) { game.expertModePrint(); }
     else game.printLeastToMostRubiesAndWinner();
     return os;
 }
