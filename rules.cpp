@@ -33,7 +33,8 @@ bool Rules::roundOver(const Game &game) { //TODO Fix error //Game g = game;
     return game.getNActivePlayers() == 1;
 }
 
-const Player &Rules::getNextPlayer(Game &game) {
+const Player &Rules::getNextPlayer(const Game &game) {
+    Game const *gamePtr = game;
     const Player &p = game.getPlayer(sides[currentSide++]);
     if (currentSide >= nPlayers) { currentSide = 0; }
     return p;

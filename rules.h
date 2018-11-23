@@ -30,7 +30,7 @@ public:
 
     bool roundOver(const Game &game);
 
-    const Player &getNextPlayer(Game &);
+    const Player &getNextPlayer(const Game &);
 
     void handleExpertRules(Game &game, int &sideCounter);
 
