@@ -15,6 +15,7 @@ private:
     int nPlayers;
     int currentSide;
     string walrusBlockValue = "Z0";
+    int turns = 0;
 
     bool twoCardsSelected(const Game &) const;
 
@@ -36,13 +37,13 @@ public:
 
     void handleExpertRules(Game &game, const Side &side, bool &skipTurn);
 
-    void expertRules(Card *, Game &, Letter &, Number &, const Side &, map<string, Card *> *, bool &, string *);
+    void expertRules(Card *, Game &, Letter &, Number &, const Side &, map<string, Card *> *, bool &);
 
     void expertOctopus(Card *, Game &, Letter &, Number &, const Side &, map<string, Card *> *);
 
     void expertPenguin(Card *, Game &, Letter &, Number &, const Side &, map<string, Card *> *);
 
-    void expertWalrus(Card *, Game &, Letter &, Number &, const Side &, string *);
+    void expertWalrus(Card *, Game &, Letter &, Number &, const Side &);
 
     void expertCrab(Card *, Game &, Letter &, Number &, const Side &);
 

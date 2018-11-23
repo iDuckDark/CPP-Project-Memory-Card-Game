@@ -27,7 +27,7 @@ bool Rules::roundOver(const Game &game) {
 //        if (player.isActive()) { nActivePlayers++; }
 //    }
 //    return nActivePlayers==1;
-    if (game.getNActivePlayers() != 1) { walrusBlockValue = "Z0"; }
+    if (game.getNActivePlayers() == 1) walrusBlockValue = "Z0";
     return game.getNActivePlayers() == 1;
 }
 
@@ -49,12 +49,12 @@ void Rules::handleExpertRules(Game &game, const Side &side, bool &skipTurn) {
     game.setCard(letter, number, selectedCard);
     map<string, Card *> &cardMap = game.getCardMap();
     game.setCurrentCard(selectedCard);
-    expertRules(selectedCard, game, letter, number, side, &cardMap, skipTurn, &walrusBlockValue);
+    expertRules(selectedCard, game, letter, number, side, &cardMap, skipTurn);
     cout << game << endl;
 }
 
 void Rules::expertRules(Card *card, Game &game, Letter &letter, Number &number, const Side &side,
-                        map<string, Card *> *cardMap, bool &skip, string *walrus) {
+                        map<string, Card *> *cardMap, bool &skip) {
     switch (card->getAnimal()) {
         case 'O':
             expertOctopus(card, game, letter, number, side, cardMap);
@@ -66,7 +66,7 @@ void Rules::expertRules(Card *card, Game &game, Letter &letter, Number &number, 
             expertCrab(card, game, letter, number, side);
             break;
         case 'W':
-            expertWalrus(card, game, letter, number, side, walrus);
+            expertWalrus(card, game, letter, number, side);
             break;
         default:
             expertTurtle(card, game, letter, number, side, skip);
@@ -81,10 +81,10 @@ void Rules::expertOctopus(Card *card, Game &game, Letter &letter, Number &number
     Letter _letter = Z;
     Number _number = Zero;
     while (true) {
+        game.getCard(_letter, _number, Octopus);
         if (!(_letter == letter || number == _number)) {
             cout << "Incorrect Card! Pick position with an adjacent card in the same row or the same column to swap: "
                  << endl;
-            game.getCard(_letter, _number, Octopus);
         } else break;
     }
     char cara = LetterToChar(_letter);     //card to be swapped with second card
@@ -142,13 +142,13 @@ void Rules::expertPenguin(Card *card, Game &game, Letter &letter, Number &number
     cout << *selectedCard << endl;
 }
 
-void Rules::expertWalrus(Card *card, Game &game, Letter &letter, Number &number, const Side &side, string *walrus) {
+void Rules::expertWalrus(Card *card, Game &game, Letter &letter, Number &number, const Side &side) {
     cout << "You have picked a Walrus!" << endl;
     cout << "Pick a card to block from being chosen in the next round:" << endl;
     Letter someLetter = Z;
     Number someNumber = Zero;
     game.getCard(someLetter, someNumber, Walrus);
-    *walrus = LetterToChar(someLetter) + to_string(someNumber);
+    walrusBlockValue = LetterToChar(someLetter) + to_string(someNumber);
 }
 
 void Rules::expertCrab(Card *card, Game &game, Letter &letter, Number &number, const Side &side) {

@@ -18,10 +18,10 @@ void runGame() {
         bool skipTurn = false;
         while (!rules.roundOver(game)) {
             if (skipTurn) sideCounter++;
-            if (sideCounter >= nPlayers) { sideCounter = 0; }
+            if (sideCounter >= nPlayers) sideCounter = 0;
             const Side &side = sides[sideCounter++];
             Player &currentPlayer = game.getPlayer(side);
-            if (sideCounter >= nPlayers) { sideCounter = 0; }
+            if (sideCounter >= nPlayers) sideCounter = 0;
             cout << "Round: " << game.getRound() << " , Turn: " << currentPlayer.getName() << endl;
             if (currentPlayer.isActive()) {
                 if (mode == 1) game.setCurrentCard(game.getCard(Z, Zero));
