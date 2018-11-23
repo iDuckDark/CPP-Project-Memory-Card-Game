@@ -73,9 +73,9 @@ void Game::makeRewardDeck() {
 }
 
 void Game::nextRound() {
-    ++nRound;;
+    ++nRound;
     awardActivePlayers();
-    reset();
+    reset(); //TODO disable reset when game over
 }
 
 int Game::getRound() const { return nRound; }

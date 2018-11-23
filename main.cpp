@@ -24,7 +24,6 @@ void runGame() {
     cout << game << endl;
 }
 
-
 int main() {
     runGame();
     return 0;
