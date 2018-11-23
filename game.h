@@ -13,7 +13,7 @@
 #include "board.h"
 #include "rewarddeck.h"
 
-inline const extern vector<const Side> sides = {Top, Bottom, Left, Right};
+inline const vector<Side> sides = {Top, Bottom, Left, Right};
 
 class Game {
 

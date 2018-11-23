@@ -9,10 +9,12 @@ RewardDeck::RewardDeck() : Deck() {
 }
 
 RewardDeck::~RewardDeck() {
-    for (auto &it : *deck) { delete it; }, delete deck;
+    for (auto &it : *deck) { delete it; };
+    delete deck;
 }
 
 RewardDeck &RewardDeck::make_RewardDeck() {
-    static RewardDeck r, r.shuffle();
+    static RewardDeck r;
+    r.shuffle();
     return r;
 }

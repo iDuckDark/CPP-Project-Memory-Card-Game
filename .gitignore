@@ -96,3 +96,5 @@ cmake-build-debug/Cpp_Project_Memory_Game.cbp
 cmake-build-debug/Makefile
 CMakeLists.txt
 .idea/workspace.xml
+.idea/workspace.xml
+cmake-build-debug/CMakeFiles/Cpp_Project_Memory_Game.dir/rewarddeck.cpp.o

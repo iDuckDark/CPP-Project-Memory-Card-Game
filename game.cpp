@@ -264,8 +264,12 @@ void Game::printLeastToMostRubiesAndWinner() const {
 }
 
 void Game::expertModePrint() const {
-    for (int i = 0; i < 3; i++) { for (auto const&[key, val] : cardMap) { cout << (*val)(i) << " "; }, cout << endl; }
-    for (auto const &card : cardMap) { cout << card.first << "  "; }, cout << endl;
+    for (int i = 0; i < 3; i++) {
+        for (auto const&[key, val] : cardMap) { cout << (*val)(i) << " "; };
+        cout << endl;
+    }
+    for (auto const &card : cardMap) { cout << card.first << "  "; };
+    cout << endl;
 }
 
 map<string, Card *> &Game::getCardMap() { return cardMap; }
