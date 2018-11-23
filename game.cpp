@@ -29,10 +29,12 @@ void Game::setMode(int &mode) {
 
 void Game::createPlayers(int &nPlayers) {
     cout << "Number of Players " << "(Minimum 2 - Maximum 4) : ";
-    cin >> nPlayers;
-    while ((nPlayers < 2 || nPlayers > 4)) {
-        cout << "Invalid input, please try again: " << endl;
-        cin >> nPlayers;
+    while (true) {
+        char input;
+        cin >> input;
+        nPlayers = ((int) input - 48);
+        if ((nPlayers < 2 || nPlayers > 4)) cout << "Invalid input, please try again: " << endl;
+        else break;
     }
     vector<string> names(static_cast<unsigned long>(nPlayers));
     for (int i = 0; i < nPlayers; i++) {
@@ -114,7 +116,7 @@ void Game::setCurrentCard(const Card *card) {
     if (card != nullptr) {
         vector<const Card *> &cardVector = cards[currentSide];
         cardVector.push_back(card);
-    } else if (card == nullptr && cards[currentSide].size() != 0) { clearSelectedCards(); }
+    } else if (card == nullptr && !cards[currentSide].empty()) { clearSelectedCards(); }
 }
 
 void Game::clearSelectedCards() {
@@ -162,13 +164,9 @@ void Game::temporaryRevealThreeCards() {
 
 bool Game::isValidCard(const Letter &letter, const Number &number) const { return board.isValidCard(letter, number); }
 
-bool Game::isBlocked(const Letter &letter, const Number &number) const { return board.isBlocked(letter, number); }
-
-void Game::setBlocked(const Letter &letter, const Number &number) { board.setBlocked(letter, number); }
-
 void Game::setCard(const Letter &letter, const Number &number, Card *card) {
-    if (!ready) { board.setCard(letter, number, card); }
-    if (mode == 2) { cardMap[convertToString(letter, number)] = card; }
+    if (!ready) board.setCard(letter, number, card);
+    if (mode == 2) cardMap[convertToString(letter, number)] = card;
 }
 
 string Game::convertToString(const Letter &let, const Number &num) { return (LetterToChar(let) + to_string(num)); }
@@ -191,15 +189,13 @@ Card *Game::getCard(const Letter &letter, const Number &number) {
 }
 
 Card *Game::getCard(Letter &let, Number &num, const FaceAnimal &animal) {
-    if (animal == Penguin || animal == Walrus || animal == Crab) { getValidInput(&let, &num); }
-    if (animal == Octopus) { getValidInputExpertOct(&let, &num); }
-    if (animal == Penguin) { board.turnFaceUp(let, num); }
+    if (animal == Penguin || animal == Walrus || animal == Crab) getValidInput(&let, &num);
+    if (animal == Octopus) getValidInputExpertOct(&let, &num);
+    if (animal == Penguin) board.turnFaceUp(let, num);
     return board.getCard(let, num);
 }
 
-void Game::hideCard(const Letter &letter, const Number &number) {
-    board.turnFaceDown(letter, number);
-}
+void Game::hideCard(const Letter &letter, const Number &number) { board.turnFaceDown(letter, number); }
 
 void Game::getValidInput(Letter *letter, Number *number) {
     while (true) {

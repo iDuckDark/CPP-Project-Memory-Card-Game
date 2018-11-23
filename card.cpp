@@ -1,6 +1,6 @@
 #include "card.h"
 
-Card::Card(FaceAnimal faceAnimal, FaceBackground faceBackground) :
+Card::Card(const FaceAnimal &faceAnimal, const FaceBackground &faceBackground) :
         _faceAnimal(faceAnimal),
         _faceBackground(faceBackground),
         _color(getColor()),
@@ -73,7 +73,7 @@ ostream &operator<<(ostream &os, const Card &card) {
     return os;
 }
 
-string Card::operator()(int row) const {
+string Card::operator()(const int &row) const {
     string rowString{_color, _color, _color};
     if (row == ceil(getNRows() / 2)) rowString[1] = _animal;
     return rowString;

@@ -5,12 +5,7 @@
 #ifndef CPP_PROJECT_MEMORY_GAME_GAME_H
 #define CPP_PROJECT_MEMORY_GAME_GAME_H
 
-#include <iostream>
-#include <string>
-#include <vector>
-#include <queue>
 #include <map>
-#include <unordered_map>
 #include <stdexcept>
 
 #include "player.h"
@@ -18,7 +13,7 @@
 #include "board.h"
 #include "rewarddeck.h"
 
-const vector<Side> sides = {Top, Bottom, Left, Right};
+inline const extern vector<const Side> sides = {Top, Bottom, Left, Right};
 
 class Game {
 
@@ -63,10 +58,6 @@ private:
     void reset();
 
     bool isValidCard(const Letter &letter, const Number &number) const;
-
-    bool isBlocked(const Letter &, const Number &) const; //Expert Walrus
-
-    void setBlocked(const Letter &, const Number &); //Expert Walrus
 
     char LetterToChar(const Letter &letter); //Expert
 

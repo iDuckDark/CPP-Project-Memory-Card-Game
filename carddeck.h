@@ -1,11 +1,6 @@
 #ifndef CPP_PROJECT_MEMORY_GAME_CARDDECK_H
 #define CPP_PROJECT_MEMORY_GAME_CARDDECK_H
 
-#include <random>
-#include <algorithm>
-#include <iterator>
-#include <iostream>
-#include <vector>
 #include "deck.h"
 
 class CardDeck : public Deck<Card> {

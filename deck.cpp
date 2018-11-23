@@ -1,6 +1,6 @@
-////
-//// Created by iDarkDuck on 2018-11-18.
-////
+//
+// Created by iDarkDuck on 2018-11-18.
+//
 //
 //#include "deck.h"
 //
@@ -28,4 +28,4 @@
 //
 //bool Deck<C>::isEmpty() { return (*deck).empty(); }
 //
-////virtual Deck::~Deck() {};
+//virtual Deck::~Deck() {};

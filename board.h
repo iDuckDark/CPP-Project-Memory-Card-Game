@@ -5,15 +5,11 @@
 #ifndef CPP_PROJECT_MEMORY_GAME_BOARD_H
 #define CPP_PROJECT_MEMORY_GAME_BOARD_H
 
-#include <iostream>
-#include <string>
 #include <vector>
 #include <stdexcept>
 
 #include "card.h"
 #include "carddeck.h"
-
-using namespace std;
 
 enum Letter {
     A = 1, B = 2, C = 3, D = 4, E = 5, Z = -1
@@ -35,8 +31,6 @@ private:
 
     bool *faceDownCards[5];
 
-    bool *blockedCards[5];
-
     vector<vector<Card *> *> cards2D;
 
     int getIndex(const int &, const string &) const;
@@ -49,6 +43,8 @@ private:
 
 public:
     Board();
+
+    Board(const Board &);
 
     ~Board();
 
@@ -69,12 +65,6 @@ public:
     bool isValidCard(const Letter &, const Number &) const; //Expert
 
     void swapCards(const Letter &, const Number &, const Letter &, const Number &); //Expert Octopus
-
-    bool isBlocked(const Letter &, const Number &) const; //Expert Walrus
-
-    void setBlocked(const Letter &, const Number &); //Expert Walrus
-
-    void setUnblocked(const Letter &, const Number &); //Expert Walrus
 };
 
 #endif //CPP_PROJECT_MEMORY_GAME_BOARD_H

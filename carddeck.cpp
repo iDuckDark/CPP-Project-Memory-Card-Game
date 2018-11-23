@@ -5,14 +5,9 @@
 #include "carddeck.h"
 
 CardDeck::CardDeck() : Deck() {
-    deck = new vector<Card*>();
-    for (int i = 0; i != Colors; ++i) {
-        auto color = (FaceBackground) i;
-        for (int j = 0; j != Animals; ++j) {
-            auto animal = (FaceAnimal) j;
-            deck->emplace_back(new Card{animal, color});
-        }
-    }
+    deck = new vector<Card *>();
+    for (int i = 0; i != Colors; ++i)
+        for (int j = 0; j != Animals; ++j) deck->emplace_back(new Card{(FaceAnimal) j, (FaceBackground) i});
 }
 
 CardDeck::~CardDeck() {
@@ -20,8 +15,8 @@ CardDeck::~CardDeck() {
     delete deck;
 }
 
-CardDeck& CardDeck::make_CardDeck() {
+CardDeck &CardDeck::make_CardDeck() {
     static CardDeck c;
     c.shuffle();
-    return  c;
+    return c;
 }

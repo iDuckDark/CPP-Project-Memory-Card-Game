@@ -5,8 +5,6 @@
 #ifndef CPP_PROJECT_MEMORY_GAME_RULES_H
 #define CPP_PROJECT_MEMORY_GAME_RULES_H
 
-#include <iostream>
-#include <string>
 #include "game.h"
 
 class Rules {
@@ -14,14 +12,13 @@ class Rules {
 private:
     int nPlayers;
     int currentSide;
-    string walrusBlockValue = "Z0";
-    int turns = 0;
+    string walrusBlockValue;
 
     bool twoCardsSelected(const Game &) const;
 
-    char LetterToChar(const Letter &letter); //Expert
+    char LetterToChar(const Letter &); //Expert
 
-    string convertToString(const Letter &letter, const Number &number); //Expert
+    string convertToString(const Letter &, const Number &); //Expert
 
 public:
 
@@ -35,19 +32,19 @@ public:
 
     const Player &getNextPlayer(Game &);
 
-    void handleExpertRules(Game &game, const Side &side, bool &skipTurn);
+    void handleExpertRules(Game &game, int &sideCounter);
 
-    void expertRules(Card *, Game &, Letter &, Number &, const Side &, map<string, Card *> *, bool &);
+    void expertRules(Card *, Game &, Letter &, Number &, int &);
 
-    void expertOctopus(Card *, Game &, Letter &, Number &, const Side &, map<string, Card *> *);
+    void expertOctopus(Card *, Game &, Letter &, Number &);
 
-    void expertPenguin(Card *, Game &, Letter &, Number &, const Side &, map<string, Card *> *);
+    void expertPenguin(Game &, int &);
 
-    void expertWalrus(Card *, Game &, Letter &, Number &, const Side &);
+    void expertWalrus(Game &);
 
-    void expertCrab(Card *, Game &, Letter &, Number &, const Side &);
+    void expertCrab(Card *, Game &, Letter &, Number &, int &);
 
-    void expertTurtle(Card *, Game &, Letter &, Number &, const Side &, bool &);
+    void expertTurtle(int &sideCounter);
 };
 
 

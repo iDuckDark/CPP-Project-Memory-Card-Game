@@ -5,17 +5,13 @@
 #ifndef CPP_PROJECT_MEMORY_GAME_DECK_H
 #define CPP_PROJECT_MEMORY_GAME_DECK_H
 
-
-#include <iostream>
-#include <vector>
-#include <random>
 #include <algorithm>
 #include <iterator>
+#include <random>
+#include <vector>
 
 #include "card.h"
 #include "reward.h"
-
-using namespace std;
 
 template<class C>
 

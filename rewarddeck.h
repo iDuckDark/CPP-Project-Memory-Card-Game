@@ -8,14 +8,6 @@
 #include "deck.h"
 #include "reward.h"
 
-#include <vector>
-#include <random>
-#include <algorithm>
-#include <iterator>
-#include <iostream>
-
-using namespace std;
-
 class RewardDeck : public Deck<Reward> {
 
 public:

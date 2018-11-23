@@ -5,12 +5,9 @@
 #ifndef CPP_PROJECT_MEMORY_GAME_PLAYER_H
 #define CPP_PROJECT_MEMORY_GAME_PLAYER_H
 
-#include <iostream>
-#include <string>
 #include <vector>
 #include "reward.h"
 
-using namespace std;
 
 //TODO change to enum class?
 enum Side {

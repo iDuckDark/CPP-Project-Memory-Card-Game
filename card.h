@@ -19,7 +19,7 @@ class Card {
 
 private:
 
-    Card(FaceAnimal faceAnimal, FaceBackground faceBackground);
+    Card(const FaceAnimal &faceAnimal, const FaceBackground &faceBackground);
 
     Card(const Card &);
 
@@ -34,9 +34,10 @@ private:
     int getNRows() const;
 
 public:
+
     friend class CardDeck;
 
-    string operator()(int) const;
+    string operator()(const int &) const;
 
     friend ostream &operator<<(ostream &, const Card &);
 

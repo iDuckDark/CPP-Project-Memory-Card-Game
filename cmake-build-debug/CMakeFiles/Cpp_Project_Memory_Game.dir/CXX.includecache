@@ -7,10 +7,6 @@
 #IncludeRegexTransform: 
 
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/board.h
-iostream
--
-string
--
 vector
 -
 stdexcept
@@ -29,29 +25,17 @@ cmath
 -
 
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/carddeck.h
-random
--
-algorithm
--
-iterator
--
-iostream
--
-vector
--
 deck.h
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/deck.h
 
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/deck.h
-iostream
--
-vector
--
-random
--
 algorithm
 -
 iterator
+-
+random
+-
+vector
 -
 card.h
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/card.h
@@ -63,17 +47,7 @@ game.h
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/game.h
 
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/game.h
-iostream
--
-string
--
-vector
--
-queue
--
 map
--
-unordered_map
 -
 stdexcept
 -
@@ -86,27 +60,7 @@ board.h
 rewarddeck.h
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rewarddeck.h
 
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/main.cpp
-iostream
--
-vector
--
-queue
--
-exception
--
-stdexcept
--
-game.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/game.h
-rules.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rules.h
-
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/player.h
-iostream
--
-string
--
 vector
 -
 reward.h
@@ -123,26 +77,4 @@ deck.h
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/deck.h
 reward.h
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/reward.h
-vector
--
-random
--
-algorithm
--
-iterator
--
-iostream
--
-
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rules.cpp
-rules.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rules.h
-
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rules.h
-iostream
--
-string
--
-game.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/game.h
 

@@ -40,9 +40,8 @@ string Player::getSideToString() const {
 
 ostream &operator<<(ostream &os, const Player &player) {
     os << player.getName() << ": ";
-    if (!player.endOfGame) {
+    if (!player.endOfGame)
         return (os << player.getSideToString() << " (" << (player.active ? "active" : "inactive") << ")" << endl);
-    }
     return (os << " " << player.getNRubies() << " rubies" << endl);
 }
 
