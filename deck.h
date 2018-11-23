@@ -42,7 +42,6 @@ public:
 
 protected:
     vector<C *> *deck;
-
 };
 
 

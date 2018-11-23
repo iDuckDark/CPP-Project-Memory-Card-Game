@@ -25,9 +25,9 @@ Board::Board(const Board &board) : cards(board.cards), cards2D(board.cards2D) {
 
 Board::~Board() {
     delete[] screen;
-    for (auto &faceDownCard : faceDownCards) { delete[] faceDownCard; }
-    for (auto &cardVector : cards2D) { delete cardVector; }
-    for (auto &card : cards) { delete card; }
+    for (auto &faceDownCard : faceDownCards) delete[] faceDownCard;
+    for (auto &cardVector : cards2D) delete cardVector;
+    for (auto &card : cards) delete card;
 }
 
 void Board::setCard(const Letter &letter, const Number &number, Card *card) {
@@ -90,7 +90,6 @@ int Board::getIndex(const int &input, const string &typeEnum) const {
 Card *Board::getCard(const Letter &letter, const Number &number) {
     return (*cards2D[getIndex(letter, "Letter")])[getIndex(number, "Number")];
 }
-
 
 bool Board::turnFaceUp(const Letter &letter, const Number &number) {
     if (isFaceUp(letter, number)) { return false; }

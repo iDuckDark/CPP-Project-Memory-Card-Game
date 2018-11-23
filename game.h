@@ -53,17 +53,19 @@ private:
 
     void expertModePrint() const;
 
+    bool twoCardsSelected() const;
+
     void clearSelectedCards();
 
     void reset();
 
-    bool isValidCard(const Letter &letter, const Number &number) const;
+    bool isValidCard(const Letter &, const Number &) const;
 
-    char LetterToChar(const Letter &letter); //Expert
+    char LetterToChar(const Letter &); //Expert
 
-    string convertToString(const Letter &letter, const Number &number); //Expert
+    string convertToString(const Letter &, const Number &); //Expert
 
-    void getValidInputExpertOct(Letter *letter, Number *number); //Expert Octopus
+    void getValidInputExpertOct(Letter *, Number *); //Expert Octopus
 
 public:
 
@@ -85,7 +87,7 @@ public:
 
     void setCard(const Letter &, const Number &, Card *);
 
-    friend ostream &operator<<(ostream &os, const Game &game);
+    friend ostream &operator<<(ostream &, const Game &);
 
     void nextRound();
 
@@ -95,9 +97,9 @@ public:
 
     map<string, Card *> &getCardMap();
 
-    Card *getCard(Letter &letter, Number &number, const FaceAnimal &animal);
+    Card *getCard(Letter &, Number &, const FaceAnimal &);
 
-    void hideCard(const Letter &letter, const Number &number); //Expert penguin
+    void hideCard(const Letter &, const Number &); //Expert penguin
 
     void swapCards(const Letter &, const Number &, const Letter &, const Number &); //Expert Octopus
 };

@@ -7,7 +7,11 @@
 Rules::Rules(int nPlayers) : nPlayers(nPlayers), currentSide(0), walrusBlockValue("Z0") {}
 
 bool Rules::isValid(const Game &game) {
-    if (twoCardsSelected(game)) return (*game.getPreviousCard() == *game.getCurrentCard());
+    if (twoCardsSelected(game)) {
+        cout << "Two Cards Selected True, is it equal? " << (*game.getPreviousCard() == *game.getCurrentCard()) << endl;
+        return (*game.getPreviousCard() == *game.getCurrentCard());
+    }
+    cout << "No Two Cards is Selected, but Rules is valid" << endl;
     return true;
 }
 

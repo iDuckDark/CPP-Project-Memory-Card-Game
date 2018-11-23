@@ -15,7 +15,7 @@ Reward &Reward::operator=(const Reward &reward) {
 int Reward::getNRubies() const { return _nRubies; }
 
 ostream &operator<<(ostream &os, const Reward &reward) {
-    return os << "Reward has " << reward.getNRubies() << (reward.getNRubies() > 1 ? " Rubies" : " Ruby");
+    return (os << "Reward has " << reward.getNRubies() << (reward.getNRubies() > 1 ? " Rubies" : " Ruby"));
 }
 
 bool operator<(const Reward &r1, const Reward &r2) { return r1.getNRubies() < r2.getNRubies(); }

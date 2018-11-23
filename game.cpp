@@ -8,8 +8,7 @@ Game::Game(int &mode, int &nPlayers) : nRound(1), currentSide(Top) {
     cout << endl << "Welcome to Nevin's and Peter's Memory Card Game Fall 2018" << endl;
     setMode(mode);
     createPlayers(nPlayers);
-    makeCardDeck();
-    makeRewardDeck();
+    makeCardDeck(), makeRewardDeck();
     reset();
     ready = true;
 }
@@ -20,11 +19,10 @@ void Game::setMode(int &mode) {
     while (true) {
         char input;
         cin >> input;
-        mode = ((int) input - 48);
+        this->mode = mode = ((int) input - 48);
         if (mode == 1 || mode == 2) break;
         else cout << "Invalid input, please try again: ";
     }
-    this->mode = mode;
 }
 
 void Game::createPlayers(int &nPlayers) {
@@ -43,27 +41,18 @@ void Game::createPlayers(int &nPlayers) {
         Player player{names[i]};
         player.setSide(sides[i]);
         if (!containsPlayer(player)) addPlayer(player);
-        else --i;
+        else cout << "Player already added to Game!" << endl, --i;
     }
 }
 
-bool Game::containsPlayer(const Player &player) {
-    if (find(players.begin(), players.end(), player) != players.end()) {
-        cout << "Player already added to Game!" << endl;
-        return true;
-    }
-    return false;
-}
+bool Game::containsPlayer(const Player &p) { return find(players.begin(), players.end(), p) != players.end(); }
 
 void Game::makeCardDeck() {
     CardDeck &deck = CardDeck::make_CardDeck();
     int i = 1, j = 1;
     while (!deck.isEmpty()) {
         setCard(static_cast<Letter>(i), static_cast<Number>(j++), deck.getNext());
-        if (j == 5) {
-            j = 0;
-            i++;
-        }
+        if (j == 5) j = 0, i++;
     }
 }
 
@@ -75,7 +64,7 @@ void Game::makeRewardDeck() {
 void Game::nextRound() {
     ++nRound;
     awardActivePlayers();
-    reset(); //TODO disable reset when game over
+    if (nRound != 7) reset(); //TODO disable reset when game over
 }
 
 int Game::getRound() const { return nRound; }
@@ -116,7 +105,12 @@ void Game::setCurrentCard(const Card *card) {
     if (card != nullptr) {
         vector<const Card *> &cardVector = cards[currentSide];
         cardVector.push_back(card);
-    } else if (card == nullptr && !cards[currentSide].empty()) { clearSelectedCards(); }
+    } else if (card == nullptr && !cards[currentSide].empty() && twoCardsSelected()) { clearSelectedCards(); }
+}
+
+bool Game::twoCardsSelected() const {
+    try { return (getPreviousCard() != nullptr && getCurrentCard() != nullptr); }
+    catch (...) { return false; }
 }
 
 void Game::clearSelectedCards() {
@@ -172,11 +166,11 @@ void Game::setCard(const Letter &letter, const Number &number, Card *card) {
 string Game::convertToString(const Letter &let, const Number &num) { return (LetterToChar(let) + to_string(num)); }
 
 char Game::LetterToChar(const Letter &_letter) {
-    if (_letter == A) { return 'A'; }
-    else if (_letter == B) { return 'B'; }
-    else if (_letter == C) { return 'C'; }
-    else if (_letter == D) { return 'D'; }
-    else if (_letter == E) { return 'E'; }
+    if (_letter == A) return 'A';
+    else if (_letter == B) return 'B';
+    else if (_letter == C) return 'C';
+    else if (_letter == D) return 'D';
+    else if (_letter == E) return 'E';
     return 'Z';
 }
 
@@ -240,12 +234,8 @@ void Game::getValidInputExpertOct(Letter *letter, Number *number) {
 }
 
 void Game::awardActivePlayers() {
-    for (auto &player: players) {
-        if (player.isActive() && !rewardDeck.empty()) {
-            player.addReward(*rewardDeck.back());
-            rewardDeck.pop_back();
-        }
-    }
+    for (auto &p: players)
+        if (p.isActive() && !rewardDeck.empty()) p.addReward(*rewardDeck.back()), rewardDeck.pop_back();
 }
 
 ostream &operator<<(ostream &os, const Game &game) {
@@ -263,24 +253,19 @@ void Game::swapCards(const Letter &l1, const Number &n1, const Letter &l2, const
 
 void Game::printLeastToMostRubiesAndWinner() const {
     vector<Player> playerS = players;
-    for (auto &player: playerS) { player.setDisplayMode(true); }
+    for (auto &player: playerS) player.setDisplayMode(true);
     int winCounter = 1;
     sort(playerS.begin(), playerS.end());
     for (auto &player : playerS) {
-        if (winCounter == playerS.size()) { cout << "Winner : "; }
-        winCounter++;
+        if (winCounter++ == playerS.size()) { cout << "Winner : "; }
         cout << player.getName() << " with Rubies: " << player.getNRubies() << endl;
         player.setDisplayMode(false);
     }
 }
 
 void Game::expertModePrint() const {
-    for (int i = 0; i < 3; i++) {
-        for (auto const&[key, val] : cardMap) { cout << (*val)(i) << " "; }
-        cout << endl;
-    }
-    for (auto const &card : cardMap) { cout << card.first << "  "; }
-    cout << endl;
+    for (int i = 0; i < 3; i++) { for (auto const&[key, val] : cardMap) { cout << (*val)(i) << " "; }, cout << endl; }
+    for (auto const &card : cardMap) { cout << card.first << "  "; }, cout << endl;
 }
 
 map<string, Card *> &Game::getCardMap() { return cardMap; }

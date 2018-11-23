@@ -13,10 +13,8 @@ void runGame() {
                 if (mode == 1) game.setCurrentCard(game.getCard(Z, Zero));
                 else rules.handleExpertRules(game, sideCounter);
             }
-            if (!rules.isValid(game)) {
-                currentPlayer.setActive(false);
-                game.setCurrentCard(nullptr);
-            }
+            if (!rules.isValid(game)) currentPlayer.setActive(false);
+            game.setCurrentCard(nullptr);
             cout << game << endl;
         }
         game.nextRound();
@@ -28,4 +26,5 @@ int main() {
     runGame();
     return 0;
 }
+
 
