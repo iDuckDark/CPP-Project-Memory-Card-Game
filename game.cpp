@@ -152,8 +152,6 @@ void Game::temporaryRevealThreeCards() {
     cout << (*this) << endl;
 }
 
-bool Game::isValidCard(const Letter &letter, const Number &number) const { return board.isValidCard(letter, number); }
-
 void Game::setCard(const Letter &letter, const Number &number, Card *card) {
     if (!ready) board.setCard(letter, number, card);
     if (mode == 2) cardMap[convertToString(letter, number)] = card;
@@ -173,22 +171,19 @@ char Game::LetterToChar(const Letter &_letter) {
 Card *Game::getCard(const Letter &letter, const Number &number) {
     Letter let = letter;
     Number num = number;
-    if (mode == 1) getValidInput(&let, &num);
+    if (mode == 1) getValidInput(&let, &num, Animals);
     board.turnFaceUp(let, num);
     return board.getCard(let, num);
 }
 
 Card *Game::getCard(Letter &let, Number &num, const FaceAnimal &animal) {
-    if (animal == Penguin || animal == Walrus || animal == Crab) getValidInput(&let, &num);
-    if (animal == Octopus) getValidInputExpertOct(&let, &num);
-    if (animal == Penguin) {
-        if (!board.isFaceUp(let, num)) board.turnFaceUp(let, num);
-        else board.turnFaceDown(let, num);
-    }
+    if (animal == Penguin || animal == Walrus || animal == Crab) getValidInput(&let, &num, Animals);
+    if (animal == Octopus) getValidInput(&let, &num, Octopus);
+    if (animal == Penguin) { if (!board.isFaceUp(let, num)) board.turnFaceUp(let, num); else board.turnFaceDown(let, num); }
     return board.getCard(let, num);
 }
 
-void Game::getValidInput(Letter *letter, Number *number) {
+void Game::getValidInput(Letter *letter, Number *number, const FaceAnimal &faceAnimal) {
     while (true) {
         string input;
         cout << "Pick a card from (A to E) and from (1 to 5): ";
@@ -200,7 +195,8 @@ void Game::getValidInput(Letter *letter, Number *number) {
         *letter = static_cast<Letter>(toEnum(input[0]));
         *number = static_cast<Number>(toEnum(input[1]));
         try {
-            if (!board.isFaceUp(*letter, *number)) break;
+            if (faceAnimal != Octopus && !board.isFaceUp(*letter, *number)) break;
+            else if (mode == 2 && faceAnimal == Octopus && isValidCard(*letter, *number)) break;
             else cout << "Card is already faced up!" << endl;
         } catch (const exception &exc) {
             cout << "Invalid Card Selected, please try again" << endl;
@@ -209,30 +205,16 @@ void Game::getValidInput(Letter *letter, Number *number) {
     }
 }
 
-void Game::getValidInputExpertOct(Letter *letter, Number *number) {
-    while (true) {
-        string input;
-        cout << "Pick a card from (A to E) and from (1 to 5): ";
-        while (true) {
-            cin >> input;
-            if (input.length() == 2) break;
-            else cout << "Invalid input, please try again: ";
-        }
-        *letter = static_cast<Letter>(toEnum(input[0]));
-        *number = static_cast<Number>(toEnum(input[1]));
-        try {
-            if (isValidCard(*letter, *number)) break;
-            else cout << "Card is not valid! " << endl;
-        } catch (const exception &exc) {
-            cout << "Invalid Card Selected, please try again" << endl;
-            cerr << exc.what() << endl;
-        }
-    }
+bool Game::isValidCard(const Letter &letter, const Number &number) {
+    int let = static_cast<Letter>(letter);
+    int num = static_cast<Number>(number);
+    if (let >= 0 && let <= 4 && num >= 0 && num <= 4)
+        if (letter != 2 && number != 2) { return true; } else throw out_of_range("Not allowed to pick treasure card!");
+    throw out_of_range("Card is out of range");
 }
 
 void Game::awardActivePlayers() {
-    for (auto &p: players)
-        if (p.isActive() && !rewardDeck.empty()) p.addReward(*rewardDeck.back()), rewardDeck.pop_back();
+    for (auto &p: players) if (p.isActive() && !rewardDeck.empty()) p.addReward(*rewardDeck.back()), rewardDeck.pop_back();
 }
 
 ostream &operator<<(ostream &os, const Game &game) {

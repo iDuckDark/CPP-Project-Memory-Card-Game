@@ -10,6 +10,7 @@ Board::Board() {
         faceDownCard = new bool[5];
         for (int y = 0; y < 5; y++) { faceDownCard[y] = true; }
     }
+    if (ready && cards2D.size() == 0) throw out_of_range("NoMoreCards"); //TODO exception
 }
 
 Board::Board(const Board &board) : cards(board.cards), cards2D(board.cards2D) {
@@ -49,6 +50,8 @@ void Board::setScreen() {
         }
         screenRowCounter++;
     }
+    if (cards2D.size() == 0) throw out_of_range("NoMoreCards");
+    ready = true;
 }
 
 string *Board::getScreen() const { return screen; }

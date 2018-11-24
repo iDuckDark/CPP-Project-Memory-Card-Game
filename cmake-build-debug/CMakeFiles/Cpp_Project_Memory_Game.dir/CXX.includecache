@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/board.cpp
+board.h
+/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/board.h
+
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/board.h
 vector
 -
@@ -60,6 +64,10 @@ board.h
 rewarddeck.h
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rewarddeck.h
 
+/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/main.cpp
+rules.h
+/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rules.h
+
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/player.h
 vector
 -
@@ -77,4 +85,14 @@ deck.h
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/deck.h
 reward.h
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/reward.h
+
+/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rules.cpp
+rules.h
+/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rules.h
+
+/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rules.h
+stdexcept
+-
+game.h
+/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/game.h
 

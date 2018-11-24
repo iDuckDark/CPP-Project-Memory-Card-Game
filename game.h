@@ -73,7 +73,7 @@ private:
 
     void temporaryRevealThreeCards();
 
-    void getValidInput(Letter *letter, Number *number);
+    void getValidInput(Letter *letter, Number *number, const FaceAnimal &);
 
     int toEnum(const char &);
 
@@ -89,13 +89,11 @@ private:
 
     void reset();
 
-    bool isValidCard(const Letter &, const Number &) const;
-
     char LetterToChar(const Letter &);
 
     string convertToString(const Letter &, const Number &);
 
-    void getValidInputExpertOct(Letter *, Number *);
+    bool isValidCard(const Letter &letter, const Number &number);
 
     void expertGameOctopus(const Letter &, const Number &, const Letter &, const Number &, const FaceAnimal &, Card *);
 

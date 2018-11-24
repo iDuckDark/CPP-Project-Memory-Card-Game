@@ -10,29 +10,6 @@
 
 class Rules {
 
-private:
-    int nPlayers;
-    int currentSide;
-    string walrusBlockValue;
-
-    bool twoCardsSelected(const Game &) const;
-
-    char LetterToChar(const Letter &); //Expert
-
-    string convertToString(const Letter &, const Number &); //Expert
-
-    void expertRulesHandler(Card *, Game &, Letter &, Number &, int &);
-
-    void expertOctopus(Card *, Game &, Letter &, Number &);
-
-    void expertPenguin(Game &, int &);
-
-    void expertWalrus(Game &);
-
-    void expertCrab(Card *, Game &, Letter &, Number &, int &);
-
-    void expertTurtle(int &sideCounter);
-
 public:
 
     explicit Rules(const int &nPlayers = 0);
@@ -46,6 +23,30 @@ public:
     const Player &getNextPlayer(const Game &);
 
     void expertRules(Game &game, int &sideCounter);
+
+private:
+
+    int nPlayers;
+    int currentSide;
+    string walrusBlockValue;
+
+    bool twoCardsSelected(const Game &) const;
+
+    char LetterToChar(const Letter &);
+
+    string convertToString(const Letter &, const Number &);
+
+    void expertRulesHandler(Card *, Game &, Letter &, Number &, int &);
+
+    void expertOctopus(Card *, Game &, Letter &, Number &);
+
+    void expertPenguin(Game &, int &);
+
+    void expertWalrus(Game &);
+
+    void expertCrab(Card *, Game &, Letter &, Number &, int &);
+
+    void expertTurtle(int &sideCounter);
 };
 
 

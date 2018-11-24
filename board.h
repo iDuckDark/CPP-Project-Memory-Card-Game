@@ -21,23 +21,6 @@ enum Number {
 
 class Board {
 
-private:
-    string *screen;
-
-    vector<Card *> cards;
-
-    bool *faceDownCards[5];
-
-    vector<vector<Card *> *> cards2D;
-
-    int getIndex(const int &, const string &) const;
-
-    void setScreen();
-
-    string *getScreen() const;
-
-    bool isFaceDown(const int &i, const int &y) const;
-
 public:
     Board();
 
@@ -59,9 +42,28 @@ public:
 
     friend ostream &operator<<(ostream &, const Board &);
 
-    bool isValidCard(const Letter &, const Number &) const; //Expert
+    void swapCards(const Letter &, const Number &, const Letter &, const Number &);
 
-    void swapCards(const Letter &, const Number &, const Letter &, const Number &); //Expert Octopus
+private:
+    string *screen;
+
+    vector<Card *> cards;
+
+    bool *faceDownCards[5];
+
+    vector<vector<Card *> *> cards2D;
+
+    int getIndex(const int &, const string &) const;
+
+    void setScreen();
+
+    string *getScreen() const;
+
+    bool isFaceDown(const int &i, const int &y) const;
+
+    bool isValidCard(const Letter &, const Number &) const;
+
+    bool ready = false;
 };
 
 #endif //CPP_PROJECT_MEMORY_GAME_BOARD_H
