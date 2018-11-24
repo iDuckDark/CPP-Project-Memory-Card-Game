@@ -56,7 +56,7 @@ void Rules::expertRules(Game &game, int &sideCounter) {
     cout << game << endl;
 }
 
-void Rules::expertRulesHanlder(Card *card, Game &game, Letter &letter, Number &number, int &sideCounter) {
+void Rules::expertRulesHandler(Card *card, Game &game, Letter &letter, Number &number, int &sideCounter) {
     switch (card->getAnimal()) {
         case 'O':
             expertOctopus(card, game, letter, number);
