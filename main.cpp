@@ -11,7 +11,7 @@ void runGame() {
             cout << "Round: " << game.getRound() << " , Turn: " << currentPlayer.getName() << endl;
             if (currentPlayer.isActive()) {
                 if (mode == 1) game.setCurrentCard(game.getCard(Z, Zero));
-                else rules.handleExpertRules(game, sideCounter);
+                else rules.expertRules(game, sideCounter);
             }
             if (!rules.isValid(game)) currentPlayer.setActive(false);
             game.setCurrentCard(nullptr);

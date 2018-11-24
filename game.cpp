@@ -129,12 +129,6 @@ void Game::reset() {
 
 void Game::setAllPlayersActive() { for (auto &player: players) { player.setActive(true); }}
 
-int Game::getNActivePlayers() const {
-    int nActive = 0;
-    for (auto player: players) if (player.isActive()) nActive++;
-    return nActive;
-}
-
 void Game::temporaryRevealThreeCards() {
     cout << "Three random cards are revealed temporary in front of the players" << endl;
     for (const auto &player: players) {

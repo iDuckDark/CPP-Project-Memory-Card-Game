@@ -30,8 +30,6 @@ bool Rules::roundOver(const Game &game) {
     }
     if (nActivePlayers == 1) walrusBlockValue = "Z0";
     return nActivePlayers == 1;
-    //if (game.getNActivePlayers() == 1) walrusBlockValue = "Z0";
-    //return game.getNActivePlayers() == 1;
 }
 
 const Player &Rules::getNextPlayer(const Game &game) {
@@ -43,7 +41,7 @@ const Player &Rules::getNextPlayer(const Game &game) {
     return player;
 }
 
-void Rules::handleExpertRules(Game &game, int &sideCounter) {
+void Rules::expertRules(Game &game, int &sideCounter) {
     Letter letter = Z;
     Number number = Zero;
     while (true) {
@@ -54,11 +52,11 @@ void Rules::handleExpertRules(Game &game, int &sideCounter) {
     Card *selectedCard = game.getCard(letter, number);
     game.setCard(letter, number, selectedCard);
     game.setCurrentCard(selectedCard);
-    expertRules(selectedCard, game, letter, number, sideCounter);
+    expertRulesHandler(selectedCard, game, letter, number, sideCounter);
     cout << game << endl;
 }
 
-void Rules::expertRules(Card *card, Game &game, Letter &letter, Number &number, int &sideCounter) {
+void Rules::expertRulesHanlder(Card *card, Game &game, Letter &letter, Number &number, int &sideCounter) {
     switch (card->getAnimal()) {
         case 'O':
             expertOctopus(card, game, letter, number);

@@ -93,8 +93,6 @@ public:
 
     //TODO minimize own public functions
 
-    int getNActivePlayers() const;
-
     map<string, Card *> &getCardMap();
 
     Card *getCard(Letter &, Number &, const FaceAnimal &);

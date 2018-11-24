@@ -20,6 +20,18 @@ private:
 
     string convertToString(const Letter &, const Number &); //Expert
 
+    void expertRulesHandler(Card *, Game &, Letter &, Number &, int &);
+
+    void expertOctopus(Card *, Game &, Letter &, Number &);
+
+    void expertPenguin(Game &, int &);
+
+    void expertWalrus(Game &);
+
+    void expertCrab(Card *, Game &, Letter &, Number &, int &);
+
+    void expertTurtle(int &sideCounter);
+
 public:
 
     explicit Rules(int nPlayers = 0);
@@ -32,19 +44,7 @@ public:
 
     const Player &getNextPlayer(const Game &);
 
-    void handleExpertRules(Game &game, int &sideCounter);
-
-    void expertRules(Card *, Game &, Letter &, Number &, int &);
-
-    void expertOctopus(Card *, Game &, Letter &, Number &);
-
-    void expertPenguin(Game &, int &);
-
-    void expertWalrus(Game &);
-
-    void expertCrab(Card *, Game &, Letter &, Number &, int &);
-
-    void expertTurtle(int &sideCounter);
+    void expertRules(Game &game, int &sideCounter);
 };
 
 
