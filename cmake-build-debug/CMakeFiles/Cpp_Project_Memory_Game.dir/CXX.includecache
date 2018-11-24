@@ -76,9 +76,17 @@ rewarddeck.h
 rules.h
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rules.h
 
+/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/player.cpp
+player.h
+/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/player.h
+
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/player.h
 vector
 -
+reward.h
+/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/reward.h
+
+/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/reward.cpp
 reward.h
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/reward.h
 
