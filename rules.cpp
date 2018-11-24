@@ -72,38 +72,16 @@ void Rules::expertRulesHandler(Card *card, Game &game, Letter &letter, Number &n
 
 void Rules::expertOctopus(Card *card, Game &game, Letter &letter, Number &number) {
     cout << "You have picked an Octopus!" << endl;
-    cout << "Pick position with an adjacent card in the same (row or column) to swap: " << endl;
+    string pick = "Pick position with an adjacent card in the same (row or column) to swap: ";
+    cout << pick << endl;
     Letter _letter = Z;
     Number _number = Zero;
     while (true) {
         game.getCard(_letter, _number, Octopus);
-        if (!(_letter == letter || number == _number)) {
-            cout << "Invalid Card! Pick position with an adjacent card in the same (row or column) to swap: " << endl;
-        } else break;
+        if (!(_letter == letter || number == _number)) cout << "Invalid Card! " + pick << endl; else break;
     }
-    char cara = LetterToChar(_letter);     //card to be swapped with second card
-    char cara2 = LetterToChar(letter);     //current card
-    Card *selectedCard = game.getCard(_letter, _number); //turns face up
-    map<string, Card *> &cardMap = game.getCardMap();
-    if (cardMap.count(cara + to_string(_number))) {     //if the second card is already face up
-        cout << cara + to_string(_number) << endl;
-        Card *temp = card;
-        card = selectedCard;
-        selectedCard = temp;
-        cardMap.operator[](cara + to_string(_number)) = selectedCard; //swap hashes
-        cardMap.operator[](cara2 + to_string(number)) = card;
-    } else {    //swapping with faced down card
-        game.hideCard(_letter, _number); //turn face down
-        auto it = (cardMap).find(cara2 + to_string(number));
-        cardMap.erase(it);
-        Card *temp = card;
-        card = selectedCard;
-        selectedCard = temp;
-        cardMap.operator[](cara + to_string(_number)) = selectedCard;         //hashed to new location
-        game.swapCards(letter, number, _letter, _number); //Expert Octopus
-    }
+    game.expertRules(_letter, _number, letter, number, Octopus, card);
 }
-
 
 string Rules::convertToString(const Letter &l, const Number &n) { return (LetterToChar(l) + to_string(n)); }
 
@@ -119,21 +97,7 @@ char Rules::LetterToChar(const Letter &_letter) {
 void Rules::expertPenguin(Game &game, int &sideCounter) {
     cout << "You have picked a Penguin!" << endl;
     cout << "Pick a card to change face up or face down: " << endl;
-    Letter someLetter = Z;
-    Number someNumber = Zero;
-    Card *selectedCard = game.getCard(someLetter, someNumber, Penguin);
-    char cara = LetterToChar(someLetter);
-    map<string, Card *> &cardMap = game.getCardMap();
-    if (cardMap.count(cara + to_string(someNumber))) {
-        cout << "Turning Face down :" << endl;
-        cardMap.erase(cara + to_string(someNumber));
-        game.hideCard(someLetter, someNumber);
-    } else {
-        cout << "Turning Face Up:" << endl;
-        cardMap.operator[](cara + to_string(someNumber)) = selectedCard;
-        game.setCurrentCard(selectedCard);
-    }
-    cout << *selectedCard << endl;
+    game.expertRules(Z, Zero, Z, Zero, Octopus, nullptr);
 }
 
 void Rules::expertWalrus(Game &game) {

@@ -17,6 +17,34 @@ inline const extern vector<Side> sides = {Side::Top, Side::Bottom, Side::Left, S
 
 class Game {
 
+public:
+
+    Game(int &, int &);
+
+    int getRound() const;
+
+    void addPlayer(const Player &);
+
+    Player &getPlayer(Side);
+
+    const Card *getPreviousCard() const;
+
+    const Card *getCurrentCard() const;
+
+    void setCurrentCard(const Card *);
+
+    Card *getCard(const Letter &, const Number &);
+
+    void setCard(const Letter &, const Number &, Card *);
+
+    friend ostream &operator<<(ostream &, const Game &);
+
+    void nextRound();
+
+    void expertRules(const Letter &, const Number &, const Letter &, const Number &, const FaceAnimal &, Card *);
+
+    Card *getCard(Letter &, Number &, const FaceAnimal &);
+
 private:
 
     int mode{0};
@@ -26,7 +54,7 @@ private:
     Board board;
     vector<vector<const Card *>> cards;
     vector<const Reward *> rewardDeck;
-    map<string, Card *> cardMap; //Expert Mode
+    map<string, Card *> cardMap;
     bool ready = false;
 
     void setSide(Side);
@@ -63,46 +91,17 @@ private:
 
     bool isValidCard(const Letter &, const Number &) const;
 
-    char LetterToChar(const Letter &); //Expert
+    char LetterToChar(const Letter &);
 
-    string convertToString(const Letter &, const Number &); //Expert
+    string convertToString(const Letter &, const Number &);
 
-    void getValidInputExpertOct(Letter *, Number *); //Expert Octopus
+    void getValidInputExpertOct(Letter *, Number *);
 
-public:
+    void expertGameOctopus(const Letter &, const Number &, const Letter &, const Number &, const FaceAnimal &, Card *);
 
-    Game(int &, int &);
+    void expertGamePenguin();
 
-    int getRound() const;
-
-    void addPlayer(const Player &);
-
-    Player &getPlayer(Side);
-
-    const Card *getPreviousCard() const;
-
-    const Card *getCurrentCard() const;
-
-    void setCurrentCard(const Card *);
-
-    Card *getCard(const Letter &, const Number &);
-
-    void setCard(const Letter &, const Number &, Card *);
-
-    friend ostream &operator<<(ostream &, const Game &);
-
-    void nextRound();
-
-    //TODO minimize own public functions
-
-    map<string, Card *> &getCardMap();
-
-    Card *getCard(Letter &, Number &, const FaceAnimal &); //Expert Get card
-
-    void hideCard(const Letter &, const Number &); //Expert penguin
-
-    void swapCards(const Letter &, const Number &, const Letter &, const Number &); //Expert Octopus
+    void swapCards(const Letter &, const Number &, const Letter &, const Number &);
 };
-
 
 #endif //CPP_PROJECT_MEMORY_GAME_GAME_H
