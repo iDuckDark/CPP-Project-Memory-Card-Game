@@ -98,9 +98,6 @@
 		<Unit filename="/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/carddeck.h">
 			<Option target="Cpp_Project_Memory_Game"/>
 		</Unit>
-		<Unit filename="/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/deck.cpp">
-			<Option target="Cpp_Project_Memory_Game"/>
-		</Unit>
 		<Unit filename="/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/deck.h">
 			<Option target="Cpp_Project_Memory_Game"/>
 		</Unit>

@@ -204,33 +204,6 @@ carddeck.cpp.s:
 	$(MAKE) -f CMakeFiles/Cpp_Project_Memory_Game.dir/build.make CMakeFiles/Cpp_Project_Memory_Game.dir/carddeck.cpp.s
 .PHONY : carddeck.cpp.s
 
-deck.o: deck.cpp.o
-
-.PHONY : deck.o
-
-# target to build an object file
-deck.cpp.o:
-	$(MAKE) -f CMakeFiles/Cpp_Project_Memory_Game.dir/build.make CMakeFiles/Cpp_Project_Memory_Game.dir/deck.cpp.o
-.PHONY : deck.cpp.o
-
-deck.i: deck.cpp.i
-
-.PHONY : deck.i
-
-# target to preprocess a source file
-deck.cpp.i:
-	$(MAKE) -f CMakeFiles/Cpp_Project_Memory_Game.dir/build.make CMakeFiles/Cpp_Project_Memory_Game.dir/deck.cpp.i
-.PHONY : deck.cpp.i
-
-deck.s: deck.cpp.s
-
-.PHONY : deck.s
-
-# target to generate assembly for a file
-deck.cpp.s:
-	$(MAKE) -f CMakeFiles/Cpp_Project_Memory_Game.dir/build.make CMakeFiles/Cpp_Project_Memory_Game.dir/deck.cpp.s
-.PHONY : deck.cpp.s
-
 game.o: game.cpp.o
 
 .PHONY : game.o
@@ -411,9 +384,6 @@ help:
 	@echo "... carddeck.o"
 	@echo "... carddeck.i"
 	@echo "... carddeck.s"
-	@echo "... deck.o"
-	@echo "... deck.i"
-	@echo "... deck.s"
 	@echo "... game.o"
 	@echo "... game.i"
 	@echo "... game.s"

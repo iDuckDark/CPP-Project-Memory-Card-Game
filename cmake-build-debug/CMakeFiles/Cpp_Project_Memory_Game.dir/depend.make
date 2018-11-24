@@ -17,8 +17,6 @@ CMakeFiles/Cpp_Project_Memory_Game.dir/carddeck.cpp.o: ../carddeck.h
 CMakeFiles/Cpp_Project_Memory_Game.dir/carddeck.cpp.o: ../deck.h
 CMakeFiles/Cpp_Project_Memory_Game.dir/carddeck.cpp.o: ../reward.h
 
-CMakeFiles/Cpp_Project_Memory_Game.dir/deck.cpp.o: ../deck.cpp
-
 CMakeFiles/Cpp_Project_Memory_Game.dir/game.cpp.o: ../board.h
 CMakeFiles/Cpp_Project_Memory_Game.dir/game.cpp.o: ../card.h
 CMakeFiles/Cpp_Project_Memory_Game.dir/game.cpp.o: ../carddeck.h

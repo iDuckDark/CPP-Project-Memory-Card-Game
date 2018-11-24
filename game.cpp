@@ -64,7 +64,7 @@ void Game::makeRewardDeck() {
 void Game::nextRound() {
     ++nRound;
     awardActivePlayers();
-    if (nRound != 7) reset(); //TODO disable reset when game over
+    if (nRound != 7) reset();
 }
 
 int Game::getRound() const { return nRound; }
@@ -122,7 +122,8 @@ void Game::clearSelectedCards() {
 
 void Game::reset() {
     setAllPlayersActive();
-    if (mode == 1) temporaryRevealThreeCards();
+    board.reset();
+    if (mode == 1 && nRound == 1) temporaryRevealThreeCards();
     if (mode == 2) cardMap.clear();
     cout << "Cards are hidden now" << endl;
     board.reset();

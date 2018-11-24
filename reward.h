@@ -20,7 +20,7 @@ public:
 
     friend bool operator==(const Reward &, const Reward &);
 
-    Reward &operator=(const int &x); // conversion from int (assignment):
+    Reward &operator=(const int &); // conversion from int (assignment):
 
     explicit operator int();     //conversion to int (type-cast operator)
 
@@ -35,6 +35,5 @@ private:
     Reward &operator=(const Reward &);
 
 };
-
 
 #endif //CPP_PROJECT_MEMORY_GAME_REWARD_H

@@ -4,14 +4,10 @@
 
 #include "rules.h"
 
-Rules::Rules(int nPlayers) : nPlayers(nPlayers), currentSide(0), walrusBlockValue("Z0") {}
+Rules::Rules(const int &nPlayers) : nPlayers(nPlayers), currentSide(0), walrusBlockValue("Z0") {}
 
 bool Rules::isValid(const Game &game) {
-    if (twoCardsSelected(game)) {
-        cout << "Two Cards Selected True, is it equal? " << (*game.getPreviousCard() == *game.getCurrentCard()) << endl;
-        return (*game.getPreviousCard() == *game.getCurrentCard());
-    }
-    cout << "No Two Cards is Selected, but Rules is valid" << endl;
+    if (twoCardsSelected(game)) return (*game.getPreviousCard() == *game.getCurrentCard());
     return true;
 }
 
@@ -35,9 +31,7 @@ bool Rules::roundOver(const Game &game) {
 const Player &Rules::getNextPlayer(const Game &game) {
     const Game *gamePtr = &game;
     const Player &player = const_cast<Game *>(gamePtr)->getPlayer(sides[currentSide++]);
-//    Game& ptr = const_cast<Game&>(game);
-//    const Player &p = ptr.getPlayer(sides[currentSide++]);
-    if (currentSide >= nPlayers) { currentSide = 0; }
+    if (currentSide >= nPlayers) currentSide = 0;
     return player;
 }
 

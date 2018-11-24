@@ -8,9 +8,9 @@ Player::Player(const string &name) : name(name), nRubies(0), active(true), endOf
 
 string Player::getName() const { return name; }
 
-void Player::setActive(bool active) { this->active = active; }
+void Player::setActive(const bool &active) { this->active = active; }
 
-bool Player::isActive() { return active; }
+bool Player::isActive() const { return active; }
 
 int Player::getNRubies() const { return nRubies; }
 
@@ -18,11 +18,11 @@ void Player::addReward(const Reward &reward) {
     nRubies += reward.getNRubies(), cout << "Awarded " << getName() << ": " << reward << "!" << endl;
 }
 
-void Player::setDisplayMode(bool endOfGame) { this->endOfGame = endOfGame; }
+void Player::setDisplayMode(const bool &endOfGame) { this->endOfGame = endOfGame; }
 
 Side Player::getSide() const { return side; }
 
-void Player::setSide(Side side) { this->side = side; }
+void Player::setSide(const Side &side) { this->side = side; }
 
 ostream &operator<<(ostream &os, const Player &player) {
     os << player.getName() << ": ";
@@ -38,14 +38,8 @@ bool operator>(const Player &lhs, const Player &rhs) { return lhs.getNRubies() >
 bool operator==(const Player &l, const Player &r) { return l.getName() == r.getName(); }
 
 string Player::getSideToString() const {
-    switch (side) {
-        case Side::Top:
-            return "top";
-        case Side::Bottom:
-            return "bottom";
-        case Side::Right:
-            return "right";
-        default:
-            return "left";
-    }
+    if (side == Side::Top) return "top";
+    else if (side == Side::Bottom) return "bottom";
+    else if (side == Side::Right) return "right";
+    else return "left";
 }

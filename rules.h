@@ -35,7 +35,7 @@ private:
 
 public:
 
-    explicit Rules(int nPlayers = 0);
+    explicit Rules(const int &nPlayers = 0);
 
     bool isValid(const Game &game);
 

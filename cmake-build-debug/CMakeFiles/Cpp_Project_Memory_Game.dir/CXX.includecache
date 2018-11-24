@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/board.cpp
+board.h
+/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/board.h
+
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/board.h
 vector
 -
@@ -16,6 +20,10 @@ card.h
 carddeck.h
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/carddeck.h
 
+/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/card.cpp
+card.h
+/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/card.h
+
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/card.h
 iostream
 -
@@ -23,6 +31,10 @@ string
 -
 cmath
 -
+
+/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/carddeck.cpp
+carddeck.h
+/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/carddeck.h
 
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/carddeck.h
 deck.h
@@ -75,6 +87,10 @@ iostream
 -
 string
 -
+
+/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rewarddeck.cpp
+rewarddeck.h
+/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rewarddeck.h
 
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rewarddeck.h
 deck.h

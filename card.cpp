@@ -30,7 +30,6 @@ Card::operator FaceAnimal() { return _faceAnimal; }
 
 int Card::getNRows() const { return _nRows; }
 
-
 char Card::getAnimal() const {
     switch (_faceAnimal) {
         case Crab:
@@ -66,10 +65,7 @@ char Card::getColor() const {
 }
 
 ostream &operator<<(ostream &os, const Card &card) {
-    for (int row = 0; row < card.getNRows(); ++row) {
-        string rowString = card(row);
-        cout << rowString << endl;
-    }
+    for (int row = 0; row < card.getNRows(); ++row) os << card(row) << endl;
     return os;
 }
 

@@ -19,17 +19,17 @@ class Card {
 
 private:
 
-    Card(const FaceAnimal &faceAnimal, const FaceBackground &faceBackground);
-
-    Card(const Card &);
-
-    Card &operator=(const Card &);
-
     FaceAnimal _faceAnimal;
     FaceBackground _faceBackground;
     int _nRows = 3;
     char _color;
     char _animal;
+
+    Card(const FaceAnimal &faceAnimal, const FaceBackground &faceBackground);
+
+    Card(const Card &);
+
+    Card &operator=(const Card &);
 
     int getNRows() const;
 

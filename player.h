@@ -18,8 +18,8 @@ private:
     string name;
     bool active;
     bool endOfGame;
-    Side side;
     int nRubies;
+    Side side;
 
     string getSideToString() const;
 
@@ -29,19 +29,19 @@ public:
 
     string getName() const;
 
-    void setActive(bool);
+    void setActive(const bool &);
 
-    bool isActive();
+    bool isActive() const;
 
     int getNRubies() const;
 
     void addReward(const Reward &);
 
-    void setDisplayMode(bool);
+    void setDisplayMode(const bool &);
 
     Side getSide() const;
 
-    void setSide(Side);
+    void setSide(const Side &);
 
     friend ostream &operator<<(ostream &, const Player &);
 
@@ -51,6 +51,5 @@ public:
 
     friend bool operator==(const Player &, const Player &);
 };
-
 
 #endif //CPP_PROJECT_MEMORY_GAME_PLAYER_H
