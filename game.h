@@ -13,7 +13,7 @@
 #include "board.h"
 #include "rewarddeck.h"
 
-inline const vector<Side> sides = {Side::Top, Side::Bottom, Side::Left, Side::Right};
+inline const extern vector<Side> sides = {Side::Top, Side::Bottom, Side::Left, Side::Right};
 
 class Game {
 
@@ -46,6 +46,8 @@ private:
     void temporaryRevealThreeCards();
 
     void getValidInput(Letter *letter, Number *number);
+
+    int toEnum(const char &);
 
     void awardActivePlayers();
 

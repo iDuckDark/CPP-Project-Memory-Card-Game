@@ -105,7 +105,8 @@ void Game::setCurrentCard(const Card *card) {
     if (card != nullptr) {
         vector<const Card *> &cardVector = cards[static_cast<int>(currentSide)];
         cardVector.push_back(card);
-    } else if (card == nullptr && !cards[static_cast<int>(currentSide)].empty() && twoCardsSelected()) { clearSelectedCards(); }
+    } else if (card == nullptr && !cards[static_cast<int>(currentSide)].empty() &&
+               twoCardsSelected()) { clearSelectedCards(); }
 }
 
 bool Game::twoCardsSelected() const {
@@ -267,3 +268,25 @@ void Game::expertModePrint() const {
 }
 
 map<string, Card *> &Game::getCardMap() { return cardMap; }
+
+int Game::toEnum(const char &input) {
+    switch (input) {
+        case 'A':
+        case '1':
+            return 1;
+        case 'B':
+        case '2':
+            return 2;
+        case 'C':
+        case '3':
+            return 3;
+        case 'D':
+        case '4':
+            return 4;
+        case 'E':
+        case '5':
+            return 5;
+        default:
+            return -1;
+    }
+}

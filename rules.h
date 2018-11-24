@@ -5,6 +5,7 @@
 #ifndef CPP_PROJECT_MEMORY_GAME_RULES_H
 #define CPP_PROJECT_MEMORY_GAME_RULES_H
 
+#include <stdexcept>
 #include "game.h"
 
 class Rules {

@@ -12,13 +12,12 @@ Board::Board() {
     }
 }
 
-//TODO Maybe need a copy constructor
 Board::Board(const Board &board) : cards(board.cards), cards2D(board.cards2D) {
     screen = new string[19];
-    for (int i = 0; i < 19; i++) { screen[i] = board.screen[i]; }
+    for (int i = 0; i < 19; i++) screen[i] = board.screen[i];
     for (auto &faceDownCard : faceDownCards) {
         faceDownCard = new bool[5];
-        for (int y = 0; y < 5; y++) { faceDownCard[y] = true; }
+        for (int y = 0; y < 5; y++)faceDownCard[y] = true;
     }
     for (int i = 0; i < 5; i++) { for (int j = 0; j < 5; j++) { faceDownCards[i][j] = board.faceDownCards[i][j]; }}
 }
@@ -66,9 +65,7 @@ bool Board::isFaceUp(const Letter &letter, const Number &number) const {
     return !((faceDownCards[getIndex(letter, "Letter")])[getIndex(number, "Number")]);
 }
 
-bool Board::isFaceDown(const int &i, const int &j) const {
-    return faceDownCards[i][j];
-}
+bool Board::isFaceDown(const int &i, const int &j) const { return faceDownCards[i][j]; }
 
 int Board::getIndex(const int &input, const string &typeEnum) const {
     switch (input) {
@@ -92,12 +89,12 @@ Card *Board::getCard(const Letter &letter, const Number &number) {
 }
 
 bool Board::turnFaceUp(const Letter &letter, const Number &number) {
-    if (isFaceUp(letter, number)) { return false; }
+    if (isFaceUp(letter, number)) return false;
     return !(faceDownCards[getIndex(letter, "Letter")][getIndex(number, "Number")] = false);
 }
 
 bool Board::turnFaceDown(const Letter &letter, const Number &number) {
-    if (!isFaceUp(letter, number)) { return false; }
+    if (!isFaceUp(letter, number)) return false;
     return (faceDownCards[getIndex(letter, "Letter")][getIndex(number, "Number")] = true);
 }
 
@@ -137,15 +134,12 @@ void Board::swapCards(const Letter &l1, const Number &n1, const Letter &l2, cons
     //cout << "BEFORE SWAP CARDS" << endl;
     //cout << *(*cards2D[getIndex(l1, "Letter")])[getIndex(n1, "Number")] << endl;
     //cout << *(*cards2D[getIndex(l2, "Letter")])[getIndex(n2, "Number")] << endl;
-
     Card *tempCard = (*cards2D[getIndex(l1, "Letter")])[getIndex(n1, "Number")];
     (*cards2D[getIndex(l1, "Letter")])[getIndex(n1, "Number")] = card2;
     (*cards2D[getIndex(l2, "Letter")])[getIndex(n2, "Number")] = tempCard;
-
     //cout << "AFTER SWAP CARDS" << endl << *card1 << *card2 << endl;
     //cout << *(*cards2D[getIndex(l1, "Letter")])[getIndex(n1, "Number")] << endl;
     //cout << *(*cards2D[getIndex(l2, "Letter")])[getIndex(n2, "Number")] << endl;
-
     bool &first = faceDownCards[getIndex(l1, "Letter")][getIndex(n1, "Number")];
     bool &second = faceDownCards[getIndex(l2, "Letter")][getIndex(n2, "Number")];
     //cout << "BEFORE: " << first << endl;
@@ -155,26 +149,4 @@ void Board::swapCards(const Letter &l1, const Number &n1, const Letter &l2, cons
     second = temp;
     //cout << "AFTER: " << first << endl;
     //cout << "AFTER: " << second << endl;
-}
-
-int toEnum(char &input) {
-    switch (input) {
-        case 'A':
-        case '1':
-            return 1;
-        case 'B':
-        case '2':
-            return 2;
-        case 'C':
-        case '3':
-            return 3;
-        case 'D':
-        case '4':
-            return 4;
-        case 'E':
-        case '5':
-            return 5;
-        default:
-            return -1;
-    }
 }

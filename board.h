@@ -15,12 +15,9 @@ enum Letter {
     A = 1, B = 2, C = 3, D = 4, E = 5, Z = -1
 };
 
-
 enum Number {
     One = 1, Two = 2, Three = 3, Four = 4, Five = 5, Zero = -1
 };
-
-int toEnum(char &input);
 
 class Board {
 

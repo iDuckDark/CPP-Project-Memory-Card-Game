@@ -82,4 +82,3 @@ string Card::operator()(const int &row) const {
 bool operator==(const Card &lhs, const Card &rhs) {
     return (lhs.getAnimal() == rhs.getAnimal()) || (lhs.getColor() == rhs.getColor());
 }
-
