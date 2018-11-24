@@ -22,22 +22,25 @@ bool Rules::twoCardsSelected(const Game &game) const {
 
 bool Rules::gameOver(const Game &game) { return game.getRound() >= 7; }
 
-bool Rules::roundOver(const Game &game) { //TODO Fix error //Game g = game;
-//    int nActivePlayers = 0;
-//    for (int i = 0; i < nPlayers; i++) {
-//        auto player = getNextPlayer(g);
-//        if (player.isActive()) { nActivePlayers++; }
-//    }
-//    return nActivePlayers == 1;
-    if (game.getNActivePlayers() == 1) walrusBlockValue = "Z0";
-    return game.getNActivePlayers() == 1;
+bool Rules::roundOver(const Game &game) {
+    int nActivePlayers = 0;
+    for (int i = 0; i < nPlayers; i++) {
+        auto player = getNextPlayer(game);
+        if (player.isActive()) { nActivePlayers++; }
+    }
+    if (nActivePlayers == 1) walrusBlockValue = "Z0";
+    return nActivePlayers == 1;
+    //if (game.getNActivePlayers() == 1) walrusBlockValue = "Z0";
+    //return game.getNActivePlayers() == 1;
 }
 
 const Player &Rules::getNextPlayer(const Game &game) {
-    Game const *gamePtr = game;
-    const Player &p = game.getPlayer(sides[currentSide++]);
+    const Game *gamePtr = &game;
+    const Player &player = const_cast<Game *>(gamePtr)->getPlayer(sides[currentSide++]);
+//    Game& ptr = const_cast<Game&>(game);
+//    const Player &p = ptr.getPlayer(sides[currentSide++]);
     if (currentSide >= nPlayers) { currentSide = 0; }
-    return p;
+    return player;
 }
 
 void Rules::handleExpertRules(Game &game, int &sideCounter) {
