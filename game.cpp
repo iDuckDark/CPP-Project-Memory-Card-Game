@@ -4,7 +4,7 @@
 
 #include "game.h"
 
-Game::Game(int &mode, int &nPlayers) : nRound(1), currentSide(Top) {
+Game::Game(int &mode, int &nPlayers) : nRound(1), currentSide(Side::Top) {
     cout << endl << "Welcome to Nevin's and Peter's Memory Card Game Fall 2018" << endl;
     setMode(mode);
     createPlayers(nPlayers);
@@ -88,14 +88,14 @@ Player &Game::getPlayer(Side side) {
 }
 
 const Card *Game::getPreviousCard() const {
-    vector<const Card *> cardVector = cards[currentSide];
+    vector<const Card *> cardVector = cards[static_cast<int>(currentSide)];
     if (cardVector.empty()) { throw new out_of_range("No previous card selected!"); }
     const Card *previousCard = cardVector[0];
     return previousCard;
 }
 
 const Card *Game::getCurrentCard() const {
-    vector<const Card *> cardVector = cards[currentSide];
+    vector<const Card *> cardVector = cards[static_cast<int>(currentSide)];
     if (cardVector.size() <= 1) { throw new out_of_range("No current card selected!"); }
     const Card *currentCard = cardVector[1];
     return currentCard;
@@ -103,9 +103,9 @@ const Card *Game::getCurrentCard() const {
 
 void Game::setCurrentCard(const Card *card) {
     if (card != nullptr) {
-        vector<const Card *> &cardVector = cards[currentSide];
+        vector<const Card *> &cardVector = cards[static_cast<int>(currentSide)];
         cardVector.push_back(card);
-    } else if (card == nullptr && !cards[currentSide].empty() && twoCardsSelected()) { clearSelectedCards(); }
+    } else if (card == nullptr && !cards[static_cast<int>(currentSide)].empty() && twoCardsSelected()) { clearSelectedCards(); }
 }
 
 bool Game::twoCardsSelected() const {
@@ -114,7 +114,7 @@ bool Game::twoCardsSelected() const {
 }
 
 void Game::clearSelectedCards() {
-    vector<const Card *> &cardVector = cards[currentSide];
+    vector<const Card *> &cardVector = cards[static_cast<int>(currentSide)];
     cardVector.pop_back();
     cardVector.pop_back();
 }
@@ -133,13 +133,13 @@ void Game::temporaryRevealThreeCards() {
     cout << "Three random cards are revealed temporary in front of the players" << endl;
     for (const auto &player: players) {
         switch (player.getSide()) {
-            case Top:
+            case Side::Top:
                 for (int i = 0; i < 3; i++) board.turnFaceUp(A, Number(Two + i));
                 break;
-            case Bottom :
+            case Side::Bottom :
                 for (int i = 0; i < 3; i++) board.turnFaceUp(E, Number(Two + i));
                 break;
-            case Left:
+            case Side::Left:
                 for (int i = 0; i < 3; i++) board.turnFaceUp(Letter(B + i), One);
                 break;
             default:

@@ -13,7 +13,7 @@
 #include "board.h"
 #include "rewarddeck.h"
 
-inline const vector<Side> sides = {Top, Bottom, Left, Right};
+inline const vector<Side> sides = {Side::Top, Side::Bottom, Side::Left, Side::Right};
 
 class Game {
 
@@ -95,7 +95,7 @@ public:
 
     map<string, Card *> &getCardMap();
 
-    Card *getCard(Letter &, Number &, const FaceAnimal &);
+    Card *getCard(Letter &, Number &, const FaceAnimal &); //Expert Get card
 
     void hideCard(const Letter &, const Number &); //Expert penguin
 

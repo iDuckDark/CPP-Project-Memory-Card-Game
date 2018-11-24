@@ -4,7 +4,7 @@
 
 #include "player.h"
 
-Player::Player(const string &name) : name(name), nRubies(0), active(true), endOfGame(false), side(Top) {}
+Player::Player(const string &name) : name(name), nRubies(0), active(true), endOfGame(false), side(Side::Top) {}
 
 string Player::getName() const { return name; }
 
@@ -39,11 +39,11 @@ bool operator==(const Player &l, const Player &r) { return l.getName() == r.getN
 
 string Player::getSideToString() const {
     switch (side) {
-        case Top:
+        case Side::Top:
             return "top";
-        case Bottom:
+        case Side::Bottom:
             return "bottom";
-        case Right:
+        case Side::Right:
             return "right";
         default:
             return "left";
