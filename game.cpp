@@ -4,25 +4,27 @@
 
 #include "game.h"
 
-Game::Game(int &mode, int &nPlayers) : nRound(1), currentSide(Side::Top) {
+Game::Game(int &sideCounter, int &nPlayers) : nRound(1), currentSide(Side::Top), sideCounter(sideCounter) {
     cout << endl << "Welcome to Nevin's and Peter's Memory Card Game Fall 2018" << endl;
-    setMode(mode);
+    setMode();
     createPlayers(nPlayers);
     makeCardDeck(), makeRewardDeck();
     reset();
     ready = true;
+    sideCounter = nPlayers - 1;
 }
 
-void Game::setMode(int &mode) {
+void Game::setMode() {
     cout << "Please choose your game version:" << endl;
     cout << "Enter 1 for Base Mode and 2 for Expect Mode: ";
     while (true) {
         char input;
         cin >> input;
-        this->mode = mode = ((int) input - 48);
+        mode = ((int) input - 48);
         if (mode == 1 || mode == 2) break;
         else cout << "Invalid input, please try again: ";
     }
+    if (mode == 2) walrusBlockValue = "Z0";
 }
 
 void Game::createPlayers(int &nPlayers) {
@@ -65,6 +67,9 @@ void Game::nextRound() {
     ++nRound;
     awardActivePlayers();
     if (nRound != 7) reset();
+    int nActive = 0;
+    for (auto player: players) if (player.isActive()) nActive++;
+    if (nActive == 1) walrusBlockValue = "Z0";
 }
 
 int Game::getRound() const { return nRound; }
@@ -102,11 +107,13 @@ const Card *Game::getCurrentCard() const {
 }
 
 void Game::setCurrentCard(const Card *card) {
-    if (card != nullptr) {
-        vector<const Card *> &cardVector = cards[static_cast<int>(currentSide)];
-        cardVector.push_back(card);
-    } else if (card == nullptr && !cards[static_cast<int>(currentSide)].empty() &&
-               twoCardsSelected()) { clearSelectedCards(); }
+    if (mode == 1) {
+        if (card != nullptr) {
+            vector<const Card *> &cardVector = cards[static_cast<int>(currentSide)];
+            cardVector.push_back(card);
+        } else if (card == nullptr && !cards[static_cast<int>(currentSide)].empty() &&
+                   twoCardsSelected()) { clearSelectedCards(); }
+    }
 }
 
 bool Game::twoCardsSelected() const {
@@ -169,17 +176,22 @@ char Game::LetterToChar(const Letter &_letter) {
 }
 
 Card *Game::getCard(const Letter &letter, const Number &number) {
-    Letter let = letter;
-    Number num = number;
-    if (mode == 1) getValidInput(&let, &num, Animals);
-    board.turnFaceUp(let, num);
-    return board.getCard(let, num);
+    if (mode == 1) {
+        Letter let = letter;
+        Number num = number;
+        getValidInput(&let, &num, Animals);
+        board.turnFaceUp(let, num);
+        return board.getCard(let, num);
+    } else { getExpertRulesInput(); }
 }
 
-Card *Game::getCard(Letter &let, Number &num, const FaceAnimal &animal) {
-    if (animal == Penguin || animal == Walrus || animal == Crab) getValidInput(&let, &num, Animals);
+Card *Game::getExpertCard(Letter &let, Number &num, const FaceAnimal &animal) {
+    if (animal == Walrus || animal == Crab) getValidInput(&let, &num, Animals);
     if (animal == Octopus) getValidInput(&let, &num, Octopus);
-    if (animal == Penguin) { if (!board.isFaceUp(let, num)) board.turnFaceUp(let, num); else board.turnFaceDown(let, num); }
+    if (animal == Penguin) {
+        getValidInput(&let, &num, Octopus);
+        if (!board.isFaceUp(let, num)) board.turnFaceUp(let, num); else board.turnFaceDown(let, num);
+    }
     return board.getCard(let, num);
 }
 
@@ -206,11 +218,15 @@ void Game::getValidInput(Letter *letter, Number *number, const FaceAnimal &faceA
 }
 
 bool Game::isValidCard(const Letter &letter, const Number &number) {
-    int let = static_cast<Letter>(letter);
-    int num = static_cast<Number>(number);
-    if (let >= 0 && let <= 4 && num >= 0 && num <= 4)
-        if (letter != 2 && number != 2) { return true; } else throw out_of_range("Not allowed to pick treasure card!");
-    throw out_of_range("Card is out of range");
+    int let = static_cast<Letter>(letter) - 1;
+    int num = static_cast<Number>(number) - 1;
+    if (let >= 0 && let <= 4 && num >= 0 && num <= 4) {
+        if (letter == 2 && number == 2) { throw out_of_range("Not allowed to pick treasure card! game"); }
+        else { return true; }
+    } else {
+        cout << let << num << endl;
+        throw out_of_range("Card is out of range");
+    }
 }
 
 void Game::awardActivePlayers() {
@@ -221,13 +237,18 @@ ostream &operator<<(ostream &os, const Game &game) {
     if (game.mode == 1 && game.getRound() < 7) {
         os << game.board << endl;
         for (const auto &player: game.players) { os << player << endl; }
-    } else if (game.mode == 2) { game.expertModePrint(); }
-    else game.printLeastToMostRubiesAndWinner();
+    } else if (game.mode == 2) {
+        cout << game.board << endl;
+        game.expertModePrint();
+    } else game.printLeastToMostRubiesAndWinner();
     return os;
 }
 
 void Game::swapCards(const Letter &l1, const Number &n1, const Letter &l2, const Number &n2) {
-    board.turnFaceDown(l2, n2);
+    board.turnFaceDown(l2, n2); //original face down -> face up
+    //_ underscore is face down// normal is face up
+    //Normal Up -> down
+    //board.turnFaceUp(l1,n1);
     board.swapCards(l1, n1, l2, n2);
 }
 
@@ -252,55 +273,6 @@ void Game::expertModePrint() const {
     cout << endl;
 }
 
-void Game::expertRules(const Letter &_letter, const Number &_number,
-                       const Letter &letter, const Number &number,
-                       const FaceAnimal &faceAnimal, Card *card) {
-    if (faceAnimal == Octopus) expertGameOctopus(_letter, _number, letter, number, Octopus, card);
-    else if (faceAnimal == Penguin) expertGamePenguin();
-}
-
-void Game::expertGameOctopus(const Letter &_letter, const Number &_number,
-                             const Letter &letter, const Number &number,
-                             const FaceAnimal &faceAnimal, Card *card) {
-    char cara = LetterToChar(_letter);     //card to be swapped with second card
-    char cara2 = LetterToChar(letter);     //current card
-    Card *selectedCard = getCard(_letter, _number); //turns face up
-    if (cardMap.count(cara + to_string(_number))) {     //if the second card is already face up
-        cout << cara + to_string(_number) << endl;
-        Card *temp = card;
-        card = selectedCard;
-        selectedCard = temp;
-        cardMap.operator[](cara + to_string(_number)) = selectedCard; //swap hashes
-        cardMap.operator[](cara2 + to_string(number)) = card;
-    } else {    //swapping with faced down card
-        //game.hideCard(_letter, _number); //turn face down
-        auto it = (cardMap).find(cara2 + to_string(number));
-        cardMap.erase(it);
-        Card *temp = card;
-        card = selectedCard;
-        selectedCard = temp;
-        cardMap.operator[](cara + to_string(_number)) = selectedCard;         //hashed to new location
-        swapCards(letter, number, _letter, _number); //Expert Octopus
-    }
-}
-
-void Game::expertGamePenguin() {
-    Letter someLetter = Z;
-    Number someNumber = Zero;
-    Card *selectedCard = getCard(someLetter, someNumber, Penguin);
-    char cara = LetterToChar(someLetter);
-    if (cardMap.count(cara + to_string(someNumber))) {
-        cout << "Turning Face down :" << endl;
-        cardMap.erase(cara + to_string(someNumber));
-        //game.hideCard(someLetter, someNumber);
-    } else {
-        cout << "Turning Face Up:" << endl;
-        cardMap.operator[](cara + to_string(someNumber)) = selectedCard;
-        setCurrentCard(selectedCard);
-    }
-    cout << *selectedCard << endl;
-}
-
 int Game::toEnum(const char &input) {
     switch (input) {
         case 'A':
@@ -322,3 +294,153 @@ int Game::toEnum(const char &input) {
             return -1;
     }
 }
+
+
+Card *Game::getExpertCard(const Letter &letter, const Number &number) {
+    Letter let = letter;
+    Number num = number;
+    board.turnFaceUp(let, num);
+    return board.getCard(let, num);
+}
+
+void Game::setExpertCurrentCard(const Card *card) {
+    if (card != nullptr) {
+        vector<const Card *> &cardVector = cards[static_cast<int>(currentSide)];
+        cardVector.push_back(card);
+    } else if (card == nullptr && !cards[static_cast<int>(currentSide)].empty() &&
+               twoCardsSelected()) { clearSelectedCards(); }
+}
+
+void Game::getExpertRulesInput() {
+    Letter letter = Z;
+    Number number = Zero;
+    while (true) {
+        getExpertCard(letter, number, Walrus);
+        if (convertToString(letter, number) == walrusBlockValue) cout << "Selected Card blocked by walrus" << endl;
+        else break;
+    }
+    Card *selectedCard = getExpertCard(letter, number);
+    setCard(letter, number, selectedCard);
+    setExpertCurrentCard(selectedCard);
+    expertRules(selectedCard, letter, number, sideCounter);
+}
+
+void Game::expertRules(Card *card, Letter &letter, Number &number, int &sideCounter) {
+    switch (card->getAnimal()) {
+        case 'O':
+            expertOctopus(card, letter, number);
+            break;
+        case 'P':
+            expertPenguin(sideCounter);
+            break;
+        case 'C':
+            expertCrab(card, letter, number, sideCounter);
+            break;
+        case 'W':
+            expertWalrus();
+            break;
+        default:
+            expertTurtle();
+            break;
+    }
+}
+
+void Game::expertOctopus(Card *card, Letter &letter, Number &number) {
+    cout << "You have picked an Octopus!" << endl;
+    string pick = "Pick position with an adjacent card in the same (row or column) to swap: ";
+    cout << pick << endl;
+    Letter _letter = Z;
+    Number _number = Zero;
+    while (true) {
+        getExpertCard(_letter, _number, Octopus);
+        if (!(_letter == letter || number == _number)) cout << "Invalid Card! " + pick << endl; else break;
+    }
+    char cara = LetterToChar(_letter);     //card to be swapped with second card
+    char cara2 = LetterToChar(letter);     //current card
+    Card *selectedCard = getExpertCard(_letter, _number); //turns face up
+    map<string, Card *> &cardMap = getCardMap();
+    if (cardMap.count(cara + to_string(_number))) {     //if the second card is already face up
+        cout << cara + to_string(_number) << endl;
+        Card *temp = card;
+        card = selectedCard;
+        selectedCard = temp;
+        cardMap.operator[](cara + to_string(_number)) = selectedCard; //swap hashes
+        cardMap.operator[](cara2 + to_string(number)) = card;
+    } else {    //swapping with faced down card
+        board.turnFaceDown(_letter, _number);  //hideCard(_letter, _number); //turn face down
+        auto it = (cardMap).find(cara2 + to_string(number));
+        cardMap.erase(it);
+        Card *temp = card;
+        card = selectedCard;
+        selectedCard = temp;
+        cardMap.operator[](cara + to_string(_number)) = selectedCard;         //hashed to new location
+        swapCards(letter, number, _letter, _number); //Expert Octopus
+        //_ underscore is face down// normal is face up
+    }
+}
+
+void Game::expertPenguin(int &sideCounter) {
+    cout << "You have picked a Penguin!" << endl;
+    cout << "Pick a card to change face up or face down: " << endl;
+    Letter someLetter = Z;
+    Number someNumber = Zero;
+    Card *selectedCard = getExpertCard(someLetter, someNumber, Penguin);
+    char cara = LetterToChar(someLetter);
+    if (cardMap.count(cara + to_string(someNumber))) {
+        cout << "Turning Face down :" << endl;
+        cardMap.erase(cara + to_string(someNumber));
+        board.turnFaceDown(someLetter, someNumber);//game.hideCard(someLetter, someNumber);
+    } else {
+        cout << "Turning Face Up:" << endl;
+        cardMap.operator[](cara + to_string(someNumber)) = selectedCard;
+        board.turnFaceUp(someLetter, someNumber);
+        //setExpertCurrentCard(selectedCard);
+    }
+    cout << *selectedCard << endl;
+}
+
+void Game::expertWalrus() {
+    cout << "You have picked a Walrus!" << endl;
+    cout << "Pick a card to block from being chosen in the next round:" << endl;
+    Letter someLetter = Z;
+    Number someNumber = Zero;
+    getExpertCard(someLetter, someNumber, Walrus);
+    walrusBlockValue = LetterToChar(someLetter) + to_string(someNumber);
+}
+
+void Game::expertCrab(Card *card, Letter &letter, Number &number, int &sideCounter) {
+    Player &player = getPlayer(sides[sideCounter]);
+    cout << "You have picked a Crab!" << endl;
+    cout << *card << endl;
+    cout << "Pick another card. If it doesn't match, you lose the round:" << endl;
+    Letter _letter = Z;
+    Number _number = Zero;
+    Card *selectedCard;
+    while (true) {
+        cout << *(selectedCard = getExpertCard(_letter, _number, Crab)) << endl;
+        if (selectedCard->getColor() == card->getColor() && selectedCard->getAnimal() == card->getAnimal()) {
+            cout << "This is the card you just picked. Choose another" << endl;
+        } else break;
+    }
+    cout << player.getName() + " picked:" << endl;
+    if (selectedCard->getColor() != card->getColor() && selectedCard->getAnimal() != card->getAnimal()) {
+        cout << "The cards didn't match :( " + player.getName() + " is out of the current round." << endl;
+        player.setActive(false);
+    } else {
+        cout << "The cards matched :) " + player.getName() + " is still in the current round." << endl;
+        char cara = LetterToChar(_letter);
+        cardMap.operator[](cara + to_string(_number)) = selectedCard;
+        board.turnFaceUp(_letter, _number);
+    }
+}
+
+void Game::expertTurtle() {
+    cout << "You have picked a Turtle!" << endl;
+    cout << "Skipping next player's turn." << endl;
+    sideCounter = (sideCounter + 1) % players.size();
+}
+
+map<string, Card *> &Game::getCardMap() { return cardMap; }
+
+//TODO PENGUIN TURN FACEDOWN IF CARD ALREADY FACE UP input
+//TODO A2

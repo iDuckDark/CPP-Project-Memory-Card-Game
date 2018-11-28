@@ -7,10 +7,9 @@
 
 #include <map>
 #include <stdexcept>
-
+#include "board.h"
 #include "player.h"
 #include "card.h"
-#include "board.h"
 #include "rewarddeck.h"
 
 inline const extern vector<Side> sides = {Side::Top, Side::Bottom, Side::Left, Side::Right};
@@ -41,10 +40,6 @@ public:
 
     void nextRound();
 
-    void expertRules(const Letter &, const Number &, const Letter &, const Number &, const FaceAnimal &, Card *);
-
-    Card *getCard(Letter &, Number &, const FaceAnimal &);
-
 private:
 
     int mode{0};
@@ -56,10 +51,12 @@ private:
     vector<const Reward *> rewardDeck;
     map<string, Card *> cardMap;
     bool ready = false;
+    string walrusBlockValue;
+    int &sideCounter;
 
     void setSide(Side);
 
-    void setMode(int &);
+    void setMode();
 
     void createPlayers(int &);
 
@@ -95,11 +92,29 @@ private:
 
     bool isValidCard(const Letter &letter, const Number &number);
 
-    void expertGameOctopus(const Letter &, const Number &, const Letter &, const Number &, const FaceAnimal &, Card *);
+    Card *getExpertCard(Letter &, Number &, const FaceAnimal &);
 
-    void expertGamePenguin();
+    Card *getExpertCard(const Letter &, const Number &);
+
+    void setExpertCurrentCard(const Card *);
+
+    void getExpertRulesInput();
+
+    void expertRules(Card *, Letter &, Number &, int &);
+
+    void expertOctopus(Card *, Letter &, Number &);
+
+    void expertPenguin(int &);
+
+    void expertWalrus();
+
+    void expertCrab(Card *, Letter &, Number &, int &);
+
+    void expertTurtle();
 
     void swapCards(const Letter &, const Number &, const Letter &, const Number &);
+
+    map<string, Card *> &getCardMap();
 };
 
 #endif //CPP_PROJECT_MEMORY_GAME_GAME_H

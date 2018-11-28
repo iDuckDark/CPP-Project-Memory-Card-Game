@@ -21,6 +21,7 @@ enum Number {
 
 class Board {
 
+
 public:
     Board();
 
