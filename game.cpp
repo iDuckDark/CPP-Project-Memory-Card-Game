@@ -237,10 +237,8 @@ ostream &operator<<(ostream &os, const Game &game) {
     if (game.mode == 1 && game.getRound() < 7) {
         os << game.board << endl;
         for (const auto &player: game.players) { os << player << endl; }
-    } else if (game.mode == 2) {
-        cout << game.board << endl;
-        game.expertModePrint();
-    } else game.printLeastToMostRubiesAndWinner();
+    } else if (game.mode == 2) { game.expertModePrint(); }
+    else game.printLeastToMostRubiesAndWinner();
     return os;
 }
 
