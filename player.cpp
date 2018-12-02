@@ -2,6 +2,7 @@
 // Created by iDarkDuck on 2018-10-19.
 //
 #define TEST_PLAYER
+
 #include "player.h"
 
 Player::Player(const string &name) : name(name), nRubies(0), active(true), endOfGame(false), side(Side::Top) {}
@@ -37,6 +38,8 @@ bool operator>(const Player &lhs, const Player &rhs) { return lhs.getNRubies() >
 
 bool operator==(const Player &l, const Player &r) { return l.getName() == r.getName(); }
 
+bool operator!=(const Player &l, const Player &r) { return l.getName() != r.getName(); }
+
 string Player::getSideToString() const {
     if (side == Side::Top) return "top";
     else if (side == Side::Bottom) return "bottom";
@@ -46,11 +49,34 @@ string Player::getSideToString() const {
 
 #ifdef TEST_PLAYER
 #if 0
+
 int main() {
-    cout<<"TEST_PLAYER"<<endl;
+    cout << "TEST_PLAYER" << endl;
     Player p = Player("Peter");
-    cout << p.getName() << endl;
+    p.setSide(Side::Top);
+    cout << "Printing player start of the game " << endl;
     cout << p << endl;
+    assert("Peter" == p.getName());
+    assert(p.getSide() == Side::Top);
+    assert(p.isActive() == true);
+    assert(p.getNRubies() == 0);
+    RewardDeck &r = RewardDeck::make_RewardDeck();
+    Reward *reward = r.getNext();
+    p.addReward(*reward);
+    assert(p.getNRubies() == reward->getNRubies());
+    p.setActive(false);
+    assert(p.isActive() == false);
+    p.setDisplayMode(true);
+    cout << "Printing player end of the game " << endl;
+    cout << p << endl;
+    Player p1 = Player("Nevin");
+    assert(p > p1);
+    assert(p1 < p);
+    assert(p == p);
+    assert(p != p1);
+    Player p2 = Player("Peter");
+    assert(p == p2);
 }
+
 #endif
 #endif // TEST_PLAYER

@@ -6,22 +6,14 @@
 #define CPP_PROJECT_MEMORY_GAME_PLAYER_H
 
 #include <vector>
-#include "reward.h"
+#include <cassert>
+#include "rewarddeck.h"
 
 enum class Side {
     Top, Bottom, Left, Right
 };
 
 class Player {
-
-private:
-    string name;
-    bool active;
-    bool endOfGame;
-    int nRubies;
-    Side side;
-
-    string getSideToString() const;
 
 public:
 
@@ -50,6 +42,18 @@ public:
     friend bool operator>(const Player &, const Player &);
 
     friend bool operator==(const Player &, const Player &);
+
+    friend bool operator!=(const Player &, const Player &);
+
+private:
+
+    string name;
+    bool active;
+    bool endOfGame;
+    int nRubies;
+    Side side;
+
+    string getSideToString() const;
 };
 
 #endif //CPP_PROJECT_MEMORY_GAME_PLAYER_H

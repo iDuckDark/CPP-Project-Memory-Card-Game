@@ -10,6 +10,9 @@ CMakeFiles/Cpp_Project_Memory_Game.dir/board.cpp.o: ../reward.h
 
 CMakeFiles/Cpp_Project_Memory_Game.dir/card.cpp.o: ../card.cpp
 CMakeFiles/Cpp_Project_Memory_Game.dir/card.cpp.o: ../card.h
+CMakeFiles/Cpp_Project_Memory_Game.dir/card.cpp.o: ../carddeck.h
+CMakeFiles/Cpp_Project_Memory_Game.dir/card.cpp.o: ../deck.h
+CMakeFiles/Cpp_Project_Memory_Game.dir/card.cpp.o: ../reward.h
 
 CMakeFiles/Cpp_Project_Memory_Game.dir/carddeck.cpp.o: ../card.h
 CMakeFiles/Cpp_Project_Memory_Game.dir/carddeck.cpp.o: ../carddeck.cpp
@@ -38,12 +41,18 @@ CMakeFiles/Cpp_Project_Memory_Game.dir/main.cpp.o: ../reward.h
 CMakeFiles/Cpp_Project_Memory_Game.dir/main.cpp.o: ../rewarddeck.h
 CMakeFiles/Cpp_Project_Memory_Game.dir/main.cpp.o: ../rules.h
 
+CMakeFiles/Cpp_Project_Memory_Game.dir/player.cpp.o: ../card.h
+CMakeFiles/Cpp_Project_Memory_Game.dir/player.cpp.o: ../deck.h
 CMakeFiles/Cpp_Project_Memory_Game.dir/player.cpp.o: ../player.cpp
 CMakeFiles/Cpp_Project_Memory_Game.dir/player.cpp.o: ../player.h
 CMakeFiles/Cpp_Project_Memory_Game.dir/player.cpp.o: ../reward.h
+CMakeFiles/Cpp_Project_Memory_Game.dir/player.cpp.o: ../rewarddeck.h
 
+CMakeFiles/Cpp_Project_Memory_Game.dir/reward.cpp.o: ../card.h
+CMakeFiles/Cpp_Project_Memory_Game.dir/reward.cpp.o: ../deck.h
 CMakeFiles/Cpp_Project_Memory_Game.dir/reward.cpp.o: ../reward.cpp
 CMakeFiles/Cpp_Project_Memory_Game.dir/reward.cpp.o: ../reward.h
+CMakeFiles/Cpp_Project_Memory_Game.dir/reward.cpp.o: ../rewarddeck.h
 
 CMakeFiles/Cpp_Project_Memory_Game.dir/rewarddeck.cpp.o: ../card.h
 CMakeFiles/Cpp_Project_Memory_Game.dir/rewarddeck.cpp.o: ../deck.h
