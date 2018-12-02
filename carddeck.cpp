@@ -3,6 +3,7 @@
 //
 
 #include "carddeck.h"
+#define  TEST_CARD_DECK
 
 CardDeck::CardDeck() : Deck() {
     deck = new vector<Card *>();
@@ -20,3 +21,16 @@ CardDeck &CardDeck::make_CardDeck() {
     c.shuffle();
     return c;
 }
+
+#ifdef TEST_CARD_DECK
+#if 0
+int main() {
+    cout<<"TEST_CARD_DECK"<<endl;
+    CardDeck& c = CardDeck::make_CardDeck();
+    for(int i =0;i<25;i++){
+        cout<<*c.getNext()<<endl;
+    }
+
+}
+#endif
+#endif

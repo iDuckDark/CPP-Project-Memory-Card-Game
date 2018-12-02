@@ -1,4 +1,5 @@
 #include "rewarddeck.h"
+#define TEST_REWARD_DECK
 
 RewardDeck::RewardDeck() : Deck() {
     deck = new vector<Reward *>();
@@ -18,3 +19,10 @@ RewardDeck &RewardDeck::make_RewardDeck() {
     r.shuffle();
     return r;
 }
+#ifdef TEST_REWARD_DECK
+#if 0
+int main() {
+    cout<<"TEST_REWARD_DECK"<<endl;
+}
+#endif
+#endif

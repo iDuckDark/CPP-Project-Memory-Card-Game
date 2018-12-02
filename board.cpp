@@ -3,6 +3,7 @@
 //
 
 #include "board.h"
+#define TEST_BOARD
 
 Board::Board() : l1(Z), n1(Zero) {
     screen = new string[19];
@@ -141,3 +142,11 @@ void Board::swapCards(const Letter &l1, const Number &n1, const Letter &l2, cons
     second = temp;
     this->l1 = Z, this->n1 = Zero;
 }
+
+#ifdef TEST_BOARD
+#if 0
+int main() {
+    cout<<"TEST_BOARD"<<endl;
+}
+#endif
+#endif

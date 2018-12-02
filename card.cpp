@@ -1,4 +1,5 @@
 #include "card.h"
+#define TEST_CARD
 
 Card::Card(const FaceAnimal &faceAnimal, const FaceBackground &faceBackground) :
         _faceAnimal(faceAnimal),
@@ -78,3 +79,12 @@ string Card::operator()(const int &row) const {
 bool operator==(const Card &lhs, const Card &rhs) {
     return (lhs.getAnimal() == rhs.getAnimal()) || (lhs.getColor() == rhs.getColor());
 }
+
+
+#ifdef TEST_CARD
+#if 0
+int main() {
+    cout<<"TEST_CARD"<<endl;
+}
+#endif
+#endif

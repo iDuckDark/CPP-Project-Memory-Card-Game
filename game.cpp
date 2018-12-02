@@ -3,6 +3,7 @@
 //
 
 #include "game.h"
+#define TEST_GAME
 
 Game::Game(int &sideCounter, int &nPlayers) : nRound(1), currentSide(Side::Top), sideCounter(sideCounter) {
     cout << endl << "Welcome to Nevin's and Peter's Memory Card Game Fall 2018" << endl;
@@ -437,3 +438,12 @@ void Game::expertTurtle() {
 }
 
 map<string, Card *> &Game::getCardMap() { return cardMap; }
+
+
+#ifdef TEST_GAME
+#if 0
+int main() {
+    cout<<"TEST_GAME"<<endl;
+}
+#endif
+#endif

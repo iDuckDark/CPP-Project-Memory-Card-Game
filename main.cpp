@@ -22,7 +22,7 @@ void runGame() {
 }
 
 #ifdef MAIN
-#if 1
+#if 0
 int main() {
     runGame();
     return 0;

@@ -36,6 +36,8 @@ Reward::operator int() { return getNRubies(); }
 
 #ifdef TEST_REWARD
 #if 0
-int main() {}
+int main() {
+    cout<<"TEST_REWARD"<<endl;
+}
 #endif
 #endif // TEST_REWARD

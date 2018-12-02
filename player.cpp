@@ -47,6 +47,7 @@ string Player::getSideToString() const {
 #ifdef TEST_PLAYER
 #if 0
 int main() {
+    cout<<"TEST_PLAYER"<<endl;
     Player p = Player("Peter");
     cout << p.getName() << endl;
     cout << p << endl;

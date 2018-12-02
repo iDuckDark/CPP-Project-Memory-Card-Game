@@ -3,7 +3,7 @@
 //
 
 #include "rules.h"
-
+#define  TEST_RULES
 Rules::Rules(const int &nPlayers) : nPlayers(nPlayers), currentSide(0){}
 
 bool Rules::isValid(const Game &game) {
@@ -33,3 +33,12 @@ const Player &Rules::getNextPlayer(const Game &game) {
     if (currentSide >= nPlayers) currentSide = 0;
     return player;
 }
+
+
+#ifdef TEST_RULES
+#if 1
+int main() {
+    cout<<"TEST_RULES"<<endl;
+}
+#endif
+#endif
