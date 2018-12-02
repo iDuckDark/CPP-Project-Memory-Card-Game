@@ -204,6 +204,7 @@ int main() {
         makeBoard2 = false;
     }
     assert(cout << (makeBoard2 == false) << endl);
+    cout << "Testing Completed" << endl;
 }
 
 #endif

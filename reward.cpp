@@ -37,12 +37,15 @@ Reward::operator int() { return getNRubies(); }
 
 #ifdef TEST_REWARD
 #if 0
+
 int main() {
-    cout<<"TEST_REWARD"<<endl;
-    RewardDeck& r = RewardDeck::make_RewardDeck();
-    Reward* reward = r.getNext();
-    cout<< *reward <<endl;
-    cout<<"Reward Value "<<reward->getNRubies()<<endl;
+    cout << "TEST_REWARD" << endl;
+    RewardDeck &r = RewardDeck::make_RewardDeck();
+    Reward *reward = r.getNext();
+    cout << *reward << endl;
+    cout << "Reward Value " << reward->getNRubies() << endl;
+    cout << "Testing Completed" << endl;
 }
+
 #endif
 #endif // TEST_REWARD

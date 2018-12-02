@@ -86,16 +86,19 @@ bool operator==(const Card &lhs, const Card &rhs) {
 
 #ifdef TEST_CARD
 #if 0
+
 int main() {
-    cout<<"TEST_CARD"<<endl;
-    CardDeck& c = CardDeck::make_CardDeck();
-    Card* card = c.getNext();
-    Card* card2 = c.getNext();
-    cout<< *card <<endl;
-    cout<< *card2 <<endl;
-    cout<<"Animal "<<card->getAnimal()<<endl;
-    cout<<"Colour "<<card->getColor()<<endl;
-    assert(*card == * card);
+    cout << "TEST_CARD" << endl;
+    CardDeck &c = CardDeck::make_CardDeck();
+    Card *card = c.getNext();
+    Card *card2 = c.getNext();
+    cout << *card << endl;
+    cout << *card2 << endl;
+    cout << "Animal " << card->getAnimal() << endl;
+    cout << "Colour " << card->getColor() << endl;
+    assert(*card == *card);
+    cout << "Testing Completed" << endl;
 }
+
 #endif
 #endif

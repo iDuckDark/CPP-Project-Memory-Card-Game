@@ -294,7 +294,6 @@ int Game::toEnum(const char &input) {
     }
 }
 
-
 Card *Game::getExpertCard(const Letter &letter, const Number &number) {
     Letter let = letter;
     Number num = number;
@@ -443,8 +442,35 @@ map<string, Card *> &Game::getCardMap() { return cardMap; }
 
 #ifdef TEST_GAME
 #if 0
+
 int main() {
-    cout<<"TEST_GAME"<<endl;
+    cout << "TEST_GAME" << endl;
+    int sideCounter, nPlayers;
+    cout << "Testing Game Constructor" << endl;
+    Game game(sideCounter, nPlayers);
+    assert(sideCounter == nPlayers - 1);
+    cout << "Testing Game Players" << endl;
+    assert(nPlayers >= 2 && nPlayers <= 4);
+    Player *currentPlayer = &game.getPlayer(sides[(sideCounter = (sideCounter + 1) % nPlayers)]);
+    assert(currentPlayer != nullptr);
+    cout << "Testing Game methods" << endl;
+    assert(game.getRound() == 1);
+    cout << "Picking first card" << endl;
+    Card *cardPtr = game.getCard(Z, Zero);
+    assert(cardPtr != nullptr);
+    game.setCurrentCard(cardPtr);
+    cout << "Picking second card" << endl;
+    Card *cardPtr2 = game.getCard(Z, Zero);
+    assert(cardPtr2 != nullptr);
+    game.setCurrentCard(cardPtr2);
+    assert(game.getPreviousCard() != nullptr);
+    assert(game.getCurrentCard() != nullptr);
+    game.nextRound();
+    assert(game.getRound() == 2);
+    cout << "Testing Print Game" << endl;
+    cout<< game << endl;
+    cout << "Testing Completed" << endl;
 }
+
 #endif
 #endif

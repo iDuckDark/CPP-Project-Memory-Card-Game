@@ -6,10 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/board.cpp
-board.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/board.h
-
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/board.h
 vector
 -
@@ -47,10 +43,6 @@ card.h
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/card.h
 reward.h
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/reward.h
-
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/game.cpp
-game.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/game.h
 
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/game.h
 map

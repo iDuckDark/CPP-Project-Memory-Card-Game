@@ -1,4 +1,5 @@
 #include "rewarddeck.h"
+
 #define TEST_REWARD_DECK
 
 RewardDeck::RewardDeck() : Deck() {
@@ -19,20 +20,22 @@ RewardDeck &RewardDeck::make_RewardDeck() {
     r.shuffle();
     return r;
 }
+
 #ifdef TEST_REWARD_DECK
 #if 0
+
 int main() {
-    cout<<"TEST_REWARD_DECK"<<endl;
-    RewardDeck& r = RewardDeck::make_RewardDeck();
-
-    for(int i =0;i<7;i++){
-        cout<<i<<endl;
-        Reward* reward = r.getNext();
-        cout<< *reward <<endl;
-        cout<<"Reward Value "<<reward->getNRubies()<<endl;
-        cout<<endl;
+    cout << "TEST_REWARD_DECK" << endl;
+    RewardDeck &r = RewardDeck::make_RewardDeck();
+    for (int i = 0; i < 7; i++) {
+        cout << i << endl;
+        Reward *reward = r.getNext();
+        cout << *reward << endl;
+        cout << "Reward Value " << reward->getNRubies() << endl;
+        cout << endl;
     }
-
+    cout << "Testing Completed" << endl;
 }
+
 #endif
 #endif
