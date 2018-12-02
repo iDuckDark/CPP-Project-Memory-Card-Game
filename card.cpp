@@ -1,5 +1,6 @@
 #include "card.h"
 #include "carddeck.h"
+#include <cassert>
 
 #define TEST_CARD
 
@@ -89,9 +90,12 @@ int main() {
     cout<<"TEST_CARD"<<endl;
     CardDeck& c = CardDeck::make_CardDeck();
     Card* card = c.getNext();
+    Card* card2 = c.getNext();
     cout<< *card <<endl;
+    cout<< *card2 <<endl;
     cout<<"Animal "<<card->getAnimal()<<endl;
     cout<<"Colour "<<card->getColor()<<endl;
+    assert(*card == * card);
 }
 #endif
 #endif

@@ -20,7 +20,7 @@ RewardDeck &RewardDeck::make_RewardDeck() {
     return r;
 }
 #ifdef TEST_REWARD_DECK
-#if 1
+#if 0
 int main() {
     cout<<"TEST_REWARD_DECK"<<endl;
     RewardDeck& r = RewardDeck::make_RewardDeck();

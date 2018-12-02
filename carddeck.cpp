@@ -3,6 +3,7 @@
 //
 
 #include "carddeck.h"
+#include "cassert"
 #define  TEST_CARD_DECK
 
 CardDeck::CardDeck() : Deck() {
@@ -29,13 +30,15 @@ int main() {
     CardDeck& c = CardDeck::make_CardDeck();
 
     for(int i =0;i<25;i++){
+        assert(!c.isEmpty());
         cout<<i<<endl;
         Card* card = c.getNext();
-           cout<< *card <<endl;
-           cout<<"Animal "<<card->getAnimal()<<endl;
-           cout<<"Colour "<<card->getColor()<<endl;
-           cout<<endl;
+        cout<< *card <<endl;
+        cout<<"Animal "<<card->getAnimal()<<endl;
+        cout<<"Colour "<<card->getColor()<<endl;
+        cout<<endl;
     }
+    assert(c.isEmpty());
 
 }
 #endif
