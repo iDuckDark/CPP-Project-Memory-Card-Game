@@ -4,13 +4,13 @@
 
 #include "board.h"
 
-Board::Board() {
+Board::Board() : l1(Z), n1(Zero) {
     screen = new string[19];
     for (auto &faceDownCard : faceDownCards) {
         faceDownCard = new bool[5];
         for (int y = 0; y < 5; y++) { faceDownCard[y] = true; }
     }
-    if (ready && cards2D.size() == 0) throw out_of_range("NoMoreCards"); //TODO exception
+    if (ready && cards2D.size() == 0) throw out_of_range("NoMoreCards");
 }
 
 Board::Board(const Board &board) : cards(board.cards), cards2D(board.cards2D) {
@@ -28,11 +28,6 @@ Board::~Board() {
     for (auto &faceDownCard : faceDownCards) delete[] faceDownCard;
     for (auto &cardVector : cards2D) delete cardVector;
     for (auto &card : cards) delete card;
-}
-
-void Board::setCard(const Letter &letter, const Number &number, Card *card) {
-    cards.push_back(card);
-    if (cards.size() == 25) setScreen();
 }
 
 void Board::setScreen() {
@@ -56,12 +51,6 @@ void Board::setScreen() {
 
 string *Board::getScreen() const { return screen; }
 
-bool Board::isValidCard(const Letter &letter, const Number &number) const {
-    if (getIndex(letter, "Letter") == 2 && getIndex(number, "Number") == 2)
-        throw out_of_range("Not allowed to pick treasure card!");
-    return true;
-}
-
 bool Board::isFaceUp(const Letter &letter, const Number &number) const {
     if (getIndex(letter, "Letter") == 2 && getIndex(number, "Number") == 2)
         throw out_of_range("Not allowed to pick treasure card!");
@@ -84,6 +73,15 @@ int Board::getIndex(const int &input, const string &typeEnum) const {
             return 4;
         default:
             throw out_of_range(typeEnum + " is out of range");
+    }
+}
+
+void Board::setCard(const Letter &letter, const Number &number, Card *card) {
+    if (!ready) cards.push_back(card);
+    if (cards.size() == 25 && !ready) setScreen();
+    else if (ready) {
+        if (l1 == Z || n1 == Zero) { l1 = letter, n1 = number; }
+        else { swapCards(l1, n1, letter, number); }
     }
 }
 
@@ -132,24 +130,14 @@ ostream &operator<<(ostream &os, const Board &board) {
 }
 
 void Board::swapCards(const Letter &l1, const Number &n1, const Letter &l2, const Number &n2) {
-    // Card *card1 = (*cards2D[getIndex(l1, "Letter")])[getIndex(n1, "Number")];
     Card *card2 = (*cards2D[getIndex(l2, "Letter")])[getIndex(n2, "Number")];
-    //cout << "BEFORE SWAP CARDS" << endl;
-    //cout << *(*cards2D[getIndex(l1, "Letter")])[getIndex(n1, "Number")] << endl;
-    //cout << *(*cards2D[getIndex(l2, "Letter")])[getIndex(n2, "Number")] << endl;
     Card *tempCard = (*cards2D[getIndex(l1, "Letter")])[getIndex(n1, "Number")];
     (*cards2D[getIndex(l1, "Letter")])[getIndex(n1, "Number")] = card2;
     (*cards2D[getIndex(l2, "Letter")])[getIndex(n2, "Number")] = tempCard;
-    //cout << "AFTER SWAP CARDS" << endl << *card1 << *card2 << endl;
-    //cout << *(*cards2D[getIndex(l1, "Letter")])[getIndex(n1, "Number")] << endl;
-    //cout << *(*cards2D[getIndex(l2, "Letter")])[getIndex(n2, "Number")] << endl;
     bool &first = faceDownCards[getIndex(l1, "Letter")][getIndex(n1, "Number")];
     bool &second = faceDownCards[getIndex(l2, "Letter")][getIndex(n2, "Number")];
-    //cout << "BEFORE: " << first << endl;
-    //cout << "BEFORE: " << second << endl;
     bool temp = first;
     first = second;
     second = temp;
-    //cout << "AFTER: " << first << endl;
-    //cout << "AFTER: " << second << endl;
+    this->l1 = Z, this->n1 = Zero;
 }

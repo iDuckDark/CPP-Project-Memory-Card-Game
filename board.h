@@ -21,7 +21,6 @@ enum Number {
 
 class Board {
 
-
 public:
     Board();
 
@@ -43,8 +42,6 @@ public:
 
     friend ostream &operator<<(ostream &, const Board &);
 
-    void swapCards(const Letter &, const Number &, const Letter &, const Number &);
-
 private:
     string *screen;
 
@@ -62,9 +59,13 @@ private:
 
     bool isFaceDown(const int &i, const int &y) const;
 
-    bool isValidCard(const Letter &, const Number &) const;
-
     bool ready = false;
+
+    Letter l1 = Z;
+
+    Number n1 = Zero;
+
+    void swapCards(const Letter &, const Number &, const Letter &, const Number &);
 };
 
 #endif //CPP_PROJECT_MEMORY_GAME_BOARD_H

@@ -243,11 +243,10 @@ ostream &operator<<(ostream &os, const Game &game) {
 }
 
 void Game::swapCards(const Letter &l1, const Number &n1, const Letter &l2, const Number &n2) {
-    board.turnFaceDown(l2, n2); //original face down -> face up
-    //_ underscore is face down// normal is face up
-    //Normal Up -> down
-    //board.turnFaceUp(l1,n1);
-    board.swapCards(l1, n1, l2, n2);
+    board.turnFaceDown(l2, n2);
+    cout << l1 << n1 << " : " << l2 << n2 << endl;
+    board.setCard(l1, n1, nullptr);
+    board.setCard(l2, n2, nullptr);
 }
 
 void Game::printLeastToMostRubiesAndWinner() const {
@@ -372,8 +371,7 @@ void Game::expertOctopus(Card *card, Letter &letter, Number &number) {
         card = selectedCard;
         selectedCard = temp;
         cardMap.operator[](cara + to_string(_number)) = selectedCard;         //hashed to new location
-        swapCards(letter, number, _letter, _number); //Expert Octopus
-        //_ underscore is face down// normal is face up
+        swapCards(letter, number, _letter, _number); //Expert Octopus //_ underscore is face down// normal is face up
     }
 }
 
@@ -439,6 +437,3 @@ void Game::expertTurtle() {
 }
 
 map<string, Card *> &Game::getCardMap() { return cardMap; }
-
-//TODO PENGUIN TURN FACEDOWN IF CARD ALREADY FACE UP input
-//TODO A2

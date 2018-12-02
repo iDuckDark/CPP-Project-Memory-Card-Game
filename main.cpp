@@ -21,5 +21,7 @@ void runGame() {
 
 int main() {
     runGame();
+    //Letter l1 = Z;
+    //cout << (l1 == Z) << endl;
     return 0;
 }
