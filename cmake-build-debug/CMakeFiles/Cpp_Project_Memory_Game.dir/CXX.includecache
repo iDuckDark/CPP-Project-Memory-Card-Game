@@ -6,23 +6,21 @@
 
 #IncludeRegexTransform: 
 
+/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/board.cpp
+board.h
+/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/board.h
+
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/board.h
 vector
 -
 stdexcept
 -
-card.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/card.h
-carddeck.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/carddeck.h
-
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/card.cpp
-card.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/card.h
-carddeck.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/carddeck.h
 cassert
 -
+card.h
+/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/card.h
+carddeck.h
+/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/carddeck.h
 
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/card.h
 iostream
@@ -31,12 +29,6 @@ string
 -
 cmath
 -
-
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/carddeck.cpp
-carddeck.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/carddeck.h
-cassert
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/cassert
 
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/carddeck.h
 deck.h
@@ -56,10 +48,6 @@ card.h
 reward.h
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/reward.h
 
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/game.cpp
-game.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/game.h
-
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/game.h
 map
 -
@@ -78,10 +66,6 @@ rewarddeck.h
 rules.h
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rules.h
 
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/player.cpp
-player.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/player.h
-
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/player.h
 vector
 -
@@ -96,19 +80,11 @@ iostream
 string
 -
 
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rewarddeck.cpp
-rewarddeck.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rewarddeck.h
-
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rewarddeck.h
 deck.h
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/deck.h
 reward.h
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/reward.h
-
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rules.cpp
-rules.h
-/Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rules.h
 
 /Users/idarkduck/CLionProjects/CPP-Project-Memory-Card-Game/rules.h
 stdexcept
