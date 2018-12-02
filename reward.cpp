@@ -1,5 +1,7 @@
 #include "reward.h"
+
 #define TEST_REWARD
+
 Reward::Reward(const int &nRubies) {
     if (nRubies >= 1 && nRubies <= 4) _nRubies = nRubies;
     else throw out_of_range("Error Initializing Reward: Rubies must be only 1 to 4! ");
@@ -34,7 +36,6 @@ Reward::operator int() { return getNRubies(); }
 
 #ifdef TEST_REWARD
 #if 0
-int main() {
-}
+int main() {}
 #endif
 #endif // TEST_REWARD
