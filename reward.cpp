@@ -1,4 +1,5 @@
 #include "reward.h"
+#include "rewarddeck.h"
 
 #define TEST_REWARD
 
@@ -38,6 +39,10 @@ Reward::operator int() { return getNRubies(); }
 #if 0
 int main() {
     cout<<"TEST_REWARD"<<endl;
+    RewardDeck& r = RewardDeck::make_RewardDeck();
+    Reward* reward = r.getNext();
+    cout<< *reward <<endl;
+    cout<<"Reward Value "<<reward->getNRubies()<<endl;
 }
 #endif
 #endif // TEST_REWARD

@@ -23,7 +23,7 @@ CardDeck &CardDeck::make_CardDeck() {
 }
 
 #ifdef TEST_CARD_DECK
-#if 1
+#if 0
 int main() {
     cout<<"TEST_CARD_DECK"<<endl;
     CardDeck& c = CardDeck::make_CardDeck();

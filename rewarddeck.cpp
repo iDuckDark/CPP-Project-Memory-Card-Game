@@ -20,9 +20,19 @@ RewardDeck &RewardDeck::make_RewardDeck() {
     return r;
 }
 #ifdef TEST_REWARD_DECK
-#if 0
+#if 1
 int main() {
     cout<<"TEST_REWARD_DECK"<<endl;
+    RewardDeck& r = RewardDeck::make_RewardDeck();
+
+    for(int i =0;i<7;i++){
+        cout<<i<<endl;
+        Reward* reward = r.getNext();
+        cout<< *reward <<endl;
+        cout<<"Reward Value "<<reward->getNRubies()<<endl;
+        cout<<endl;
+    }
+
 }
 #endif
 #endif
