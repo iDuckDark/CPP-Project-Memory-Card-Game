@@ -36,7 +36,7 @@ const Player &Rules::getNextPlayer(const Game &game) {
 
 
 #ifdef TEST_RULES
-#if 1
+#if 0
 int main() {
     cout<<"TEST_RULES"<<endl;
 }

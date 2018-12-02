@@ -23,12 +23,18 @@ CardDeck &CardDeck::make_CardDeck() {
 }
 
 #ifdef TEST_CARD_DECK
-#if 0
+#if 1
 int main() {
     cout<<"TEST_CARD_DECK"<<endl;
     CardDeck& c = CardDeck::make_CardDeck();
+
     for(int i =0;i<25;i++){
-        cout<<*c.getNext()<<endl;
+        cout<<i<<endl;
+        Card* card = c.getNext();
+           cout<< *card <<endl;
+           cout<<"Animal "<<card->getAnimal()<<endl;
+           cout<<"Colour "<<card->getColor()<<endl;
+           cout<<endl;
     }
 
 }

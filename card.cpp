@@ -1,4 +1,6 @@
 #include "card.h"
+#include "carddeck.h"
+
 #define TEST_CARD
 
 Card::Card(const FaceAnimal &faceAnimal, const FaceBackground &faceBackground) :
@@ -85,6 +87,11 @@ bool operator==(const Card &lhs, const Card &rhs) {
 #if 0
 int main() {
     cout<<"TEST_CARD"<<endl;
+    CardDeck& c = CardDeck::make_CardDeck();
+    Card* card = c.getNext();
+    cout<< *card <<endl;
+    cout<<"Animal "<<card->getAnimal()<<endl;
+    cout<<"Colour "<<card->getColor()<<endl;
 }
 #endif
 #endif
