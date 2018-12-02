@@ -1,5 +1,6 @@
 #include "reward.h"
 #include "rewarddeck.h"
+#include <cassert>
 
 #define TEST_REWARD
 
@@ -41,8 +42,18 @@ int main() {
     cout<<"TEST_REWARD"<<endl;
     RewardDeck& r = RewardDeck::make_RewardDeck();
     Reward* reward = r.getNext();
-    cout<< *reward <<endl;
-    cout<<"Reward Value "<<reward->getNRubies()<<endl;
+    Reward* reward2 = r.getNext();
+    for(int i = 0;i<7;i++){
+        if(*reward>*reward2){
+            assert(*reward>*reward2);
+        }else if(*reward<*reward2){
+            assert(*reward<*reward2);
+        }else{
+            assert(*reward == *reward2);
+        }
+        cout<<"Reward Value "<<reward2->getNRubies()<<endl;
+        reward2 = r.getNext();
+    }
 }
 #endif
 #endif // TEST_REWARD

@@ -1,3 +1,4 @@
+#include <cassert>
 #include "rewarddeck.h"
 #define TEST_REWARD_DECK
 
@@ -26,12 +27,14 @@ int main() {
     RewardDeck& r = RewardDeck::make_RewardDeck();
 
     for(int i =0;i<7;i++){
+        assert(!r.isEmpty());
         cout<<i<<endl;
         Reward* reward = r.getNext();
         cout<< *reward <<endl;
         cout<<"Reward Value "<<reward->getNRubies()<<endl;
         cout<<endl;
     }
+    assert(r.isEmpty());
 
 }
 #endif
