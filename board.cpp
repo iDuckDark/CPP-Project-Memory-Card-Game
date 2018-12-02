@@ -3,6 +3,7 @@
 //
 
 #include "board.h"
+
 #define TEST_BOARD
 
 Board::Board() : l1(Z), n1(Zero) {
@@ -145,8 +146,51 @@ void Board::swapCards(const Letter &l1, const Number &n1, const Letter &l2, cons
 
 #ifdef TEST_BOARD
 #if 0
+
 int main() {
-    cout<<"TEST_BOARD"<<endl;
+    cout << "TEST_BOARD" << endl;
+    Board board;
+    CardDeck &deck = CardDeck::make_CardDeck();
+    int i = 1, j = 1;
+    while (!deck.isEmpty()) {
+        board.setCard(static_cast<Letter>(i), static_cast<Number>(j++), deck.getNext());
+        if (j == 5) j = 0, i++;
+    }
+    cout << "PRINTING BOARD DEFAULT ALL FACE DOWN" << endl;
+    cout << board << endl;
+    cout << "Turning Card C1 & C4 face UP" << endl;
+    assert(board.turnFaceUp(C, One) == true);
+    assert(board.turnFaceUp(C, Four) == true);
+    cout << board << endl;
+    //Attempting to face up again
+    assert(board.turnFaceUp(C, One) == false);
+    assert(board.turnFaceUp(C, Four) == false);
+    cout << "Turning Card C1 & C4 face DOWN" << endl;
+    assert(board.turnFaceDown(C, One) == true);
+    assert(board.turnFaceDown(C, Four) == true);
+    cout << board << endl;
+    //Attempting to face down again
+    assert(board.turnFaceDown(C, One) == false);
+    assert(board.turnFaceDown(C, Four) == false);
+    //Attempting to pick the treasure card, which is not allowed
+    bool treasureCard;
+    try { treasureCard = board.turnFaceUp(C, Three); }
+    catch (...) { treasureCard = false; }
+    assert(treasureCard == false);
+    //Check if it's face up and getting card
+    assert(board.isFaceUp(E, Two) == false);
+    assert(board.turnFaceUp(E, Two) == true);
+    assert(board.isFaceUp(E, Two) == true);
+    assert(board.getCard(E, Two) != nullptr);
+    Card *ptr;
+    try { ptr = board.getCard(E, Zero); }
+    catch (...) { ptr = nullptr; }
+    assert(ptr == nullptr);
+    cout << board << endl;
+    cout << "Reseting the board" << endl;
+    board.reset();
+    cout << board << endl;
 }
+
 #endif
 #endif
