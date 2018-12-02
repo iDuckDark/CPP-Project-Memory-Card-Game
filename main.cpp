@@ -1,3 +1,5 @@
+#define MAIN
+
 #include "rules.h"
 
 void runGame() {
@@ -19,9 +21,11 @@ void runGame() {
     cout << game << endl;
 }
 
+#ifdef MAIN
+#if 1
 int main() {
     runGame();
-    //Letter l1 = Z;
-    //cout << (l1 == Z) << endl;
     return 0;
 }
+#endif
+#endif

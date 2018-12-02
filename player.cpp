@@ -1,7 +1,7 @@
 //
 // Created by iDarkDuck on 2018-10-19.
 //
-
+#define TEST_PLAYER
 #include "player.h"
 
 Player::Player(const string &name) : name(name), nRubies(0), active(true), endOfGame(false), side(Side::Top) {}
@@ -43,3 +43,13 @@ string Player::getSideToString() const {
     else if (side == Side::Right) return "right";
     else return "left";
 }
+
+#ifdef TEST_PLAYER
+#if 0
+int main() {
+    Player p = Player("Peter");
+    cout << p.getName() << endl;
+    cout << p << endl;
+}
+#endif
+#endif // TEST_PLAYER
