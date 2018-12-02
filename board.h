@@ -20,6 +20,10 @@ enum Number {
     One = 1, Two = 2, Three = 3, Four = 4, Five = 5, Zero = -1
 };
 
+struct NoMoreCardsException : public std::exception {
+    const char *what() const throw() { return "Error: No More Cards Exception!"; }
+};
+
 class Board {
 
 public:
@@ -51,6 +55,8 @@ private:
     bool *faceDownCards[5];
 
     vector<vector<Card *> *> cards2D;
+
+    static int singleton;
 
     int getIndex(const int &, const string &) const;
 

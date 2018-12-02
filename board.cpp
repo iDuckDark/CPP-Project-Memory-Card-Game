@@ -6,7 +6,10 @@
 
 #define TEST_BOARD
 
+int Board::singleton = false;
+
 Board::Board() : l1(Z), n1(Zero) {
+    (singleton) ? throw NoMoreCardsException() : singleton = true;
     screen = new string[19];
     for (auto &faceDownCard : faceDownCards) {
         faceDownCard = new bool[5];
@@ -145,7 +148,7 @@ void Board::swapCards(const Letter &l1, const Number &n1, const Letter &l2, cons
 }
 
 #ifdef TEST_BOARD
-#if 0
+#if 1
 
 int main() {
     cout << "TEST_BOARD" << endl;
@@ -154,7 +157,7 @@ int main() {
     int i = 1, j = 1;
     while (!deck.isEmpty()) {
         board.setCard(static_cast<Letter>(i), static_cast<Number>(j++), deck.getNext());
-        if (j == 5) j = 0, i++;
+        if (j == 5) { j = 0, i++; }
     }
     cout << "PRINTING BOARD DEFAULT ALL FACE DOWN" << endl;
     cout << board << endl;
@@ -190,6 +193,18 @@ int main() {
     cout << "Reseting the board" << endl;
     board.reset();
     cout << board << endl;
+    cout << "Test making another board" << endl;
+    bool makeBoard2;
+    try {
+        Board board2;
+        makeBoard2 = true;
+    }
+    catch (const exception &exc) {
+        cout << exc.what() << endl;
+        makeBoard2 = false;
+    }
+    assert(cout << (makeBoard2 == false) << endl);
+
 }
 
 #endif

@@ -3,6 +3,7 @@
 //
 
 #include "game.h"
+
 #define TEST_GAME
 
 Game::Game(int &sideCounter, int &nPlayers) : nRound(1), currentSide(Side::Top), sideCounter(sideCounter) {
@@ -55,7 +56,7 @@ void Game::makeCardDeck() {
     int i = 1, j = 1;
     while (!deck.isEmpty()) {
         setCard(static_cast<Letter>(i), static_cast<Number>(j++), deck.getNext());
-        if (j == 5) j = 0, i++;
+        if (j == 5) { j = 0, i++; }
     }
 }
 
