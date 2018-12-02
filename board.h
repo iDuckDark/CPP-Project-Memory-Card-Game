@@ -20,7 +20,7 @@ enum Number {
     One = 1, Two = 2, Three = 3, Four = 4, Five = 5, Zero = -1
 };
 
-struct NoMoreCardsException : public std::exception {
+struct NoMoreCardsException : public exception {
     const char *what() const throw() { return "Error: No More Cards Exception!"; }
 };
 

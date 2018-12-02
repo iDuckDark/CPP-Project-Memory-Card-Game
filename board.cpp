@@ -148,7 +148,7 @@ void Board::swapCards(const Letter &l1, const Number &n1, const Letter &l2, cons
 }
 
 #ifdef TEST_BOARD
-#if 1
+#if 0
 
 int main() {
     cout << "TEST_BOARD" << endl;
@@ -204,7 +204,6 @@ int main() {
         makeBoard2 = false;
     }
     assert(cout << (makeBoard2 == false) << endl);
-
 }
 
 #endif
