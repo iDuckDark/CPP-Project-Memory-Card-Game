@@ -76,6 +76,7 @@ int main() {
     assert(p != p1);
     Player p2 = Player("Peter");
     assert(p == p2);
+    cout << "Testing Completed" << endl;
 }
 
 #endif
