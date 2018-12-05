@@ -4,7 +4,8 @@
 
 #include "carddeck.h"
 #include "cassert"
-#define  TEST_CARD_DECK
+
+//#define  TEST_CARD_DECK
 
 CardDeck::CardDeck() : Deck() {
     deck = new vector<Card *>();
@@ -24,22 +25,21 @@ CardDeck &CardDeck::make_CardDeck() {
 }
 
 #ifdef TEST_CARD_DECK
-#if 0
-int main() {
-    cout<<"TEST_CARD_DECK"<<endl;
-    CardDeck& c = CardDeck::make_CardDeck();
 
-    for(int i =0;i<25;i++){
+int main() {
+    cout << "TEST_CARD_DECK" << endl;
+    CardDeck &c = CardDeck::make_CardDeck();
+    for (int i = 0; i < 25; i++) {
         assert(!c.isEmpty());
-        cout<<i<<endl;
-        Card* card = c.getNext();
-        cout<< *card <<endl;
-        cout<<"Animal "<<card->getAnimal()<<endl;
-        cout<<"Colour "<<card->getColor()<<endl;
-        cout<<endl;
+        cout << i << endl;
+        Card *card = c.getNext();
+        cout << *card << endl;
+        cout << "Animal " << card->getAnimal() << endl;
+        cout << "Colour " << card->getColor() << endl;
+        cout << endl;
     }
     assert(c.isEmpty());
 
 }
-#endif
+
 #endif

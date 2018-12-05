@@ -4,7 +4,7 @@
 
 #include "game.h"
 
-#define TEST_GAME
+//#define TEST_GAME
 
 Game::Game(int &sideCounter, int &nPlayers) : nRound(1), currentSide(Side::Top), sideCounter(sideCounter) {
     cout << endl << "Welcome to Nevin's and Peter's Memory Card Game Fall 2018" << endl;
@@ -70,7 +70,7 @@ void Game::nextRound() {
     awardActivePlayers();
     if (nRound != 7) reset();
     int nActive = 0;
-    for (auto player: players) if (player.isActive()) nActive++;
+    for (const auto &player: players) if (player.isActive()) nActive++;
     if (nActive == 1) walrusBlockValue = "Z0";
 }
 
@@ -185,6 +185,7 @@ Card *Game::getCard(const Letter &letter, const Number &number) {
         board.turnFaceUp(let, num);
         return board.getCard(let, num);
     } else { getExpertRulesInput(); }
+    return nullptr;
 }
 
 Card *Game::getExpertCard(Letter &let, Number &num, const FaceAnimal &animal) {
@@ -434,14 +435,13 @@ void Game::expertCrab(Card *card, Letter &letter, Number &number, int &sideCount
 void Game::expertTurtle() {
     cout << "You have picked a Turtle!" << endl;
     cout << "Skipping next player's turn." << endl;
-    sideCounter = (sideCounter + 1) % players.size();
+    sideCounter = static_cast<int>((sideCounter + 1) % players.size());
 }
 
 map<string, Card *> &Game::getCardMap() { return cardMap; }
 
 
 #ifdef TEST_GAME
-#if 0
 
 int main() {
     cout << "TEST_GAME" << endl;
@@ -468,9 +468,8 @@ int main() {
     game.nextRound();
     assert(game.getRound() == 2);
     cout << "Testing Print Game" << endl;
-    cout<< game << endl;
+    cout << game << endl;
     cout << "Testing Completed" << endl;
 }
 
-#endif
 #endif

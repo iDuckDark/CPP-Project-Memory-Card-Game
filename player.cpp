@@ -1,7 +1,7 @@
 //
 // Created by iDarkDuck on 2018-10-19.
 //
-#define TEST_PLAYER
+//#define TEST_PLAYER
 
 #include "player.h"
 
@@ -48,7 +48,6 @@ string Player::getSideToString() const {
 }
 
 #ifdef TEST_PLAYER
-#if 0
 
 int main() {
     cout << "TEST_PLAYER" << endl;
@@ -79,5 +78,4 @@ int main() {
     cout << "Testing Completed" << endl;
 }
 
-#endif
 #endif // TEST_PLAYER

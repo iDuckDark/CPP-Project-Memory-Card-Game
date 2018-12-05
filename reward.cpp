@@ -2,7 +2,7 @@
 #include "rewarddeck.h"
 #include <cassert>
 
-#define TEST_REWARD
+//#define TEST_REWARD
 
 Reward::Reward(const int &nRubies) {
     if (nRubies >= 1 && nRubies <= 4) _nRubies = nRubies;
@@ -37,7 +37,7 @@ Reward &Reward::operator=(const int &nRubiesOther) {
 Reward::operator int() { return getNRubies(); }
 
 #ifdef TEST_REWARD
-#if 0
+
 int main() {
     cout<<"TEST_REWARD"<<endl;
     RewardDeck& r = RewardDeck::make_RewardDeck();
@@ -55,5 +55,5 @@ int main() {
         reward2 = r.getNext();
     }
 }
-#endif
+
 #endif // TEST_REWARD

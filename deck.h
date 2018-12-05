@@ -20,6 +20,8 @@ class Deck {
 public:
     Deck() = default;
 
+    virtual ~Deck() = default;
+
     void shuffle() {
         std::random_device rd;
         std::mt19937 g(rd());
@@ -36,8 +38,6 @@ public:
     }
 
     bool isEmpty() { return (*deck).empty(); }
-
-    virtual ~Deck() = default;
 
 protected:
     vector<C *> *deck;

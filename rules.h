@@ -30,5 +30,4 @@ private:
     bool twoCardsSelected(const Game &) const;
 };
 
-
 #endif //CPP_PROJECT_MEMORY_GAME_RULES_H

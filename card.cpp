@@ -2,7 +2,7 @@
 #include "carddeck.h"
 #include <cassert>
 
-#define TEST_CARD
+//#define TEST_CARD
 
 Card::Card(const FaceAnimal &faceAnimal, const FaceBackground &faceBackground) :
         _faceAnimal(faceAnimal),
@@ -85,7 +85,6 @@ bool operator==(const Card &lhs, const Card &rhs) {
 
 
 #ifdef TEST_CARD
-#if 0
 
 int main() {
     cout << "TEST_CARD" << endl;
@@ -100,5 +99,4 @@ int main() {
     cout << "Testing Completed" << endl;
 }
 
-#endif
 #endif

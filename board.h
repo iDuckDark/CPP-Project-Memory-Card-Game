@@ -21,7 +21,7 @@ enum Number {
 };
 
 struct NoMoreCardsException : public exception {
-    const char *what() const throw() { return "Error: No More Cards Exception!"; }
+    const char *what() const noexcept { return "Error: No More Cards Exception!"; }
 };
 
 class Board {

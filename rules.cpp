@@ -4,7 +4,7 @@
 
 #include "rules.h"
 
-#define  TEST_RULES
+//#define TEST_RULES
 
 Rules::Rules(const int &nPlayers) : nPlayers(nPlayers), currentSide(0) {}
 
@@ -37,7 +37,6 @@ bool Rules::twoCardsSelected(const Game &game) const {
 }
 
 #ifdef TEST_RULES
-#if 0
 
 int main() {
     cout << "TEST_RULES" << endl;
@@ -78,5 +77,4 @@ int main() {
     cout << "Testing Completed" << endl;
 }
 
-#endif
 #endif

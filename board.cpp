@@ -4,7 +4,7 @@
 
 #include "board.h"
 
-#define TEST_BOARD
+//#define TEST_BOARD
 
 int Board::singleton = false;
 
@@ -15,7 +15,7 @@ Board::Board() : l1(Z), n1(Zero) {
         faceDownCard = new bool[5];
         for (int y = 0; y < 5; y++) { faceDownCard[y] = true; }
     }
-    if (ready && cards2D.size() == 0) throw out_of_range("NoMoreCards");
+    if (ready && cards2D.empty()) throw out_of_range("NoMoreCards");
 }
 
 Board::Board(const Board &board) : cards(board.cards), cards2D(board.cards2D) {
@@ -148,7 +148,6 @@ void Board::swapCards(const Letter &l1, const Number &n1, const Letter &l2, cons
 }
 
 #ifdef TEST_BOARD
-#if 0
 
 int main() {
     cout << "TEST_BOARD" << endl;
@@ -207,5 +206,4 @@ int main() {
     cout << "Testing Completed" << endl;
 }
 
-#endif
 #endif
